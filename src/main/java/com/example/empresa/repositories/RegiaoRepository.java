@@ -1,34 +1,37 @@
 package com.example.empresa.repositories;
 
-import com.example.empresa.entities.Entregador;
-import com.example.empresa.interfaces.IEntregadorRepository;
+import com.example.empresa.entities.Base;
+import com.example.empresa.entities.Regiao;
+import com.example.empresa.interfaces.IBaseRepository;
+import com.example.empresa.interfaces.IRegiaoRepository;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class EntregadorRepository implements IEntregadorRepository {
+public class RegiaoRepository implements IRegiaoRepository {
 
     @Override
-    public List<Entregador> buscarTodos() {
+    public List<Regiao> buscarTodos() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'buscarTodos'");
     }
 
     @Override
-    public Entregador buscarPorId(int id) {
+    public Regiao buscarPorId(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
     }
 
     @Override
-    public Entregador gravar(Entregador entregador) {
+    public Regiao gravar(Regiao Regiao) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'gravar'");
     }
 
     @Override
-    public Entregador atualizar(int id, Entregador entregador) {
+    public Regiao atualizar(int id, Regiao Regiao) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
     }
@@ -38,6 +41,9 @@ public class EntregadorRepository implements IEntregadorRepository {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'excluir'");
     }
+
+
+
 
    
 }

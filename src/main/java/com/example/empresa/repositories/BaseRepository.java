@@ -1,34 +1,34 @@
 package com.example.empresa.repositories;
 
-import com.example.empresa.entities.Empresa;
-import com.example.empresa.interfaces.ISystemRTARepository;
+import com.example.empresa.entities.Base;
+import com.example.empresa.interfaces.IBaseRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class BaseRepository implements ISystemRTARepository {
+public class BaseRepository implements IBaseRepository {
 
     @Override
-    public List<Empresa> buscarTodos() {
+    public List<Base> buscarTodos() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'buscarTodos'");
     }
 
     @Override
-    public Empresa buscarPorId(int id) {
+    public Base buscarPorId(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
     }
 
     @Override
-    public Empresa gravar(Empresa empresa) {
+    public Base gravar(Base base) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'gravar'");
     }
 
     @Override
-    public Empresa atualizar(int id, Empresa empresaAtualizada) {
+    public Base atualizar(int id, Base base) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
     }
@@ -38,6 +38,7 @@ public class BaseRepository implements ISystemRTARepository {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'excluir'");
     }
+
 
    
 }

@@ -1,34 +1,34 @@
 package com.example.empresa.repositories;
 
-import com.example.empresa.entities.Empresa;
-import com.example.empresa.interfaces.ISystemRTARepository;
+import com.example.empresa.entities.Romaneio;
+import com.example.empresa.interfaces.IRomanioRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class RomanioRepository implements ISystemRTARepository {
+public class RomanioRepository implements IRomanioRepository {
 
     @Override
-    public List<Empresa> buscarTodos() {
+    public List<Romaneio> buscarTodos() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'buscarTodos'");
     }
 
     @Override
-    public Empresa buscarPorId(int id) {
+    public Romaneio buscarPorId(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
     }
 
     @Override
-    public Empresa gravar(Empresa empresa) {
+    public Romaneio gravar(Romaneio romaneio) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'gravar'");
     }
 
     @Override
-    public Empresa atualizar(int id, Empresa empresaAtualizada) {
+    public Romaneio atualizar(int id, Romaneio romaneio) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
     }
@@ -38,6 +38,7 @@ public class RomanioRepository implements ISystemRTARepository {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'excluir'");
     }
+
 
    
 }
