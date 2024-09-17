@@ -2,7 +2,7 @@ package com.example.empresa.entities;
 
 import jakarta.persistence.*;
 
-@Table(name = "Empresas")
+@Table(name = "empresa")
 @Entity
 public class Empresa {
 
@@ -21,7 +21,7 @@ public class Empresa {
 
     public Empresa(String nome, String cnpj) {
         this.nome = nome;
-        this.setCnpj(cnpj); 
+        this.cnpj = cnpj; 
     }
 
     public int getId() {

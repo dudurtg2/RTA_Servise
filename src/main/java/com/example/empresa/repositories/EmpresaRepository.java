@@ -1,17 +1,18 @@
 package com.example.empresa.repositories;
 
 import com.example.empresa.entities.Empresa;
-import com.example.empresa.interfaces.IEmpresaRepository;
+import com.example.empresa.interfaces.ISystemRTARepository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
-public class EmpresaRepository implements IEmpresaRepository {
+public class EmpresaRepository implements ISystemRTARepository {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -29,6 +30,7 @@ public class EmpresaRepository implements IEmpresaRepository {
     }
 
     @Override
+    @Transactional
     public Empresa gravar(Empresa empresa) {
         entityManager.persist(empresa);
         return empresa;

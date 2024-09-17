@@ -1,7 +1,135 @@
-CREATE DATABASE Empresa;
-USE Empresa;
-CREATE TABLE Empresas(
-	id INT AUTO_INCREMENT PRIMARY KEY,
-    Nome VARCHAR(45) NOT NULL,
-	cnpj CHAR(14) NOT NULL
-)
+CREATE DATABASE IF NOT EXISTS RTA_system;
+USE RTA_system;
+
+CREATE TABLE IF NOT EXISTS funcionario (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  cpf CHAR(14) NOT NULL,
+  telefone CHAR(11) NULL,
+  senha VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX email_UNIQUE (email)
+); 
+
+CREATE TABLE IF NOT EXISTS empresa (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  cnpj CHAR(18) NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX cnpj_UNIQUE (cnpj)
+); 
+
+CREATE TABLE IF NOT EXISTS entregador (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  cpf CHAR(14) NOT NULL,
+  telefone CHAR(11) NULL,
+  endereco TEXT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX email_UNIQUE (email)
+); 
+
+CREATE TABLE IF NOT EXISTS motorista (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  cpf CHAR(14) NOT NULL,
+  telefone CHAR(11) NULL,
+  senha VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX senha_UNIQUE (senha)
+); 
+
+CREATE TABLE IF NOT EXISTS base (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  endereco TEXT NOT NULL,
+  PRIMARY KEY (id)
+); 
+
+CREATE TABLE IF NOT EXISTS regiao (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX nome_UNIQUE (nome)
+); 
+
+CREATE TABLE IF NOT EXISTS cidade (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  cep CHAR(9) NOT NULL,
+  regiao_id INT NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX cep_UNIQUE (cep),
+  UNIQUE INDEX nome_UNIQUE (nome),
+  INDEX fk_cidade_regiao1_idx (regiao_id),
+  CONSTRAINT fk_cidade_regiao1
+    FOREIGN KEY (regiao_id)
+    REFERENCES regiao (id)
+); 
+
+CREATE TABLE IF NOT EXISTS romaneio (
+  id INT NOT NULL AUTO_INCREMENT,
+  empresa_id INT NOT NULL,
+  entregador_id INT NOT NULL,
+  motorista_id INT NOT NULL,
+  funcionario_id INT NOT NULL,
+  base_id INT NOT NULL,
+  sts CHAR(1) NULL,
+  quantidade INT NOT NULL,
+  caixas INT NULL,
+  sacas INT NULL,
+  cidade_id INT NOT NULL,
+  PRIMARY KEY (id),
+  INDEX fk_romaneio_empresa_idx (empresa_id),
+  INDEX fk_romaneio_entregador_idx (entregador_id),
+  INDEX fk_romaneio_motorista_idx (motorista_id),
+  INDEX fk_romaneio_funcionario_idx (funcionario_id),
+  INDEX fk_romaneio_base_idx (base_id),
+  INDEX fk_romaneio_cidade_idx (cidade_id),
+  CONSTRAINT fk_romaneio_empresa
+    FOREIGN KEY (empresa_id)
+    REFERENCES empresa (id),
+  CONSTRAINT fk_romaneio_entregador
+    FOREIGN KEY (entregador_id)
+    REFERENCES entregador (id),
+  CONSTRAINT fk_romaneio_motorista
+    FOREIGN KEY (motorista_id)
+    REFERENCES motorista (id),
+  CONSTRAINT fk_romaneio_funcionario
+    FOREIGN KEY (funcionario_id)
+    REFERENCES funcionario (id),
+  CONSTRAINT fk_romaneio_base
+    FOREIGN KEY (base_id)
+    REFERENCES base (id),
+  CONSTRAINT fk_romaneio_cidade
+    FOREIGN KEY (cidade_id)
+    REFERENCES cidade (id)
+); 
+
+CREATE TABLE IF NOT EXISTS codigo (
+  id VARCHAR(55) NOT NULL,
+  idRomaneio INT NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX id_UNIQUE (id),
+  INDEX fk_codigo_romaneio_idx (idRomaneio),
+  CONSTRAINT fk_codigo_romaneio
+    FOREIGN KEY (idRomaneio)
+    REFERENCES romaneio (id)
+); 
+
+CREATE TABLE IF NOT EXISTS historico (
+  id INT NOT NULL AUTO_INCREMENT,
+  data_criacao DATETIME NOT NULL,
+  data_saida DATETIME NOT NULL,
+  data_finalizacao DATETIME NOT NULL,
+  romaneio_id INT NOT NULL,
+  PRIMARY KEY (id),
+  INDEX fk_historico_romaneio_idx (romaneio_id),
+  CONSTRAINT fk_historico_romaneio
+    FOREIGN KEY (romaneio_id)
+    REFERENCES romaneio (id)
+) 
+select * from empresa;

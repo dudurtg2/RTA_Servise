@@ -4,7 +4,7 @@ import com.example.empresa.entities.Empresa;
 
 import java.util.List;
 
-public interface IEmpresaRepository {
+public interface ISystemRTARepository {
     List<Empresa> buscarTodos();
     Empresa buscarPorId(int id);
     Empresa gravar(Empresa empresa);
