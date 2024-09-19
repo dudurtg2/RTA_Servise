@@ -1,8 +1,6 @@
 package com.example.empresa.repositories;
 
-import com.example.empresa.entities.Base;
 import com.example.empresa.entities.Regiao;
-import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.IRegiaoRepository;
 
 import org.springframework.stereotype.Repository;

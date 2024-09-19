@@ -12,6 +12,7 @@ import java.util.List;
 public class EmpresaController {
 
     @Autowired
+    
     private EmpresaRepository empresaRepository;
 
     @GetMapping("/buscarTodos")

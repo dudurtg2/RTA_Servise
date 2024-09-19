@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class RomanioRepository implements IRomanioRepository {
+public class RomaneioRepository implements IRomanioRepository {
 
     @Override
     public List<Romaneio> buscarTodos() {
