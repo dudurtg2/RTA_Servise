@@ -7,30 +7,35 @@ import java.util.List;
 
 
 public class CodigoApplication {
-    CodigoRepository CodigoRepository = new CodigoRepository();
+    private CodigoRepository codigoRepository;
+
+    public CodigoApplication(CodigoRepository codigoRepository) {
+        this.codigoRepository = codigoRepository;
+    }
+
     
     public List<Codigo> buscarTodos() {
-        return this.CodigoRepository.buscarTodos();
+        return this.codigoRepository.buscarTodos();
     }
 
     
     public Codigo buscarPorId(int id) {
-        return this.CodigoRepository.buscarPorId(id);
+        return this.codigoRepository.buscarPorId(id);
     }
 
     
     public Codigo gravar(Codigo Codigo) {
-        return this.CodigoRepository.gravar(Codigo);
+        return this.codigoRepository.gravar(Codigo);
     }
 
     
     public Codigo atualizar(int id, Codigo Codigo) {
-        return this.CodigoRepository.atualizar(id, Codigo);
+        return this.codigoRepository.atualizar(id, Codigo);
     }
 
     
     public void excluir(int id) {
-        this.CodigoRepository.excluir(id);
+        this.codigoRepository.excluir(id);
     }
 
 

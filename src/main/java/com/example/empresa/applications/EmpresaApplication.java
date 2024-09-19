@@ -7,30 +7,35 @@ import java.util.List;
 
 
 public class EmpresaApplication {
-    EmpresaRepository EmpresaRepository = new EmpresaRepository();
+    private EmpresaRepository empresaRepository;
+
+    public EmpresaApplication(EmpresaRepository empresaRepository) {
+        this.empresaRepository = empresaRepository;
+    }
+    
     
     public List<Empresa> buscarTodos() {
-        return this.EmpresaRepository.buscarTodos();
+        return this.empresaRepository.buscarTodos();
     }
 
     
     public Empresa buscarPorId(int id) {
-        return this.EmpresaRepository.buscarPorId(id);
+        return this.empresaRepository.buscarPorId(id);
     }
 
     
     public Empresa gravar(Empresa Empresa) {
-        return this.EmpresaRepository.gravar(Empresa);
+        return this.empresaRepository.gravar(Empresa);
     }
 
     
     public Empresa atualizar(int id, Empresa Empresa) {
-        return this.EmpresaRepository.atualizar(id, Empresa);
+        return this.empresaRepository.atualizar(id, Empresa);
     }
 
     
     public void excluir(int id) {
-        this.EmpresaRepository.excluir(id);
+        this.empresaRepository.excluir(id);
     }
 
 

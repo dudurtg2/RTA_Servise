@@ -10,7 +10,7 @@ public class BaseFacade {
     private BaseApplication baseApplication;
 
     public BaseFacade(BaseApplication baseApplication) {
-        this.baseApplication = new BaseApplication();
+        this.baseApplication = baseApplication;
     }
     
     

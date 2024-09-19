@@ -7,30 +7,34 @@ import java.util.List;
 
 
 public class CidadeApplication {
-    CidadeRepository CidadeRepository = new CidadeRepository();
+    private CidadeRepository cidadeRepository;
+
+    public CidadeApplication(CidadeRepository cidadeRepository) {
+        this.cidadeRepository = cidadeRepository;
+    }
     
     public List<Cidade> buscarTodos() {
-        return this.CidadeRepository.buscarTodos();
+        return this.cidadeRepository.buscarTodos();
     }
 
     
     public Cidade buscarPorId(int id) {
-        return this.CidadeRepository.buscarPorId(id);
+        return this.cidadeRepository.buscarPorId(id);
     }
 
     
     public Cidade gravar(Cidade Cidade) {
-        return this.CidadeRepository.gravar(Cidade);
+        return this.cidadeRepository.gravar(Cidade);
     }
 
     
     public Cidade atualizar(int id, Cidade Cidade) {
-        return this.CidadeRepository.atualizar(id, Cidade);
+        return this.cidadeRepository.atualizar(id, Cidade);
     }
 
     
     public void excluir(int id) {
-        this.CidadeRepository.excluir(id);
+        this.cidadeRepository.excluir(id);
     }
 
 

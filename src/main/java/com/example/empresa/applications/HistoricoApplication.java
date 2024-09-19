@@ -7,30 +7,35 @@ import java.util.List;
 
 
 public class HistoricoApplication {
-    HistoricoRepository HistoricoRepository = new HistoricoRepository();
+    private HistoricoRepository historicoRepository;
+
+
+    public HistoricoApplication(HistoricoRepository historicoRepository) {
+        this.historicoRepository = historicoRepository;
+    }
     
     public List<Historico> buscarTodos() {
-        return this.HistoricoRepository.buscarTodos();
+        return this.historicoRepository.buscarTodos();
     }
 
     
     public Historico buscarPorId(int id) {
-        return this.HistoricoRepository.buscarPorId(id);
+        return this.historicoRepository.buscarPorId(id);
     }
 
     
     public Historico gravar(Historico Historico) {
-        return this.HistoricoRepository.gravar(Historico);
+        return this.historicoRepository.gravar(Historico);
     }
 
     
     public Historico atualizar(int id, Historico Historico) {
-        return this.HistoricoRepository.atualizar(id, Historico);
+        return this.historicoRepository.atualizar(id, Historico);
     }
 
     
     public void excluir(int id) {
-        this.HistoricoRepository.excluir(id);
+        this.historicoRepository.excluir(id);
     }
 
 

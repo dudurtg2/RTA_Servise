@@ -7,30 +7,34 @@ import java.util.List;
 
 
 public class RegiaoApplication {
-    RegiaoRepository RegiaoRepository = new RegiaoRepository();
+    private RegiaoRepository regiaoRepository;
+
+    public RegiaoApplication(RegiaoRepository regiaoRepository) {
+        this.regiaoRepository = regiaoRepository;
+    }
     
     public List<Regiao> buscarTodos() {
-        return this.RegiaoRepository.buscarTodos();
+        return this.regiaoRepository.buscarTodos();
     }
 
     
     public Regiao buscarPorId(int id) {
-        return this.RegiaoRepository.buscarPorId(id);
+        return this.regiaoRepository.buscarPorId(id);
     }
 
     
     public Regiao gravar(Regiao Regiao) {
-        return this.RegiaoRepository.gravar(Regiao);
+        return this.regiaoRepository.gravar(Regiao);
     }
 
     
     public Regiao atualizar(int id, Regiao Regiao) {
-        return this.RegiaoRepository.atualizar(id, Regiao);
+        return this.regiaoRepository.atualizar(id, Regiao);
     }
 
     
     public void excluir(int id) {
-        this.RegiaoRepository.excluir(id);
+        this.regiaoRepository.excluir(id);
     }
 
 

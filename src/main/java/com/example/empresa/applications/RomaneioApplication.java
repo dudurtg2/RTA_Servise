@@ -7,30 +7,33 @@ import java.util.List;
 
 
 public class RomaneioApplication {
-    RomaneioRepository RomaneioRepository = new RomaneioRepository();
+    RomaneioRepository romaneioRepository;
+    public RomaneioApplication(RomaneioRepository romaneioRepository) {
+        this.romaneioRepository = romaneioRepository;
+    }
     
     public List<Romaneio> buscarTodos() {
-        return this.RomaneioRepository.buscarTodos();
+        return this.romaneioRepository.buscarTodos();
     }
 
     
     public Romaneio buscarPorId(int id) {
-        return this.RomaneioRepository.buscarPorId(id);
+        return this.romaneioRepository.buscarPorId(id);
     }
 
     
     public Romaneio gravar(Romaneio Romaneio) {
-        return this.RomaneioRepository.gravar(Romaneio);
+        return this.romaneioRepository.gravar(Romaneio);
     }
 
     
     public Romaneio atualizar(int id, Romaneio Romaneio) {
-        return this.RomaneioRepository.atualizar(id, Romaneio);
+        return this.romaneioRepository.atualizar(id, Romaneio);
     }
 
     
     public void excluir(int id) {
-        this.RomaneioRepository.excluir(id);
+        this.romaneioRepository.excluir(id);
     }
 
 

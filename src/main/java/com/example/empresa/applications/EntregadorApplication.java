@@ -7,30 +7,35 @@ import java.util.List;
 
 
 public class EntregadorApplication {
-    EntregadorRepository EntregadorRepository = new EntregadorRepository();
+    private EntregadorRepository entregadorRepository;
+
+
+    public EntregadorApplication(EntregadorRepository entregadorRepository) {
+        this.entregadorRepository = entregadorRepository;
+    }
     
     public List<Entregador> buscarTodos() {
-        return this.EntregadorRepository.buscarTodos();
+        return this.entregadorRepository.buscarTodos();
     }
 
     
     public Entregador buscarPorId(int id) {
-        return this.EntregadorRepository.buscarPorId(id);
+        return this.entregadorRepository.buscarPorId(id);
     }
 
     
     public Entregador gravar(Entregador Entregador) {
-        return this.EntregadorRepository.gravar(Entregador);
+        return this.entregadorRepository.gravar(Entregador);
     }
 
     
     public Entregador atualizar(int id, Entregador Entregador) {
-        return this.EntregadorRepository.atualizar(id, Entregador);
+        return this.entregadorRepository.atualizar(id, Entregador);
     }
 
     
     public void excluir(int id) {
-        this.EntregadorRepository.excluir(id);
+        this.entregadorRepository.excluir(id);
     }
 
 

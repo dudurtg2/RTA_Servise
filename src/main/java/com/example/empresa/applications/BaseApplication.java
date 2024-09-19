@@ -7,7 +7,12 @@ import java.util.List;
 
 
 public class BaseApplication {
-    BaseRepository baseRepository = new BaseRepository();
+    private BaseRepository baseRepository;
+
+    public BaseApplication(BaseRepository baseRepository) {
+        this.baseRepository = new BaseRepository();
+    }
+    
     
     public List<Base> buscarTodos() {
         return this.baseRepository.buscarTodos();
