@@ -7,30 +7,34 @@ import java.util.List;
 
 
 public class MotoristaFacade {
-    MotoristaApplication MotoristaApplication = new MotoristaApplication();
+    private MotoristaApplication motoristaApplication;
+    
+    public MotoristaFacade(MotoristaApplication motoristaApplication) {
+        this.motoristaApplication = motoristaApplication;
+    }
     
     public List<Motorista> buscarTodos() {
-        return this.MotoristaApplication.buscarTodos();
+        return this.motoristaApplication.buscarTodos();
     }
 
     
     public Motorista buscarPorId(int id) {
-        return this.MotoristaApplication.buscarPorId(id);
+        return this.motoristaApplication.buscarPorId(id);
     }
 
     
     public Motorista gravar(Motorista Motorista) {
-        return this.MotoristaApplication.gravar(Motorista);
+        return this.motoristaApplication.gravar(Motorista);
     }
 
     
     public Motorista atualizar(int id, Motorista Motorista) {
-        return this.MotoristaApplication.atualizar(id, Motorista);
+        return this.motoristaApplication.atualizar(id, Motorista);
     }
 
     
     public void excluir(int id) {
-        this.MotoristaApplication.excluir(id);
+        this.motoristaApplication.excluir(id);
     }
 
 

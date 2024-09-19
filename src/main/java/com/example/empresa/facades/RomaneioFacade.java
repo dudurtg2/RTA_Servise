@@ -7,30 +7,33 @@ import java.util.List;
 
 
 public class RomaneioFacade {
-    RomaneioApplication RomaneioApplication = new RomaneioApplication();
+    RomaneioApplication romaneioApplication;
+    public RomaneioFacade(RomaneioApplication romaneioApplication) {
+        this.romaneioApplication = romaneioApplication;
+    }
     
     public List<Romaneio> buscarTodos() {
-        return this.RomaneioApplication.buscarTodos();
+        return this.romaneioApplication.buscarTodos();
     }
 
     
     public Romaneio buscarPorId(int id) {
-        return this.RomaneioApplication.buscarPorId(id);
+        return this.romaneioApplication.buscarPorId(id);
     }
 
     
     public Romaneio gravar(Romaneio Romaneio) {
-        return this.RomaneioApplication.gravar(Romaneio);
+        return this.romaneioApplication.gravar(Romaneio);
     }
 
     
     public Romaneio atualizar(int id, Romaneio Romaneio) {
-        return this.RomaneioApplication.atualizar(id, Romaneio);
+        return this.romaneioApplication.atualizar(id, Romaneio);
     }
 
     
     public void excluir(int id) {
-        this.RomaneioApplication.excluir(id);
+        this.romaneioApplication.excluir(id);
     }
 
 
