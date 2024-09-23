@@ -5,7 +5,9 @@ import com.example.empresa.entities.Codigo;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class CodigoFacade {
     private CodigoApplication codigoApplication;
 

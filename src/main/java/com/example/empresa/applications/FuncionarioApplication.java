@@ -1,15 +1,17 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.repositories.FuncionarioRepository;
 import com.example.empresa.entities.Funcionario;
+import com.example.empresa.interfaces.IFuncionarioRepository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class FuncionarioApplication {
-    private FuncionarioRepository funcionarioRepository;
+    private IFuncionarioRepository funcionarioRepository;
 
-    public FuncionarioApplication(FuncionarioRepository funcionarioRepository) {
+    public FuncionarioApplication(IFuncionarioRepository funcionarioRepository) {
         this.funcionarioRepository = funcionarioRepository;
     }
 

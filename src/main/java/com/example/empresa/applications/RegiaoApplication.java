@@ -1,15 +1,18 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.repositories.RegiaoRepository;
+
 import com.example.empresa.entities.Regiao;
+import com.example.empresa.interfaces.IRegiaoRepository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class RegiaoApplication {
-    private RegiaoRepository regiaoRepository;
+    private IRegiaoRepository regiaoRepository;
 
-    public RegiaoApplication(RegiaoRepository regiaoRepository) {
+    public RegiaoApplication(IRegiaoRepository regiaoRepository) {
         this.regiaoRepository = regiaoRepository;
     }
     

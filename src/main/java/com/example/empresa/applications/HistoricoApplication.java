@@ -1,16 +1,18 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.repositories.HistoricoRepository;
 import com.example.empresa.entities.Historico;
+import com.example.empresa.interfaces.IHistoricoRepository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class HistoricoApplication {
-    private HistoricoRepository historicoRepository;
+    private IHistoricoRepository historicoRepository;
 
 
-    public HistoricoApplication(HistoricoRepository historicoRepository) {
+    public HistoricoApplication(IHistoricoRepository historicoRepository) {
         this.historicoRepository = historicoRepository;
     }
     

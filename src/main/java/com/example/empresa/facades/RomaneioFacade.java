@@ -5,7 +5,9 @@ import com.example.empresa.entities.Romaneio;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class RomaneioFacade {
     RomaneioApplication romaneioApplication;
     public RomaneioFacade(RomaneioApplication romaneioApplication) {

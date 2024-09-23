@@ -5,7 +5,9 @@ import com.example.empresa.entities.Cidade;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class CidadeFacade {
     private CidadeApplication cidadeApplication;
 

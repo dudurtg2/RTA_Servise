@@ -1,14 +1,17 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.repositories.RomaneioRepository;
 import com.example.empresa.entities.Romaneio;
+import com.example.empresa.interfaces.IRomanioRepository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class RomaneioApplication {
-    RomaneioRepository romaneioRepository;
-    public RomaneioApplication(RomaneioRepository romaneioRepository) {
+    private IRomanioRepository romaneioRepository;
+    
+    public RomaneioApplication(IRomanioRepository romaneioRepository) {
         this.romaneioRepository = romaneioRepository;
     }
     

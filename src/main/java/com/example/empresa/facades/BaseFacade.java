@@ -5,7 +5,9 @@ import com.example.empresa.entities.Base;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class BaseFacade {
     private BaseApplication baseApplication;
 

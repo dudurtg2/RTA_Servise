@@ -1,15 +1,17 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.repositories.CidadeRepository;
 import com.example.empresa.entities.Cidade;
+import com.example.empresa.interfaces.ICidadeRepository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class CidadeApplication {
-    private CidadeRepository cidadeRepository;
+    private ICidadeRepository cidadeRepository;
 
-    public CidadeApplication(CidadeRepository cidadeRepository) {
+    public CidadeApplication(ICidadeRepository cidadeRepository) {
         this.cidadeRepository = cidadeRepository;
     }
     

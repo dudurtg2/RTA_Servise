@@ -5,7 +5,9 @@ import com.example.empresa.entities.Entregador;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class EntregadorFacade {
     private EntregadorApplication entregadorApplication;
 

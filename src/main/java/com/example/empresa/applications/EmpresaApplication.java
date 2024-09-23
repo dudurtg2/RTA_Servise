@@ -1,15 +1,18 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.repositories.EmpresaRepository;
 import com.example.empresa.entities.Empresa;
+import com.example.empresa.interfaces.IEmpresaRepository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class EmpresaApplication {
-    private EmpresaRepository empresaRepository;
+    
+    private IEmpresaRepository empresaRepository;
 
-    public EmpresaApplication(EmpresaRepository empresaRepository) {
+    public EmpresaApplication(IEmpresaRepository empresaRepository) {
         this.empresaRepository = empresaRepository;
     }
     

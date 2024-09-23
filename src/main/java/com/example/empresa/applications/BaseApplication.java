@@ -1,16 +1,18 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.repositories.BaseRepository;
 import com.example.empresa.entities.Base;
+import com.example.empresa.interfaces.IBaseRepository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class BaseApplication {
-    private BaseRepository baseRepository;
+    private IBaseRepository baseRepository;
 
-    public BaseApplication(BaseRepository baseRepository) {
-        this.baseRepository = new BaseRepository();
+    public BaseApplication(IBaseRepository baseRepository) {
+        this.baseRepository = baseRepository;
     }
     
     

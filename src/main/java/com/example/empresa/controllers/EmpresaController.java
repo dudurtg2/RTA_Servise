@@ -1,10 +1,9 @@
 package com.example.empresa.controllers;
 
-import com.example.empresa.applications.EmpresaApplication;
 import com.example.empresa.entities.Empresa;
 import com.example.empresa.facades.EmpresaFacade;
-import com.example.empresa.repositories.EmpresaRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,18 +12,9 @@ import java.util.List;
 @RequestMapping("/empresas")
 public class EmpresaController {
 
-    private static EmpresaRepository empresaRepository;
-    private static EmpresaApplication empresaApplication;
-    private static EmpresaFacade empresaFacade;
+    @Autowired
+    private EmpresaFacade empresaFacade;
 
-    public static void resolverDependencias() {
-        empresaRepository = new EmpresaRepository();
-        empresaApplication = new EmpresaApplication(empresaRepository);
-        empresaFacade = new EmpresaFacade(empresaApplication);
-    }
-    public EmpresaController() {
-        resolverDependencias();
-    }
 
     @GetMapping("/buscarTodos")
     public List<Empresa> buscarTodos() {

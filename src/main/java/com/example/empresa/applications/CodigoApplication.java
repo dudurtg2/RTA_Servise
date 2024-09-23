@@ -1,15 +1,18 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.repositories.CodigoRepository;
 import com.example.empresa.entities.Codigo;
+import com.example.empresa.interfaces.ICodigoRepository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class CodigoApplication {
-    private CodigoRepository codigoRepository;
+    
+    private ICodigoRepository codigoRepository;
 
-    public CodigoApplication(CodigoRepository codigoRepository) {
+    public CodigoApplication(ICodigoRepository codigoRepository) {
         this.codigoRepository = codigoRepository;
     }
 

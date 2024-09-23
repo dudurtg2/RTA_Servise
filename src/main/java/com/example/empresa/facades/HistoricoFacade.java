@@ -5,7 +5,9 @@ import com.example.empresa.entities.Historico;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class HistoricoFacade {
     private HistoricoApplication historicoApplication;
 

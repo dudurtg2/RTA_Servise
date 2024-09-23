@@ -1,16 +1,18 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.repositories.EntregadorRepository;
 import com.example.empresa.entities.Entregador;
+import com.example.empresa.interfaces.IEntregadorRepository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class EntregadorApplication {
-    private EntregadorRepository entregadorRepository;
+    private IEntregadorRepository entregadorRepository;
 
 
-    public EntregadorApplication(EntregadorRepository entregadorRepository) {
+    public EntregadorApplication(IEntregadorRepository entregadorRepository) {
         this.entregadorRepository = entregadorRepository;
     }
     

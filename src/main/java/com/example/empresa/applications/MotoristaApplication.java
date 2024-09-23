@@ -1,15 +1,17 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.repositories.MotoristaRepository;
 import com.example.empresa.entities.Motorista;
+import com.example.empresa.interfaces.IMotoristaRepository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class MotoristaApplication {
-    private MotoristaRepository motoristaRepository;
+    private IMotoristaRepository motoristaRepository;
     
-    public MotoristaApplication(MotoristaRepository motoristaRepository) {
+    public MotoristaApplication(IMotoristaRepository motoristaRepository) {
         this.motoristaRepository = motoristaRepository;
     }
     

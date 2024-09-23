@@ -5,10 +5,12 @@ import com.example.empresa.entities.Empresa;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class EmpresaFacade {
     private EmpresaApplication empresaApplication;
-
+    
     public EmpresaFacade(EmpresaApplication empresaApplication) {
         this.empresaApplication = empresaApplication;
     }
