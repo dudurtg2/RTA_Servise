@@ -8,13 +8,13 @@ import java.util.List;
 
 @Repository
 public interface IRomanioRepository {
-    List<Romaneio> buscarTodos();
-    Romaneio buscarPorId(int id);
+    List<Romaneio> findAll();
+    Romaneio findById(int id);
     @Transactional
-    Romaneio gravar(Romaneio romaneio);
+    Romaneio save(Romaneio romaneio);
     @Transactional
-    Romaneio atualizar(int id, Romaneio romaneio);
-    void excluir(int id);
+    Romaneio update(int id, Romaneio romaneio);
+    void deleteById(int id);
 }
    
 

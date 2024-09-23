@@ -7,10 +7,10 @@ import java.util.List;
 
 @Repository
 public interface IEmpresaRepository {
-    List<Empresa> buscarTodos();
-    Empresa buscarPorId(int id);
-    Empresa gravar(Empresa empresa);
-    Empresa atualizar(int id, Empresa empresa);
-    void excluir(int id);
+    List<Empresa> findAll();
+    Empresa findById(int id);
+    Empresa save(Empresa empresa);
+    Empresa update(int id, Empresa empresa);
+    void deleteById(int id);
 }
    

@@ -10,33 +10,33 @@ import java.util.List;
 public class CidadeRepository implements ICidadeRepository {
 
     @Override
-    public List<Cidade> buscarTodos() {
+    public List<Cidade> findAll() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarTodos'");
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 
     @Override
-    public Cidade buscarPorId(int id) {
+    public Cidade findById(int id) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 
     @Override
-    public Cidade gravar(Cidade cidade) {
+    public Cidade save(Cidade cidade) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'gravar'");
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
     }
 
     @Override
-    public Cidade atualizar(int id, Cidade cidade) {
+    public Cidade update(int id, Cidade cidade) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
-    public void excluir(int id) {
+    public void deleteById(int id) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'excluir'");
+        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
     }
 
 

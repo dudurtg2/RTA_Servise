@@ -16,28 +16,28 @@ public class HistoricoApplication {
         this.historicoRepository = historicoRepository;
     }
     
-    public List<Historico> buscarTodos() {
-        return this.historicoRepository.buscarTodos();
+    public List<Historico> findAll() {
+        return this.historicoRepository.findAll();
     }
 
     
-    public Historico buscarPorId(int id) {
-        return this.historicoRepository.buscarPorId(id);
+    public Historico findById(int id) {
+        return this.historicoRepository.findById(id);
     }
 
     
-    public Historico gravar(Historico Historico) {
-        return this.historicoRepository.gravar(Historico);
+    public Historico save(Historico Historico) {
+        return this.historicoRepository.save(Historico);
     }
 
     
-    public Historico atualizar(int id, Historico Historico) {
-        return this.historicoRepository.atualizar(id, Historico);
+    public Historico update(int id, Historico Historico) {
+        return this.historicoRepository.update(id, Historico);
     }
 
     
-    public void excluir(int id) {
-        this.historicoRepository.excluir(id);
+    public void deleteById(int id) {
+        this.historicoRepository.deleteById(id);
     }
 
 

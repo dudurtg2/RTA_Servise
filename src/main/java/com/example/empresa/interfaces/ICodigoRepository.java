@@ -7,10 +7,10 @@ import java.util.List;
 
 @Repository
 public interface ICodigoRepository {
-    List<Codigo> buscarTodos();
-    Codigo buscarPorId(int id);
-    Codigo gravar(Codigo codigo);
-    Codigo atualizar(int id, Codigo codigo);
-    void excluir(int id);
+    List<Codigo> findAll();
+    Codigo findById(int id);
+    Codigo save(Codigo codigo);
+    Codigo update(int id, Codigo codigo);
+    void deleteById(int id);
 }
    

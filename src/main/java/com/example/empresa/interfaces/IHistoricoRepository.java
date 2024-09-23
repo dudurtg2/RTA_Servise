@@ -7,10 +7,10 @@ import java.util.List;
 
 @Repository
 public interface IHistoricoRepository {
-    List<Historico> buscarTodos();
-    Historico buscarPorId(int id);
-    Historico gravar(Historico historico);
-    Historico atualizar(int id, Historico historico);
-    void excluir(int id);
+    List<Historico> findAll();
+    Historico findById(int id);
+    Historico save(Historico historico);
+    Historico update(int id, Historico historico);
+    void deleteById(int id);
 }
    

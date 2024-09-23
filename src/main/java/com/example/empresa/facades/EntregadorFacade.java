@@ -16,28 +16,28 @@ public class EntregadorFacade {
         this.entregadorApplication = entregadorApplication;
     }
     
-    public List<Entregador> buscarTodos() {
-        return this.entregadorApplication.buscarTodos();
+    public List<Entregador> findAll() {
+        return this.entregadorApplication.findAll();
     }
 
     
-    public Entregador buscarPorId(int id) {
-        return this.entregadorApplication.buscarPorId(id);
+    public Entregador findById(int id) {
+        return this.entregadorApplication.findById(id);
     }
 
     
-    public Entregador gravar(Entregador Entregador) {
-        return this.entregadorApplication.gravar(Entregador);
+    public Entregador save(Entregador Entregador) {
+        return this.entregadorApplication.save(Entregador);
     }
 
     
-    public Entregador atualizar(int id, Entregador Entregador) {
-        return this.entregadorApplication.atualizar(id, Entregador);
+    public Entregador update(int id, Entregador Entregador) {
+        return this.entregadorApplication.update(id, Entregador);
     }
 
     
-    public void excluir(int id) {
-        this.entregadorApplication.excluir(id);
+    public void deleteById(int id) {
+        this.entregadorApplication.deleteById(id);
     }
 
 

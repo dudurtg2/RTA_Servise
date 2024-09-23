@@ -7,10 +7,10 @@ import java.util.List;
 
 @Repository
 public interface IEntregadorRepository {
-    List<Entregador> buscarTodos();
-    Entregador buscarPorId(int id);
-    Entregador gravar(Entregador entregador);
-    Entregador atualizar(int id, Entregador entregador);
-    void excluir(int id);
+    List<Entregador> findAll();
+    Entregador findById(int id);
+    Entregador save(Entregador entregador);
+    Entregador update(int id, Entregador entregador);
+    void deleteById(int id);
 }
    

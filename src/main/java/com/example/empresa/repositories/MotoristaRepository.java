@@ -10,33 +10,33 @@ import java.util.List;
 public class MotoristaRepository implements IMotoristaRepository {
 
     @Override
-    public List<Motorista> buscarTodos() {
+    public List<Motorista> findAll() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarTodos'");
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 
     @Override
-    public Motorista buscarPorId(int id) {
+    public Motorista findById(int id) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 
     @Override
-    public Motorista gravar(Motorista motorista) {
+    public Motorista save(Motorista motorista) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'gravar'");
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
     }
 
     @Override
-    public Motorista atualizar(int id, Motorista motorista) {
+    public Motorista update(int id, Motorista motorista) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
-    public void excluir(int id) {
+    public void deleteById(int id) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'excluir'");
+        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
     }
 
 

@@ -28,7 +28,7 @@ public class BootSystem{
 
 	private void saveEmpresa(EmpresaFacade empresafacade) {
 		Empresa empresa = new Empresa("Empresa de Teste", "12345678901234");
-		empresafacade.gravar(empresa);
+		empresafacade.save(empresa);
 	}
 
 

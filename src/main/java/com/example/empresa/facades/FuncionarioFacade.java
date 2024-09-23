@@ -16,28 +16,28 @@ public class FuncionarioFacade {
     }
 
     
-    public List<Funcionario> buscarTodos() {
-        return this.funcionarioApplication.buscarTodos();
+    public List<Funcionario> findAll() {
+        return this.funcionarioApplication.findAll();
     }
 
     
-    public Funcionario buscarPorId(int id) {
-        return this.funcionarioApplication.buscarPorId(id);
+    public Funcionario findById(int id) {
+        return this.funcionarioApplication.findById(id);
     }
 
     
-    public Funcionario gravar(Funcionario Funcionario) {
-        return this.funcionarioApplication.gravar(Funcionario);
+    public Funcionario save(Funcionario Funcionario) {
+        return this.funcionarioApplication.save(Funcionario);
     }
 
     
-    public Funcionario atualizar(int id, Funcionario Funcionario) {
-        return this.funcionarioApplication.atualizar(id, Funcionario);
+    public Funcionario update(int id, Funcionario Funcionario) {
+        return this.funcionarioApplication.update(id, Funcionario);
     }
 
     
-    public void excluir(int id) {
-        this.funcionarioApplication.excluir(id);
+    public void deleteById(int id) {
+        this.funcionarioApplication.deleteById(id);
     }
 
 

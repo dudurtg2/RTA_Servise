@@ -10,33 +10,33 @@ import java.util.List;
 public class FuncionarioRepository implements IFuncionarioRepository {
 
     @Override
-    public List<Funcionario> buscarTodos() {
+    public List<Funcionario> findAll() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarTodos'");
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 
     @Override
-    public Funcionario buscarPorId(int id) {
+    public Funcionario findById(int id) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 
     @Override
-    public Funcionario gravar(Funcionario funcionario) {
+    public Funcionario save(Funcionario funcionario) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'gravar'");
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
     }
 
     @Override
-    public Funcionario atualizar(int id, Funcionario funcionario) {
+    public Funcionario update(int id, Funcionario funcionario) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
-    public void excluir(int id) {
+    public void deleteById(int id) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'excluir'");
+        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
     }
 
    

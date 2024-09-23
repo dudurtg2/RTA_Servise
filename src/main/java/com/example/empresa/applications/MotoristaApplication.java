@@ -15,28 +15,28 @@ public class MotoristaApplication {
         this.motoristaRepository = motoristaRepository;
     }
     
-    public List<Motorista> buscarTodos() {
-        return this.motoristaRepository.buscarTodos();
+    public List<Motorista> findAll() {
+        return this.motoristaRepository.findAll();
     }
 
     
-    public Motorista buscarPorId(int id) {
-        return this.motoristaRepository.buscarPorId(id);
+    public Motorista findById(int id) {
+        return this.motoristaRepository.findById(id);
     }
 
     
-    public Motorista gravar(Motorista Motorista) {
-        return this.motoristaRepository.gravar(Motorista);
+    public Motorista save(Motorista Motorista) {
+        return this.motoristaRepository.save(Motorista);
     }
 
     
-    public Motorista atualizar(int id, Motorista Motorista) {
-        return this.motoristaRepository.atualizar(id, Motorista);
+    public Motorista update(int id, Motorista Motorista) {
+        return this.motoristaRepository.update(id, Motorista);
     }
 
     
-    public void excluir(int id) {
-        this.motoristaRepository.excluir(id);
+    public void deleteById(int id) {
+        this.motoristaRepository.deleteById(id);
     }
 
 

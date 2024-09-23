@@ -17,26 +17,26 @@ public class EmpresaRepository implements IEmpresaRepository {
     private EntityManager entityManager;
 
     @Override
-    public List<Empresa> buscarTodos() {
+    public List<Empresa> findAll() {
         String jpql = "SELECT e FROM Empresa e";
         TypedQuery<Empresa> query = entityManager.createQuery(jpql, Empresa.class);
         return query.getResultList();
     }
 
     @Override
-    public Empresa buscarPorId(int id) {
+    public Empresa findById(int id) {
         return entityManager.find(Empresa.class, id);
     }
 
     @Override
     @Transactional
-    public Empresa gravar(Empresa empresa) {
+    public Empresa save(Empresa empresa) {
         entityManager.persist(empresa);
         return empresa;
     }
 
     @Override
-    public Empresa atualizar(int id, Empresa empresaAtualizada) {
+    public Empresa update(int id, Empresa empresaAtualizada) {
         Empresa empresa = entityManager.find(Empresa.class, id);
         if (empresa != null) {
             empresa.setNome(empresaAtualizada.getNome());
@@ -47,7 +47,7 @@ public class EmpresaRepository implements IEmpresaRepository {
     }
 
     @Override
-    public void excluir(int id) {
+    public void deleteById(int id) {
         Empresa empresa = entityManager.find(Empresa.class, id);
         if (empresa != null) {
             entityManager.remove(empresa);

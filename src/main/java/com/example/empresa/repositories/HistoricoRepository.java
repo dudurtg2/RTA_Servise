@@ -10,33 +10,33 @@ import java.util.List;
 public class HistoricoRepository implements IHistoricoRepository {
 
     @Override
-    public List<Historico> buscarTodos() {
+    public List<Historico> findAll() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarTodos'");
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 
     @Override
-    public Historico buscarPorId(int id) {
+    public Historico findById(int id) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 
     @Override
-    public Historico gravar(Historico historico) {
+    public Historico save(Historico historico) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'gravar'");
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
     }
 
     @Override
-    public Historico atualizar(int id, Historico historico) {
+    public Historico update(int id, Historico historico) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
-    public void excluir(int id) {
+    public void deleteById(int id) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'excluir'");
+        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
     }
 
 

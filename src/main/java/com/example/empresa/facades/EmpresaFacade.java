@@ -10,34 +10,34 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmpresaFacade {
     private EmpresaApplication empresaApplication;
-    
+
     public EmpresaFacade(EmpresaApplication empresaApplication) {
         this.empresaApplication = empresaApplication;
     }
     
     
-    public List<Empresa> buscarTodos() {
-        return this.empresaApplication.buscarTodos();
+    public List<Empresa> findAll() {
+        return this.empresaApplication.findAll();
     }
 
     
-    public Empresa buscarPorId(int id) {
-        return this.empresaApplication.buscarPorId(id);
+    public Empresa findById(int id) {
+        return this.empresaApplication.findById(id);
     }
 
     
-    public Empresa gravar(Empresa Empresa) {
-        return this.empresaApplication.gravar(Empresa);
+    public Empresa save(Empresa Empresa) {
+        return this.empresaApplication.save(Empresa);
     }
 
     
-    public Empresa atualizar(int id, Empresa Empresa) {
-        return this.empresaApplication.atualizar(id, Empresa);
+    public Empresa update(int id, Empresa Empresa) {
+        return this.empresaApplication.update(id, Empresa);
     }
 
     
-    public void excluir(int id) {
-        this.empresaApplication.excluir(id);
+    public void deleteById(int id) {
+        this.empresaApplication.deleteById(id);
     }
 
 

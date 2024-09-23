@@ -11,33 +11,33 @@ import java.util.List;
 public class RegiaoRepository implements IRegiaoRepository {
 
     @Override
-    public List<Regiao> buscarTodos() {
+    public List<Regiao> findAll() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarTodos'");
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 
     @Override
-    public Regiao buscarPorId(int id) {
+    public Regiao findById(int id) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 
     @Override
-    public Regiao gravar(Regiao Regiao) {
+    public Regiao save(Regiao Regiao) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'gravar'");
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
     }
 
     @Override
-    public Regiao atualizar(int id, Regiao Regiao) {
+    public Regiao update(int id, Regiao Regiao) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
-    public void excluir(int id) {
+    public void deleteById(int id) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'excluir'");
+        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
     }
 
 

@@ -7,10 +7,10 @@ import java.util.List;
 
 @Repository
 public interface ICidadeRepository {
-    List<Cidade> buscarTodos();
-    Cidade buscarPorId(int id);
-    Cidade gravar(Cidade cidade);
-    Cidade atualizar(int id, Cidade cidade);
-    void excluir(int id);
+    List<Cidade> findAll();
+    Cidade findById(int id);
+    Cidade save(Cidade cidade);
+    Cidade update(int id, Cidade cidade);
+    void deleteById(int id);
 }
    

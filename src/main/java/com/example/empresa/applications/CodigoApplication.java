@@ -17,28 +17,28 @@ public class CodigoApplication {
     }
 
     
-    public List<Codigo> buscarTodos() {
-        return this.codigoRepository.buscarTodos();
+    public List<Codigo> findAll() {
+        return this.codigoRepository.findAll();
     }
 
     
-    public Codigo buscarPorId(int id) {
-        return this.codigoRepository.buscarPorId(id);
+    public Codigo findById(int id) {
+        return this.codigoRepository.findById(id);
     }
 
     
-    public Codigo gravar(Codigo Codigo) {
-        return this.codigoRepository.gravar(Codigo);
+    public Codigo save(Codigo Codigo) {
+        return this.codigoRepository.save(Codigo);
     }
 
     
-    public Codigo atualizar(int id, Codigo Codigo) {
-        return this.codigoRepository.atualizar(id, Codigo);
+    public Codigo update(int id, Codigo Codigo) {
+        return this.codigoRepository.update(id, Codigo);
     }
 
     
-    public void excluir(int id) {
-        this.codigoRepository.excluir(id);
+    public void deleteById(int id) {
+        this.codigoRepository.deleteById(id);
     }
 
 

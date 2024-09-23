@@ -16,28 +16,28 @@ public class RegiaoApplication {
         this.regiaoRepository = regiaoRepository;
     }
     
-    public List<Regiao> buscarTodos() {
-        return this.regiaoRepository.buscarTodos();
+    public List<Regiao> findAll() {
+        return this.regiaoRepository.findAll();
     }
 
     
-    public Regiao buscarPorId(int id) {
-        return this.regiaoRepository.buscarPorId(id);
+    public Regiao findById(int id) {
+        return this.regiaoRepository.findById(id);
     }
 
     
-    public Regiao gravar(Regiao Regiao) {
-        return this.regiaoRepository.gravar(Regiao);
+    public Regiao save(Regiao Regiao) {
+        return this.regiaoRepository.save(Regiao);
     }
 
     
-    public Regiao atualizar(int id, Regiao Regiao) {
-        return this.regiaoRepository.atualizar(id, Regiao);
+    public Regiao update(int id, Regiao Regiao) {
+        return this.regiaoRepository.update(id, Regiao);
     }
 
     
-    public void excluir(int id) {
-        this.regiaoRepository.excluir(id);
+    public void deleteById(int id) {
+        this.regiaoRepository.deleteById(id);
     }
 
 

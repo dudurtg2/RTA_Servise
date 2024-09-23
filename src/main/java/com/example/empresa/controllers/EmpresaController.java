@@ -16,18 +16,18 @@ public class EmpresaController {
     private EmpresaFacade empresaFacade;
 
 
-    @GetMapping("/buscarTodos")
-    public List<Empresa> buscarTodos() {
-        return empresaFacade.buscarTodos();
+    @GetMapping("/findAll")
+    public List<Empresa> findAll() {
+        return empresaFacade.findAll();
     }
 
-    @GetMapping("/buscarPorId/{id}")
-    public Empresa buscarPorId(@PathVariable int id) {
-        return empresaFacade.buscarPorId(id);
+    @GetMapping("/findById/{id}")
+    public Empresa findById(@PathVariable int id) {
+        return empresaFacade.findById(id);
     }
 
-    @PostMapping("/gravar")
-    public Empresa gravar(
+    @PostMapping("/save")
+    public Empresa save(
             @RequestParam String nome,
             @RequestParam String cnpj) {
 
@@ -35,27 +35,27 @@ public class EmpresaController {
         novaEmpresa.setNome(nome);
         novaEmpresa.setCnpj(cnpj);
 
-        return empresaFacade.gravar(novaEmpresa);
+        return empresaFacade.save(novaEmpresa);
     }
 
-    @PutMapping("/atualizar/{id}")
-    public Empresa atualizar(
+    @PutMapping("/update/{id}")
+    public Empresa update(
             @PathVariable int id,
             @RequestParam String nome,
             @RequestParam String cnpj) {
 
-        Empresa empresa = empresaFacade.buscarPorId(id);
+        Empresa empresa = empresaFacade.findById(id);
 
         if (empresa != null) {
             empresa.setNome(nome);
             empresa.setCnpj(cnpj);
-            return empresaFacade.atualizar(id, empresa);
+            return empresaFacade.update(id, empresa);
         }
         return null;
     }
 
-    @DeleteMapping("/excluir/{id}")
-    public void excluir(@PathVariable int id) {
-        empresaFacade.excluir(id);
+    @DeleteMapping("/deleteById/{id}")
+    public void deleteById(@PathVariable int id) {
+        empresaFacade.deleteById(id);
     }
 }

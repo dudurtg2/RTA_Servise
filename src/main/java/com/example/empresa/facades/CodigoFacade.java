@@ -16,28 +16,28 @@ public class CodigoFacade {
     }
 
     
-    public List<Codigo> buscarTodos() {
-        return this.codigoApplication.buscarTodos();
+    public List<Codigo> findAll() {
+        return this.codigoApplication.findAll();
     }
 
     
-    public Codigo buscarPorId(int id) {
-        return this.codigoApplication.buscarPorId(id);
+    public Codigo findById(int id) {
+        return this.codigoApplication.findById(id);
     }
 
     
-    public Codigo gravar(Codigo Codigo) {
-        return this.codigoApplication.gravar(Codigo);
+    public Codigo save(Codigo Codigo) {
+        return this.codigoApplication.save(Codigo);
     }
 
     
-    public Codigo atualizar(int id, Codigo Codigo) {
-        return this.codigoApplication.atualizar(id, Codigo);
+    public Codigo update(int id, Codigo Codigo) {
+        return this.codigoApplication.update(id, Codigo);
     }
 
     
-    public void excluir(int id) {
-        this.codigoApplication.excluir(id);
+    public void deleteById(int id) {
+        this.codigoApplication.deleteById(id);
     }
 
 

@@ -16,28 +16,28 @@ public class HistoricoFacade {
         this.historicoApplication = historicoApplication;
     }
     
-    public List<Historico> buscarTodos() {
-        return this.historicoApplication.buscarTodos();
+    public List<Historico> findAll() {
+        return this.historicoApplication.findAll();
     }
 
     
-    public Historico buscarPorId(int id) {
-        return this.historicoApplication.buscarPorId(id);
+    public Historico findById(int id) {
+        return this.historicoApplication.findById(id);
     }
 
     
-    public Historico gravar(Historico Historico) {
-        return this.historicoApplication.gravar(Historico);
+    public Historico save(Historico Historico) {
+        return this.historicoApplication.save(Historico);
     }
 
     
-    public Historico atualizar(int id, Historico Historico) {
-        return this.historicoApplication.atualizar(id, Historico);
+    public Historico update(int id, Historico Historico) {
+        return this.historicoApplication.update(id, Historico);
     }
 
     
-    public void excluir(int id) {
-        this.historicoApplication.excluir(id);
+    public void deleteById(int id) {
+        this.historicoApplication.deleteById(id);
     }
 
 

@@ -17,28 +17,28 @@ public class EmpresaApplication {
     }
     
     
-    public List<Empresa> buscarTodos() {
-        return this.empresaRepository.buscarTodos();
+    public List<Empresa> findAll() {
+        return this.empresaRepository.findAll();
     }
 
     
-    public Empresa buscarPorId(int id) {
-        return this.empresaRepository.buscarPorId(id);
+    public Empresa findById(int id) {
+        return this.empresaRepository.findById(id);
     }
 
     
-    public Empresa gravar(Empresa Empresa) {
-        return this.empresaRepository.gravar(Empresa);
+    public Empresa save(Empresa Empresa) {
+        return this.empresaRepository.save(Empresa);
     }
 
     
-    public Empresa atualizar(int id, Empresa Empresa) {
-        return this.empresaRepository.atualizar(id, Empresa);
+    public Empresa update(int id, Empresa Empresa) {
+        return this.empresaRepository.update(id, Empresa);
     }
 
     
-    public void excluir(int id) {
-        this.empresaRepository.excluir(id);
+    public void deleteById(int id) {
+        this.empresaRepository.deleteById(id);
     }
 
 

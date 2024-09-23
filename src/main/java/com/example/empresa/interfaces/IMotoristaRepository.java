@@ -7,10 +7,10 @@ import java.util.List;
 
 @Repository
 public interface IMotoristaRepository {
-    List<Motorista> buscarTodos();
-    Motorista buscarPorId(int id);
-    Motorista gravar(Motorista motorista);
-    Motorista atualizar(int id, Motorista motorista);
-    void excluir(int id);
+    List<Motorista> findAll();
+    Motorista findById(int id);
+    Motorista save(Motorista motorista);
+    Motorista update(int id, Motorista motorista);
+    void deleteById(int id);
 }
    

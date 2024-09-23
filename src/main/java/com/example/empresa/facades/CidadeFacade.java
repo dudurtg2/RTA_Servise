@@ -15,28 +15,28 @@ public class CidadeFacade {
         this.cidadeApplication = cidadeApplication;
     }
     
-    public List<Cidade> buscarTodos() {
-        return this.cidadeApplication.buscarTodos();
+    public List<Cidade> findAll() {
+        return this.cidadeApplication.findAll();
     }
 
     
-    public Cidade buscarPorId(int id) {
-        return this.cidadeApplication.buscarPorId(id);
+    public Cidade findById(int id) {
+        return this.cidadeApplication.findById(id);
     }
 
     
-    public Cidade gravar(Cidade Cidade) {
-        return this.cidadeApplication.gravar(Cidade);
+    public Cidade save(Cidade Cidade) {
+        return this.cidadeApplication.save(Cidade);
     }
 
     
-    public Cidade atualizar(int id, Cidade Cidade) {
-        return this.cidadeApplication.atualizar(id, Cidade);
+    public Cidade update(int id, Cidade Cidade) {
+        return this.cidadeApplication.update(id, Cidade);
     }
 
     
-    public void excluir(int id) {
-        this.cidadeApplication.excluir(id);
+    public void deleteById(int id) {
+        this.cidadeApplication.deleteById(id);
     }
 
 

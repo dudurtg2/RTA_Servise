@@ -16,28 +16,28 @@ public class FuncionarioApplication {
     }
 
     
-    public List<Funcionario> buscarTodos() {
-        return this.funcionarioRepository.buscarTodos();
+    public List<Funcionario> findAll() {
+        return this.funcionarioRepository.findAll();
     }
 
     
-    public Funcionario buscarPorId(int id) {
-        return this.funcionarioRepository.buscarPorId(id);
+    public Funcionario findById(int id) {
+        return this.funcionarioRepository.findById(id);
     }
 
     
-    public Funcionario gravar(Funcionario Funcionario) {
-        return this.funcionarioRepository.gravar(Funcionario);
+    public Funcionario save(Funcionario Funcionario) {
+        return this.funcionarioRepository.save(Funcionario);
     }
 
     
-    public Funcionario atualizar(int id, Funcionario Funcionario) {
-        return this.funcionarioRepository.atualizar(id, Funcionario);
+    public Funcionario update(int id, Funcionario Funcionario) {
+        return this.funcionarioRepository.update(id, Funcionario);
     }
 
     
-    public void excluir(int id) {
-        this.funcionarioRepository.excluir(id);
+    public void deleteById(int id) {
+        this.funcionarioRepository.deleteById(id);
     }
 
 

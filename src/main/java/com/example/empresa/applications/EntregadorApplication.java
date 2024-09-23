@@ -16,28 +16,28 @@ public class EntregadorApplication {
         this.entregadorRepository = entregadorRepository;
     }
     
-    public List<Entregador> buscarTodos() {
-        return this.entregadorRepository.buscarTodos();
+    public List<Entregador> findAll() {
+        return this.entregadorRepository.findAll();
     }
 
     
-    public Entregador buscarPorId(int id) {
-        return this.entregadorRepository.buscarPorId(id);
+    public Entregador findById(int id) {
+        return this.entregadorRepository.findById(id);
     }
 
     
-    public Entregador gravar(Entregador Entregador) {
-        return this.entregadorRepository.gravar(Entregador);
+    public Entregador save(Entregador Entregador) {
+        return this.entregadorRepository.save(Entregador);
     }
 
     
-    public Entregador atualizar(int id, Entregador Entregador) {
-        return this.entregadorRepository.atualizar(id, Entregador);
+    public Entregador update(int id, Entregador Entregador) {
+        return this.entregadorRepository.update(id, Entregador);
     }
 
     
-    public void excluir(int id) {
-        this.entregadorRepository.excluir(id);
+    public void deleteById(int id) {
+        this.entregadorRepository.deleteById(id);
     }
 
 

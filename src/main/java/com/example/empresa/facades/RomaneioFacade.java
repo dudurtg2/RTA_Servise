@@ -14,28 +14,28 @@ public class RomaneioFacade {
         this.romaneioApplication = romaneioApplication;
     }
     
-    public List<Romaneio> buscarTodos() {
-        return this.romaneioApplication.buscarTodos();
+    public List<Romaneio> findAll() {
+        return this.romaneioApplication.findAll();
     }
 
     
-    public Romaneio buscarPorId(int id) {
-        return this.romaneioApplication.buscarPorId(id);
+    public Romaneio findById(int id) {
+        return this.romaneioApplication.findById(id);
     }
 
     
-    public Romaneio gravar(Romaneio Romaneio) {
-        return this.romaneioApplication.gravar(Romaneio);
+    public Romaneio save(Romaneio Romaneio) {
+        return this.romaneioApplication.save(Romaneio);
     }
 
     
-    public Romaneio atualizar(int id, Romaneio Romaneio) {
-        return this.romaneioApplication.atualizar(id, Romaneio);
+    public Romaneio update(int id, Romaneio Romaneio) {
+        return this.romaneioApplication.update(id, Romaneio);
     }
 
     
-    public void excluir(int id) {
-        this.romaneioApplication.excluir(id);
+    public void deleteById(int id) {
+        this.romaneioApplication.deleteById(id);
     }
 
 

@@ -16,28 +16,28 @@ public class BaseApplication {
     }
     
     
-    public List<Base> buscarTodos() {
-        return this.baseRepository.buscarTodos();
+    public List<Base> findAll() {
+        return this.baseRepository.findAll();
     }
 
     
-    public Base buscarPorId(int id) {
-        return this.baseRepository.buscarPorId(id);
+    public Base findById(int id) {
+        return this.baseRepository.findById(id);
     }
 
     
-    public Base gravar(Base base) {
-        return this.baseRepository.gravar(base);
+    public Base save(Base base) {
+        return this.baseRepository.save(base);
     }
 
     
-    public Base atualizar(int id, Base base) {
-        return this.baseRepository.atualizar(id, base);
+    public Base update(int id, Base base) {
+        return this.baseRepository.update(id, base);
     }
 
     
-    public void excluir(int id) {
-        this.baseRepository.excluir(id);
+    public void deleteById(int id) {
+        this.baseRepository.deleteById(id);
     }
 
 

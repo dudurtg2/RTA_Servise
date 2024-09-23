@@ -16,28 +16,28 @@ public class BaseFacade {
     }
     
     
-    public List<Base> buscarTodos() {
-        return this.baseApplication.buscarTodos();
+    public List<Base> findAll() {
+        return this.baseApplication.findAll();
     }
 
     
-    public Base buscarPorId(int id) {
-        return this.baseApplication.buscarPorId(id);
+    public Base findById(int id) {
+        return this.baseApplication.findById(id);
     }
 
     
-    public Base gravar(Base base) {
-        return this.baseApplication.gravar(base);
+    public Base save(Base base) {
+        return this.baseApplication.save(base);
     }
 
     
-    public Base atualizar(int id, Base base) {
-        return this.baseApplication.atualizar(id, base);
+    public Base update(int id, Base base) {
+        return this.baseApplication.update(id, base);
     }
 
     
-    public void excluir(int id) {
-        this.baseApplication.excluir(id);
+    public void deleteById(int id) {
+        this.baseApplication.deleteById(id);
     }
 
 

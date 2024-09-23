@@ -10,33 +10,33 @@ import org.springframework.stereotype.Component;
 @Component
 public class RomaneioApplication {
     private IRomanioRepository romaneioRepository;
-    
+
     public RomaneioApplication(IRomanioRepository romaneioRepository) {
         this.romaneioRepository = romaneioRepository;
     }
     
-    public List<Romaneio> buscarTodos() {
-        return this.romaneioRepository.buscarTodos();
+    public List<Romaneio> findAll() {
+        return this.romaneioRepository.findAll();
     }
 
     
-    public Romaneio buscarPorId(int id) {
-        return this.romaneioRepository.buscarPorId(id);
+    public Romaneio findById(int id) {
+        return this.romaneioRepository.findById(id);
     }
 
     
-    public Romaneio gravar(Romaneio Romaneio) {
-        return this.romaneioRepository.gravar(Romaneio);
+    public Romaneio save(Romaneio Romaneio) {
+        return this.romaneioRepository.save(Romaneio);
     }
 
     
-    public Romaneio atualizar(int id, Romaneio Romaneio) {
-        return this.romaneioRepository.atualizar(id, Romaneio);
+    public Romaneio update(int id, Romaneio Romaneio) {
+        return this.romaneioRepository.update(id, Romaneio);
     }
 
     
-    public void excluir(int id) {
-        this.romaneioRepository.excluir(id);
+    public void deleteById(int id) {
+        this.romaneioRepository.deleteById(id);
     }
 
 

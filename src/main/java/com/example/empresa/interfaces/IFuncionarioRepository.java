@@ -7,10 +7,10 @@ import java.util.List;
 
 @Repository
 public interface IFuncionarioRepository {
-    List<Funcionario> buscarTodos();
-    Funcionario buscarPorId(int id);
-    Funcionario gravar(Funcionario funcionario);
-    Funcionario atualizar(int id, Funcionario funcionario);
-    void excluir(int id);
+    List<Funcionario> findAll();
+    Funcionario findById(int id);
+    Funcionario save(Funcionario funcionario);
+    Funcionario update(int id, Funcionario funcionario);
+    void deleteById(int id);
 }
    

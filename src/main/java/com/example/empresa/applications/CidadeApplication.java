@@ -15,28 +15,28 @@ public class CidadeApplication {
         this.cidadeRepository = cidadeRepository;
     }
     
-    public List<Cidade> buscarTodos() {
-        return this.cidadeRepository.buscarTodos();
+    public List<Cidade> findAll() {
+        return this.cidadeRepository.findAll();
     }
 
     
-    public Cidade buscarPorId(int id) {
-        return this.cidadeRepository.buscarPorId(id);
+    public Cidade findById(int id) {
+        return this.cidadeRepository.findById(id);
     }
 
     
-    public Cidade gravar(Cidade Cidade) {
-        return this.cidadeRepository.gravar(Cidade);
+    public Cidade save(Cidade Cidade) {
+        return this.cidadeRepository.save(Cidade);
     }
 
     
-    public Cidade atualizar(int id, Cidade Cidade) {
-        return this.cidadeRepository.atualizar(id, Cidade);
+    public Cidade update(int id, Cidade Cidade) {
+        return this.cidadeRepository.update(id, Cidade);
     }
 
     
-    public void excluir(int id) {
-        this.cidadeRepository.excluir(id);
+    public void deleteById(int id) {
+        this.cidadeRepository.deleteById(id);
     }
 
 

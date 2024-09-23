@@ -15,28 +15,28 @@ public class MotoristaFacade {
         this.motoristaApplication = motoristaApplication;
     }
     
-    public List<Motorista> buscarTodos() {
-        return this.motoristaApplication.buscarTodos();
+    public List<Motorista> findAll() {
+        return this.motoristaApplication.findAll();
     }
 
     
-    public Motorista buscarPorId(int id) {
-        return this.motoristaApplication.buscarPorId(id);
+    public Motorista findById(int id) {
+        return this.motoristaApplication.findById(id);
     }
 
     
-    public Motorista gravar(Motorista Motorista) {
-        return this.motoristaApplication.gravar(Motorista);
+    public Motorista save(Motorista Motorista) {
+        return this.motoristaApplication.save(Motorista);
     }
 
     
-    public Motorista atualizar(int id, Motorista Motorista) {
-        return this.motoristaApplication.atualizar(id, Motorista);
+    public Motorista update(int id, Motorista Motorista) {
+        return this.motoristaApplication.update(id, Motorista);
     }
 
     
-    public void excluir(int id) {
-        this.motoristaApplication.excluir(id);
+    public void deleteById(int id) {
+        this.motoristaApplication.deleteById(id);
     }
 
 
