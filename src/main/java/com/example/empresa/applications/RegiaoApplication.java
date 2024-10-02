@@ -1,6 +1,7 @@
 package com.example.empresa.applications;
 
 
+import com.example.empresa.entities.Empresa;
 import com.example.empresa.entities.Regiao;
 import com.example.empresa.interfaces.IRegiaoRepository;
 
@@ -16,6 +17,7 @@ public class RegiaoApplication {
         this.regiaoRepository = regiaoRepository;
     }
     
+
     public List<Regiao> findAll() {
         return this.regiaoRepository.findAll();
     }
@@ -32,6 +34,11 @@ public class RegiaoApplication {
 
     
     public Regiao update(int id, Regiao Regiao) {
+        Regiao regiaoInDb = this.regiaoRepository.findById(id);
+
+        if (regiaoInDb == null) {
+            return null;
+        }
         return this.regiaoRepository.update(id, Regiao);
     }
 

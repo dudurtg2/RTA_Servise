@@ -31,6 +31,12 @@ public class MotoristaApplication {
 
     
     public Motorista update(int id, Motorista Motorista) {
+        Motorista motoristaInDb = this.motoristaRepository.findById(id);
+
+        if (motoristaInDb == null) {
+            return null;
+        }
+
         return this.motoristaRepository.update(id, Motorista);
     }
 

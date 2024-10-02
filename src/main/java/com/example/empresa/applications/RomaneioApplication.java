@@ -1,5 +1,6 @@
 package com.example.empresa.applications;
 
+import com.example.empresa.entities.Empresa;
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.interfaces.IRomanioRepository;
 
@@ -31,6 +32,11 @@ public class RomaneioApplication {
 
     
     public Romaneio update(int id, Romaneio Romaneio) {
+        Romaneio romaneioInDb = this.romaneioRepository.findById(id);
+
+        if (romaneioInDb == null) {
+            return null;
+        }
         return this.romaneioRepository.update(id, Romaneio);
     }
 
