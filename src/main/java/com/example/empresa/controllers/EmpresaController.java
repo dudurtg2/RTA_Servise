@@ -4,6 +4,8 @@ import com.example.empresa.entities.Empresa;
 import com.example.empresa.facades.EmpresaFacade;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,50 +14,52 @@ import java.util.List;
 @RequestMapping("/empresas")
 public class EmpresaController {
 
-    @Autowired
     private EmpresaFacade empresaFacade;
 
+    @Autowired
+    public EmpresaController(EmpresaFacade empresaFacade) {
+        this.empresaFacade = empresaFacade;
+    }
 
     @GetMapping("/findAll")
-    public List<Empresa> findAll() {
-        return empresaFacade.findAll();
+    public ResponseEntity<List<Empresa>> findAll() {
+        List<Empresa> empresas = this.empresaFacade.findAll();
+
+        return new ResponseEntity<List<Empresa>>(empresas, HttpStatus.OK);
     }
 
     @GetMapping("/findById/{id}")
-    public Empresa findById(@PathVariable int id) {
-        return empresaFacade.findById(id);
+    public ResponseEntity<Empresa> findById(@PathVariable int id) {
+        Empresa empresa = this.empresaFacade.findById(id);
+        
+        return new ResponseEntity<Empresa>(empresa, HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public Empresa save(
-            @RequestParam String nome,
-            @RequestParam String cnpj) {
+    public ResponseEntity<Empresa> save(@RequestBody Empresa empresa) {
+        Empresa empresaSaved = empresaFacade.save(empresa);
 
-        Empresa novaEmpresa = new Empresa();
-        novaEmpresa.setNome(nome);
-        novaEmpresa.setCnpj(cnpj);
+        return new ResponseEntity<Empresa>(empresaSaved, HttpStatus.CREATED);
 
-        return empresaFacade.save(novaEmpresa);
     }
 
     @PutMapping("/update/{id}")
-    public Empresa update(
+    public ResponseEntity<Empresa> update(
             @PathVariable int id,
-            @RequestParam String nome,
-            @RequestParam String cnpj) {
+            @RequestBody Empresa empresa) {
 
-        Empresa empresa = empresaFacade.findById(id);
+            Empresa empresaUpdated = empresaFacade.update(id, empresa);
 
-        if (empresa != null) {
-            empresa.setNome(nome);
-            empresa.setCnpj(cnpj);
-            return empresaFacade.update(id, empresa);
-        }
-        return null;
+            if (empresaUpdated == null)
+                return new ResponseEntity<Empresa>(empresaUpdated, HttpStatus.NOT_FOUND);
+
+            return new ResponseEntity<Empresa>(empresaUpdated, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteById/{id}")
-    public void deleteById(@PathVariable int id) {
+    public ResponseEntity<Void> deleteById(@PathVariable int id) {
         empresaFacade.deleteById(id);
+        
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

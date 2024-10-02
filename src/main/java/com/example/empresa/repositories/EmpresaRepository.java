@@ -32,25 +32,27 @@ public class EmpresaRepository implements IEmpresaRepository {
     @Transactional
     public Empresa save(Empresa empresa) {
         entityManager.persist(empresa);
+
         return empresa;
     }
 
     @Override
-    public Empresa update(int id, Empresa empresaAtualizada) {
-        Empresa empresa = entityManager.find(Empresa.class, id);
-        if (empresa != null) {
-            empresa.setNome(empresaAtualizada.getNome());
-            empresa.setCnpj(empresaAtualizada.getCnpj());
-            return entityManager.merge(empresa);
-        }
-        return null;
+    @Transactional
+    public Empresa update(int id, Empresa empresa) {
+        Empresa empresaInDb = entityManager.find(Empresa.class, id);
+        
+        empresaInDb.setNome(empresa.getNome());
+        empresaInDb.setCnpj(empresa.getCnpj());
+
+        return entityManager.merge(empresaInDb);
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
-        Empresa empresa = entityManager.find(Empresa.class, id);
-        if (empresa != null) {
-            entityManager.remove(empresa);
+        Empresa empresaInDb = entityManager.find(Empresa.class, id);
+        if (empresaInDb != null) {
+            entityManager.remove(empresaInDb);
         }
     }
 }

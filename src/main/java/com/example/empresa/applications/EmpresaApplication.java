@@ -32,8 +32,14 @@ public class EmpresaApplication {
     }
 
     
-    public Empresa update(int id, Empresa Empresa) {
-        return this.empresaRepository.update(id, Empresa);
+    public Empresa update(int id, Empresa empresa) {
+        Empresa empresaInDb = this.empresaRepository.findById(id);
+
+        if (empresaInDb == null) {
+            return null;
+        }
+
+        return this.empresaRepository.update(id, empresa);
     }
 
     

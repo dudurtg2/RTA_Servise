@@ -22,7 +22,7 @@ public class BootSystem{
 	@Bean
 	public CommandLineRunner commandLineRunner(EmpresaFacade empresafacade) {
 		return runner -> {
-			saveEmpresa( empresafacade);
+			//saveEmpresa( empresafacade);
 		};
 	}
 
