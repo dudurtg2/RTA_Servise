@@ -32,6 +32,7 @@ public class EntregadorApplication {
 
     
     public Entregador update(int id, Entregador Entregador) {
+        
         return this.entregadorRepository.update(id, Entregador);
     }
 

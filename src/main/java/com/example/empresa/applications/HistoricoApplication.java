@@ -32,6 +32,12 @@ public class HistoricoApplication {
 
     
     public Historico update(int id, Historico Historico) {
+        Historico historicoInDb = this.historicoRepository.findById(id);
+
+        if (historicoInDb == null) {
+            return null;
+        }
+
         return this.historicoRepository.update(id, Historico);
     }
 
