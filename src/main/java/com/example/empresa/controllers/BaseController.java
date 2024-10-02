@@ -23,9 +23,9 @@ public class BaseController {
 
     @GetMapping("/findAll")
     public ResponseEntity<List<Base>> findAll() {
-        List<Base> Bases = this.baseFacade.findAll();
+        List<Base> bases = this.baseFacade.findAll();
 
-        return new ResponseEntity<List<Base>>(Bases, HttpStatus.OK);
+        return new ResponseEntity<List<Base>>(bases, HttpStatus.OK);
     }
 
     @GetMapping("/findById/{id}")

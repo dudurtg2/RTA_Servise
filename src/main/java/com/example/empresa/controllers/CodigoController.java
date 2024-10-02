@@ -23,9 +23,9 @@ public class CodigoController {
 
     @GetMapping("/findAll")
     public ResponseEntity<List<Codigo>> findAll() {
-        List<Codigo> Codigo = this.codigoFacade.findAll();
+        List<Codigo> codigo = this.codigoFacade.findAll();
 
-        return new ResponseEntity<List<Codigo>>(Codigos, HttpStatus.OK);
+        return new ResponseEntity<List<Codigo>>(codigo, HttpStatus.OK);
     }
 
     @GetMapping("/findById/{id}")
