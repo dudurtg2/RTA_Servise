@@ -1,7 +1,6 @@
 package com.example.empresa.applications;
 
 import com.example.empresa.entities.Base;
-import com.example.empresa.entities.Empresa;
 import com.example.empresa.interfaces.IBaseRepository;
 
 import java.util.List;

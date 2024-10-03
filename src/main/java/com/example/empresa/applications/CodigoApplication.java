@@ -1,7 +1,6 @@
 package com.example.empresa.applications;
 
 import com.example.empresa.entities.Codigo;
-import com.example.empresa.entities.Empresa;
 import com.example.empresa.interfaces.ICodigoRepository;
 
 import java.util.List;
