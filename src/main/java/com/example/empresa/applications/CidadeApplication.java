@@ -1,6 +1,7 @@
 package com.example.empresa.applications;
 
 import com.example.empresa.entities.Cidade;
+import com.example.empresa.entities.Empresa;
 import com.example.empresa.interfaces.ICidadeRepository;
 
 import java.util.List;
@@ -31,6 +32,11 @@ public class CidadeApplication {
 
     
     public Cidade update(int id, Cidade Cidade) {
+                Cidade cidadeInDb = this.cidadeRepository.findById(id);
+
+        if (cidadeInDb == null) {
+            return null;
+        }
         return this.cidadeRepository.update(id, Cidade);
     }
 

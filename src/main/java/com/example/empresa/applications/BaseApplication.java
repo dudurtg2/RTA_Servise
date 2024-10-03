@@ -1,6 +1,7 @@
 package com.example.empresa.applications;
 
 import com.example.empresa.entities.Base;
+import com.example.empresa.entities.Empresa;
 import com.example.empresa.interfaces.IBaseRepository;
 
 import java.util.List;
@@ -32,8 +33,16 @@ public class BaseApplication {
 
     
     public Base update(int id, Base base) {
+        
+        Base baseInDb = this.baseRepository.findById(id);
+        if (baseInDb == null) {
+            return null;
+        }
+
         return this.baseRepository.update(id, base);
     }
+
+
 
     
     public void deleteById(int id) {
