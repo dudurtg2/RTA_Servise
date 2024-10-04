@@ -33,6 +33,11 @@ public class CodigoApplication {
 
     
     public Codigo update(int id, Codigo Codigo) {
+        Codigo codigoInDb = this.codigoRepository.findById(id);
+
+        if (codigoInDb == null) {
+            return null;
+        }
         return this.codigoRepository.update(id, Codigo);
     }
 

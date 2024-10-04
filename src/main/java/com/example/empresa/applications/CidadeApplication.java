@@ -31,6 +31,11 @@ public class CidadeApplication {
 
     
     public Cidade update(int id, Cidade Cidade) {
+                Cidade cidadeInDb = this.cidadeRepository.findById(id);
+
+        if (cidadeInDb == null) {
+            return null;
+        }
         return this.cidadeRepository.update(id, Cidade);
     }
 

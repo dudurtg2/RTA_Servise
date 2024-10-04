@@ -32,8 +32,16 @@ public class BaseApplication {
 
     
     public Base update(int id, Base base) {
+        
+        Base baseInDb = this.baseRepository.findById(id);
+        if (baseInDb == null) {
+            return null;
+        }
+
         return this.baseRepository.update(id, base);
     }
+
+
 
     
     public void deleteById(int id) {
