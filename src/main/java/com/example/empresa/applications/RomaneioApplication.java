@@ -1,6 +1,5 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.entities.Empresa;
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.interfaces.IRomanioRepository;
 
