@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/motorista")
+@RequestMapping("/motoristas")
 public class MotoristaController {
 
     private MotoristaFacade motoristaFacade;

@@ -3,45 +3,58 @@ package com.example.empresa.repositories;
 import com.example.empresa.entities.Regiao;
 import com.example.empresa.interfaces.IRegiaoRepository;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
 public class RegiaoRepository implements IRegiaoRepository {
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Override
     public List<Regiao> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        String jpql = "SELECT r FROM Regiao r";
+        TypedQuery<Regiao> query = entityManager.createQuery(jpql, Regiao.class);
+        return query.getResultList();
     }
 
     @Override
     public Regiao findById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return entityManager.find(Regiao.class, id);
     }
 
     @Override
-    public Regiao save(Regiao Regiao) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    @Transactional
+    public Regiao save(Regiao regiao) {
+        entityManager.persist(regiao);
+
+        return regiao;
     }
 
     @Override
-    public Regiao update(int id, Regiao Regiao) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    @Transactional
+    public Regiao update(int id, Regiao regiao) {
+        Regiao regiaoInDb = entityManager.find(Regiao.class, id);
+        
+        regiaoInDb.setNome(regiao.getNome());
+
+        return entityManager.merge(regiaoInDb);
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        Regiao regiaoInDb = entityManager.find(Regiao.class, id);
+        if (regiaoInDb != null) {
+            entityManager.remove(regiaoInDb);
+        }
     }
-
-
-
-
    
 }

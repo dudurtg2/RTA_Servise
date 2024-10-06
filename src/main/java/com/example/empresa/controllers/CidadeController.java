@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/empresas")
+@RequestMapping("/cidades")
 public class CidadeController {
 
     private CidadeFacade cidadeFacade;
