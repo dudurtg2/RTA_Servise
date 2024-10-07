@@ -32,8 +32,9 @@ public class BootSystem{
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(CidadeFacade cidadeFacade) {
+	public CommandLineRunner commandLineRunner(CidadeFacade cidadeFacade, RegiaoFacade regiaoFacade) {
 		return runner -> {
+			saveRegiao(regiaoFacade);
 			saveCidade(cidadeFacade);
 		};
 	}
@@ -46,11 +47,5 @@ public class BootSystem{
 		Cidade cidade = new Cidade("Cidade de Teste", "0000000", regiao);
 		cidadeFacade.save(cidade);
 	}
-
-	private void saveEmpresa(EmpresaFacade empresafacade) {
-		Empresa empresa = new Empresa("Empresa de Teste", "12345678901234");
-		empresafacade.save(empresa);
-	}
-
 
 }

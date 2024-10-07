@@ -9,12 +9,13 @@ public class Codigo {
     @Column(name = "id", nullable = false, unique = true)
     private String id;
     
-    @Column(name = "id_romaneio", nullable = false)
-    private int id_romaneio;
+    @ManyToOne
+    @JoinColumn(name = "id_romaneio")
+    private Romaneio id_romaneio;
     
     public Codigo() {}
 
-    public Codigo(String id, int id_romaneio) {
+    public Codigo(String id, Romaneio id_romaneio) {
         this.id = id;
         this.id_romaneio = id_romaneio;
     }
@@ -27,11 +28,11 @@ public class Codigo {
         this.id = id;
     }
 
-    public int getId_romaneio() {
+    public Romaneio getId_romaneio() {
         return this.id_romaneio;
     }
 
-    public void setId_romaneio(int id_romaneio) {
+    public void setId_romaneio(Romaneio id_romaneio) {
         this.id_romaneio = id_romaneio;
     }
 

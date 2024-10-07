@@ -10,39 +10,46 @@ public class Romaneio {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "empresa_id", nullable = false)
-    private int empresa_id;
+    @ManyToOne
+    @JoinColumn(name = "empresa_id")
+    private Empresa empresa_id;
 
-    @Column(name = "motorista_id", nullable = false)
-    private int motorista_id;
+    @ManyToOne
+    @JoinColumn(name = "motorista_id")
+    private Motorista motorista_id;
 
-    @Column(name = "entregador_id", nullable = false)
-    private int entregador_id;
+    @ManyToOne
+    @JoinColumn(name = "entregador_id")
+    private Entregador entregador_id;
+    
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
+    private Funcionario funcionario_id;
 
-    @Column(name = "funcionario_id", nullable = false)
-    private int funcionario_id;
+    @ManyToOne
+    @JoinColumn(name = "base_id")
+    private Base base_id;
 
-    @Column(name = "base_id", nullable = false)
-    private int base_id;
+    @ManyToOne
+    @JoinColumn(name = "cidade_id")
+    private Cidade cidade_id;
 
-    @Column(name = "cidade_id", nullable = false)
-    private int cidade_id;
-
-    @Column(name = "sts", nullable = false)
+    @Column(name = "sts")
     private String sts;
 
-    @Column(name = "quantidade", nullable = false)
+    @Column(name = "quantidade")
     private int quantidade;
 
-    @Column(name = "sacas", nullable = false)
+    @Column(name = "sacas")
     private int sacas;
 
-    @Column (name = "caixas", nullable = false) 
+    @Column (name = "caixas") 
     private int caixas;
 
     public Romaneio() {}
 
-    public Romaneio(int empresa_id, int motorista_id, int entregador_id, int funcionario_id, int base_id, int cidade_id, String sts, int quantidade, int sacas, int caixas) {
+    public Romaneio(int id, Empresa empresa_id, Motorista motorista_id, Entregador entregador_id, Funcionario funcionario_id, Base base_id, Cidade cidade_id, String sts, int quantidade, int sacas, int caixas) {
+        this.id = id;
         this.empresa_id = empresa_id;
         this.motorista_id = motorista_id;
         this.entregador_id = entregador_id;
@@ -54,6 +61,7 @@ public class Romaneio {
         this.sacas = sacas;
         this.caixas = caixas;
     }
+    
 
     public int getId() {
         return this.id;
@@ -63,51 +71,51 @@ public class Romaneio {
         this.id = id;
     }
 
-    public int getEmpresa_id() {
+    public Empresa getEmpresa_id() {
         return this.empresa_id;
     }
 
-    public void setEmpresa_id(int empresa_id) {
+    public void setEmpresa_id(Empresa empresa_id) {
         this.empresa_id = empresa_id;
     }
 
-    public int getMotorista_id() {
+    public Motorista getMotorista_id() {
         return this.motorista_id;
     }
 
-    public void setMotorista_id(int motorista_id) {
+    public void setMotorista_id(Motorista motorista_id) {
         this.motorista_id = motorista_id;
     }
 
-    public int getEntregador_id() {
+    public Entregador getEntregador_id() {
         return this.entregador_id;
     }
 
-    public void setEntregador_id(int entregador_id) {
+    public void setEntregador_id(Entregador entregador_id) {
         this.entregador_id = entregador_id;
     }
 
-    public int getFuncionario_id() {
+    public Funcionario getFuncionario_id() {
         return this.funcionario_id;
     }
 
-    public void setFuncionario_id(int funcionario_id) {
+    public void setFuncionario_id(Funcionario funcionario_id) {
         this.funcionario_id = funcionario_id;
     }
 
-    public int getBase_id() {
+    public Base getBase_id() {
         return this.base_id;
     }
 
-    public void setBase_id(int base_id) {
+    public void setBase_id(Base base_id) {
         this.base_id = base_id;
     }
 
-    public int getCidade_id() {
+    public Cidade getCidade_id() {
         return this.cidade_id;
     }
 
-    public void setCidade_id(int cidade_id) {
+    public void setCidade_id(Cidade cidade_id) {
         this.cidade_id = cidade_id;
     }
 
