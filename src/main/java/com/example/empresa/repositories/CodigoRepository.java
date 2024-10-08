@@ -2,44 +2,60 @@ package com.example.empresa.repositories;
 
 import com.example.empresa.entities.Codigo;
 import com.example.empresa.interfaces.ICodigoRepository;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
 public class CodigoRepository implements ICodigoRepository {
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Override
     public List<Codigo> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        String jpql = "SELECT b FROM Codigo c";
+        TypedQuery<Codigo> query = entityManager.createQuery(jpql, Codigo.class);
+        return query.getResultList();
     }
 
     @Override
     public Codigo findById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return entityManager.find(Codigo.class, id);
     }
 
     @Override
+    @Transactional
     public Codigo save(Codigo codigo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        entityManager.persist(codigo);
+
+        return codigo;
     }
 
     @Override
+    @Transactional
     public Codigo update(int id, Codigo codigo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        Codigo codigoInDb = entityManager.find(Codigo.class, id);
+        
+        codigoInDb.setCodigo(codigo.getCodigo());
+        codigoInDb.setId_romaneio(codigo.getId_romaneio());
+
+        return entityManager.merge(codigoInDb);
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        Codigo codigoInDb = entityManager.find(Codigo.class, id);
+        if (codigoInDb != null) {
+            entityManager.remove(codigoInDb);
+        }
     }
 
-
-
-   
 }

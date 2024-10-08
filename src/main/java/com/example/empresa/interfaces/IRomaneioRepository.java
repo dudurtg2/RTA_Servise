@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface IRomanioRepository {
+public interface IRomaneioRepository {
     List<Romaneio> findAll();
     Romaneio findById(int id);
     @Transactional
