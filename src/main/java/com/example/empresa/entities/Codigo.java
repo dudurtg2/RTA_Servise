@@ -8,6 +8,9 @@ public class Codigo {
     @Id
     @Column(name = "id", nullable = false, unique = true)
     private String id;
+
+    @Column(name = "codigo", nullable = false)
+    private String codigo;
     
     @ManyToOne
     @JoinColumn(name = "id_romaneio")
@@ -15,9 +18,18 @@ public class Codigo {
     
     public Codigo() {}
 
-    public Codigo(String id, Romaneio id_romaneio) {
+    public Codigo(String id, Romaneio id_romaneio, String codigo) {
         this.id = id;
         this.id_romaneio = id_romaneio;
+        this.codigo = codigo;
+    }
+
+    public String getCodigo() {
+        return this.codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getId() {

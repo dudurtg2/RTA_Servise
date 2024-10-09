@@ -10,6 +10,7 @@ public class Romaneio {
     @Column(name = "id")
     private int id;
 
+
     @ManyToOne
     @JoinColumn(name = "empresa_id")
     private Empresa empresa_id;
@@ -46,9 +47,12 @@ public class Romaneio {
     @Column (name = "caixas") 
     private int caixas;
 
+    @Column(name = "id_romaneio")
+    private String id_romaneio;
+
     public Romaneio() {}
 
-    public Romaneio(int id, Empresa empresa_id, Motorista motorista_id, Entregador entregador_id, Funcionario funcionario_id, Base base_id, Cidade cidade_id, String sts, int quantidade, int sacas, int caixas) {
+    public Romaneio(int id, Empresa empresa_id, Motorista motorista_id, Entregador entregador_id, Funcionario funcionario_id, Base base_id, Cidade cidade_id, String sts, int quantidade, int sacas, int caixas, String id_romaneio) {
         this.id = id;
         this.empresa_id = empresa_id;
         this.motorista_id = motorista_id;
@@ -60,6 +64,7 @@ public class Romaneio {
         this.quantidade = quantidade;
         this.sacas = sacas;
         this.caixas = caixas;
+        this.id_romaneio = id_romaneio;
     }
     
 
