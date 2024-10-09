@@ -1,45 +1,65 @@
 package com.example.empresa.repositories;
 
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.example.empresa.entities.Entregador;
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.interfaces.IMotoristaRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 
 @Repository
 public class MotoristaRepository implements IMotoristaRepository {
 
+   @PersistenceContext
+    private EntityManager entityManager;
+
     @Override
     public List<Motorista> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        String jpql = "SELECT b FROM Motorista b";
+        TypedQuery<Motorista> query = entityManager.createQuery(jpql, Motorista.class);
+        return query.getResultList();
     }
 
     @Override
     public Motorista findById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return entityManager.find(Motorista.class, id);
     }
 
     @Override
+    @Transactional
     public Motorista save(Motorista motorista) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        entityManager.persist(motorista);
+
+        return motorista;
     }
 
     @Override
+    @Transactional
     public Motorista update(int id, Motorista motorista) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        Motorista motoristaInDb = entityManager.find(Motorista.class, id);
+        
+        motoristaInDb.setNome(motorista.getNome());
+        motoristaInDb.setSenha(motorista.getSenha());
+        motoristaInDb.setEmail(motorista.getEmail());
+        motoristaInDb.setCpf(motorista.getCpf());
+        motoristaInDb.setTelefone(motorista.getTelefone());
+
+        return entityManager.merge(motoristaInDb);
     }
 
     @Override
+    @Transactional
     public void deleteById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        Motorista motoristaInDb = entityManager.find(Motorista.class, id);
+        if (motoristaInDb != null) {
+            entityManager.remove(motoristaInDb);
+        }
     }
 
-
-
-   
 }
