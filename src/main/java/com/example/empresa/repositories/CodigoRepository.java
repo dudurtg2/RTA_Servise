@@ -44,7 +44,7 @@ public class CodigoRepository implements ICodigoRepository {
         Codigo codigoInDb = entityManager.find(Codigo.class, id);
         
         codigoInDb.setCodigo(codigo.getCodigo());
-        codigoInDb.setId_romaneio(codigo.getId_romaneio());
+        codigoInDb.setIdRomaneio(codigo.getIdRomaneio());
 
         return entityManager.merge(codigoInDb);
     }

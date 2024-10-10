@@ -43,12 +43,12 @@ public class RomaneioRepository implements IRomaneioRepository {
     public Romaneio update(int id, Romaneio romaneio) {
         Romaneio romaneioInDb = entityManager.find(Romaneio.class, id);
         
-        romaneioInDb.setEmpresa_id(romaneio.getEmpresa_id());
-        romaneioInDb.setMotorista_id(romaneio.getMotorista_id());
-        romaneioInDb.setEntregador_id(romaneio.getEntregador_id());
-        romaneioInDb.setFuncionario_id(romaneio.getFuncionario_id());
-        romaneioInDb.setBase_id(romaneio.getBase_id());
-        romaneioInDb.setCidade_id(romaneio.getCidade_id());
+        romaneioInDb.setIdEmpresa(romaneio.getIdEmpresa());
+        romaneioInDb.setIdMotorista(romaneio.getIdMotorista());
+        romaneioInDb.setIdEntregador(romaneio.getIdEntregador());
+        romaneioInDb.setIdFuncionario(romaneio.getIdFuncionario());
+        romaneioInDb.setIdBase(romaneio.getIdBase());
+        romaneioInDb.setIdCidade(romaneio.getIdCidade());
         romaneioInDb.setSts(romaneio.getSts());
         romaneioInDb.setQuantidade(romaneio.getQuantidade());
         romaneioInDb.setSacas(romaneio.getSacas());

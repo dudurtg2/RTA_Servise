@@ -2,7 +2,7 @@ package com.example.empresa.entities;
 
 import jakarta.persistence.*;
 
-@Table(name = "romaneio")
+@Table(name = "Romaneio")
 @Entity
 public class Romaneio {
     @Id
@@ -10,30 +10,29 @@ public class Romaneio {
     @Column(name = "id")
     private int id;
 
+    @ManyToOne
+    @JoinColumn(name = "idEmpresa")
+    private Empresa idEmpresa;
 
     @ManyToOne
-    @JoinColumn(name = "empresa_id")
-    private Empresa empresa_id;
+    @JoinColumn(name = "idMotorista")
+    private Motorista idMotorista;
 
     @ManyToOne
-    @JoinColumn(name = "motorista_id")
-    private Motorista motorista_id;
-
-    @ManyToOne
-    @JoinColumn(name = "entregador_id")
-    private Entregador entregador_id;
+    @JoinColumn(name = "idEntregador")
+    private Entregador idEntregador;
     
     @ManyToOne
-    @JoinColumn(name = "funcionario_id")
-    private Funcionario funcionario_id;
+    @JoinColumn(name = "idFuncionario")
+    private Funcionario idFuncionario;
 
     @ManyToOne
-    @JoinColumn(name = "base_id")
-    private Base base_id;
+    @JoinColumn(name = "idBase")
+    private Base idBase;
 
     @ManyToOne
-    @JoinColumn(name = "cidade_id")
-    private Cidade cidade_id;
+    @JoinColumn(name = "idCidade")
+    private Cidade idCidade;
 
     @Column(name = "sts")
     private String sts;
@@ -47,24 +46,24 @@ public class Romaneio {
     @Column (name = "caixas") 
     private int caixas;
 
-    @Column(name = "id_romaneio")
-    private String id_romaneio;
+    @Column(name = "CodigoUid")
+    private String CodigoUid;
 
     public Romaneio() {}
 
-    public Romaneio(int id, Empresa empresa_id, Motorista motorista_id, Entregador entregador_id, Funcionario funcionario_id, Base base_id, Cidade cidade_id, String sts, int quantidade, int sacas, int caixas, String id_romaneio) {
+    public Romaneio(int id, Empresa idEmpresa, Motorista idMotorista, Entregador idEntregador, Funcionario idFuncionario, Base idBase, Cidade idCidade, String sts, int quantidade, int sacas, int caixas, String CodigoUid) {
         this.id = id;
-        this.empresa_id = empresa_id;
-        this.motorista_id = motorista_id;
-        this.entregador_id = entregador_id;
-        this.funcionario_id = funcionario_id;
-        this.base_id = base_id;
-        this.cidade_id = cidade_id;
+        this.idEmpresa = idEmpresa;
+        this.idMotorista = idMotorista;
+        this.idEntregador = idEntregador;
+        this.idFuncionario = idFuncionario;
+        this.idBase = idBase;
+        this.idCidade = idCidade;
         this.sts = sts;
         this.quantidade = quantidade;
         this.sacas = sacas;
         this.caixas = caixas;
-        this.id_romaneio = id_romaneio;
+        this.CodigoUid = CodigoUid;
     }
     
 
@@ -76,52 +75,52 @@ public class Romaneio {
         this.id = id;
     }
 
-    public Empresa getEmpresa_id() {
-        return this.empresa_id;
+    public Empresa getIdEmpresa() {
+        return this.idEmpresa;
     }
 
-    public void setEmpresa_id(Empresa empresa_id) {
-        this.empresa_id = empresa_id;
+    public void setIdEmpresa(Empresa idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
-    public Motorista getMotorista_id() {
-        return this.motorista_id;
+    public Motorista getIdMotorista() {
+        return this.idMotorista;
     }
 
-    public void setMotorista_id(Motorista motorista_id) {
-        this.motorista_id = motorista_id;
+    public void setIdMotorista(Motorista idMotorista) {
+        this.idMotorista = idMotorista;
     }
 
-    public Entregador getEntregador_id() {
-        return this.entregador_id;
+    public Entregador getIdEntregador() {
+        return this.idEntregador;
     }
 
-    public void setEntregador_id(Entregador entregador_id) {
-        this.entregador_id = entregador_id;
+    public void setIdEntregador(Entregador idEntregador) {
+        this.idEntregador = idEntregador;
     }
 
-    public Funcionario getFuncionario_id() {
-        return this.funcionario_id;
+    public Funcionario getIdFuncionario() {
+        return this.idFuncionario;
     }
 
-    public void setFuncionario_id(Funcionario funcionario_id) {
-        this.funcionario_id = funcionario_id;
+    public void setIdFuncionario(Funcionario idFuncionario) {
+        this.idFuncionario = idFuncionario;
     }
 
-    public Base getBase_id() {
-        return this.base_id;
+    public Base getIdBase() {
+        return this.idBase;
     }
 
-    public void setBase_id(Base base_id) {
-        this.base_id = base_id;
+    public void setIdBase(Base idBase) {
+        this.idBase = idBase;
     }
 
-    public Cidade getCidade_id() {
-        return this.cidade_id;
+    public Cidade getIdCidade() {
+        return this.idCidade;
     }
 
-    public void setCidade_id(Cidade cidade_id) {
-        this.cidade_id = cidade_id;
+    public void setIdCidade(Cidade idCidade) {
+        this.idCidade = idCidade;
     }
 
     public String getSts() {
@@ -156,5 +155,13 @@ public class Romaneio {
         this.caixas = caixas;
     }
 
+    public String getCodigoUid() {
+        return this.CodigoUid;
+    }
 
+    public void setCodigoUid(String CodigoUid) {
+        this.CodigoUid = CodigoUid;
+    }
+
+   
 }

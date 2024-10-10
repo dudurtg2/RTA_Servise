@@ -1,14 +1,10 @@
 package com.example.empresa.repositories;
 
 import java.util.List;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.example.empresa.entities.Entregador;
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.interfaces.IMotoristaRepository;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;

@@ -43,10 +43,10 @@ public class HistoricoRepository implements IHistoricoRepository {
     public Historico update(int id, Historico historico) {
         Historico historicoInDb = entityManager.find(Historico.class, id);
         
-        historicoInDb.setData_criacao(historico.getData_criacao());
-        historicoInDb.setData_saida(historico.getData_saida());
-        historicoInDb.setData_finalizacao(historico.getData_finalizacao());
-        historicoInDb.setRomaneio_id(historico.getRomaneio_id());
+        historicoInDb.setDataCriacao(historico.getDataCriacao());
+        historicoInDb.setDataSaida(historico.getDataSaida());
+        historicoInDb.setDataFinalizacao(historico.getDataFinalizacao());
+        historicoInDb.setidRomaneio(historico.getidRomaneio());
 
         return entityManager.merge(historicoInDb);
     }

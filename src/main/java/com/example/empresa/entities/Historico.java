@@ -2,7 +2,7 @@ package com.example.empresa.entities;
 
 import jakarta.persistence.*;
 
-@Table(name = "historico")
+@Table(name = "Historico")
 @Entity
 public class Historico {
 
@@ -11,25 +11,25 @@ public class Historico {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "data_criacao", nullable = false)
-    private String data_criacao;
+    @Column(name = "dataCriacao", nullable = false)
+    private String dataCriacao;
 
-    @Column(name = "data_saida", nullable = false)
-    private String data_saida;
+    @Column(name = "dataSaida", nullable = false)
+    private String dataSaida;
 
-    @Column(name = "data_finalizacao", nullable = false)
-    private String data_finalizacao;
+    @Column(name = "dataFinalizacao", nullable = false)
+    private String dataFinalizacao;
     
-    @Column(name = "romaneio_id", nullable = false)
-    private int romaneio_id;
+    @Column(name = "idRomaneio", nullable = false)
+    private int idRomaneio;
     
     public Historico() {}
 
-    public Historico(String data_criacao, String data_saida, String data_finalizacao, int romaneio_id) {
-        this.data_criacao = data_criacao;
-        this.data_saida = data_saida;
-        this.data_finalizacao = data_finalizacao;
-        this.romaneio_id = romaneio_id;
+    public Historico(String dataCriacao, String dataSaida, String dataFinalizacao, int idRomaneio) {
+        this.dataCriacao = dataCriacao;
+        this.dataSaida = dataSaida;
+        this.dataFinalizacao = dataFinalizacao;
+        this.idRomaneio = idRomaneio;
     }
 
     public int getId() {
@@ -40,36 +40,36 @@ public class Historico {
         this.id = id;
     }
 
-    public String getData_criacao() {
-        return this.data_criacao;
+    public String getDataCriacao() {
+        return this.dataCriacao;
     }
 
-    public void setData_criacao(String data_criacao) {
-        this.data_criacao = data_criacao;
+    public void setDataCriacao(String dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 
-    public String getData_saida() {
-        return this.data_saida;
+    public String getDataSaida() {
+        return this.dataSaida;
     }
 
-    public void setData_saida(String data_saida) {
-        this.data_saida = data_saida;
+    public void setDataSaida(String dataSaida) {
+        this.dataSaida = dataSaida;
     }
 
-    public String getData_finalizacao() {
-        return this.data_finalizacao;
+    public String getDataFinalizacao() {
+        return this.dataFinalizacao;
     }
 
-    public void setData_finalizacao(String data_finalizacao) {
-        this.data_finalizacao = data_finalizacao;
+    public void setDataFinalizacao(String dataFinalizacao) {
+        this.dataFinalizacao = dataFinalizacao;
     }
 
-    public int getRomaneio_id() {
-        return this.romaneio_id;
+    public int getidRomaneio() {
+        return this.idRomaneio;
     }
 
-    public void setRomaneio_id(int romaneio_id) {
-        this.romaneio_id = romaneio_id;
+    public void setidRomaneio(int idRomaneio) {
+        this.idRomaneio = idRomaneio;
     }
 
 }   

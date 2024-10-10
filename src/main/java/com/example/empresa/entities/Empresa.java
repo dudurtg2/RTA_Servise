@@ -2,7 +2,7 @@ package com.example.empresa.entities;
 
 import jakarta.persistence.*;
 
-@Table(name = "empresa")
+@Table(name = "Empresa")
 @Entity
 public class Empresa {
 
@@ -11,10 +11,10 @@ public class Empresa {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "nome", nullable = false) 
+    @Column(name = "nome") 
     private String nome;
 
-    @Column(name = "cnpj", unique = true, nullable = false) 
+    @Column(name = "cnpj", unique = true) 
     private String cnpj;
 
     public Empresa() {}

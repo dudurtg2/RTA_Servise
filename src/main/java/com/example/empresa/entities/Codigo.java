@@ -2,7 +2,7 @@ package com.example.empresa.entities;
 
 import jakarta.persistence.*;
 
-@Table(name = "codigo")
+@Table(name = "Codigo")
 @Entity
 public class Codigo {
     @Id
@@ -13,14 +13,14 @@ public class Codigo {
     private String codigo;
     
     @ManyToOne
-    @JoinColumn(name = "id_romaneio")
-    private Romaneio id_romaneio;
+    @JoinColumn(name = "idRomaneio")
+    private Romaneio idRomaneio;
     
     public Codigo() {}
 
-    public Codigo(String id, Romaneio id_romaneio, String codigo) {
+    public Codigo(String id, Romaneio idRomaneio, String codigo) {
         this.id = id;
-        this.id_romaneio = id_romaneio;
+        this.idRomaneio = idRomaneio;
         this.codigo = codigo;
     }
 
@@ -40,12 +40,12 @@ public class Codigo {
         this.id = id;
     }
 
-    public Romaneio getId_romaneio() {
-        return this.id_romaneio;
+    public Romaneio getIdRomaneio() {
+        return this.idRomaneio;
     }
 
-    public void setId_romaneio(Romaneio id_romaneio) {
-        this.id_romaneio = id_romaneio;
+    public void setIdRomaneio(Romaneio idRomaneio) {
+        this.idRomaneio = idRomaneio;
     }
 
 }

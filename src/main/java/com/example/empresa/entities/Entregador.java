@@ -2,7 +2,7 @@ package com.example.empresa.entities;
 
 import jakarta.persistence.*;
 
-@Table(name = "entregador")
+@Table(name = "Entregador")
 @Entity
 public class Entregador {
 
@@ -36,8 +36,6 @@ public class Entregador {
         this.endereco = endereco;
     }
     
-
-
     public int getId() {
         return this.id;
     }
