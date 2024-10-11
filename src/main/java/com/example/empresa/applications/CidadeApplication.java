@@ -2,6 +2,7 @@ package com.example.empresa.applications;
 
 import com.example.empresa.entities.Cidade;
 import com.example.empresa.interfaces.ICidadeRepository;
+import com.example.empresa.services.Validacao;
 
 import java.util.List;
 
@@ -26,6 +27,12 @@ public class CidadeApplication {
 
     
     public Cidade save(Cidade Cidade) {
+        Cidade.setCep(new Validacao().Cep(Cidade.getCep()));
+
+        if (Cidade.getCep().equals("invalido")) {
+            return null;
+        }
+
         return this.cidadeRepository.save(Cidade);
     }
 
@@ -43,7 +50,6 @@ public class CidadeApplication {
     public void deleteById(int id) {
         this.cidadeRepository.deleteById(id);
     }
-
 
    
 }
