@@ -1,9 +1,11 @@
 package com.example.empresa.controllers;
 
 import com.example.empresa.entities.Entregador;
+import com.example.empresa.entities.Motorista;
 import com.example.empresa.facades.EntregadorFacade;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,11 +40,14 @@ public class EntregadorController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Entregador> save(@RequestBody Entregador entregador) {
-        Entregador entregadorSaved = entregadorFacade.save(entregador);
-
-        return new ResponseEntity<Entregador>(entregadorSaved, HttpStatus.CREATED);
-
+    public ResponseEntity<?> save(@RequestBody Entregador entregador) {
+        try {
+            Entregador entregadorSaved = entregadorFacade.save(entregador);
+            return new ResponseEntity<Entregador>(entregadorSaved, HttpStatus.CREATED);
+        } catch (DataIntegrityViolationException e) {
+            return new ResponseEntity<Boolean>(false , HttpStatus.CONFLICT);
+        } 
+   
     }
 
     @PutMapping("/update/{id}")

@@ -17,7 +17,7 @@ public class MotoristaRepository implements IMotoristaRepository {
 
     @Override
     public List<Motorista> findAll() {
-        String jpql = "SELECT b FROM Motorista b";
+        String jpql = "SELECT m FROM Motorista m";
         TypedQuery<Motorista> query = entityManager.createQuery(jpql, Motorista.class);
         return query.getResultList();
     }

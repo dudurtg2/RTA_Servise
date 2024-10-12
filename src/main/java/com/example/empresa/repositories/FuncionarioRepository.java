@@ -20,7 +20,7 @@ public class FuncionarioRepository implements IFuncionarioRepository {
 
     @Override
     public List<Funcionario> findAll() {
-        String jpql = "SELECT b FROM Funcionario f";
+        String jpql = "SELECT f FROM Funcionario f";
         TypedQuery<Funcionario> query = entityManager.createQuery(jpql, Funcionario.class);
         return query.getResultList();
     }

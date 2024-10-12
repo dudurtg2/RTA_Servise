@@ -20,7 +20,7 @@ public class RomaneioRepository implements IRomaneioRepository {
 
     @Override
     public List<Romaneio> findAll() {
-        String jpql = "SELECT b FROM Romaneio r";
+        String jpql = "SELECT r FROM Romaneio r";
         TypedQuery<Romaneio> query = entityManager.createQuery(jpql, Romaneio.class);
         return query.getResultList();
     }

@@ -20,7 +20,7 @@ public class HistoricoRepository implements IHistoricoRepository {
 
     @Override
     public List<Historico> findAll() {
-        String jpql = "SELECT b FROM Historico b";
+        String jpql = "SELECT h FROM Historico h";
         TypedQuery<Historico> query = entityManager.createQuery(jpql, Historico.class);
         return query.getResultList();
     }

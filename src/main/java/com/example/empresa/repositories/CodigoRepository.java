@@ -20,7 +20,7 @@ public class CodigoRepository implements ICodigoRepository {
 
     @Override
     public List<Codigo> findAll() {
-        String jpql = "SELECT b FROM Codigo c";
+        String jpql = "SELECT c FROM Codigo c";
         TypedQuery<Codigo> query = entityManager.createQuery(jpql, Codigo.class);
         return query.getResultList();
     }

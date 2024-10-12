@@ -1,9 +1,11 @@
 package com.example.empresa.controllers;
 
 import com.example.empresa.entities.Empresa;
+import com.example.empresa.entities.Motorista;
 import com.example.empresa.facades.EmpresaFacade;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,10 +40,14 @@ public class EmpresaController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Empresa> save(@RequestBody Empresa empresa) {
-        Empresa empresaSaved = empresaFacade.save(empresa);
+    public ResponseEntity<?> save(@RequestBody Empresa empresa) {
+         try {
+            Empresa empresaSaved = empresaFacade.save(empresa);
+            return new ResponseEntity<Empresa>(empresaSaved, HttpStatus.CREATED);
+        } catch (DataIntegrityViolationException e) {
+            return new ResponseEntity<Boolean>(false , HttpStatus.CONFLICT);
+        } 
 
-        return new ResponseEntity<Empresa>(empresaSaved, HttpStatus.CREATED);
 
     }
 

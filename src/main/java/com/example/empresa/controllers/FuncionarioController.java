@@ -4,6 +4,7 @@ import com.example.empresa.entities.Funcionario;
 import com.example.empresa.facades.FuncionarioFacade;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,11 +39,16 @@ public class FuncionarioController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Funcionario> save(@RequestBody Funcionario funcionario) {
-        Funcionario funcionarioSaved = funcionarioFacade.save(funcionario);
-
-        return new ResponseEntity<Funcionario>(funcionarioSaved, HttpStatus.CREATED);
-
+    public ResponseEntity<?> save(@RequestBody Funcionario funcionario) {
+        // <?> é um wildcard do Java que representa um tipo genérico desconhecido.
+        // Ele significa que o método pode retornar um ResponseEntity com qualquer tipo de conteúdo,
+        // por isso posso usar o try catch com diferentes retornos
+        try {
+            Funcionario funcionarioSaved = funcionarioFacade.save(funcionario);
+            return new ResponseEntity<Funcionario>(funcionarioSaved, HttpStatus.CREATED);
+        } catch (DataIntegrityViolationException e) {
+            return new ResponseEntity<Boolean>(false , HttpStatus.CONFLICT);
+        } 
     }
 
     @PutMapping("/update/{id}")
