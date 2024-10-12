@@ -48,7 +48,6 @@ public class EmpresaController {
             return new ResponseEntity<Boolean>(false , HttpStatus.CONFLICT);
         } 
 
-
     }
 
     @PutMapping("/update/{id}")
