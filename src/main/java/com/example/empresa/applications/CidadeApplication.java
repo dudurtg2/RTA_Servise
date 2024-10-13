@@ -38,11 +38,18 @@ public class CidadeApplication {
 
     
     public Cidade update(int id, Cidade Cidade) {
-                Cidade cidadeInDb = this.cidadeRepository.findById(id);
+        Cidade cidadeInDb = this.cidadeRepository.findById(id);
 
         if (cidadeInDb == null) {
             return null;
         }
+        
+        Cidade.setCep(new Validacao().Cep(Cidade.getCep()));
+
+        if (Cidade.getCep().equals("invalido")) {
+            return null;
+        }
+
         return this.cidadeRepository.update(id, Cidade);
     }
 
