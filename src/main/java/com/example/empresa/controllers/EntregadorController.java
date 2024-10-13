@@ -1,7 +1,6 @@
 package com.example.empresa.controllers;
 
 import com.example.empresa.entities.Entregador;
-import com.example.empresa.entities.Motorista;
 import com.example.empresa.facades.EntregadorFacade;
 
 import org.springframework.beans.factory.annotation.Autowired;

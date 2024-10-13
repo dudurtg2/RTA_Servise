@@ -1,6 +1,5 @@
 package com.example.empresa.controllers;
 
-import com.example.empresa.entities.Funcionario;
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.facades.MotoristaFacade;
 
