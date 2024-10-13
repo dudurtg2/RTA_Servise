@@ -26,14 +26,27 @@ public class Funcionario {
     @Column(name = "senha", nullable = false)
     private String senha;
 
+    @OneToOne
+    @JoinColumn(name = "idBase")
+    private Base idBase;
+
     public Funcionario() {}
 
-    public Funcionario(String nome, String email, String cpf, String telefone, String senha) {
+    public Funcionario(String nome, String email, String cpf, String telefone, String senha, Base idBase) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.telefone = telefone;
         this.senha = senha;
+        this.idBase = idBase;
+    }
+
+    public Base getIdBase() {
+        return this.idBase;
+    }
+
+    public void setIdBase(Base idBase) {
+        this.idBase = idBase;
     }
 
     public int getId() {
