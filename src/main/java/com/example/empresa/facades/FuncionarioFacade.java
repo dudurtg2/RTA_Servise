@@ -25,6 +25,10 @@ public class FuncionarioFacade {
         return this.funcionarioApplication.findById(id);
     }
 
+    public Funcionario findByEmail(String email) {
+        return this.funcionarioApplication.findByEmail(email);
+    }
+
     
     public Funcionario save(Funcionario Funcionario) {
         return this.funcionarioApplication.save(Funcionario);

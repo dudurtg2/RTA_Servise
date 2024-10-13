@@ -38,6 +38,13 @@ public class FuncionarioController {
         return new ResponseEntity<Funcionario>(Funcionario, HttpStatus.OK);
     }
 
+    @GetMapping("/findByEmail/{email}")
+    public ResponseEntity<Funcionario> findByEmail(@PathVariable String email) {
+        Funcionario Funcionario = this.funcionarioFacade.findByEmail(email);
+        
+        return new ResponseEntity<Funcionario>(Funcionario, HttpStatus.OK);
+    }
+
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody Funcionario funcionario) {
         // <?> é um wildcard do Java que representa um tipo genérico desconhecido.

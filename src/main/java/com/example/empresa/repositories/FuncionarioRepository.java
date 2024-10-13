@@ -31,6 +31,14 @@ public class FuncionarioRepository implements IFuncionarioRepository {
     }
 
     @Override
+    public Funcionario findByEmail(String email) {
+        String jpql = "SELECT f FROM Funcionario f WHERE f.email = :email";
+        TypedQuery<Funcionario> query = entityManager.createQuery(jpql, Funcionario.class);
+        query.setParameter("email", email);
+        return query.getSingleResult();
+    }
+
+    @Override
     @Transactional
     public Funcionario save(Funcionario funcionario) {
         entityManager.persist(funcionario);

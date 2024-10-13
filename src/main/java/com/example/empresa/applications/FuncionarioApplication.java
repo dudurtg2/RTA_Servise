@@ -23,6 +23,10 @@ public class FuncionarioApplication {
         return this.funcionarioRepository.findById(id);
     }
 
+    public Funcionario findByEmail(String email) {
+        return this.funcionarioRepository.findByEmail(email);
+    }
+
     public Funcionario save(Funcionario Funcionario) {
         return this.funcionarioRepository.save(Funcionario);
     }
