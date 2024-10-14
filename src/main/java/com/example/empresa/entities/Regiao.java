@@ -14,10 +14,23 @@ public class Regiao {
     @Column(name = "nome", nullable = false)
     private String nome;
 
+    @JoinColumn(name = "idBase")
+    @ManyToOne
+    private Base idBase;
+
     public Regiao() {}
 
-    public Regiao(String nome) {
+    public Regiao(String nome, Base idBase) {
         this.nome = nome;
+        this.idBase = idBase;
+    }
+
+    public Base getIdBase() {
+        return this.idBase;
+    }
+
+    public void setIdBase(Base idBase) {
+        this.idBase = idBase;
     }
 
     public int getId() {

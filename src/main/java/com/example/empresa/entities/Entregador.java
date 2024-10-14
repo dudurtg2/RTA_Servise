@@ -26,15 +26,29 @@ public class Entregador {
     @Column(name = "endereco", nullable = false)
     private String endereco;
 
+    @ManyToOne
+    @JoinColumn(name = "idBase")
+    private Base idBase;
+
     public Entregador() {}
 
-    public Entregador(String nome, String email, String cpf, String telefone, String endereco) {
+    public Entregador(String nome, String email, String cpf, String telefone, String endereco, Base idBase) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.telefone = telefone;
         this.endereco = endereco;
+        this.idBase = idBase;
     }
+
+    public Base getIdBase() {
+        return this.idBase;
+    }
+
+    public void setIdBase(Base idBase) {
+        this.idBase = idBase;
+    }
+
     
     public int getId() {
         return this.id;

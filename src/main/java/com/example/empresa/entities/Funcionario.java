@@ -26,7 +26,7 @@ public class Funcionario {
     @Column(name = "senha", nullable = false)
     private String senha;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "idBase")
     private Base idBase;
 
