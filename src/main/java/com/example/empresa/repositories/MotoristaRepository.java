@@ -1,10 +1,13 @@
 package com.example.empresa.repositories;
 
 import java.util.List;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.interfaces.IMotoristaRepository;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -41,7 +44,6 @@ public class MotoristaRepository implements IMotoristaRepository {
         Motorista motoristaInDb = entityManager.find(Motorista.class, id);
         
         motoristaInDb.setNome(motorista.getNome());
-        motoristaInDb.setSenha(motorista.getSenha());
         motoristaInDb.setEmail(motorista.getEmail());
         motoristaInDb.setCpf(motorista.getCpf());
         motoristaInDb.setTelefone(motorista.getTelefone());

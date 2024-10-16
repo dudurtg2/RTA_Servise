@@ -1,11 +1,11 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.entities.Motorista;
-import com.example.empresa.interfaces.IMotoristaRepository;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.entities.Motorista;
+import com.example.empresa.interfaces.IMotoristaRepository;
 
 @Component
 public class MotoristaApplication {
@@ -25,8 +25,9 @@ public class MotoristaApplication {
     }
 
     
-    public Motorista save(Motorista Motorista) {
-        return this.motoristaRepository.save(Motorista);
+    public Motorista save(Motorista motorista) {
+
+        return this.motoristaRepository.save(motorista);
     }
 
     

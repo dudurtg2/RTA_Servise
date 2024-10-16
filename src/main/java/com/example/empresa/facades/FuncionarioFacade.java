@@ -1,11 +1,11 @@
 package com.example.empresa.facades;
 
-import com.example.empresa.applications.FuncionarioApplication;
-import com.example.empresa.entities.Funcionario;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.applications.FuncionarioApplication;
+import com.example.empresa.entities.Funcionario;
 
 @Component
 public class FuncionarioFacade {
@@ -23,10 +23,6 @@ public class FuncionarioFacade {
     
     public Funcionario findById(int id) {
         return this.funcionarioApplication.findById(id);
-    }
-
-    public Funcionario findByEmail(String email) {
-        return this.funcionarioApplication.findByEmail(email);
     }
 
     

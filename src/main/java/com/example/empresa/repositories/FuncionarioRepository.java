@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,13 +51,12 @@ public class FuncionarioRepository implements IFuncionarioRepository {
     @Transactional
     public Funcionario update(int id, Funcionario funcionario) {
         Funcionario funcionarioInDb = entityManager.find(Funcionario.class, id);
-        
+
         funcionarioInDb.setNome(funcionario.getNome());
         funcionarioInDb.setEmail(funcionario.getEmail());
         funcionarioInDb.setCpf(funcionario.getCpf());
         funcionarioInDb.setTelefone(funcionario.getTelefone());
-        funcionarioInDb.setSenha(funcionario.getSenha());
-
+        funcionarioInDb.setIdBase(funcionario.getIdBase());
 
         return entityManager.merge(funcionarioInDb);
     }

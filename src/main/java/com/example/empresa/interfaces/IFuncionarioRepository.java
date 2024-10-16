@@ -1,9 +1,10 @@
 package com.example.empresa.interfaces;
 
-import com.example.empresa.entities.Funcionario;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.example.empresa.entities.Funcionario;
 
 @Repository
 public interface IFuncionarioRepository {
