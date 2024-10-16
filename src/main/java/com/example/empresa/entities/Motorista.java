@@ -1,6 +1,13 @@
 package com.example.empresa.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Table(name = "Motorista")
 @Entity
@@ -23,21 +30,17 @@ public class Motorista {
     @Column(name = "telefone", nullable = false)
     private String telefone;
 
-    @Column(name = "senha", nullable = false)
-    private String senha;
-
     @ManyToOne
     @JoinColumn(name = "idBase")
     private Base idBase;
 
     public Motorista() {}
 
-    public Motorista(String nome, String email, String cpf, String telefone, String senha, Base idBase) {
+    public Motorista(String nome, String email, String cpf, String telefone,  Base idBase) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.telefone = telefone;
-        this.senha = senha;
         this.idBase = idBase;
     }
 
@@ -89,12 +92,6 @@ public class Motorista {
         this.telefone = telefone;
     }
 
-    public String getSenha() {
-        return this.senha;
-    }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
     
 }

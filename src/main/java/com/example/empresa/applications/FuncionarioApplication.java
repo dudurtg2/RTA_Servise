@@ -1,11 +1,11 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.entities.Funcionario;
-import com.example.empresa.interfaces.IFuncionarioRepository;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.entities.Funcionario;
+import com.example.empresa.interfaces.IFuncionarioRepository;
 
 @Component
 public class FuncionarioApplication {
@@ -22,13 +22,10 @@ public class FuncionarioApplication {
     public Funcionario findById(int id) {
         return this.funcionarioRepository.findById(id);
     }
+    
+    public Funcionario save(Funcionario funcionario) {
 
-    public Funcionario findByEmail(String email) {
-        return this.funcionarioRepository.findByEmail(email);
-    }
-
-    public Funcionario save(Funcionario Funcionario) {
-        return this.funcionarioRepository.save(Funcionario);
+        return this.funcionarioRepository.save(funcionario);
     }
 
     public Funcionario update(int id, Funcionario Funcionario) {
