@@ -1,5 +1,8 @@
 package com.example.empresa.security;
 
+import java.security.Security;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,10 +14,18 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
+
+    private SecurityFilter securityFilter;
+
+    @Autowired
+    public  SecurityConfiguration(SecurityFilter securityFilter){
+        this.securityFilter = securityFilter;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -24,9 +35,10 @@ public class SecurityConfiguration {
             .authorizeHttpRequests(authorize -> authorize
             .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
             .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-            .requestMatchers(HttpMethod.POST, "/funcionarios").permitAll()
                 .anyRequest().authenticated()
-            ).build();
+            ).addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+            
+            .build();
     }
 
     @Bean

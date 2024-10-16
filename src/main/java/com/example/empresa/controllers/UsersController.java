@@ -1,5 +1,7 @@
 package com.example.empresa.controllers;
 
+import com.example.empresa.security.LoginResponseDTO;
+import com.example.empresa.services.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,18 +22,24 @@ import com.example.empresa.security.RegisterDTO;
 public class UsersController {
     private AuthenticationManager authenticationManager;
     private UsersFacade usersFacade;
+    private TokenService tokenService;
 
     @Autowired
-    public UsersController(AuthenticationManager authenticationManager, UsersFacade usersFacade){
+    public UsersController(TokenService tokenService ,AuthenticationManager authenticationManager, UsersFacade usersFacade){
+        this.tokenService = tokenService;
         this.authenticationManager = authenticationManager;
         this.usersFacade = usersFacade;
+
     }
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody AuthorizationDTO data) {
         var usernamePass = new UsernamePasswordAuthenticationToken(data.login(), data.senha());
         var auth = this.authenticationManager.authenticate(usernamePass);
-        return ResponseEntity.ok().build();
+
+        var token = tokenService.generateToken((Users) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
 
     }
 

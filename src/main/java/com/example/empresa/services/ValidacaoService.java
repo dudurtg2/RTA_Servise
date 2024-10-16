@@ -1,6 +1,6 @@
 package com.example.empresa.services;
 
-public class Validacao {
+public class ValidacaoService {
     public String Cep(String cep) {
         String cepInValidate = cep.replaceAll("[^\\d]", "");
         
