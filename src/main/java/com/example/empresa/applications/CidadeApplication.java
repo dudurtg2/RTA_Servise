@@ -2,7 +2,7 @@ package com.example.empresa.applications;
 
 import com.example.empresa.entities.Cidade;
 import com.example.empresa.interfaces.ICidadeRepository;
-import com.example.empresa.services.Validacao;
+import com.example.empresa.services.ValidacaoService;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class CidadeApplication {
 
     
     public Cidade save(Cidade Cidade) {
-        Cidade.setCep(new Validacao().Cep(Cidade.getCep()));
+        Cidade.setCep(new ValidacaoService().Cep(Cidade.getCep()));
 
         if (Cidade.getCep().equals("invalido")) {
             return null;
@@ -44,7 +44,7 @@ public class CidadeApplication {
             return null;
         }
         
-        Cidade.setCep(new Validacao().Cep(Cidade.getCep()));
+        Cidade.setCep(new ValidacaoService().Cep(Cidade.getCep()));
 
         if (Cidade.getCep().equals("invalido")) {
             return null;

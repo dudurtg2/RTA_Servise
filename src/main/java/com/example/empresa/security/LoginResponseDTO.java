@@ -1,4 +1,4 @@
 package com.example.empresa.security;
 
-public class LoginResponseDTO {
+public record LoginResponseDTO(String token) {
 }
