@@ -20,8 +20,8 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
 
-    private final GetUserService getUserService;
-    private final TokenService tokenService;
+    private GetUserService getUserService;
+    private TokenService tokenService;
 
     @Autowired
     public SecurityFilter(GetUserService getUserService, TokenService tokenService) {
