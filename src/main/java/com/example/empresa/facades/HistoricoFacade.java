@@ -1,11 +1,11 @@
 package com.example.empresa.facades;
 
-import com.example.empresa.applications.HistoricoApplication;
-import com.example.empresa.entities.Historico;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.applications.HistoricoApplication;
+import com.example.empresa.entities.Historico;
 
 @Component
 public class HistoricoFacade {
@@ -26,13 +26,13 @@ public class HistoricoFacade {
     }
 
     
-    public Historico save(Historico Historico) {
-        return this.historicoApplication.save(Historico);
+    public Historico save(Historico historico) {
+        return this.historicoApplication.save(historico);
     }
 
     
-    public Historico update(int id, Historico Historico) {
-        return this.historicoApplication.update(id, Historico);
+    public Historico update(int id, Historico historico) {
+        return this.historicoApplication.update(id, historico);
     }
 
     

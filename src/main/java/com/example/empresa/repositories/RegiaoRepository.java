@@ -1,16 +1,16 @@
 package com.example.empresa.repositories;
 
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.empresa.entities.Regiao;
 import com.example.empresa.interfaces.IRegiaoRepository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Repository
 public class RegiaoRepository implements IRegiaoRepository {
@@ -44,6 +44,7 @@ public class RegiaoRepository implements IRegiaoRepository {
         Regiao regiaoInDb = entityManager.find(Regiao.class, id);
         
         regiaoInDb.setNome(regiao.getNome());
+        regiaoInDb.setIdBase(regiao.getIdBase());
 
         return entityManager.merge(regiaoInDb);
     }

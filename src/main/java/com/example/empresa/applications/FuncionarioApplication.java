@@ -28,14 +28,14 @@ public class FuncionarioApplication {
         return this.funcionarioRepository.save(funcionario);
     }
 
-    public Funcionario update(int id, Funcionario Funcionario) {
+    public Funcionario update(int id, Funcionario funcionario) {
         Funcionario funcionarioInDb = this.funcionarioRepository.findById(id);
 
         if (funcionarioInDb == null) {
             return null;
         }
 
-        return this.funcionarioRepository.update(id, Funcionario);
+        return this.funcionarioRepository.update(id, funcionario);
     }
 
     public void deleteById(int id) {

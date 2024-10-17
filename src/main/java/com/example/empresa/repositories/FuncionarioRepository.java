@@ -1,17 +1,16 @@
 package com.example.empresa.repositories;
 
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.empresa.entities.Funcionario;
 import com.example.empresa.interfaces.IFuncionarioRepository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Repository
 public class FuncionarioRepository implements IFuncionarioRepository {

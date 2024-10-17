@@ -1,14 +1,16 @@
 package com.example.empresa.repositories;
 
-import com.example.empresa.entities.Empresa;
-import com.example.empresa.interfaces.IEmpresaRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.example.empresa.entities.Empresa;
+import com.example.empresa.interfaces.IEmpresaRepository;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 
 @Repository
 public class EmpresaRepository implements IEmpresaRepository {
@@ -43,7 +45,7 @@ public class EmpresaRepository implements IEmpresaRepository {
         
         empresaInDb.setNome(empresa.getNome());
         empresaInDb.setCnpj(empresa.getCnpj());
-
+        
         return entityManager.merge(empresaInDb);
     }
 

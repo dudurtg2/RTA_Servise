@@ -1,6 +1,11 @@
 package com.example.empresa.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Table(name = "Empresa")
 @Entity
@@ -8,7 +13,7 @@ public class Empresa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    @Column(name = "id")
+    @Column(name = "id", unique = true)
     private int id;
 
     @Column(name = "nome") 

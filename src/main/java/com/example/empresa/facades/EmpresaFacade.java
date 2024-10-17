@@ -26,13 +26,13 @@ public class EmpresaFacade {
     }
 
     
-    public Empresa save(Empresa Empresa) {
-        return this.empresaApplication.save(Empresa);
+    public Empresa save(Empresa empresa) {
+        return this.empresaApplication.save(empresa);
     }
 
     
-    public Empresa update(int id, Empresa Empresa) {
-        return this.empresaApplication.update(id, Empresa);
+    public Empresa update(int id, Empresa empresa) {
+        return this.empresaApplication.update(id, empresa);
     }
 
     

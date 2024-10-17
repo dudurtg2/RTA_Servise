@@ -1,16 +1,16 @@
 package com.example.empresa.repositories;
 
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.empresa.entities.Entregador;
 import com.example.empresa.interfaces.IEntregadorRepository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Repository
 public class EntregadorRepository implements IEntregadorRepository {
@@ -48,6 +48,7 @@ public class EntregadorRepository implements IEntregadorRepository {
         entregadorInDb.setEmail(entregador.getEmail());
         entregadorInDb.setCpf(entregador.getCpf());
         entregadorInDb.setTelefone(entregador.getTelefone());
+        entregadorInDb.setIdBase(entregador.getIdBase());
 
         return entityManager.merge(entregadorInDb);
     }

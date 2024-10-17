@@ -1,11 +1,11 @@
 package com.example.empresa.facades;
 
-import com.example.empresa.applications.RegiaoApplication;
-import com.example.empresa.entities.Regiao;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.applications.RegiaoApplication;
+import com.example.empresa.entities.Regiao;
 
 @Component
 public class RegiaoFacade {
@@ -25,13 +25,13 @@ public class RegiaoFacade {
     }
 
     
-    public Regiao save(Regiao Regiao) {
-        return this.regiaoApplication.save(Regiao);
+    public Regiao save(Regiao regiao) {
+        return this.regiaoApplication.save(regiao);
     }
 
     
-    public Regiao update(int id, Regiao Regiao) {
-        return this.regiaoApplication.update(id, Regiao);
+    public Regiao update(int id, Regiao regiao) {
+        return this.regiaoApplication.update(id, regiao);
     }
 
     

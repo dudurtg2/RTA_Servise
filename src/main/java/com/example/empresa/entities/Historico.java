@@ -1,6 +1,11 @@
 package com.example.empresa.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Table(name = "Historico")
 @Entity
@@ -8,19 +13,19 @@ public class Historico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", unique = true)
     private int id;
 
-    @Column(name = "dataCriacao", nullable = false)
+    @Column(name = "dataCriacao")
     private String dataCriacao;
 
-    @Column(name = "dataSaida", nullable = false)
+    @Column(name = "dataSaida")
     private String dataSaida;
 
-    @Column(name = "dataFinalizacao", nullable = false)
+    @Column(name = "dataFinalizacao")
     private String dataFinalizacao;
     
-    @Column(name = "idRomaneio", nullable = false)
+    @Column(name = "idRomaneio")
     private int idRomaneio;
     
     public Historico() {}

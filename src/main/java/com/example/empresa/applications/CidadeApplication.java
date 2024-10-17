@@ -1,12 +1,12 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.entities.Cidade;
-import com.example.empresa.interfaces.ICidadeRepository;
-import com.example.empresa.services.ValidacaoService;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.entities.Cidade;
+import com.example.empresa.interfaces.ICidadeRepository;
+import com.example.empresa.services.ValidacaoService;
 
 @Component
 public class CidadeApplication {
@@ -26,31 +26,31 @@ public class CidadeApplication {
     }
 
     
-    public Cidade save(Cidade Cidade) {
-        Cidade.setCep(new ValidacaoService().Cep(Cidade.getCep()));
+    public Cidade save(Cidade cidade ) {
+        cidade.setCep(new ValidacaoService().Cep(cidade.getCep()));
 
-        if (Cidade.getCep().equals("invalido")) {
+        if (cidade.getCep().equals("invalido")) {
             return null;
         }
 
-        return this.cidadeRepository.save(Cidade);
+        return this.cidadeRepository.save(cidade);
     }
 
     
-    public Cidade update(int id, Cidade Cidade) {
+    public Cidade update(int id, Cidade cidade ) {
         Cidade cidadeInDb = this.cidadeRepository.findById(id);
 
         if (cidadeInDb == null) {
             return null;
         }
         
-        Cidade.setCep(new ValidacaoService().Cep(Cidade.getCep()));
+        cidade.setCep(new ValidacaoService().Cep(cidade.getCep()));
 
-        if (Cidade.getCep().equals("invalido")) {
+        if (cidade.getCep().equals("invalido")) {
             return null;
         }
 
-        return this.cidadeRepository.update(id, Cidade);
+        return this.cidadeRepository.update(id, cidade);
     }
 
     

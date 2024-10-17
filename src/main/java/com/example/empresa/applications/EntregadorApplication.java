@@ -1,11 +1,11 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.entities.Entregador;
-import com.example.empresa.interfaces.IEntregadorRepository;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.entities.Entregador;
+import com.example.empresa.interfaces.IEntregadorRepository;
 
 @Component
 public class EntregadorApplication {
@@ -26,14 +26,19 @@ public class EntregadorApplication {
     }
 
     
-    public Entregador save(Entregador Entregador) {
-        return this.entregadorRepository.save(Entregador);
+    public Entregador save(Entregador entregador ) {
+        return this.entregadorRepository.save(entregador);
     }
 
     
-    public Entregador update(int id, Entregador Entregador) {
+    public Entregador update(int id, Entregador entregador ) {
+        Entregador entregadorInDb = this.entregadorRepository.findById(id);
         
-        return this.entregadorRepository.update(id, Entregador);
+        if (entregadorInDb == null) {
+            return null;
+        }
+          
+        return this.entregadorRepository.update(id, entregador);
     }
 
     

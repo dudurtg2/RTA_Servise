@@ -1,16 +1,16 @@
 package com.example.empresa.repositories;
 
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.interfaces.IRomaneioRepository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Repository
 public class RomaneioRepository implements IRomaneioRepository {
@@ -53,6 +53,7 @@ public class RomaneioRepository implements IRomaneioRepository {
         romaneioInDb.setQuantidade(romaneio.getQuantidade());
         romaneioInDb.setSacas(romaneio.getSacas());
         romaneioInDb.setCaixas(romaneio.getCaixas());
+        romaneioInDb.setCodigoUid(romaneio.getCodigoUid());
 
         return entityManager.merge(romaneioInDb);
     }

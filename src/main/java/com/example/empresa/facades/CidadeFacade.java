@@ -1,11 +1,11 @@
 package com.example.empresa.facades;
 
-import com.example.empresa.applications.CidadeApplication;
-import com.example.empresa.entities.Cidade;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.applications.CidadeApplication;
+import com.example.empresa.entities.Cidade;
 
 @Component
 public class CidadeFacade {
@@ -25,13 +25,13 @@ public class CidadeFacade {
     }
 
     
-    public Cidade save(Cidade Cidade) {
-        return this.cidadeApplication.save(Cidade);
+    public Cidade save(Cidade cidade) {
+        return this.cidadeApplication.save(cidade);
     }
 
     
-    public Cidade update(int id, Cidade Cidade) {
-        return this.cidadeApplication.update(id, Cidade);
+    public Cidade update(int id, Cidade cidade) {
+        return this.cidadeApplication.update(id, cidade);
     }
 
     

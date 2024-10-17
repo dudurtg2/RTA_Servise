@@ -1,11 +1,11 @@
 package com.example.empresa.facades;
 
-import com.example.empresa.applications.EntregadorApplication;
-import com.example.empresa.entities.Entregador;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.applications.EntregadorApplication;
+import com.example.empresa.entities.Entregador;
 
 @Component
 public class EntregadorFacade {
@@ -26,13 +26,13 @@ public class EntregadorFacade {
     }
 
     
-    public Entregador save(Entregador Entregador) {
-        return this.entregadorApplication.save(Entregador);
+    public Entregador save(Entregador entregador) {
+        return this.entregadorApplication.save(entregador);
     }
 
     
-    public Entregador update(int id, Entregador Entregador) {
-        return this.entregadorApplication.update(id, Entregador);
+    public Entregador update(int id, Entregador entregador) {
+        return this.entregadorApplication.update(id, entregador);
     }
 
     

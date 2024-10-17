@@ -1,11 +1,11 @@
 package com.example.empresa.facades;
 
-import com.example.empresa.applications.RomaneioApplication;
-import com.example.empresa.entities.Romaneio;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.applications.RomaneioApplication;
+import com.example.empresa.entities.Romaneio;
 
 @Component
 public class RomaneioFacade {
@@ -24,13 +24,13 @@ public class RomaneioFacade {
     }
 
     
-    public Romaneio save(Romaneio Romaneio) {
-        return this.romaneioApplication.save(Romaneio);
+    public Romaneio save(Romaneio romaneio) {
+        return this.romaneioApplication.save(romaneio);
     }
 
     
-    public Romaneio update(int id, Romaneio Romaneio) {
-        return this.romaneioApplication.update(id, Romaneio);
+    public Romaneio update(int id, Romaneio romaneio) {
+        return this.romaneioApplication.update(id, romaneio);
     }
 
     

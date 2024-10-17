@@ -2,6 +2,7 @@ package com.example.empresa.applications;
 
 import java.util.List;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Users;
@@ -37,6 +38,8 @@ public class UsersApplication {
         if (usersInDb == null) {
             return null;
         }
+
+        users.setSenha(new BCryptPasswordEncoder().encode(users.getSenha()));
 
         return this.usersRepository.update(id, users);
     }

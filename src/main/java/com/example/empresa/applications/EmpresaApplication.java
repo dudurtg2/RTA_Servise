@@ -1,11 +1,11 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.entities.Empresa;
-import com.example.empresa.interfaces.IEmpresaRepository;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.entities.Empresa;
+import com.example.empresa.interfaces.IEmpresaRepository;
 
 @Component
 public class EmpresaApplication {
@@ -27,8 +27,8 @@ public class EmpresaApplication {
     }
 
     
-    public Empresa save(Empresa Empresa) {
-        return this.empresaRepository.save(Empresa);
+    public Empresa save(Empresa empresa) {
+        return this.empresaRepository.save(empresa);
     }
 
     

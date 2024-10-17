@@ -12,13 +12,13 @@ import jakarta.persistence.Table;
 public class Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id" , unique = true)
     private int id;
 
-    @Column(name = "nome", nullable = false)
+    @Column(name = "nome")
     private String nome;
     
-    @Column(name= "endereco", nullable = false)
+    @Column(name= "endereco")
     private String endereco;
 
     public Base() {}

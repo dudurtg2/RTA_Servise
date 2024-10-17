@@ -1,11 +1,11 @@
 package com.example.empresa.facades;
 
-import com.example.empresa.applications.CodigoApplication;
-import com.example.empresa.entities.Codigo;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.applications.CodigoApplication;
+import com.example.empresa.entities.Codigo;
 
 @Component
 public class CodigoFacade {
@@ -26,13 +26,13 @@ public class CodigoFacade {
     }
 
     
-    public Codigo save(Codigo Codigo) {
-        return this.codigoApplication.save(Codigo);
+    public Codigo save(Codigo codigo) {
+        return this.codigoApplication.save(codigo);
     }
 
     
-    public Codigo update(int id, Codigo Codigo) {
-        return this.codigoApplication.update(id, Codigo);
+    public Codigo update(int id, Codigo codigo) {
+        return this.codigoApplication.update(id, codigo);
     }
 
     

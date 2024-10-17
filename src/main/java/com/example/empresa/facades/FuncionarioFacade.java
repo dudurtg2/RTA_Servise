@@ -26,13 +26,13 @@ public class FuncionarioFacade {
     }
 
     
-    public Funcionario save(Funcionario Funcionario) {
-        return this.funcionarioApplication.save(Funcionario);
+    public Funcionario save(Funcionario funcionario) {
+        return this.funcionarioApplication.save(funcionario);
     }
 
     
-    public Funcionario update(int id, Funcionario Funcionario) {
-        return this.funcionarioApplication.update(id, Funcionario);
+    public Funcionario update(int id, Funcionario funcionario) {
+        return this.funcionarioApplication.update(id, funcionario);
     }
 
     

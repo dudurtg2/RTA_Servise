@@ -1,11 +1,11 @@
 package com.example.empresa.applications;
 
-import com.example.empresa.entities.Regiao;
-import com.example.empresa.interfaces.IRegiaoRepository;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.entities.Regiao;
+import com.example.empresa.interfaces.IRegiaoRepository;
 
 @Component
 public class RegiaoApplication {
@@ -26,18 +26,18 @@ public class RegiaoApplication {
     }
 
     
-    public Regiao save(Regiao Regiao) {
-        return this.regiaoRepository.save(Regiao);
+    public Regiao save(Regiao regiao) {
+        return this.regiaoRepository.save(regiao);
     }
 
     
-    public Regiao update(int id, Regiao Regiao) {
+    public Regiao update(int id, Regiao regiao) {
         Regiao regiaoInDb = this.regiaoRepository.findById(id);
 
         if (regiaoInDb == null) {
             return null;
         }
-        return this.regiaoRepository.update(id, Regiao);
+        return this.regiaoRepository.update(id, regiao);
     }
 
     

@@ -27,18 +27,18 @@ public class CodigoApplication {
     }
 
     
-    public Codigo save(Codigo Codigo) {
-        return this.codigoRepository.save(Codigo);
+    public Codigo save(Codigo codigo) {
+        return this.codigoRepository.save(codigo);
     }
 
     
-    public Codigo update(int id, Codigo Codigo) {
+    public Codigo update(int id, Codigo codigo) {
         Codigo codigoInDb = this.codigoRepository.findById(id);
 
         if (codigoInDb == null) {
             return null;
         }
-        return this.codigoRepository.update(id, Codigo);
+        return this.codigoRepository.update(id, codigo);
     }
 
     

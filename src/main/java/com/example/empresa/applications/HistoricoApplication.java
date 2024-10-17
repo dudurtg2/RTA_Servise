@@ -26,19 +26,19 @@ public class HistoricoApplication {
     }
 
     
-    public Historico save(Historico Historico) {
-        return this.historicoRepository.save(Historico);
+    public Historico save(Historico historico) {
+        return this.historicoRepository.save(historico);
     }
 
     
-    public Historico update(int id, Historico Historico) {
+    public Historico update(int id, Historico historico) {
         Historico historicoInDb = this.historicoRepository.findById(id);
 
         if (historicoInDb == null) {
             return null;
         }
 
-        return this.historicoRepository.update(id, Historico);
+        return this.historicoRepository.update(id, historico);
     }
 
     

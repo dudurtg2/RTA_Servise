@@ -25,13 +25,13 @@ public class MotoristaFacade {
     }
 
     
-    public Motorista save(Motorista Motorista) {
-        return this.motoristaApplication.save(Motorista);
+    public Motorista save(Motorista motorista) {
+        return this.motoristaApplication.save(motorista);
     }
 
     
-    public Motorista update(int id, Motorista Motorista) {
-        return this.motoristaApplication.update(id, Motorista);
+    public Motorista update(int id, Motorista motorista) {
+        return this.motoristaApplication.update(id, motorista);
     }
 
     
