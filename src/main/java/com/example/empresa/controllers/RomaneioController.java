@@ -33,7 +33,7 @@ public class RomaneioController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Romaneio> findById(@PathVariable int id) {
         Romaneio romaneio = this.romaneioFacade.findById(id);
-        
+
         return new ResponseEntity<Romaneio>(romaneio, HttpStatus.OK);
     }
 
@@ -50,18 +50,19 @@ public class RomaneioController {
             @PathVariable int id,
             @RequestBody Romaneio romaneio) {
 
-                Romaneio RomaneioUpdated = romaneioFacade.update(id, romaneio);
+        Romaneio RomaneioUpdated = romaneioFacade.update(id, romaneio);
 
-            if (RomaneioUpdated == null)
-                return new ResponseEntity<Romaneio>(RomaneioUpdated, HttpStatus.NOT_FOUND);
+        if (RomaneioUpdated == null) {
+            return new ResponseEntity<Romaneio>(RomaneioUpdated, HttpStatus.NOT_FOUND);
+        }
 
-            return new ResponseEntity<Romaneio>(RomaneioUpdated, HttpStatus.OK);
+        return new ResponseEntity<Romaneio>(RomaneioUpdated, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         romaneioFacade.deleteById(id);
-        
+
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

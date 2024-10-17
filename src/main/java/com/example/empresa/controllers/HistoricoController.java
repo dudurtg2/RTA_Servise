@@ -33,7 +33,7 @@ public class HistoricoController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Historico> findById(@PathVariable int id) {
         Historico historico = this.historicoFacade.findById(id);
-        
+
         return new ResponseEntity<Historico>(historico, HttpStatus.OK);
     }
 
@@ -50,18 +50,19 @@ public class HistoricoController {
             @PathVariable int id,
             @RequestBody Historico historico) {
 
-                Historico historicoUpdated = historicoFacade.update(id, historico);
+        Historico historicoUpdated = historicoFacade.update(id, historico);
 
-            if (historicoUpdated == null)
-                return new ResponseEntity<Historico>(historicoUpdated, HttpStatus.NOT_FOUND);
+        if (historicoUpdated == null) {
+            return new ResponseEntity<Historico>(historicoUpdated, HttpStatus.NOT_FOUND);
+        }
 
-            return new ResponseEntity<Historico>(historicoUpdated, HttpStatus.OK);
+        return new ResponseEntity<Historico>(historicoUpdated, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         historicoFacade.deleteById(id);
-        
+
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

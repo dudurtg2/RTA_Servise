@@ -33,7 +33,7 @@ public class CodigoController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Codigo> findById(@PathVariable int id) {
         Codigo codigo = this.codigoFacade.findById(id);
-        
+
         return new ResponseEntity<Codigo>(codigo, HttpStatus.OK);
     }
 
@@ -50,18 +50,19 @@ public class CodigoController {
             @PathVariable int id,
             @RequestBody Codigo codigo) {
 
-            Codigo codigoUpdated = codigoFacade.update(id, codigo);
+        Codigo codigoUpdated = codigoFacade.update(id, codigo);
 
-            if (codigoUpdated == null)
-                return new ResponseEntity<Codigo>(codigoUpdated, HttpStatus.NOT_FOUND);
+        if (codigoUpdated == null) {
+            return new ResponseEntity<Codigo>(codigoUpdated, HttpStatus.NOT_FOUND);
+        }
 
-            return new ResponseEntity<Codigo>(codigoUpdated, HttpStatus.OK);
+        return new ResponseEntity<Codigo>(codigoUpdated, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         codigoFacade.deleteById(id);
-        
+
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

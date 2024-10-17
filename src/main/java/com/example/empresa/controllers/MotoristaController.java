@@ -34,7 +34,7 @@ public class MotoristaController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Motorista> findById(@PathVariable int id) {
         Motorista motorista = this.motoristaFacade.findById(id);
-        
+
         return new ResponseEntity<Motorista>(motorista, HttpStatus.OK);
     }
 
@@ -44,8 +44,8 @@ public class MotoristaController {
             Motorista motoristaSaved = motoristaFacade.save(motorista);
             return new ResponseEntity<Motorista>(motoristaSaved, HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<Boolean>(false , HttpStatus.CONFLICT);
-        } 
+            return new ResponseEntity<Boolean>(false, HttpStatus.CONFLICT);
+        }
 
     }
 
@@ -54,18 +54,19 @@ public class MotoristaController {
             @PathVariable int id,
             @RequestBody Motorista motorista) {
 
-            Motorista motoristaUpdated = motoristaFacade.update(id, motorista);
+        Motorista motoristaUpdated = motoristaFacade.update(id, motorista);
 
-            if (motoristaUpdated == null)
-                return new ResponseEntity<Motorista>(motoristaUpdated, HttpStatus.NOT_FOUND);
+        if (motoristaUpdated == null) {
+            return new ResponseEntity<Motorista>(motoristaUpdated, HttpStatus.NOT_FOUND);
+        }
 
-            return new ResponseEntity<Motorista>(motoristaUpdated, HttpStatus.OK);
+        return new ResponseEntity<Motorista>(motoristaUpdated, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         motoristaFacade.deleteById(id);
-        
+
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

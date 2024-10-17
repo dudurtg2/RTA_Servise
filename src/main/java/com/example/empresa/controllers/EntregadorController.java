@@ -34,7 +34,7 @@ public class EntregadorController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Entregador> findById(@PathVariable int id) {
         Entregador entregador = this.entregadorFacade.findById(id);
-        
+
         return new ResponseEntity<Entregador>(entregador, HttpStatus.OK);
     }
 
@@ -44,9 +44,9 @@ public class EntregadorController {
             Entregador entregadorSaved = entregadorFacade.save(entregador);
             return new ResponseEntity<Entregador>(entregadorSaved, HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<Boolean>(false , HttpStatus.CONFLICT);
-        } 
-   
+            return new ResponseEntity<Boolean>(false, HttpStatus.CONFLICT);
+        }
+
     }
 
     @PutMapping("/update/{id}")
@@ -54,18 +54,19 @@ public class EntregadorController {
             @PathVariable int id,
             @RequestBody Entregador entregador) {
 
-            Entregador entregadorUpdated = entregadorFacade.update(id, entregador);
+        Entregador entregadorUpdated = entregadorFacade.update(id, entregador);
 
-            if (entregadorUpdated == null)
-                return new ResponseEntity<Entregador>(entregadorUpdated, HttpStatus.NOT_FOUND);
+        if (entregadorUpdated == null) {
+            return new ResponseEntity<Entregador>(entregadorUpdated, HttpStatus.NOT_FOUND);
+        }
 
-            return new ResponseEntity<Entregador>(entregadorUpdated, HttpStatus.OK);
+        return new ResponseEntity<Entregador>(entregadorUpdated, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         entregadorFacade.deleteById(id);
-        
+
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

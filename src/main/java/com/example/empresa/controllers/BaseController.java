@@ -33,7 +33,7 @@ public class BaseController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Base> findById(@PathVariable int id) {
         Base Base = this.baseFacade.findById(id);
-        
+
         return new ResponseEntity<Base>(Base, HttpStatus.OK);
     }
 
@@ -50,18 +50,19 @@ public class BaseController {
             @PathVariable int id,
             @RequestBody Base base) {
 
-            Base baseUpdated = baseFacade.update(id, base);
+        Base baseUpdated = baseFacade.update(id, base);
 
-            if (baseUpdated == null)
-                return new ResponseEntity<Base>(baseUpdated, HttpStatus.NOT_FOUND);
+        if (baseUpdated == null) {
+            return new ResponseEntity<Base>(baseUpdated, HttpStatus.NOT_FOUND);
+        }
 
-            return new ResponseEntity<Base>(baseUpdated, HttpStatus.OK);
+        return new ResponseEntity<Base>(baseUpdated, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         baseFacade.deleteById(id);
-        
+
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

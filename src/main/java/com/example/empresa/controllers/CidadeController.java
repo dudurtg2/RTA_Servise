@@ -33,7 +33,7 @@ public class CidadeController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Cidade> findById(@PathVariable int id) {
         Cidade cidade = this.cidadeFacade.findById(id);
-        
+
         return new ResponseEntity<Cidade>(cidade, HttpStatus.OK);
     }
 
@@ -50,18 +50,19 @@ public class CidadeController {
             @PathVariable int id,
             @RequestBody Cidade cidade) {
 
-            Cidade cidadeUpdated = cidadeFacade.update(id, cidade);
+        Cidade cidadeUpdated = cidadeFacade.update(id, cidade);
 
-            if (cidadeUpdated == null)
-                return new ResponseEntity<Cidade>(cidadeUpdated, HttpStatus.NOT_FOUND);
+        if (cidadeUpdated == null) {
+            return new ResponseEntity<Cidade>(cidadeUpdated, HttpStatus.NOT_FOUND);
+        }
 
-            return new ResponseEntity<Cidade>(cidadeUpdated, HttpStatus.OK);
+        return new ResponseEntity<Cidade>(cidadeUpdated, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         cidadeFacade.deleteById(id);
-        
+
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

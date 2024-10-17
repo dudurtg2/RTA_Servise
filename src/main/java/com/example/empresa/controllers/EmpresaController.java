@@ -34,18 +34,18 @@ public class EmpresaController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Empresa> findById(@PathVariable int id) {
         Empresa empresa = this.empresaFacade.findById(id);
-        
+
         return new ResponseEntity<Empresa>(empresa, HttpStatus.OK);
     }
 
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody Empresa empresa) {
-         try {
+        try {
             Empresa empresaSaved = empresaFacade.save(empresa);
             return new ResponseEntity<Empresa>(empresaSaved, HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<Boolean>(false , HttpStatus.CONFLICT);
-        } 
+            return new ResponseEntity<Boolean>(false, HttpStatus.CONFLICT);
+        }
 
     }
 
@@ -54,18 +54,19 @@ public class EmpresaController {
             @PathVariable int id,
             @RequestBody Empresa empresa) {
 
-            Empresa empresaUpdated = empresaFacade.update(id, empresa);
+        Empresa empresaUpdated = empresaFacade.update(id, empresa);
 
-            if (empresaUpdated == null)
-                return new ResponseEntity<Empresa>(empresaUpdated, HttpStatus.NOT_FOUND);
+        if (empresaUpdated == null) {
+            return new ResponseEntity<Empresa>(empresaUpdated, HttpStatus.NOT_FOUND);
+        }
 
-            return new ResponseEntity<Empresa>(empresaUpdated, HttpStatus.OK);
+        return new ResponseEntity<Empresa>(empresaUpdated, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         empresaFacade.deleteById(id);
-        
+
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

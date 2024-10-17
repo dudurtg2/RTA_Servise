@@ -34,10 +34,9 @@ public class FuncionarioController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Funcionario> findById(@PathVariable int id) {
         Funcionario Funcionario = this.funcionarioFacade.findById(id);
-        
+
         return new ResponseEntity<Funcionario>(Funcionario, HttpStatus.OK);
     }
-    
 
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody Funcionario funcionario) {
@@ -48,8 +47,8 @@ public class FuncionarioController {
             Funcionario funcionarioSaved = funcionarioFacade.save(funcionario);
             return new ResponseEntity<Funcionario>(funcionarioSaved, HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<Boolean>(false , HttpStatus.CONFLICT);
-        } 
+            return new ResponseEntity<Boolean>(false, HttpStatus.CONFLICT);
+        }
     }
 
     @PutMapping("/update/{id}")
@@ -57,18 +56,19 @@ public class FuncionarioController {
             @PathVariable int id,
             @RequestBody Funcionario funcionario) {
 
-            Funcionario funcionarioUpdated = funcionarioFacade.update(id, funcionario);
+        Funcionario funcionarioUpdated = funcionarioFacade.update(id, funcionario);
 
-            if (funcionarioUpdated == null)
-                return new ResponseEntity<Funcionario>(funcionarioUpdated, HttpStatus.NOT_FOUND);
+        if (funcionarioUpdated == null) {
+            return new ResponseEntity<Funcionario>(funcionarioUpdated, HttpStatus.NOT_FOUND);
+        }
 
-            return new ResponseEntity<Funcionario>(funcionarioUpdated, HttpStatus.OK);
+        return new ResponseEntity<Funcionario>(funcionarioUpdated, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         funcionarioFacade.deleteById(id);
-        
+
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

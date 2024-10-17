@@ -33,7 +33,7 @@ public class RegiaoController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Regiao> findById(@PathVariable int id) {
         Regiao regiao = this.regiaoFacade.findById(id);
-        
+
         return new ResponseEntity<Regiao>(regiao, HttpStatus.OK);
     }
 
@@ -50,18 +50,19 @@ public class RegiaoController {
             @PathVariable int id,
             @RequestBody Regiao regiao) {
 
-                Regiao regiaoUpdated = regiaoFacade.update(id, regiao);
+        Regiao regiaoUpdated = regiaoFacade.update(id, regiao);
 
-            if (regiaoUpdated == null)
-                return new ResponseEntity<Regiao>(regiaoUpdated, HttpStatus.NOT_FOUND);
+        if (regiaoUpdated == null) {
+            return new ResponseEntity<Regiao>(regiaoUpdated, HttpStatus.NOT_FOUND);
+        }
 
-            return new ResponseEntity<Regiao>(regiaoUpdated, HttpStatus.OK);
+        return new ResponseEntity<Regiao>(regiaoUpdated, HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         regiaoFacade.deleteById(id);
-        
+
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }
