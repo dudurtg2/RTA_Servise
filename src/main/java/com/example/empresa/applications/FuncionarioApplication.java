@@ -24,6 +24,7 @@ public class FuncionarioApplication {
     }
     
     public Funcionario save(Funcionario funcionario) {
+        funcionario.setEmail(funcionario.getEmail().toLowerCase());
 
         return this.funcionarioRepository.save(funcionario);
     }
@@ -34,6 +35,8 @@ public class FuncionarioApplication {
         if (funcionarioInDb == null) {
             return null;
         }
+        
+        funcionario.setEmail(funcionario.getEmail().toLowerCase());
 
         return this.funcionarioRepository.update(id, funcionario);
     }

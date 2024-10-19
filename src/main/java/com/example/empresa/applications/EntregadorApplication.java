@@ -27,6 +27,7 @@ public class EntregadorApplication {
 
     
     public Entregador save(Entregador entregador ) {
+        entregador.setEmail(entregador.getEmail().toLowerCase());
         return this.entregadorRepository.save(entregador);
     }
 
@@ -37,7 +38,9 @@ public class EntregadorApplication {
         if (entregadorInDb == null) {
             return null;
         }
-          
+        
+        entregador.setEmail(entregador.getEmail().toLowerCase());
+
         return this.entregadorRepository.update(id, entregador);
     }
 

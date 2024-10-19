@@ -28,6 +28,7 @@ public class UsersApplication {
 
     
     public Users save(Users users) {
+        users.setLogin(users.getLogin().toLowerCase());
         return this.usersRepository.save(users);
     }
 
@@ -38,7 +39,7 @@ public class UsersApplication {
         if (usersInDb == null) {
             return null;
         }
-
+        users.setLogin(users.getLogin().toLowerCase());
         users.setSenha(new BCryptPasswordEncoder().encode(users.getSenha()));
 
         return this.usersRepository.update(id, users);
