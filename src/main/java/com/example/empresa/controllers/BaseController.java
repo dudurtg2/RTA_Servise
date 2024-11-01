@@ -33,6 +33,7 @@ public class BaseController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Base> findById(@PathVariable int id) {
         Base Base = this.baseFacade.findById(id);
+        
 
         return new ResponseEntity<Base>(Base, HttpStatus.OK);
     }

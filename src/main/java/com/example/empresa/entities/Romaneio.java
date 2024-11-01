@@ -18,47 +18,48 @@ public class Romaneio {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "idEmpresa")
+    @JoinColumn(name = "idEmpresa") 
     private Empresa idEmpresa;
 
     @ManyToOne
-    @JoinColumn(name = "idMotorista")
+    @JoinColumn(name = "idMotorista") 
     private Motorista idMotorista;
 
     @ManyToOne
-    @JoinColumn(name = "idEntregador")
+    @JoinColumn(name = "idEntregador") 
     private Entregador idEntregador;
     
     @ManyToOne
-    @JoinColumn(name = "idFuncionario")
+    @JoinColumn(name = "idFuncionario") 
     private Funcionario idFuncionario;
 
     @ManyToOne
-    @JoinColumn(name = "idBase")
+    @JoinColumn(name = "idBase") 
     private Base idBase;
 
     @ManyToOne
-    @JoinColumn(name = "idCidade")
+    @JoinColumn(name = "idCidade") 
     private Cidade idCidade;
 
-    @Column(name = "sts")
+    @Column(name = "sts") 
     private String sts;
 
-    @Column(name = "quantidade")
+    @Column(name = "quantidade") 
     private int quantidade;
 
-    @Column(name = "sacas")
-    private int sacas;
-
-    @Column (name = "caixas") 
-    private int caixas;
-
-    @Column(name = "CodigoUid")
+    @Column(name = "CodigoUid") 
     private String CodigoUid;
+
+    @Column(name = "linkDownload") 
+    private String linkDownload;
+
+    @Column(name = "data") 
+    private String data;
+    
 
     public Romaneio() {}
 
-    public Romaneio(int id, Empresa idEmpresa, Motorista idMotorista, Entregador idEntregador, Funcionario idFuncionario, Base idBase, Cidade idCidade, String sts, int quantidade, int sacas, int caixas, String CodigoUid) {
+    public Romaneio(int id, Empresa idEmpresa, Motorista idMotorista, Entregador idEntregador, Funcionario idFuncionario, Base idBase, Cidade idCidade, String sts, int quantidade, String CodigoUid, String linkDownload) {
         this.id = id;
         this.idEmpresa = idEmpresa;
         this.idMotorista = idMotorista;
@@ -68,11 +69,27 @@ public class Romaneio {
         this.idCidade = idCidade;
         this.sts = sts;
         this.quantidade = quantidade;
-        this.sacas = sacas;
-        this.caixas = caixas;
         this.CodigoUid = CodigoUid;
+        this.linkDownload = linkDownload;
     }
     
+
+    public String getData() {
+        return this.data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+
+    public String getLinkDownload() {
+        return this.linkDownload;
+    }
+
+    public void setLinkDownload(String linkDownload) {
+        this.linkDownload = linkDownload;
+    }
 
     public int getId() {
         return this.id;
@@ -146,21 +163,6 @@ public class Romaneio {
         this.quantidade = quantidade;
     }
 
-    public int getSacas() {
-        return this.sacas;
-    }
-
-    public void setSacas(int sacas) {
-        this.sacas = sacas;
-    }
-
-    public int getCaixas() {
-        return this.caixas;
-    }
-
-    public void setCaixas(int caixas) {
-        this.caixas = caixas;
-    }
 
     public String getCodigoUid() {
         return this.CodigoUid;
