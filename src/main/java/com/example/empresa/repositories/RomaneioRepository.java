@@ -53,6 +53,8 @@ public class RomaneioRepository implements IRomaneioRepository {
         romaneioInDb.setSts(romaneio.getSts());
         romaneioInDb.setQuantidade(romaneio.getQuantidade());
         romaneioInDb.setCodigoUid(romaneio.getCodigoUid());
+        romaneioInDb.setOcorrencia(romaneio.getOcorrencia());
+        romaneioInDb.setDataFinal(romaneio.getDataFinal());
 
         return entityManager.merge(romaneioInDb);
     }

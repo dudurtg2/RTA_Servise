@@ -55,11 +55,17 @@ public class Romaneio {
 
     @Column(name = "data") 
     private String data;
+
+    @Column(name = "dataFinal")
+    private String dataFinal;
+
+    @Column(name = "ocorrencia")
+    private String ocorrencia;
     
 
     public Romaneio() {}
 
-    public Romaneio(int id, Empresa idEmpresa, Motorista idMotorista, Entregador idEntregador, Funcionario idFuncionario, Base idBase, Cidade idCidade, String sts, int quantidade, String CodigoUid, String linkDownload) {
+    public Romaneio(int id, Empresa idEmpresa, Motorista idMotorista, Entregador idEntregador, Funcionario idFuncionario, Base idBase, Cidade idCidade, String sts, int quantidade, String CodigoUid, String linkDownload, String data, String dataFinal, String ocorrencia) {
         this.id = id;
         this.idEmpresa = idEmpresa;
         this.idMotorista = idMotorista;
@@ -71,6 +77,25 @@ public class Romaneio {
         this.quantidade = quantidade;
         this.CodigoUid = CodigoUid;
         this.linkDownload = linkDownload;
+        this.data = data;
+        this.dataFinal = dataFinal;
+        this.ocorrencia = ocorrencia;
+    }
+    
+    public String getDataFinal() {
+        return this.dataFinal;
+    }
+
+    public void setDataFinal(String dataFinal) {
+        this.dataFinal = dataFinal;
+    }
+
+    public String getOcorrencia() {
+        return this.ocorrencia;
+    }
+
+    public void setOcorrencia(String ocorrencia) {
+        this.ocorrencia = ocorrencia;
     }
     
 
@@ -81,7 +106,6 @@ public class Romaneio {
     public void setData(String data) {
         this.data = data;
     }
-
 
     public String getLinkDownload() {
         return this.linkDownload;
