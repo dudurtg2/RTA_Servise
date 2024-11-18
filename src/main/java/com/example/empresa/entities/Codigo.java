@@ -46,12 +46,5 @@ public class Codigo {
         this.id = id;
     }
 
-    public Romaneio getIdRomaneio() {
-        return this.idRomaneio;
-    }
-
-    public void setIdRomaneio(Romaneio idRomaneio) {
-        this.idRomaneio = idRomaneio;
-    }
-
+   
 }
