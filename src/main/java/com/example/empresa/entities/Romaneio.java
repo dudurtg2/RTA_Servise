@@ -1,5 +1,9 @@
 package com.example.empresa.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Table(name = "Romaneio")
@@ -62,10 +67,10 @@ public class Romaneio {
     @Column(name = "ocorrencia")
     private String ocorrencia;
     
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRomaneio")
+    private List<Codigo> Codigo = new ArrayList<>();
 
-    public Romaneio() {}
-
-    public Romaneio(int id, Empresa idEmpresa, Motorista idMotorista, Entregador idEntregador, Funcionario idFuncionario, Base idBase, Cidade idCidade, String sts, int quantidade, String CodigoUid, String linkDownload, String data, String dataFinal, String ocorrencia) {
+    public Romaneio(int id, Empresa idEmpresa, Motorista idMotorista, Entregador idEntregador, Funcionario idFuncionario, Base idBase, Cidade idCidade, String sts, int quantidade, String CodigoUid, String linkDownload, String data, String dataFinal, String ocorrencia, java.util.List<Codigo> Codigo) {
         this.id = id;
         this.idEmpresa = idEmpresa;
         this.idMotorista = idMotorista;
@@ -80,40 +85,12 @@ public class Romaneio {
         this.data = data;
         this.dataFinal = dataFinal;
         this.ocorrencia = ocorrencia;
-    }
-    
-    public String getDataFinal() {
-        return this.dataFinal;
+        this.Codigo = Codigo;
     }
 
-    public void setDataFinal(String dataFinal) {
-        this.dataFinal = dataFinal;
+    public Romaneio() {
     }
 
-    public String getOcorrencia() {
-        return this.ocorrencia;
-    }
-
-    public void setOcorrencia(String ocorrencia) {
-        this.ocorrencia = ocorrencia;
-    }
-    
-
-    public String getData() {
-        return this.data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String getLinkDownload() {
-        return this.linkDownload;
-    }
-
-    public void setLinkDownload(String linkDownload) {
-        this.linkDownload = linkDownload;
-    }
 
     public int getId() {
         return this.id;
@@ -187,7 +164,6 @@ public class Romaneio {
         this.quantidade = quantidade;
     }
 
-
     public String getCodigoUid() {
         return this.CodigoUid;
     }
@@ -195,6 +171,47 @@ public class Romaneio {
     public void setCodigoUid(String CodigoUid) {
         this.CodigoUid = CodigoUid;
     }
+
+    public String getLinkDownload() {
+        return this.linkDownload;
+    }
+
+    public void setLinkDownload(String linkDownload) {
+        this.linkDownload = linkDownload;
+    }
+
+    public String getData() {
+        return this.data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getDataFinal() {
+        return this.dataFinal;
+    }
+
+    public void setDataFinal(String dataFinal) {
+        this.dataFinal = dataFinal;
+    }
+
+    public String getOcorrencia() {
+        return this.ocorrencia;
+    }
+
+    public void setOcorrencia(String ocorrencia) {
+        this.ocorrencia = ocorrencia;
+    }
+
+    public List<Codigo> getCodigo() {
+        return this.Codigo;
+    }
+
+    public void setCodigo(List<Codigo> Codigo) {
+        this.Codigo = Codigo;
+    }
+    
 
    
 }

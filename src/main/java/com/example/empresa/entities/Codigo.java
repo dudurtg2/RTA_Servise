@@ -1,5 +1,6 @@
 package com.example.empresa.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,8 +18,8 @@ public class Codigo {
     @Column(name = "codigo")
     private String codigo;
     
-    @ManyToOne
-    @JoinColumn(name = "idRomaneio")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idRomaneio", referencedColumnName = "id")
     private Romaneio idRomaneio;
     
     public Codigo() {}
