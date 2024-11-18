@@ -1,8 +1,11 @@
 package com.example.empresa.entities;
 
+import jakarta.annotation.Generated;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -13,18 +16,19 @@ import jakarta.persistence.Table;
 public class Codigo {
     @Id
     @Column(name = "id", unique = true)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column(name = "codigo")
     private String codigo;
     
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idRomaneio", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "idRomaneio", referencedColumnName = "id", nullable = false) 
     private Romaneio idRomaneio;
     
     public Codigo() {}
 
-    public Codigo(String id, Romaneio idRomaneio, String codigo) {
+    public Codigo(int id, Romaneio idRomaneio, String codigo) {
         this.id = id;
         this.idRomaneio = idRomaneio;
         this.codigo = codigo;
@@ -38,13 +42,16 @@ public class Codigo {
         this.codigo = codigo;
     }
 
-    public String getId() {
+    public int getId() {
         return this.id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-   
+
+    public void setRomaneio(Romaneio romaneio) {
+        this.idRomaneio = romaneio;
+    }
 }

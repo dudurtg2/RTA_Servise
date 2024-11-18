@@ -1,5 +1,6 @@
 package com.example.empresa.controllers;
 
+import com.example.empresa.entities.Codigo;
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.facades.RomaneioFacade;
 
@@ -39,7 +40,12 @@ public class RomaneioController {
 
     @PostMapping("/save")
     public ResponseEntity<Romaneio> save(@RequestBody Romaneio romaneio) {
+        for (Codigo codigo : romaneio.getCodigo()) {
+            codigo.setRomaneio(romaneio);
+        }
         Romaneio romaneioSaved = romaneioFacade.save(romaneio);
+
+         
 
         return new ResponseEntity<Romaneio>(romaneioSaved, HttpStatus.CREATED);
 
