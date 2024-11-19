@@ -9,14 +9,22 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Codigo")
 @Entity
 public class Codigo {
     @Id
-    @Column(name = "id", unique = true)
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name = "codigo")
     private String codigo;
@@ -25,32 +33,7 @@ public class Codigo {
     @JoinColumn(name = "romaneio", referencedColumnName = "id", nullable = false) 
     private Romaneio romaneio;
     
-    public Codigo() {}
-
-    public Codigo(int id, Romaneio romaneio, String codigo) {
-        this.id = id;
-        this.romaneio = romaneio;
-        this.codigo = codigo;
-    }
-
-    public String getCodigo() {
-        return this.codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-    public void setRomaneio(Romaneio romaneio) {
-        this.romaneio = romaneio;
+    public Romaneio getRomaneio() {
+        return null;
     }
 }

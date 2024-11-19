@@ -13,14 +13,22 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Romaneio")
 @Entity
 public class Romaneio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true)
-    private int id;
+    @Column(name = "id")
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "empresa") 
@@ -69,148 +77,5 @@ public class Romaneio {
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "romaneio")
     private List<Codigo> codigo = new ArrayList<>();
-
-    public Romaneio() {
-    }
-
-    public Romaneio(int id, Empresa empresa, Motorista motorista, Entregador entregador, Funcionario funcionario, Base base, Cidade cidade, String sts, int quantidade, String CodigoUid, String linkDownload, String data, String dataFinal, String ocorrencia, List<Codigo> codigo) {
-        this.id = id;
-        this.empresa = empresa;
-        this.motorista = motorista;
-        this.entregador = entregador;
-        this.funcionario = funcionario;
-        this.base = base;
-        this.cidade = cidade;
-        this.sts = sts;
-        this.quantidade = quantidade;
-        this.CodigoUid = CodigoUid;
-        this.linkDownload = linkDownload;
-        this.data = data;
-        this.dataFinal = dataFinal;
-        this.ocorrencia = ocorrencia;
-        this.codigo = codigo;
-    }
-
-
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Empresa getEmpresa() {
-        return this.empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
-
-    public Motorista getMotorista() {
-        return this.motorista;
-    }
-
-    public void setMotorista(Motorista motorista) {
-        this.motorista = motorista;
-    }
-
-    public Entregador getEntregador() {
-        return this.entregador;
-    }
-
-    public void setEntregador(Entregador entregador) {
-        this.entregador = entregador;
-    }
-
-    public Funcionario getFuncionario() {
-        return this.funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
-
-    public Base getBase() {
-        return this.base;
-    }
-
-    public void setBase(Base base) {
-        this.base = base;
-    }
-
-    public Cidade getCidade() {
-        return this.cidade;
-    }
-
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getSts() {
-        return this.sts;
-    }
-
-    public void setSts(String sts) {
-        this.sts = sts;
-    }
-
-    public int getQuantidade() {
-        return this.quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public String getCodigoUid() {
-        return this.CodigoUid;
-    }
-
-    public void setCodigoUid(String CodigoUid) {
-        this.CodigoUid = CodigoUid;
-    }
-
-    public String getLinkDownload() {
-        return this.linkDownload;
-    }
-
-    public void setLinkDownload(String linkDownload) {
-        this.linkDownload = linkDownload;
-    }
-
-    public String getData() {
-        return this.data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String getDataFinal() {
-        return this.dataFinal;
-    }
-
-    public void setDataFinal(String dataFinal) {
-        this.dataFinal = dataFinal;
-    }
-
-    public String getOcorrencia() {
-        return this.ocorrencia;
-    }
-
-    public void setOcorrencia(String ocorrencia) {
-        this.ocorrencia = ocorrencia;
-    }
-
-    public List<Codigo> getCodigo() {
-        return this.codigo;
-    }
-
-    public void setCodigo(List<Codigo> codigo) {
-        this.codigo = codigo;
-    }
-
    
 }

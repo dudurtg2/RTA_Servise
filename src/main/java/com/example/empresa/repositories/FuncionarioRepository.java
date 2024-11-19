@@ -55,7 +55,7 @@ public class FuncionarioRepository implements IFuncionarioRepository {
         funcionarioInDb.setEmail(funcionario.getEmail());
         funcionarioInDb.setCpf(funcionario.getCpf());
         funcionarioInDb.setTelefone(funcionario.getTelefone());
-        funcionarioInDb.setIdBase(funcionario.getIdBase());
+        funcionarioInDb.setBase(funcionario.getBase());
 
         return entityManager.merge(funcionarioInDb);
     }

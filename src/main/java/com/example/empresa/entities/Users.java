@@ -12,13 +12,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Users")
 @Entity
 public class Users implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true)
-    private int id;
+    @Column(name = "id")
+    private long id;
 
     @Column(name = "login", nullable = false, unique = true)
     private String login;
@@ -26,34 +35,8 @@ public class Users implements UserDetails {
     @Column(name= "senha", nullable = false)
     private String senha;
 
-    public Users() {}
-
     public Users(String login, String senha) {
         this.login = login;
-        this.senha = senha;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getLogin() {
-        return this.login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return this.senha;
-    }
-
-    public void setSenha(String senha) {
         this.senha = senha;
     }
 
