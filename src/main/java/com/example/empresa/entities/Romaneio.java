@@ -1,81 +1,74 @@
 package com.example.empresa.entities;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Romaneio")
+@ToString
+@EqualsAndHashCode
+@Builder
 @Entity
+@Table(name = "romaneio")
 public class Romaneio {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "empresa") 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "empresa")
     private Empresa empresa;
 
-    @ManyToOne
-    @JoinColumn(name = "motorista") 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "motorista")
     private Motorista motorista;
 
-    @ManyToOne
-    @JoinColumn(name = "entregador") 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "entregador")
     private Entregador entregador;
-    
-    @ManyToOne
-    @JoinColumn(name = "funcionario") 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "funcionario")
     private Funcionario funcionario;
 
-    @ManyToOne
-    @JoinColumn(name = "base") 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "base")
     private Base base;
 
-    @ManyToOne
-    @JoinColumn(name = "cidade") 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cidade")
     private Cidade cidade;
 
-    @Column(name = "sts") 
+    @Column(name = "sts")
     private String sts;
 
-    @Column(name = "quantidade") 
+    @Column(name = "quantidade")
     private int quantidade;
 
-    @Column(name = "CodigoUid") 
-    private String CodigoUid;
+    @Column(name = "codigo_uid")
+    private String codigoUid;
 
-    @Column(name = "linkDownload") 
+    @Column(name = "link_download")
     private String linkDownload;
 
-    @Column(name = "data") 
-    private String data;
+    @Column(name = "data")
+    private LocalDate data;
 
-    @Column(name = "dataFinal")
-    private String dataFinal;
+    @Column(name = "data_final")
+    private LocalDate dataFinal;
 
     @Column(name = "ocorrencia")
     private String ocorrencia;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "romaneio")
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "romaneio", orphanRemoval = true)
     private List<Codigo> codigo = new ArrayList<>();
-   
+
 }
