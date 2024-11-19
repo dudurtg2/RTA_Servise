@@ -73,6 +73,25 @@ public class Romaneio {
     public Romaneio() {
     }
 
+    public Romaneio(int id, Empresa empresa, Motorista motorista, Entregador entregador, Funcionario funcionario, Base base, Cidade cidade, String sts, int quantidade, String CodigoUid, String linkDownload, String data, String dataFinal, String ocorrencia, List<Codigo> codigo) {
+        this.id = id;
+        this.empresa = empresa;
+        this.motorista = motorista;
+        this.entregador = entregador;
+        this.funcionario = funcionario;
+        this.base = base;
+        this.cidade = cidade;
+        this.sts = sts;
+        this.quantidade = quantidade;
+        this.CodigoUid = CodigoUid;
+        this.linkDownload = linkDownload;
+        this.data = data;
+        this.dataFinal = dataFinal;
+        this.ocorrencia = ocorrencia;
+        this.codigo = codigo;
+    }
+
+
     public int getId() {
         return this.id;
     }

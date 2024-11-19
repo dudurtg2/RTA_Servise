@@ -30,7 +30,6 @@ public class Funcionario{
     @Column(name = "telefone")
     private String telefone;
 
-
     @ManyToOne
     @JoinColumn(name = "Base")
     private Base Base;
