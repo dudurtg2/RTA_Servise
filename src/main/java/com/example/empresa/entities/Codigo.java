@@ -23,14 +23,14 @@ public class Codigo {
     private String codigo;
     
     @ManyToOne
-    @JoinColumn(name = "idRomaneio", referencedColumnName = "id", nullable = false) 
-    private Romaneio idRomaneio;
+    @JoinColumn(name = "romaneio", referencedColumnName = "id", nullable = false) 
+    private Romaneio romaneio;
     
     public Codigo() {}
 
-    public Codigo(int id, Romaneio idRomaneio, String codigo) {
+    public Codigo(int id, Romaneio romaneio, String codigo) {
         this.id = id;
-        this.idRomaneio = idRomaneio;
+        this.romaneio = romaneio;
         this.codigo = codigo;
     }
 
@@ -52,6 +52,6 @@ public class Codigo {
 
 
     public void setRomaneio(Romaneio romaneio) {
-        this.idRomaneio = romaneio;
+        this.romaneio = romaneio;
     }
 }

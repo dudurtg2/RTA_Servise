@@ -25,14 +25,14 @@ public class Cidade {
     private String cep;
 
     @ManyToOne
-    @JoinColumn(name = "idRegiao")
-    private Regiao idRegiao;
+    @JoinColumn(name = "regiao")
+    private Regiao regiao;
 
     public Cidade() {}
 
-    public Cidade(String nome, String cep, Regiao IdRegiao) {
+    public Cidade(String nome, String cep, Regiao regiao) {
         this.nome = nome;
-        this.idRegiao = IdRegiao;
+        this.regiao = regiao;
         this.cep = cep;
     }
     
@@ -60,12 +60,12 @@ public class Cidade {
         this.nome = nome;
     }
 
-    public Regiao getIdRegiao() {
-        return this.idRegiao;
+    public Regiao getRegiao() {
+        return this.regiao;
     }
 
-    public void setIdRegiao(Regiao idRegiao) {
-        this.idRegiao = idRegiao;
+    public void setRegiao(Regiao regiao) {
+        this.regiao = regiao;
     }
 
 }

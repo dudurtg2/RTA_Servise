@@ -39,7 +39,7 @@ public class Entregador {
 
     public Entregador() {}
 
-    public Entregador(String nome, String email, String cpf, String telefone, String endereco, Base idBase) {
+    public Entregador(String nome, String email, String cpf, String telefone, String endereco, Base base) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;

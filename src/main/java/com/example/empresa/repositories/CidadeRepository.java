@@ -44,7 +44,7 @@ public class CidadeRepository implements ICidadeRepository {
         Cidade cidadeInDb = entityManager.find(Cidade.class, id);
         
         cidadeInDb.setNome(cidade.getNome());
-        cidadeInDb.setIdRegiao(cidade.getIdRegiao());
+        cidadeInDb.setRegiao(cidade.getRegiao());
         cidadeInDb.setCep(cidade.getCep());
 
         return entityManager.merge(cidadeInDb);

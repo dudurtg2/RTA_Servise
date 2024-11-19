@@ -23,28 +23,28 @@ public class Romaneio {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "idEmpresa") 
-    private Empresa idEmpresa;
+    @JoinColumn(name = "empresa") 
+    private Empresa empresa;
 
     @ManyToOne
-    @JoinColumn(name = "idMotorista") 
-    private Motorista idMotorista;
+    @JoinColumn(name = "motorista") 
+    private Motorista motorista;
 
     @ManyToOne
-    @JoinColumn(name = "idEntregador") 
-    private Entregador idEntregador;
+    @JoinColumn(name = "entregador") 
+    private Entregador entregador;
     
     @ManyToOne
-    @JoinColumn(name = "idFuncionario") 
-    private Funcionario idFuncionario;
+    @JoinColumn(name = "funcionario") 
+    private Funcionario funcionario;
 
     @ManyToOne
-    @JoinColumn(name = "idBase") 
-    private Base idBase;
+    @JoinColumn(name = "base") 
+    private Base base;
 
     @ManyToOne
-    @JoinColumn(name = "idCidade") 
-    private Cidade idCidade;
+    @JoinColumn(name = "cidade") 
+    private Cidade cidade;
 
     @Column(name = "sts") 
     private String sts;
@@ -67,30 +67,11 @@ public class Romaneio {
     @Column(name = "ocorrencia")
     private String ocorrencia;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRomaneio")
-    private List<Codigo> Codigo = new ArrayList<>();
-
-    public Romaneio(int id, Empresa idEmpresa, Motorista idMotorista, Entregador idEntregador, Funcionario idFuncionario, Base idBase, Cidade idCidade, String sts, int quantidade, String CodigoUid, String linkDownload, String data, String dataFinal, String ocorrencia, java.util.List<Codigo> Codigo) {
-        this.id = id;
-        this.idEmpresa = idEmpresa;
-        this.idMotorista = idMotorista;
-        this.idEntregador = idEntregador;
-        this.idFuncionario = idFuncionario;
-        this.idBase = idBase;
-        this.idCidade = idCidade;
-        this.sts = sts;
-        this.quantidade = quantidade;
-        this.CodigoUid = CodigoUid;
-        this.linkDownload = linkDownload;
-        this.data = data;
-        this.dataFinal = dataFinal;
-        this.ocorrencia = ocorrencia;
-        this.Codigo = Codigo;
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "romaneio")
+    private List<Codigo> codigo = new ArrayList<>();
 
     public Romaneio() {
     }
-
 
     public int getId() {
         return this.id;
@@ -100,52 +81,52 @@ public class Romaneio {
         this.id = id;
     }
 
-    public Empresa getIdEmpresa() {
-        return this.idEmpresa;
+    public Empresa getEmpresa() {
+        return this.empresa;
     }
 
-    public void setIdEmpresa(Empresa idEmpresa) {
-        this.idEmpresa = idEmpresa;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
-    public Motorista getIdMotorista() {
-        return this.idMotorista;
+    public Motorista getMotorista() {
+        return this.motorista;
     }
 
-    public void setIdMotorista(Motorista idMotorista) {
-        this.idMotorista = idMotorista;
+    public void setMotorista(Motorista motorista) {
+        this.motorista = motorista;
     }
 
-    public Entregador getIdEntregador() {
-        return this.idEntregador;
+    public Entregador getEntregador() {
+        return this.entregador;
     }
 
-    public void setIdEntregador(Entregador idEntregador) {
-        this.idEntregador = idEntregador;
+    public void setEntregador(Entregador entregador) {
+        this.entregador = entregador;
     }
 
-    public Funcionario getIdFuncionario() {
-        return this.idFuncionario;
+    public Funcionario getFuncionario() {
+        return this.funcionario;
     }
 
-    public void setIdFuncionario(Funcionario idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
 
-    public Base getIdBase() {
-        return this.idBase;
+    public Base getBase() {
+        return this.base;
     }
 
-    public void setIdBase(Base idBase) {
-        this.idBase = idBase;
+    public void setBase(Base base) {
+        this.base = base;
     }
 
-    public Cidade getIdCidade() {
-        return this.idCidade;
+    public Cidade getCidade() {
+        return this.cidade;
     }
 
-    public void setIdCidade(Cidade idCidade) {
-        this.idCidade = idCidade;
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
     }
 
     public String getSts() {
@@ -205,13 +186,12 @@ public class Romaneio {
     }
 
     public List<Codigo> getCodigo() {
-        return this.Codigo;
+        return this.codigo;
     }
 
-    public void setCodigo(List<Codigo> Codigo) {
-        this.Codigo = Codigo;
+    public void setCodigo(List<Codigo> codigo) {
+        this.codigo = codigo;
     }
-    
 
    
 }

@@ -32,26 +32,26 @@ public class Funcionario{
 
 
     @ManyToOne
-    @JoinColumn(name = "idBase")
-    private Base idBase;
+    @JoinColumn(name = "Base")
+    private Base Base;
 
     public Funcionario() {}
 
-    public Funcionario(String nome, String email, String cpf, String telefone, Base idBase) {
+    public Funcionario(String nome, String email, String cpf, String telefone, Base Base) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.telefone = telefone;
-        this.idBase = idBase;
+        this.Base = Base;
        
     }
     
     public Base getIdBase() {
-        return this.idBase;
+        return this.Base;
     }
 
-    public void setIdBase(Base idBase) {
-        this.idBase = idBase;
+    public void setIdBase(Base Base) {
+        this.Base = Base;
     }
 
     public int getId() {
