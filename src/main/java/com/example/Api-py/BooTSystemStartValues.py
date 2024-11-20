@@ -1,7 +1,57 @@
 import requests
+url = "http://localhost:30514/auth/register"
+
+headers = {
+    "Content-Type": "application/json"
+}
+
+
+bases = {
+    "login": "dudu",
+    "senha": "dudu"
+}
+
+
+try:
+    response = requests.post(url, json=bases, headers=headers)
+    if response.status_code == 200:
+        print("Resposta:", response.json())
+
+    else:
+        print(f"Erro: {response.status_code} - {response.text}")
+
+except requests.exceptions.RequestException as e:
+    print("Erro ao enviar a requisição:", e)
+
+
+url = "http://localhost:30514/auth/login"
+
+headers = {
+    "Content-Type": "application/json"
+}
+
+
+bases = {
+    "login": "dudu",
+    "senha": "dudu"
+}
+
+token : str
+
+try:
+    response = requests.post(url, json=bases, headers=headers)
+    if response.status_code == 200:
+        print("Resposta:", response.json())
+        token = response.json()['token']
+    else:
+        print(f"Erro: {response.status_code} - {response.text}")
+
+except requests.exceptions.RequestException as e:
+    print("Erro ao enviar a requisição:", e)
+
+
 url = "http://localhost:30514/bases/save"
 
-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImR1ZGkiLCJleHAiOjE3MzIyNDU5MDl9.41n8mqM2hZ0CL-oOIL91GKXus_aP5C0Seof1GSLHW2Q"
 
 
 headers = {
@@ -303,3 +353,5 @@ try:
 
 except requests.exceptions.RequestException as e:
     print("Erro ao enviar a requisição:", e)
+
+

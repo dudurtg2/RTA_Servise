@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "codigo": "codigo1",
+        "romaneio": 1
+    },
+    {
+        "id": 2,
+        "codigo": "codigo2",
+        "romaneio": 1
+    },
+    {
+        "id": 3,
+        "codigo": "codigo3",
+        "romaneio": 1
+    },
+    {
+        "id": 4,
+        "codigo": "codigo4",
+        "romaneio": 1
+    }
+]

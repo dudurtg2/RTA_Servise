@@ -1,0 +1,95 @@
+[
+    {
+        "id": 1,
+        "empresa": {
+            "id": 1,
+            "nome": "Empresa 1",
+            "cnpj": "123456789"
+        },
+        "motorista": {
+            "id": 1,
+            "nome": "Motorista 1",
+            "email": "2M0ZI@example.com",
+            "cpf": "123.456.789-10",
+            "telefone": "123456789",
+            "base": {
+                "id": 1,
+                "nome": "Base 1",
+                "endereco": "Rua 1, 123"
+            }
+        },
+        "entregador": {
+            "id": 1,
+            "nome": "Entregador 1",
+            "email": "2m0zi@example.com",
+            "cpf": "123.456.789-00",
+            "telefone": "123456789",
+            "endereco": "Rua 1, 123",
+            "base": {
+                "id": 1,
+                "nome": "Base 1",
+                "endereco": "Rua 1, 123"
+            }
+        },
+        "funcionario": {
+            "id": 1,
+            "nome": "Funcionario 1",
+            "email": "2m0zi@example.com",
+            "cpf": "123.456.789-00",
+            "telefone": "123456789",
+            "base": {
+                "id": 1,
+                "nome": "Base 1",
+                "endereco": "Rua 1, 123"
+            }
+        },
+        "base": {
+            "id": 1,
+            "nome": "Base 1",
+            "endereco": "Rua 1, 123"
+        },
+        "cidade": {
+            "id": 1,
+            "nome": "Cidade 1",
+            "cep": "12345-678",
+            "regiao": {
+                "id": 1,
+                "nome": "Sul",
+                "base": {
+                    "id": 1,
+                    "nome": "Base 1",
+                    "endereco": "Rua 1, 123"
+                }
+            }
+        },
+        "sts": "sts",
+        "quantidade": 1,
+        "codigoUid": "codigo_uid",
+        "linkDownload": "link_download",
+        "data": "data",
+        "dataFinal": "data_final",
+        "ocorrencia": "ocorrencia",
+        "codigos": [
+            {
+                "id": 1,
+                "codigo": "codigo1",
+                "romaneio": 1
+            },
+            {
+                "id": 2,
+                "codigo": "codigo2",
+                "romaneio": 1
+            },
+            {
+                "id": 3,
+                "codigo": "codigo3",
+                "romaneio": 1
+            },
+            {
+                "id": 4,
+                "codigo": "codigo4",
+                "romaneio": 1
+            }
+        ]
+    }
+]
