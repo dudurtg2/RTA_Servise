@@ -1,5 +1,6 @@
 package com.example.empresa.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,9 +39,9 @@ public class Funcionario{
     @Column(name = "telefone")
     private String telefone;
 
-    @ManyToOne
-    @JoinColumn(name = "Base")
-    private Base Base;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "base")
+    private Base base;
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.empresa.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ public class Cidade {
     @Column(name = "cep")
     private String cep;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "regiao")
     private Regiao regiao;
 

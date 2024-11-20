@@ -44,7 +44,7 @@ public class RegiaoRepository implements IRegiaoRepository {
         Regiao regiaoInDb = entityManager.find(Regiao.class, id);
         
         regiaoInDb.setNome(regiao.getNome());
-        regiaoInDb.setIdBase(regiao.getIdBase());
+        regiaoInDb.setBase(regiao.getBase());
 
         return entityManager.merge(regiaoInDb);
     }

@@ -29,6 +29,5 @@ public class Base {
     
     @Column(name= "endereco")
     private String endereco;
-
     
 }

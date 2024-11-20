@@ -48,7 +48,7 @@ public class EntregadorRepository implements IEntregadorRepository {
         entregadorInDb.setEmail(entregador.getEmail());
         entregadorInDb.setCpf(entregador.getCpf());
         entregadorInDb.setTelefone(entregador.getTelefone());
-        entregadorInDb.setIdBase(entregador.getIdBase());
+        entregadorInDb.setBase(entregador.getBase());
 
         return entityManager.merge(entregadorInDb);
     }

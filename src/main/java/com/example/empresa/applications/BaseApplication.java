@@ -40,9 +40,6 @@ public class BaseApplication {
 
         return this.baseRepository.update(id, base);
     }
-
-
-
     
     public void deleteById(int id) {
         this.baseRepository.deleteById(id);
