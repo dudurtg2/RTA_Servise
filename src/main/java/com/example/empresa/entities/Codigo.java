@@ -33,7 +33,8 @@ public class Codigo {
     @JoinColumn(name = "romaneio", referencedColumnName = "id", nullable = false) 
     private Romaneio romaneio;
     
-    public int getRomaneio() {
-        return (int) romaneio.getId();
+    public Data getRomaneio() {
+        return new Data(romaneio.getCodigoUid(), (int) romaneio.getId());
     }
+    public record Data(String codigo, int romaneioId) { }
 }
