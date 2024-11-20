@@ -1,7 +1,7 @@
 package com.example.empresa.controllers;
 
-import com.example.empresa.security.LoginResponseDTO;
 import com.example.empresa.services.TokenService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.example.empresa.entities.Users;
 import com.example.empresa.facades.UsersFacade;
 import com.example.empresa.security.AuthorizationDTO;
+import com.example.empresa.security.LoginResponseDTO;
 import com.example.empresa.security.RegisterDTO;
 
 @RestController
@@ -38,6 +40,7 @@ public class UsersController {
         var auth = this.authenticationManager.authenticate(usernamePass);
 
         var token = tokenService.generateToken((Users) auth.getPrincipal());
+        
 
         return ResponseEntity.ok(new LoginResponseDTO(token));
 

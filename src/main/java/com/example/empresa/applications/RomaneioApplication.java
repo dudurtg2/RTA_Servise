@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.example.empresa.entities.Codigo;
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.interfaces.IRomaneioRepository;
 
@@ -26,6 +27,9 @@ public class RomaneioApplication {
 
     
     public Romaneio save(Romaneio romaneio) {
+        for (Codigo codigo : romaneio.getCodigos()) {
+            codigo.setRomaneio(romaneio);
+        }
         return this.romaneioRepository.save(romaneio);
     }
 

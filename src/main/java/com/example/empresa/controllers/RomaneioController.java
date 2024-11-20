@@ -40,9 +40,7 @@ public class RomaneioController {
 
     @PostMapping("/save")
     public ResponseEntity<Romaneio> save(@RequestBody Romaneio romaneio) {
-        for (Codigo codigo : romaneio.getCodigo()) {
-            codigo.setRomaneio(romaneio);
-        }
+        
         Romaneio romaneioSaved = romaneioFacade.save(romaneio);
 
          

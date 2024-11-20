@@ -23,27 +23,27 @@ public class Romaneio {
     @Column(name = "id")
     private long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "empresa")
     private Empresa empresa;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "motorista")
     private Motorista motorista;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "entregador")
     private Entregador entregador;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "funcionario")
     private Funcionario funcionario;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "base")
     private Base base;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "cidade")
     private Cidade cidade;
 
@@ -60,15 +60,40 @@ public class Romaneio {
     private String linkDownload;
 
     @Column(name = "data")
-    private LocalDate data;
+    private String data;
 
     @Column(name = "data_final")
-    private LocalDate dataFinal;
+    private String dataFinal;
 
     @Column(name = "ocorrencia")
     private String ocorrencia;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "romaneio", orphanRemoval = true)
-    private List<Codigo> codigo = new ArrayList<>();
+    private List<Codigo> codigos = new ArrayList<>();
 
 }
+
+/* 
+{
+    "id": 1,
+    "empresa": { "id": 1 },
+    "motorista": { "id": 1},
+    "entregador": { "id": 1},
+    "funcionario": { "id": 1},
+    "base": { "id": 1 },
+    "cidade": { "id": 1 },
+    "sts": "sts",
+    "quantidade": 1,
+    "codigouid": "codigo_uid",
+    "linkDownload": "link_download",
+    "data": "data",
+    "datafinal": "data_final",
+    "ocorrencia": "ocorrencia",
+    "codigos": [
+        { "codigo": "codigo1" },
+        { "codigo": "codigo2" },
+        { "codigo": "codigo3" },
+        { "codigo": "codigo4" }
+    ]
+}
+*/

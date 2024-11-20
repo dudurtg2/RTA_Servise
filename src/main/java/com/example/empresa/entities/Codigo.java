@@ -33,7 +33,7 @@ public class Codigo {
     @JoinColumn(name = "romaneio", referencedColumnName = "id", nullable = false) 
     private Romaneio romaneio;
     
-    public Romaneio getRomaneio() {
-        return null;
+    public int getRomaneio() {
+        return (int) romaneio.getId();
     }
 }

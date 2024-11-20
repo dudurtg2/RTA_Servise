@@ -47,7 +47,7 @@ public class MotoristaRepository implements IMotoristaRepository {
         motoristaInDb.setEmail(motorista.getEmail());
         motoristaInDb.setCpf(motorista.getCpf());
         motoristaInDb.setTelefone(motorista.getTelefone());
-        motoristaInDb.setIdBase(motorista.getIdBase());
+        motoristaInDb.setBase(motorista.getBase());
 
         return entityManager.merge(motoristaInDb);
     }
