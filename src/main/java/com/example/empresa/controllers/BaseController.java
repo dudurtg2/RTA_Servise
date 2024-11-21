@@ -11,6 +11,10 @@ import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.List;
 
+/**
+ * Controlador REST para gerenciar operações relacionadas à entidade {@link Base}.
+ * Este controlador lida com requisições relacionadas a bases de operações.
+ */
 @RestController
 @RequestScope
 @RequestMapping("/bases")
@@ -18,52 +22,77 @@ public class BaseController {
 
     private BaseFacade baseFacade;
 
+    /**
+     * Construtor para injeção de dependência do {@link BaseFacade}.
+     *
+     * @param baseFacade a fachada que gerencia a lógica de negócios para a entidade {@link Base}.
+     */
     @Autowired
     public BaseController(BaseFacade baseFacade) {
         this.baseFacade = baseFacade;
     }
 
+    /**
+     * Retorna a lista de todas as bases.
+     *
+     * @return uma resposta HTTP contendo a lista de objetos {@link Base} e o status HTTP 200 (OK).
+     */
     @GetMapping("/findAll")
     public ResponseEntity<List<Base>> findAll() {
         List<Base> bases = this.baseFacade.findAll();
-
-        return new ResponseEntity<List<Base>>(bases, HttpStatus.OK);
+        return new ResponseEntity<>(bases, HttpStatus.OK);
     }
 
+    /**
+     * Retorna uma base com base no seu identificador único.
+     *
+     * @param id o identificador único da base a ser encontrada.
+     * @return uma resposta HTTP contendo o objeto {@link Base} correspondente e o status HTTP 200 (OK).
+     */
     @GetMapping("/findById/{id}")
     public ResponseEntity<Base> findById(@PathVariable int id) {
-        Base Base = this.baseFacade.findById(id);
-        
-
-        return new ResponseEntity<Base>(Base, HttpStatus.OK);
+        Base base = this.baseFacade.findById(id);
+        return new ResponseEntity<>(base, HttpStatus.OK);
     }
 
+    /**
+     * Salva uma nova base no sistema.
+     *
+     * @param base o objeto {@link Base} a ser salvo.
+     * @return uma resposta HTTP contendo o objeto salvo e o status HTTP 201 (Created).
+     */
     @PostMapping("/save")
     public ResponseEntity<Base> save(@RequestBody Base base) {
         Base baseSaved = baseFacade.save(base);
-
-        return new ResponseEntity<Base>(baseSaved, HttpStatus.CREATED);
-
+        return new ResponseEntity<>(baseSaved, HttpStatus.CREATED);
     }
 
+    /**
+     * Atualiza uma base existente com base no seu identificador.
+     *
+     * @param id   o identificador único da base a ser atualizada.
+     * @param base os novos dados da base.
+     * @return uma resposta HTTP contendo o objeto atualizado e o status HTTP 200 (OK),
+     * ou 404 (Not Found) caso o ID não seja encontrado.
+     */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Base> update(
-            @PathVariable int id,
-            @RequestBody Base base) {
-
+    public ResponseEntity<Base> update(@PathVariable int id, @RequestBody Base base) {
         Base baseUpdated = baseFacade.update(id, base);
-
         if (baseUpdated == null) {
-            return new ResponseEntity<Base>(baseUpdated, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(baseUpdated, HttpStatus.NOT_FOUND);
         }
-
-        return new ResponseEntity<Base>(baseUpdated, HttpStatus.OK);
+        return new ResponseEntity<>(baseUpdated, HttpStatus.OK);
     }
 
+    /**
+     * Exclui uma base com base no seu identificador único.
+     *
+     * @param id o identificador único da base a ser excluída.
+     * @return uma resposta HTTP com o status 200 (OK).
+     */
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         baseFacade.deleteById(id);
-
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
