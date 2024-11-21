@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.empresa.entities.Users;
 import com.example.empresa.facades.UsersFacade;
-import com.example.empresa.security.AuthorizationDTO;
-import com.example.empresa.security.LoginResponseDTO;
-import com.example.empresa.security.RegisterDTO;
+import com.example.empresa.security.DTO.AuthorizationDTO;
+import com.example.empresa.security.DTO.LoginResponseDTO;
+import com.example.empresa.security.DTO.RegisterDTO;
 
 @RestController
 @RequestMapping("/auth")
@@ -50,11 +50,9 @@ public class UsersController {
     public ResponseEntity<Users> register(@RequestBody RegisterDTO data) {
         
         String senha = new BCryptPasswordEncoder().encode(data.senha());
-
-        Users userSave = usersFacade.save(new Users(data.login(), senha));
+        Users userSave = usersFacade.save(new Users(data.login(), senha, data.role()));
 
         return new ResponseEntity<Users>(userSave, HttpStatus.OK);
 
     }
-
 }

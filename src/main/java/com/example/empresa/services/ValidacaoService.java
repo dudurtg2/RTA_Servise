@@ -9,7 +9,6 @@ public class ValidacaoService {
         }
 
         return cepInValidate.substring(0, 5) + "-" + cepInValidate.substring(5);
-        // testy
     }
     
 }
