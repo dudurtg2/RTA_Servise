@@ -1,6 +1,5 @@
 package com.example.empresa.controllers;
 
-import com.example.empresa.entities.Codigo;
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.facades.RomaneioFacade;
 
@@ -12,6 +11,10 @@ import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.List;
 
+/**
+ * Controlador REST para gerenciar operações relacionadas à entidade {@link Romaneio}.
+ * Permite realizar operações de CRUD (Create, Read, Update, Delete) sobre os romaneios.
+ */
 @RestController
 @RequestScope
 @RequestMapping("/romaneios")
@@ -19,11 +22,21 @@ public class RomaneioController {
 
     private RomaneioFacade romaneioFacade;
 
+    /**
+     * Construtor para injeção de dependência do {@link RomaneioFacade}.
+     *
+     * @param romaneioFacade a fachada que gerencia a lógica de negócios para a entidade {@link Romaneio}.
+     */
     @Autowired
     public RomaneioController(RomaneioFacade romaneioFacade) {
         this.romaneioFacade = romaneioFacade;
     }
 
+    /**
+     * Retorna a lista de todos os romaneios.
+     *
+     * @return uma resposta HTTP contendo a lista de objetos {@link Romaneio} e o status HTTP 200 (OK).
+     */
     @GetMapping("/findAll")
     public ResponseEntity<List<Romaneio>> findAll() {
         List<Romaneio> romaneio = this.romaneioFacade.findAll();
@@ -31,6 +44,12 @@ public class RomaneioController {
         return new ResponseEntity<List<Romaneio>>(romaneio, HttpStatus.OK);
     }
 
+    /**
+     * Retorna um romaneio com base no seu identificador único.
+     *
+     * @param id o identificador único do romaneio a ser encontrado.
+     * @return uma resposta HTTP contendo o objeto {@link Romaneio} correspondente e o status HTTP 200 (OK).
+     */
     @GetMapping("/findById/{id}")
     public ResponseEntity<Romaneio> findById(@PathVariable int id) {
         Romaneio romaneio = this.romaneioFacade.findById(id);
@@ -38,31 +57,48 @@ public class RomaneioController {
         return new ResponseEntity<Romaneio>(romaneio, HttpStatus.OK);
     }
 
+    /**
+     * Salva um novo romaneio no sistema.
+     *
+     * @param romaneio o objeto {@link Romaneio} a ser salvo.
+     * @return uma resposta HTTP contendo o objeto salvo e o status HTTP 201 (Created).
+     */
     @PostMapping("/save")
     public ResponseEntity<Romaneio> save(@RequestBody Romaneio romaneio) {
         
         Romaneio romaneioSaved = romaneioFacade.save(romaneio);
 
-         
-
         return new ResponseEntity<Romaneio>(romaneioSaved, HttpStatus.CREATED);
-
     }
 
+    /**
+     * Atualiza um romaneio existente com base no seu identificador.
+     *
+     * @param id o identificador único do romaneio a ser atualizado.
+     * @param romaneio os novos dados do romaneio.
+     * @return uma resposta HTTP contendo o objeto atualizado e o status HTTP 200 (OK),
+     * ou 404 (Not Found) caso o ID não seja encontrado.
+     */
     @PutMapping("/update/{id}")
     public ResponseEntity<Romaneio> update(
             @PathVariable int id,
             @RequestBody Romaneio romaneio) {
 
-        Romaneio RomaneioUpdated = romaneioFacade.update(id, romaneio);
+        Romaneio romaneioUpdated = romaneioFacade.update(id, romaneio);
 
-        if (RomaneioUpdated == null) {
-            return new ResponseEntity<Romaneio>(RomaneioUpdated, HttpStatus.NOT_FOUND);
+        if (romaneioUpdated == null) {
+            return new ResponseEntity<Romaneio>(romaneioUpdated, HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<Romaneio>(RomaneioUpdated, HttpStatus.OK);
+        return new ResponseEntity<Romaneio>(romaneioUpdated, HttpStatus.OK);
     }
 
+    /**
+     * Exclui um romaneio com base no seu identificador único.
+     *
+     * @param id o identificador único do romaneio a ser excluído.
+     * @return uma resposta HTTP com o status 200 (OK).
+     */
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         romaneioFacade.deleteById(id);

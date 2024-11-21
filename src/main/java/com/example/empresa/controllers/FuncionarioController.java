@@ -12,6 +12,10 @@ import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.List;
 
+/**
+ * Controlador REST para gerenciar operações relacionadas à entidade {@link Funcionario}.
+ * Permite realizar operações de CRUD (Create, Read, Update, Delete) sobre os funcionários.
+ */
 @RestController
 @RequestScope
 @RequestMapping("/funcionarios")
@@ -19,56 +23,82 @@ public class FuncionarioController {
 
     private FuncionarioFacade funcionarioFacade;
 
+    /**
+     * Construtor para injeção de dependência do {@link FuncionarioFacade}.
+     *
+     * @param funcionarioFacade a fachada que gerencia a lógica de negócios para a entidade {@link Funcionario}.
+     */
     @Autowired
     public FuncionarioController(FuncionarioFacade funcionarioFacade) {
         this.funcionarioFacade = funcionarioFacade;
     }
 
+    /**
+     * Retorna a lista de todos os funcionários.
+     *
+     * @return uma resposta HTTP contendo a lista de objetos {@link Funcionario} e o status HTTP 200 (OK).
+     */
     @GetMapping("/findAll")
     public ResponseEntity<List<Funcionario>> findAll() {
         List<Funcionario> funcionarios = this.funcionarioFacade.findAll();
-
-        return new ResponseEntity<List<Funcionario>>(funcionarios, HttpStatus.OK);
+        return new ResponseEntity<>(funcionarios, HttpStatus.OK);
     }
 
+    /**
+     * Retorna um funcionário com base no seu identificador único.
+     *
+     * @param id o identificador único do funcionário a ser encontrado.
+     * @return uma resposta HTTP contendo o objeto {@link Funcionario} correspondente e o status HTTP 200 (OK).
+     */
     @GetMapping("/findById/{id}")
     public ResponseEntity<Funcionario> findById(@PathVariable int id) {
-        Funcionario Funcionario = this.funcionarioFacade.findById(id);
-
-        return new ResponseEntity<Funcionario>(Funcionario, HttpStatus.OK);
+        Funcionario funcionario = this.funcionarioFacade.findById(id);
+        return new ResponseEntity<>(funcionario, HttpStatus.OK);
     }
 
+    /**
+     * Salva um novo funcionário no sistema.
+     *
+     * @param funcionario o objeto {@link Funcionario} a ser salvo.
+     * @return uma resposta HTTP contendo o objeto salvo e o status HTTP 201 (Created),
+     * ou o status HTTP 409 (Conflict) caso ocorra um problema de integridade de dados.
+     */
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody Funcionario funcionario) {
-        // <?> é um wildcard do Java que representa um tipo genérico desconhecido.
-        // Ele significa que o método pode retornar um ResponseEntity com qualquer tipo de conteúdo,
-        // por isso posso usar o try catch com diferentes retornos
         try {
             Funcionario funcionarioSaved = funcionarioFacade.save(funcionario);
-            return new ResponseEntity<Funcionario>(funcionarioSaved, HttpStatus.CREATED);
+            return new ResponseEntity<>(funcionarioSaved, HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<Boolean>(false, HttpStatus.CONFLICT);
+            return new ResponseEntity<>(false, HttpStatus.CONFLICT);
         }
     }
 
+    /**
+     * Atualiza um funcionário existente com base no seu identificador.
+     *
+     * @param id         o identificador único do funcionário a ser atualizado.
+     * @param funcionario os novos dados do funcionário.
+     * @return uma resposta HTTP contendo o objeto atualizado e o status HTTP 200 (OK),
+     * ou 404 (Not Found) caso o ID não seja encontrado.
+     */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Funcionario> update(
-            @PathVariable int id,
-            @RequestBody Funcionario funcionario) {
-
+    public ResponseEntity<Funcionario> update(@PathVariable int id, @RequestBody Funcionario funcionario) {
         Funcionario funcionarioUpdated = funcionarioFacade.update(id, funcionario);
-
         if (funcionarioUpdated == null) {
-            return new ResponseEntity<Funcionario>(funcionarioUpdated, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(funcionarioUpdated, HttpStatus.NOT_FOUND);
         }
-
-        return new ResponseEntity<Funcionario>(funcionarioUpdated, HttpStatus.OK);
+        return new ResponseEntity<>(funcionarioUpdated, HttpStatus.OK);
     }
 
+    /**
+     * Exclui um funcionário com base no seu identificador único.
+     *
+     * @param id o identificador único do funcionário a ser excluído.
+     * @return uma resposta HTTP com o status 200 (OK).
+     */
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable int id) {
         funcionarioFacade.deleteById(id);
-
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
