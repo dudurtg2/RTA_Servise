@@ -72,11 +72,7 @@ public class UsersController {
     public ResponseEntity<Users> register(@RequestBody RegisterDTO data) {
         // Criptografa a senha do usuário utilizando o BCrypt
         String senha = new BCryptPasswordEncoder().encode(data.senha());
-
-
         Users userSave = usersFacade.save(new Users(data.login(), senha, data.role()));
-
-
         return new ResponseEntity<Users>(userSave, HttpStatus.OK);
     }
 }
