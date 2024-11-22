@@ -53,7 +53,7 @@ public class UsersController {
      */
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody AuthorizationDTO data) {
-        var usernamePass = new UsernamePasswordAuthenticationToken(data.login(), data.senha());
+        var usernamePass = new UsernamePasswordAuthenticationToken(data.login().toLowerCase(), data.senha());
         var auth = this.authenticationManager.authenticate(usernamePass);
 
         var token = tokenService.generateToken((Users) auth.getPrincipal());
@@ -70,11 +70,10 @@ public class UsersController {
      */
     @PostMapping("/register")
     public ResponseEntity<Users> register(@RequestBody RegisterDTO data) {
-        // Criptografa a senha do usuário utilizando o BCrypt
+       
         String senha = new BCryptPasswordEncoder().encode(data.senha());
 
-
-        Users userSave = usersFacade.save(new Users(data.login(), senha, data.role()));
+        Users userSave = usersFacade.save(new Users(data.login().toLowerCase(), senha, data.role()));
 
 
         return new ResponseEntity<Users>(userSave, HttpStatus.OK);
