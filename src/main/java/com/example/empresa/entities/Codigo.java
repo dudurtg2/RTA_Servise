@@ -34,7 +34,7 @@ public class Codigo {
     private Romaneio romaneio;
     
     public Data getRomaneio() {
-        return new Data(romaneio.getCodigoUid(), (int) romaneio.getId());
+        return new Data(romaneio.getCodigoUid(), romaneio.getId());
     }
-    public record Data(String codigo, int romaneioId) { }
+    public record Data(String codigo, long romaneioId) { }
 }

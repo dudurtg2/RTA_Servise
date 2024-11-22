@@ -8,7 +8,8 @@ headers = {
 
 bases = {
     "login": "dudu",
-    "senha": "dudu"
+    "senha": "dudu",
+    "rola": "admin"
 }
 
 
