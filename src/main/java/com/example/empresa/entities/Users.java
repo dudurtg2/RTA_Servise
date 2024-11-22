@@ -1,9 +1,13 @@
 package com.example.empresa.entities;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.example.empresa.security.UserRole;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,9 +15,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "Users")
 @Entity
 public class Users implements UserDetails {
@@ -28,44 +39,18 @@ public class Users implements UserDetails {
     @Column(name= "senha", nullable = false)
     private String senha;
 
+    @Column(name = "role", nullable = false)
+    private UserRole role;
 
-    public Users() {
-    }
-
-    public Users( String login, String senha) {
+    public Users(String login, String senha, UserRole role) {
         this.login = login;
         this.senha = senha;
+        this.role = role;
     }
-
-    public long getId() {
-        return this.id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getLogin() {
-        return this.login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return this.senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     
-
-    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        if(this.role == UserRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override

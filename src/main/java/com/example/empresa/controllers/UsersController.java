@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.empresa.entities.Users;
 import com.example.empresa.facades.UsersFacade;
-import com.example.empresa.security.AuthorizationDTO;
-import com.example.empresa.security.LoginResponseDTO;
-import com.example.empresa.security.RegisterDTO;
+import com.example.empresa.security.DTO.AuthorizationDTO;
+import com.example.empresa.security.DTO.LoginResponseDTO;
+import com.example.empresa.security.DTO.RegisterDTO;
 
 /**
  * Controlador responsável pelas operações de autenticação e registro de usuários no sistema.
@@ -73,8 +73,9 @@ public class UsersController {
         // Criptografa a senha do usuário utilizando o BCrypt
         String senha = new BCryptPasswordEncoder().encode(data.senha());
 
-        // Cria e persiste o novo usuário
-        Users userSave = usersFacade.save(new Users(data.login(), senha));
+
+        Users userSave = usersFacade.save(new Users(data.login(), senha, data.role()));
+
 
         return new ResponseEntity<Users>(userSave, HttpStatus.OK);
     }
