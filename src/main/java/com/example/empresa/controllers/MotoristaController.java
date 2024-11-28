@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestScope
-@RequestMapping("/motoristas")
+@RequestMapping("/api/motoristas")
 public class MotoristaController {
 
     private MotoristaFacade motoristaFacade;

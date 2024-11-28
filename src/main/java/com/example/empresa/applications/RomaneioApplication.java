@@ -52,14 +52,13 @@ public class RomaneioApplication {
      * @param romaneio A instância da entidade {@link Romaneio} a ser salva.
      * @return A instância salva de {@link Romaneio}.
      */
+    
     public Romaneio save(Romaneio romaneio) {
         // Associa cada código ao romaneio antes de salvar
         for (Codigo codigo : romaneio.getCodigos()) {
             codigo.setRomaneio(romaneio);
         }
-
-
-        
+          
         return this.romaneioRepository.save(romaneio);
     }
 

@@ -17,7 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestScope
-@RequestMapping("/bases")
+@RequestMapping("/api/bases")
 public class BaseController {
 
     private BaseFacade baseFacade;

@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestScope
-@RequestMapping("/funcionarios")
+@RequestMapping("/api/funcionarios")
 public class FuncionarioController {
 
     private FuncionarioFacade funcionarioFacade;

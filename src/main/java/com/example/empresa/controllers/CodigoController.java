@@ -17,7 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestScope
-@RequestMapping("/codigos")
+@RequestMapping("/api/codigos")
 public class CodigoController {
 
     private CodigoFacade codigoFacade;

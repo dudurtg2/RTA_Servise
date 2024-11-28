@@ -30,6 +30,7 @@ public class SecurityConfiguration {
      * 
      * @param securityFilter filtro de segurança personalizado.
      */
+
     @Autowired
     public  SecurityConfiguration(SecurityFilter securityFilter){
         this.securityFilter = securityFilter;
@@ -43,17 +44,23 @@ public class SecurityConfiguration {
      * @return uma instância de {@link SecurityFilterChain} configurada.
      * @throws Exception se houver falha ao configurar o filtro de segurança.
      */
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-            .csrf(csrf -> csrf.disable()) // Desabilita a proteção CSRF.
-            .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configura a sessão para ser sem estado.
+            .csrf(csrf -> csrf.disable()) 
+            .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers(HttpMethod.POST, "/auth/login").permitAll() // Permite o acesso sem autenticação ao endpoint de login.
-                .requestMatchers(HttpMethod.POST, "/auth/register").permitAll() // Permite o acesso sem autenticação ao endpoint de registro.
-                .anyRequest().authenticated() // Exige autenticação para todas as demais requisições.
+                .requestMatchers(HttpMethod.POST, "/auth/login").permitAll() 
+                .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                
+                .requestMatchers(HttpMethod.POST, "/api/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/api/**").hasRole("ADMIN")
+                .anyRequest().authenticated() 
             )
-            .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class) // Adiciona o filtro de segurança personalizado antes do filtro de autenticação padrão.
+            .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class) 
             .build();
     }
 
@@ -64,6 +71,7 @@ public class SecurityConfiguration {
      * @return o {@link AuthenticationManager} configurado.
      * @throws Exception se houver falha ao configurar o manager de autenticação.
      */
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
         return authenticationConfiguration.getAuthenticationManager();
@@ -74,6 +82,7 @@ public class SecurityConfiguration {
      * 
      * @return uma instância de {@link PasswordEncoder} configurada.
      */
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();

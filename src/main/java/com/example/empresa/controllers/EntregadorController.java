@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestScope
-@RequestMapping("/entregadores")
+@RequestMapping("/api/entregadores")
 public class EntregadorController {
 
     private EntregadorFacade entregadorFacade;

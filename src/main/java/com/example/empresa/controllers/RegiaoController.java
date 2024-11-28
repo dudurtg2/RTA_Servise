@@ -17,7 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestScope
-@RequestMapping("/regioes")
+@RequestMapping("/api/regioes")
 public class RegiaoController {
 
     private RegiaoFacade regiaoFacade;

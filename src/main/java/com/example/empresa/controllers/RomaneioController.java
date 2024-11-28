@@ -19,7 +19,7 @@ import java.util.List;
  */
 @RestController
 @RequestScope
-@RequestMapping("/romaneios")
+@RequestMapping("/api/romaneios")
 public class RomaneioController {
 
     private RomaneioFacade romaneioFacade;

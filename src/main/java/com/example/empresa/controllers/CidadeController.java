@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestScope
-@RequestMapping("/cidades")
+@RequestMapping("/api/cidades")
 public class CidadeController {
 
     private CidadeFacade cidadeFacade;

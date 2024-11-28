@@ -28,4 +28,5 @@ public class ValidacaoService {
         // Retorna o CEP formatado no padrão XXXXX-XXX
         return cepInValidate.substring(0, 5) + "-" + cepInValidate.substring(5);
     }
+    
 }
