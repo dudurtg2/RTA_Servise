@@ -33,6 +33,7 @@ public class UsersRepository implements IUsersRepository {
     @Override
     @Transactional
     public Users save(Users users) {
+        
         entityManager.persist(users);
 
         return users;

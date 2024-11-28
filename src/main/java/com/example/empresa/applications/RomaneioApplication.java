@@ -57,6 +57,9 @@ public class RomaneioApplication {
         for (Codigo codigo : romaneio.getCodigos()) {
             codigo.setRomaneio(romaneio);
         }
+
+
+        
         return this.romaneioRepository.save(romaneio);
     }
 
@@ -83,5 +86,19 @@ public class RomaneioApplication {
      */
     public void deleteById(int id) {
         this.romaneioRepository.deleteById(id);
+    }
+
+    public int getCount(String status) {
+        List<Romaneio> romaneioAll = this.romaneioRepository.findAll();
+        if (romaneioAll == null) return 0;
+
+        int count = 0;
+
+        for (Romaneio romaneio : romaneioAll) {
+            if (romaneio.getSts().equals(status.toLowerCase())) {
+                count++;
+            }
+        }
+        return count;
     }
 }

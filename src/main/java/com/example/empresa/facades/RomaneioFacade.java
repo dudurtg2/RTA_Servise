@@ -74,4 +74,8 @@ public class RomaneioFacade {
     public void deleteById(int id) {
         this.romaneioApplication.deleteById(id);
     }
+
+    public int getCount(String status) {
+        return this.romaneioApplication.getCount(status);
+    }
 }

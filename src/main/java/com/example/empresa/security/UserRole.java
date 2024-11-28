@@ -14,4 +14,9 @@ public enum UserRole {
     public String getRole() {
         return role;
     }
+
+    UserRole toUpperCase() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toUpperCase'");
+    }
 }
