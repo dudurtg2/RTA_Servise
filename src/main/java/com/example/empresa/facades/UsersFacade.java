@@ -41,7 +41,7 @@ public class UsersFacade {
      * @param id o identificador único do usuário a ser encontrado.
      * @return o objeto {@link Users} correspondente ao identificador fornecido ou {@code null} se não encontrado.
      */
-    public Users findById(int id) {
+    public Users findById(long id) {
         return this.usersApplication.findById(id);
     }
 
@@ -62,7 +62,7 @@ public class UsersFacade {
      * @param users o objeto {@link Users} com os novos dados a serem atualizados.
      * @return o objeto {@link Users} atualizado ou {@code null} caso o identificador não seja encontrado.
      */
-    public Users update(int id, Users users) {
+    public Users update(long id, Users users) {
         
         Users usersInDb = this.usersApplication.findById(id);
         if (usersInDb == null) {
@@ -77,7 +77,7 @@ public class UsersFacade {
      *
      * @param id o identificador único do usuário a ser excluído.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.usersApplication.deleteById(id);
     }
 }

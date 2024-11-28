@@ -41,7 +41,7 @@ public class MotoristaFacade {
      * @param id o identificador único do motorista a ser encontrado.
      * @return o objeto {@link Motorista} correspondente ao identificador fornecido ou {@code null} se não encontrado.
      */
-    public Motorista findById(int id) {
+    public Motorista findById(long id) {
         return this.motoristaApplication.findById(id);
     }
 
@@ -62,7 +62,7 @@ public class MotoristaFacade {
      * @param motorista o objeto {@link Motorista} com os novos dados a serem atualizados.
      * @return o objeto {@link Motorista} atualizado ou {@code null} caso o identificador não seja encontrado.
      */
-    public Motorista update(int id, Motorista motorista) {
+    public Motorista update(long id, Motorista motorista) {
         return this.motoristaApplication.update(id, motorista);
     }
 
@@ -71,7 +71,7 @@ public class MotoristaFacade {
      *
      * @param id o identificador único do motorista a ser excluído.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.motoristaApplication.deleteById(id);
     }
 }

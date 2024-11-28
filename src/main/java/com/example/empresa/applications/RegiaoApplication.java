@@ -41,7 +41,7 @@ public class RegiaoApplication {
      * @param id O identificador da instância de {@link Regiao}.
      * @return A instância de {@link Regiao} correspondente ao id, ou null se não encontrado.
      */
-    public Regiao findById(int id) {
+    public Regiao findById(long id) {
         return this.regiaoRepository.findById(id);
     }
 
@@ -62,7 +62,7 @@ public class RegiaoApplication {
      * @param regiao A nova instância de {@link Regiao} contendo as atualizações.
      * @return A instância atualizada de {@link Regiao}, ou null se não encontrado.
      */
-    public Regiao update(int id, Regiao regiao) {
+    public Regiao update(long id, Regiao regiao) {
         Regiao regiaoInDb = this.regiaoRepository.findById(id);
 
         if (regiaoInDb == null) {
@@ -76,7 +76,7 @@ public class RegiaoApplication {
      * 
      * @param id O identificador da instância a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.regiaoRepository.deleteById(id);
     }
 }

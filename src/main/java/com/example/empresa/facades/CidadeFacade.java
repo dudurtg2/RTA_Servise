@@ -42,7 +42,7 @@ public class CidadeFacade {
      * @param id o identificador único da cidade a ser encontrada.
      * @return o objeto {@link Cidade} correspondente ao identificador fornecido ou {@code null} se não encontrado.
      */
-    public Cidade findById(int id) {
+    public Cidade findById(long id) {
         return this.cidadeApplication.findById(id);
     }
 
@@ -63,7 +63,7 @@ public class CidadeFacade {
      * @param cidade o objeto {@link Cidade} com os novos dados a serem atualizados.
      * @return o objeto {@link Cidade} atualizado ou {@code null} caso o identificador não seja encontrado.
      */
-    public Cidade update(int id, Cidade cidade) {
+    public Cidade update(long id, Cidade cidade) {
         return this.cidadeApplication.update(id, cidade);
     }
 
@@ -72,7 +72,7 @@ public class CidadeFacade {
      *
      * @param id o identificador único da cidade a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.cidadeApplication.deleteById(id);
     }
 }

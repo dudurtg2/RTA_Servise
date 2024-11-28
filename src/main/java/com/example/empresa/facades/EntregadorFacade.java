@@ -42,7 +42,7 @@ public class EntregadorFacade {
      * @param id o identificador único do entregador a ser encontrado.
      * @return o objeto {@link Entregador} correspondente ao identificador fornecido ou {@code null} se não encontrado.
      */
-    public Entregador findById(int id) {
+    public Entregador findById(long id) {
         return this.entregadorApplication.findById(id);
     }
 
@@ -63,7 +63,7 @@ public class EntregadorFacade {
      * @param entregador o objeto {@link Entregador} com os novos dados a serem atualizados.
      * @return o objeto {@link Entregador} atualizado ou {@code null} caso o identificador não seja encontrado.
      */
-    public Entregador update(int id, Entregador entregador) {
+    public Entregador update(long id, Entregador entregador) {
         return this.entregadorApplication.update(id, entregador);
     }
 
@@ -72,7 +72,7 @@ public class EntregadorFacade {
      *
      * @param id o identificador único do entregador a ser excluído.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.entregadorApplication.deleteById(id);
     }
 }

@@ -26,7 +26,7 @@ public class EmpresaRepository implements IEmpresaRepository {
     }
 
     @Override
-    public Empresa findById(int id) {
+    public Empresa findById(long id) {
         return entityManager.find(Empresa.class, id);
     }
 
@@ -40,7 +40,7 @@ public class EmpresaRepository implements IEmpresaRepository {
 
     @Override
     @Transactional
-    public Empresa update(int id, Empresa empresa) {
+    public Empresa update(long id, Empresa empresa) {
         Empresa empresaInDb = entityManager.find(Empresa.class, id);
         
         empresaInDb.setNome(empresa.getNome());
@@ -51,7 +51,7 @@ public class EmpresaRepository implements IEmpresaRepository {
 
     @Override
     @Transactional
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         Empresa empresaInDb = entityManager.find(Empresa.class, id);
         if (empresaInDb != null) {
             entityManager.remove(empresaInDb);

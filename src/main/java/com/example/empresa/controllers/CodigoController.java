@@ -50,7 +50,7 @@ public class CodigoController {
      * @return uma resposta HTTP contendo o objeto {@link Codigo} correspondente e o status HTTP 200 (OK).
      */
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Codigo> findById(@PathVariable int id) {
+    public ResponseEntity<Codigo> findById(@PathVariable long id) {
         Codigo codigo = this.codigoFacade.findById(id);
         return new ResponseEntity<>(codigo, HttpStatus.OK);
     }
@@ -76,7 +76,7 @@ public class CodigoController {
      * ou 404 (Not Found) caso o ID não seja encontrado.
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Codigo> update(@PathVariable int id, @RequestBody Codigo codigo) {
+    public ResponseEntity<Codigo> update(@PathVariable long id, @RequestBody Codigo codigo) {
         Codigo codigoUpdated = codigoFacade.update(id, codigo);
         if (codigoUpdated == null) {
             return new ResponseEntity<>(codigoUpdated, HttpStatus.NOT_FOUND);
@@ -91,7 +91,7 @@ public class CodigoController {
      * @return uma resposta HTTP com o status 200 (OK).
      */
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable int id) {
+    public ResponseEntity<Void> deleteById(@PathVariable long id) {
         codigoFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

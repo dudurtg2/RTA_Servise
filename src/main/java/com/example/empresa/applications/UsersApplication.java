@@ -41,7 +41,7 @@ public class UsersApplication {
      * @param id O identificador da instância de {@link Users}.
      * @return A instância de {@link Users} correspondente ao id, ou null se não encontrado.
      */
-    public Users findById(int id) {
+    public Users findById(long id) {
         return this.usersRepository.findById(id);
     }
 
@@ -67,7 +67,7 @@ public class UsersApplication {
      * @param users A nova instância de {@link Users} contendo as atualizações.
      * @return A instância atualizada de {@link Users}, ou null se não encontrado.
      */
-    public Users update(int id, Users users) {
+    public Users update(long id, Users users) {
         Users usersInDb = this.usersRepository.findById(id);
         if (usersInDb == null) {
             return null;
@@ -86,7 +86,7 @@ public class UsersApplication {
      * 
      * @param id O identificador da instância a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.usersRepository.deleteById(id);
     }
 }

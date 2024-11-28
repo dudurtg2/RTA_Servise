@@ -26,7 +26,7 @@ public interface IRegiaoRepository {
      * @param id O identificador único da instância de {@link Regiao}.
      * @return A instância de {@link Regiao} correspondente ao id, ou null se não encontrada.
      */
-    Regiao findById(int id);
+    Regiao findById(long id);
 
     /**
      * Salva uma nova instância de {@link Regiao} no repositório.
@@ -43,12 +43,12 @@ public interface IRegiaoRepository {
      * @param regiao A nova instância de {@link Regiao} com as atualizações.
      * @return A instância de {@link Regiao} atualizada, ou null se não encontrada.
      */
-    Regiao update(int id, Regiao regiao);
+    Regiao update(long id, Regiao regiao);
 
     /**
      * Exclui a instância de {@link Regiao} com base no identificador único.
      * 
      * @param id O identificador único da instância a ser excluída.
      */
-    void deleteById(int id);
+    void deleteById(long id);
 }

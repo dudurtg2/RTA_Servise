@@ -42,7 +42,7 @@ public class FuncionarioFacade {
      * @param id o identificador único do funcionário a ser encontrado.
      * @return o objeto {@link Funcionario} correspondente ao identificador fornecido ou {@code null} se não encontrado.
      */
-    public Funcionario findById(int id) {
+    public Funcionario findById(long id) {
         return this.funcionarioApplication.findById(id);
     }
 
@@ -63,7 +63,7 @@ public class FuncionarioFacade {
      * @param funcionario o objeto {@link Funcionario} com os novos dados a serem atualizados.
      * @return o objeto {@link Funcionario} atualizado ou {@code null} caso o identificador não seja encontrado.
      */
-    public Funcionario update(int id, Funcionario funcionario) {
+    public Funcionario update(long id, Funcionario funcionario) {
         return this.funcionarioApplication.update(id, funcionario);
     }
 
@@ -72,7 +72,7 @@ public class FuncionarioFacade {
      *
      * @param id o identificador único do funcionário a ser excluído.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.funcionarioApplication.deleteById(id);
     }
 }

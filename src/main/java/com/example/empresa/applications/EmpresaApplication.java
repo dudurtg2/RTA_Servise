@@ -41,7 +41,7 @@ public class EmpresaApplication {
      * @param id O identificador da instância de {@link Empresa}.
      * @return A instância de {@link Empresa} correspondente ao id, ou null se não encontrado.
      */
-    public Empresa findById(int id) {
+    public Empresa findById(long id) {
         return this.empresaRepository.findById(id);
     }
 
@@ -62,7 +62,7 @@ public class EmpresaApplication {
      * @param empresa A nova instância de {@link Empresa} contendo as atualizações.
      * @return A instância atualizada de {@link Empresa}, ou null se não encontrado.
      */
-    public Empresa update(int id, Empresa empresa) {
+    public Empresa update(long id, Empresa empresa) {
         Empresa empresaInDb = this.empresaRepository.findById(id);
 
         if (empresaInDb == null) {
@@ -77,7 +77,7 @@ public class EmpresaApplication {
      * 
      * @param id O identificador da instância a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.empresaRepository.deleteById(id);
     }
 }

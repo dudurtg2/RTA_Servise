@@ -40,7 +40,7 @@ public class MotoristaApplication {
      * @param id O identificador da instância de {@link Motorista}.
      * @return A instância de {@link Motorista} correspondente ao id, ou null se não encontrado.
      */
-    public Motorista findById(int id) {
+    public Motorista findById(long id) {
         return this.motoristaRepository.findById(id);
     }
 
@@ -61,7 +61,7 @@ public class MotoristaApplication {
      * @param motorista A nova instância de {@link Motorista} contendo as atualizações.
      * @return A instância atualizada de {@link Motorista}, ou null se não encontrado.
      */
-    public Motorista update(int id, Motorista motorista) {
+    public Motorista update(long id, Motorista motorista) {
         Motorista motoristaInDb = this.motoristaRepository.findById(id);
 
         if (motoristaInDb == null) {
@@ -76,7 +76,7 @@ public class MotoristaApplication {
      * 
      * @param id O identificador da instância a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.motoristaRepository.deleteById(id);
     }
 }

@@ -41,7 +41,7 @@ public class CidadeApplication {
      * @param id O identificador da instância de {@link Cidade}.
      * @return A instância de {@link Cidade} correspondente ao id, ou null se não encontrado.
      */
-    public Cidade findById(int id) {
+    public Cidade findById(long id) {
         return this.cidadeRepository.findById(id);
     }
 
@@ -72,7 +72,7 @@ public class CidadeApplication {
      * @param cidade A nova instância de {@link Cidade} contendo as atualizações.
      * @return A instância atualizada de {@link Cidade}, ou null se não encontrado ou o CEP for inválido.
      */
-    public Cidade update(int id, Cidade cidade) {
+    public Cidade update(long id, Cidade cidade) {
         Cidade cidadeInDb = this.cidadeRepository.findById(id);
 
         if (cidadeInDb == null) {
@@ -93,7 +93,7 @@ public class CidadeApplication {
      * 
      * @param id O identificador da instância a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.cidadeRepository.deleteById(id);
     }
 }

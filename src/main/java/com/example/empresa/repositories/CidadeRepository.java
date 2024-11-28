@@ -26,7 +26,7 @@ public class CidadeRepository implements ICidadeRepository {
     }
 
     @Override
-    public Cidade findById(int id) {
+    public Cidade findById(long id) {
         return entityManager.find(Cidade.class, id);
     }
 
@@ -40,7 +40,7 @@ public class CidadeRepository implements ICidadeRepository {
 
     @Override
     @Transactional
-    public Cidade update(int id, Cidade cidade) {
+    public Cidade update(long id, Cidade cidade) {
         Cidade cidadeInDb = entityManager.find(Cidade.class, id);
         
         cidadeInDb.setNome(cidade.getNome());
@@ -52,7 +52,7 @@ public class CidadeRepository implements ICidadeRepository {
 
     @Override
     @Transactional
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         Cidade cidadeInDb = entityManager.find(Cidade.class, id);
         if (cidadeInDb != null) {
             entityManager.remove(cidadeInDb);

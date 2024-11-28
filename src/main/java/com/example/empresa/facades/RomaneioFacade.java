@@ -41,7 +41,7 @@ public class RomaneioFacade {
      * @param id o identificador único do romaneio a ser encontrado.
      * @return o objeto {@link Romaneio} correspondente ao identificador fornecido ou {@code null} se não encontrado.
      */
-    public Romaneio findById(int id) {
+    public Romaneio findById(long id) {
         return this.romaneioApplication.findById(id);
     }
 
@@ -62,7 +62,7 @@ public class RomaneioFacade {
      * @param romaneio o objeto {@link Romaneio} com os novos dados a serem atualizados.
      * @return o objeto {@link Romaneio} atualizado ou {@code null} caso o identificador não seja encontrado.
      */
-    public Romaneio update(int id, Romaneio romaneio) {
+    public Romaneio update(long id, Romaneio romaneio) {
         return this.romaneioApplication.update(id, romaneio);
     }
 
@@ -71,7 +71,7 @@ public class RomaneioFacade {
      *
      * @param id o identificador único do romaneio a ser excluído.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.romaneioApplication.deleteById(id);
     }
 

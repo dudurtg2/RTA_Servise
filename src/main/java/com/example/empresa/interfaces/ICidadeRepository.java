@@ -26,7 +26,7 @@ public interface ICidadeRepository {
      * @param id O identificador único da instância de {@link Cidade}.
      * @return A instância de {@link Cidade} correspondente ao id, ou null se não encontrado.
      */
-    Cidade findById(int id);
+    Cidade findById(long id);
 
     /**
      * Salva uma nova instância de {@link Cidade} no repositório.
@@ -43,13 +43,13 @@ public interface ICidadeRepository {
      * @param cidade A nova instância de {@link Cidade} com as atualizações.
      * @return A instância de {@link Cidade} atualizada, ou null se não encontrada.
      */
-    Cidade update(int id, Cidade cidade);
+    Cidade update(long id, Cidade cidade);
 
     /**
      * Exclui a instância de {@link Cidade} com base no identificador único.
      * 
      * @param id O identificador único da instância a ser excluída.
      */
-    void deleteById(int id);
+    void deleteById(long id);
 }
 

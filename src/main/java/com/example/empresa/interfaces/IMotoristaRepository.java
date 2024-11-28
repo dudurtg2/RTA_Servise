@@ -26,7 +26,7 @@ public interface IMotoristaRepository {
      * @param id O identificador único da instância de {@link Motorista}.
      * @return A instância de {@link Motorista} correspondente ao id, ou null se não encontrado.
      */
-    Motorista findById(int id);
+    Motorista findById(long id);
 
     /**
      * Salva uma nova instância de {@link Motorista} no repositório.
@@ -43,12 +43,12 @@ public interface IMotoristaRepository {
      * @param motorista A nova instância de {@link Motorista} com as atualizações.
      * @return A instância de {@link Motorista} atualizada, ou null se não encontrada.
      */
-    Motorista update(int id, Motorista motorista);
+    Motorista update(long id, Motorista motorista);
 
     /**
      * Exclui a instância de {@link Motorista} com base no identificador único.
      * 
      * @param id O identificador único da instância a ser excluída.
      */
-    void deleteById(int id);
+    void deleteById(long id);
 }

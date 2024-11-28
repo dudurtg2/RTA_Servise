@@ -40,7 +40,7 @@ public class EntregadorApplication {
      * @param id O identificador da instância de {@link Entregador}.
      * @return A instância de {@link Entregador} correspondente ao id, ou null se não encontrado.
      */
-    public Entregador findById(int id) {
+    public Entregador findById(long id) {
         return this.entregadorRepository.findById(id);
     }
 
@@ -62,7 +62,7 @@ public class EntregadorApplication {
      * @param entregador A nova instância de {@link Entregador} contendo as atualizações.
      * @return A instância atualizada de {@link Entregador}, ou null se não encontrado.
      */
-    public Entregador update(int id, Entregador entregador) {
+    public Entregador update(long id, Entregador entregador) {
         Entregador entregadorInDb = this.entregadorRepository.findById(id);
         
         if (entregadorInDb == null) {
@@ -79,7 +79,7 @@ public class EntregadorApplication {
      * 
      * @param id O identificador da instância a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.entregadorRepository.deleteById(id);
     }
 }

@@ -26,7 +26,7 @@ public class CodigoRepository implements ICodigoRepository {
     }
 
     @Override
-    public Codigo findById(int id) {
+    public Codigo findById(long id) {
         return entityManager.find(Codigo.class, id);
     }
 
@@ -40,7 +40,7 @@ public class CodigoRepository implements ICodigoRepository {
 
     @Override
     @Transactional
-    public Codigo update(int id, Codigo codigo) {
+    public Codigo update(long id, Codigo codigo) {
         Codigo codigoInDb = entityManager.find(Codigo.class, id);
         
         codigoInDb.setCodigo(codigo.getCodigo());
@@ -51,7 +51,7 @@ public class CodigoRepository implements ICodigoRepository {
 
     @Override
     @Transactional
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         Codigo codigoInDb = entityManager.find(Codigo.class, id);
         if (codigoInDb != null) {
             entityManager.remove(codigoInDb);

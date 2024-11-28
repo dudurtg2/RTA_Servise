@@ -41,7 +41,7 @@ public class RegiaoFacade {
      * @param id o identificador único da região a ser encontrada.
      * @return o objeto {@link Regiao} correspondente ao identificador fornecido ou {@code null} se não encontrado.
      */
-    public Regiao findById(int id) {
+    public Regiao findById(long id) {
         return this.regiaoApplication.findById(id);
     }
 
@@ -62,7 +62,7 @@ public class RegiaoFacade {
      * @param regiao o objeto {@link Regiao} com os novos dados a serem atualizados.
      * @return o objeto {@link Regiao} atualizado ou {@code null} caso o identificador não seja encontrado.
      */
-    public Regiao update(int id, Regiao regiao) {
+    public Regiao update(long id, Regiao regiao) {
         return this.regiaoApplication.update(id, regiao);
     }
 
@@ -71,7 +71,7 @@ public class RegiaoFacade {
      *
      * @param id o identificador único da região a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.regiaoApplication.deleteById(id);
     }
 }

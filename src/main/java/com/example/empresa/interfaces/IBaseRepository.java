@@ -26,7 +26,7 @@ public interface IBaseRepository {
      * @param id O identificador único da instância de {@link Base}.
      * @return A instância de {@link Base} correspondente ao id, ou null se não encontrado.
      */
-    Base findById(int id);
+    Base findById(long id);
 
     /**
      * Salva uma nova instância de {@link Base} no repositório.
@@ -43,14 +43,14 @@ public interface IBaseRepository {
      * @param base A nova instância de {@link Base} com as atualizações.
      * @return A instância de {@link Base} atualizada, ou null se não encontrado.
      */
-    Base update(int id, Base base);
+    Base update(long id, Base base);
 
     /**
      * Exclui a instância de {@link Base} com base no identificador único.
      * 
      * @param id O identificador único da instância a ser excluída.
      */
-    void deleteById(int id);
+    void deleteById(long id);
 }
 
    

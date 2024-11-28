@@ -42,7 +42,7 @@ public class EmpresaFacade {
      * @param id o identificador único da empresa a ser encontrada.
      * @return o objeto {@link Empresa} correspondente ao identificador fornecido ou {@code null} se não encontrado.
      */
-    public Empresa findById(int id) {
+    public Empresa findById(long id) {
         return this.empresaApplication.findById(id);
     }
 
@@ -63,7 +63,7 @@ public class EmpresaFacade {
      * @param empresa o objeto {@link Empresa} com os novos dados a serem atualizados.
      * @return o objeto {@link Empresa} atualizado ou {@code null} caso o identificador não seja encontrado.
      */
-    public Empresa update(int id, Empresa empresa) {
+    public Empresa update(long id, Empresa empresa) {
         return this.empresaApplication.update(id, empresa);
     }
 
@@ -72,7 +72,7 @@ public class EmpresaFacade {
      *
      * @param id o identificador único da empresa a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.empresaApplication.deleteById(id);
     }
 }

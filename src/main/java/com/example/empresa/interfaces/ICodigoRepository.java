@@ -26,7 +26,7 @@ public interface ICodigoRepository {
      * @param id O identificador único da instância de {@link Codigo}.
      * @return A instância de {@link Codigo} correspondente ao id, ou null se não encontrado.
      */
-    Codigo findById(int id);
+    Codigo findById(long id);
 
     /**
      * Salva uma nova instância de {@link Codigo} no repositório.
@@ -43,12 +43,12 @@ public interface ICodigoRepository {
      * @param codigo A nova instância de {@link Codigo} com as atualizações.
      * @return A instância de {@link Codigo} atualizada, ou null se não encontrada.
      */
-    Codigo update(int id, Codigo codigo);
+    Codigo update(long id, Codigo codigo);
 
     /**
      * Exclui a instância de {@link Codigo} com base no identificador único.
      * 
      * @param id O identificador único da instância a ser excluída.
      */
-    void deleteById(int id);
+    void deleteById(long id);
 }

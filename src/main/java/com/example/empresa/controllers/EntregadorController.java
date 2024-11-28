@@ -51,7 +51,7 @@ public class EntregadorController {
      * @return uma resposta HTTP contendo o objeto {@link Entregador} correspondente e o status HTTP 200 (OK).
      */
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Entregador> findById(@PathVariable int id) {
+    public ResponseEntity<Entregador> findById(@PathVariable long id) {
         Entregador entregador = this.entregadorFacade.findById(id);
         return new ResponseEntity<>(entregador, HttpStatus.OK);
     }
@@ -82,7 +82,7 @@ public class EntregadorController {
      * ou 404 (Not Found) caso o ID não seja encontrado.
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Entregador> update(@PathVariable int id, @RequestBody Entregador entregador) {
+    public ResponseEntity<Entregador> update(@PathVariable long id, @RequestBody Entregador entregador) {
         Entregador entregadorUpdated = entregadorFacade.update(id, entregador);
         if (entregadorUpdated == null) {
             return new ResponseEntity<>(entregadorUpdated, HttpStatus.NOT_FOUND);
@@ -97,7 +97,7 @@ public class EntregadorController {
      * @return uma resposta HTTP com o status 200 (OK).
      */
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable int id) {
+    public ResponseEntity<Void> deleteById(@PathVariable long id) {
         entregadorFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

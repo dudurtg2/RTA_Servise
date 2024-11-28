@@ -26,7 +26,7 @@ public class FuncionarioRepository implements IFuncionarioRepository {
     }
 
     @Override
-    public Funcionario findById(int id) {
+    public Funcionario findById(long id) {
         return entityManager.find(Funcionario.class, id);
     }
 
@@ -48,7 +48,7 @@ public class FuncionarioRepository implements IFuncionarioRepository {
 
     @Override
     @Transactional
-    public Funcionario update(int id, Funcionario funcionario) {
+    public Funcionario update(long id, Funcionario funcionario) {
         Funcionario funcionarioInDb = entityManager.find(Funcionario.class, id);
 
         funcionarioInDb.setNome(funcionario.getNome());
@@ -62,7 +62,7 @@ public class FuncionarioRepository implements IFuncionarioRepository {
 
     @Override
     @Transactional
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         Funcionario funcionarioInDb = entityManager.find(Funcionario.class, id);
         if (funcionarioInDb != null) {
             entityManager.remove(funcionarioInDb);

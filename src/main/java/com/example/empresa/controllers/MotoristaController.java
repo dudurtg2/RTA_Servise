@@ -51,7 +51,7 @@ public class MotoristaController {
      * @return uma resposta HTTP contendo o objeto {@link Motorista} correspondente e o status HTTP 200 (OK).
      */
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Motorista> findById(@PathVariable int id) {
+    public ResponseEntity<Motorista> findById(@PathVariable long id) {
         Motorista motorista = this.motoristaFacade.findById(id);
         return new ResponseEntity<>(motorista, HttpStatus.OK);
     }
@@ -82,7 +82,7 @@ public class MotoristaController {
      * ou 404 (Not Found) caso o ID não seja encontrado.
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Motorista> update(@PathVariable int id, @RequestBody Motorista motorista) {
+    public ResponseEntity<Motorista> update(@PathVariable long id, @RequestBody Motorista motorista) {
         Motorista motoristaUpdated = motoristaFacade.update(id, motorista);
         if (motoristaUpdated == null) {
             return new ResponseEntity<>(motoristaUpdated, HttpStatus.NOT_FOUND);
@@ -97,7 +97,7 @@ public class MotoristaController {
      * @return uma resposta HTTP com o status 200 (OK).
      */
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable int id) {
+    public ResponseEntity<Void> deleteById(@PathVariable long id) {
         motoristaFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -26,7 +26,7 @@ public class EntregadorRepository implements IEntregadorRepository {
     }
 
     @Override
-    public Entregador findById(int id) {
+    public Entregador findById(long id) {
         return entityManager.find(Entregador.class, id);
     }
 
@@ -40,7 +40,7 @@ public class EntregadorRepository implements IEntregadorRepository {
 
     @Override
     @Transactional
-    public Entregador update(int id, Entregador entregador) {
+    public Entregador update(long id, Entregador entregador) {
         Entregador entregadorInDb = entityManager.find(Entregador.class, id);
         
         entregadorInDb.setNome(entregador.getNome());
@@ -55,7 +55,7 @@ public class EntregadorRepository implements IEntregadorRepository {
 
     @Override
     @Transactional
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         Entregador entregadorInDb = entityManager.find(Entregador.class, id);
         if (entregadorInDb != null) {
             entityManager.remove(entregadorInDb);

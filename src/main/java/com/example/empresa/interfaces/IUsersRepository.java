@@ -27,7 +27,7 @@ public interface IUsersRepository {
      * @param id O identificador único da instância de {@link Users}.
      * @return A instância de {@link Users} correspondente ao id, ou null se não encontrada.
      */
-    Users findById(int id);
+    Users findById(long id);
 
     /**
      * Salva uma nova instância de {@link Users} no repositório.
@@ -44,12 +44,12 @@ public interface IUsersRepository {
      * @param users A nova instância de {@link Users} com as atualizações.
      * @return A instância de {@link Users} atualizada, ou null se não encontrada.
      */
-    Users update(int id, Users users);
+    Users update(long id, Users users);
 
     /**
      * Exclui a instância de {@link Users} com base no identificador único.
      * 
      * @param id O identificador único da instância a ser excluída.
      */
-    void deleteById(int id);
+    void deleteById(long id);
 }

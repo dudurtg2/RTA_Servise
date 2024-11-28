@@ -56,7 +56,7 @@ public class RomaneioController {
      *         o status HTTP 200 (OK).
      */
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Romaneio> findById(@PathVariable int id) {
+    public ResponseEntity<Romaneio> findById(@PathVariable long id) {
         Romaneio romaneio = this.romaneioFacade.findById(id);
 
         return new ResponseEntity<Romaneio>(romaneio, HttpStatus.OK);
@@ -103,7 +103,7 @@ public class RomaneioController {
      */
     @PutMapping("/update/{id}")
     public ResponseEntity<Romaneio> update(
-            @PathVariable int id,
+            @PathVariable long id,
             @RequestBody Romaneio romaneio) {
 
         Romaneio romaneioUpdated = romaneioFacade.update(id, romaneio);
@@ -122,7 +122,7 @@ public class RomaneioController {
      * @return uma resposta HTTP com o status 200 (OK).
      */
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable int id) {
+    public ResponseEntity<Void> deleteById(@PathVariable long id) {
         romaneioFacade.deleteById(id);
 
         return new ResponseEntity<Void>(HttpStatus.OK);

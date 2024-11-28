@@ -41,7 +41,7 @@ public class BaseApplication {
      * @param id O identificador da instância de {@link Base}.
      * @return A instância de {@link Base} correspondente ao id, ou null se não encontrado.
      */
-    public Base findById(int id) {
+    public Base findById(long id) {
         return this.baseRepository.findById(id);
     }
 
@@ -62,7 +62,7 @@ public class BaseApplication {
      * @param base A nova instância de {@link Base} contendo as atualizações.
      * @return A instância atualizada de {@link Base}, ou null se não encontrado.
      */
-    public Base update(int id, Base base) {
+    public Base update(long id, Base base) {
         Base baseInDb = this.baseRepository.findById(id);
         
         if (baseInDb == null) {
@@ -77,7 +77,7 @@ public class BaseApplication {
      * 
      * @param id O identificador da instância a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.baseRepository.deleteById(id);
     }
 }

@@ -51,7 +51,7 @@ public class CidadeController {
      * @return uma resposta HTTP contendo o objeto {@link Cidade} correspondente e o status HTTP 200 (OK).
      */
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Cidade> findById(@PathVariable int id) {
+    public ResponseEntity<Cidade> findById(@PathVariable long id) {
         Cidade cidade = this.cidadeFacade.findById(id);
         return new ResponseEntity<>(cidade, HttpStatus.OK);
     }
@@ -77,7 +77,7 @@ public class CidadeController {
      * ou 404 (Not Found) caso o ID não seja encontrado.
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Cidade> update(@PathVariable int id, @RequestBody Cidade cidade) {
+    public ResponseEntity<Cidade> update(@PathVariable long id, @RequestBody Cidade cidade) {
         Cidade cidadeUpdated = cidadeFacade.update(id, cidade);
         if (cidadeUpdated == null) {
             return new ResponseEntity<>(cidadeUpdated, HttpStatus.NOT_FOUND);
@@ -92,7 +92,7 @@ public class CidadeController {
      * @return uma resposta HTTP com o status 200 (OK).
      */
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable int id) {
+    public ResponseEntity<Void> deleteById(@PathVariable long id) {
         cidadeFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

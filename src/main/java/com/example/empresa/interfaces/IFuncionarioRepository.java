@@ -27,7 +27,7 @@ public interface IFuncionarioRepository {
      * @param id O identificador único da instância de {@link Funcionario}.
      * @return A instância de {@link Funcionario} correspondente ao id, ou null se não encontrado.
      */
-    Funcionario findById(int id);
+    Funcionario findById(long id);
 
     /**
      * Recupera uma instância de {@link Funcionario} com base no endereço de email.
@@ -52,12 +52,12 @@ public interface IFuncionarioRepository {
      * @param funcionario A nova instância de {@link Funcionario} com as atualizações.
      * @return A instância de {@link Funcionario} atualizada, ou null se não encontrada.
      */
-    Funcionario update(int id, Funcionario funcionario);
+    Funcionario update(long id, Funcionario funcionario);
 
     /**
      * Exclui a instância de {@link Funcionario} com base no identificador único.
      * 
      * @param id O identificador único da instância a ser excluída.
      */
-    void deleteById(int id);
+    void deleteById(long id);
 }

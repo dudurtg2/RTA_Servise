@@ -26,7 +26,7 @@ public class BaseRepository implements IBaseRepository {
     }
 
     @Override
-    public Base findById(int id) {
+    public Base findById(long id) {
         return entityManager.find(Base.class, id);
     }
 
@@ -40,7 +40,7 @@ public class BaseRepository implements IBaseRepository {
 
     @Override
     @Transactional
-    public Base update(int id, Base Base) {
+    public Base update(long id, Base Base) {
         Base baseInDb = entityManager.find(Base.class, id);
         
         baseInDb.setNome(Base.getNome());
@@ -51,7 +51,7 @@ public class BaseRepository implements IBaseRepository {
 
     @Override
     @Transactional
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         Base baseInDb = entityManager.find(Base.class, id);
         if (baseInDb != null) {
             entityManager.remove(baseInDb);

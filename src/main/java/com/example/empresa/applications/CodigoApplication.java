@@ -41,7 +41,7 @@ public class CodigoApplication {
      * @param id O identificador da instância de {@link Codigo}.
      * @return A instância de {@link Codigo} correspondente ao id, ou null se não encontrado.
      */
-    public Codigo findById(int id) {
+    public Codigo findById(long id) {
         return this.codigoRepository.findById(id);
     }
 
@@ -62,7 +62,7 @@ public class CodigoApplication {
      * @param codigo A nova instância de {@link Codigo} contendo as atualizações.
      * @return A instância atualizada de {@link Codigo}, ou null se não encontrado.
      */
-    public Codigo update(int id, Codigo codigo) {
+    public Codigo update(long id, Codigo codigo) {
         Codigo codigoInDb = this.codigoRepository.findById(id);
 
         if (codigoInDb == null) {
@@ -76,7 +76,7 @@ public class CodigoApplication {
      * 
      * @param id O identificador da instância a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.codigoRepository.deleteById(id);
     }
 }

@@ -40,7 +40,7 @@ public class FuncionarioApplication {
      * @param id O identificador da instância de {@link Funcionario}.
      * @return A instância de {@link Funcionario} correspondente ao id, ou null se não encontrado.
      */
-    public Funcionario findById(int id) {
+    public Funcionario findById(long id) {
         return this.funcionarioRepository.findById(id);
     }
     
@@ -63,7 +63,7 @@ public class FuncionarioApplication {
      * @param funcionario A nova instância de {@link Funcionario} contendo as atualizações.
      * @return A instância atualizada de {@link Funcionario}, ou null se não encontrado.
      */
-    public Funcionario update(int id, Funcionario funcionario) {
+    public Funcionario update(long id, Funcionario funcionario) {
         Funcionario funcionarioInDb = this.funcionarioRepository.findById(id);
 
         if (funcionarioInDb == null) {
@@ -80,7 +80,7 @@ public class FuncionarioApplication {
      * 
      * @param id O identificador da instância a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.funcionarioRepository.deleteById(id);
     }
 }

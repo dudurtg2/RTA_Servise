@@ -26,7 +26,7 @@ public class MotoristaRepository implements IMotoristaRepository {
     }
 
     @Override
-    public Motorista findById(int id) {
+    public Motorista findById(long id) {
         return entityManager.find(Motorista.class, id);
     }
 
@@ -40,7 +40,7 @@ public class MotoristaRepository implements IMotoristaRepository {
 
     @Override
     @Transactional
-    public Motorista update(int id, Motorista motorista) {
+    public Motorista update(long id, Motorista motorista) {
         Motorista motoristaInDb = entityManager.find(Motorista.class, id);
         
         motoristaInDb.setNome(motorista.getNome());
@@ -54,7 +54,7 @@ public class MotoristaRepository implements IMotoristaRepository {
 
     @Override
     @Transactional
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         Motorista motoristaInDb = entityManager.find(Motorista.class, id);
         if (motoristaInDb != null) {
             entityManager.remove(motoristaInDb);

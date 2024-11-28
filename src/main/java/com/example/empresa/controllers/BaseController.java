@@ -50,7 +50,7 @@ public class BaseController {
      * @return uma resposta HTTP contendo o objeto {@link Base} correspondente e o status HTTP 200 (OK).
      */
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Base> findById(@PathVariable int id) {
+    public ResponseEntity<Base> findById(@PathVariable long id) {
         Base base = this.baseFacade.findById(id);
         return new ResponseEntity<>(base, HttpStatus.OK);
     }
@@ -76,7 +76,7 @@ public class BaseController {
      * ou 404 (Not Found) caso o ID não seja encontrado.
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Base> update(@PathVariable int id, @RequestBody Base base) {
+    public ResponseEntity<Base> update(@PathVariable long id, @RequestBody Base base) {
         Base baseUpdated = baseFacade.update(id, base);
         if (baseUpdated == null) {
             return new ResponseEntity<>(baseUpdated, HttpStatus.NOT_FOUND);
@@ -91,7 +91,7 @@ public class BaseController {
      * @return uma resposta HTTP com o status 200 (OK).
      */
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable int id) {
+    public ResponseEntity<Void> deleteById(@PathVariable long id) {
         baseFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

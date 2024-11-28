@@ -51,7 +51,7 @@ public class FuncionarioController {
      * @return uma resposta HTTP contendo o objeto {@link Funcionario} correspondente e o status HTTP 200 (OK).
      */
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Funcionario> findById(@PathVariable int id) {
+    public ResponseEntity<Funcionario> findById(@PathVariable long id) {
         Funcionario funcionario = this.funcionarioFacade.findById(id);
         return new ResponseEntity<>(funcionario, HttpStatus.OK);
     }
@@ -82,7 +82,7 @@ public class FuncionarioController {
      * ou 404 (Not Found) caso o ID não seja encontrado.
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Funcionario> update(@PathVariable int id, @RequestBody Funcionario funcionario) {
+    public ResponseEntity<Funcionario> update(@PathVariable long id, @RequestBody Funcionario funcionario) {
         Funcionario funcionarioUpdated = funcionarioFacade.update(id, funcionario);
         if (funcionarioUpdated == null) {
             return new ResponseEntity<>(funcionarioUpdated, HttpStatus.NOT_FOUND);
@@ -97,7 +97,7 @@ public class FuncionarioController {
      * @return uma resposta HTTP com o status 200 (OK).
      */
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable int id) {
+    public ResponseEntity<Void> deleteById(@PathVariable long id) {
         funcionarioFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

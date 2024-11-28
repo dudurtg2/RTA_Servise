@@ -26,7 +26,7 @@ public class RegiaoRepository implements IRegiaoRepository {
     }
 
     @Override
-    public Regiao findById(int id) {
+    public Regiao findById(long id) {
         return entityManager.find(Regiao.class, id);
     }
 
@@ -40,7 +40,7 @@ public class RegiaoRepository implements IRegiaoRepository {
 
     @Override
     @Transactional
-    public Regiao update(int id, Regiao regiao) {
+    public Regiao update(long id, Regiao regiao) {
         Regiao regiaoInDb = entityManager.find(Regiao.class, id);
         
         regiaoInDb.setNome(regiao.getNome());
@@ -51,7 +51,7 @@ public class RegiaoRepository implements IRegiaoRepository {
 
     @Override
     @Transactional
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         Regiao regiaoInDb = entityManager.find(Regiao.class, id);
         if (regiaoInDb != null) {
             entityManager.remove(regiaoInDb);

@@ -26,7 +26,7 @@ public class UsersRepository implements IUsersRepository {
     }
 
     @Override
-    public Users findById(int id) {
+    public Users findById(long id) {
         return entityManager.find(Users.class, id);
     }
 
@@ -41,7 +41,7 @@ public class UsersRepository implements IUsersRepository {
 
     @Override
     @Transactional
-    public Users update(int id, Users users) {
+    public Users update(long id, Users users) {
         Users UsersInDb = entityManager.find(Users.class, id);
         
         UsersInDb.setLogin(users.getLogin());
@@ -52,7 +52,7 @@ public class UsersRepository implements IUsersRepository {
 
     @Override
     @Transactional
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         Users UsersInDb = entityManager.find(Users.class, id);
         if (UsersInDb != null) {
             entityManager.remove(UsersInDb);

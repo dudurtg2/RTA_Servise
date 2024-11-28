@@ -3,6 +3,9 @@ package com.example.empresa.security;
 public enum UserRole {
 
     ADMIN("admin"),
+    MOTORISTA ("motorista"),
+    FUNCIONARIO ("funcionario"),
+    SAC("sac"),
     USER("user");
 
     private String role;
@@ -15,8 +18,4 @@ public enum UserRole {
         return role;
     }
 
-    UserRole toUpperCase() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toUpperCase'");
-    }
 }

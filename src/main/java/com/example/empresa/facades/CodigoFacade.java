@@ -42,7 +42,7 @@ public class CodigoFacade {
      * @param id o identificador único do código a ser encontrado.
      * @return o objeto {@link Codigo} correspondente ao identificador fornecido ou {@code null} se não encontrado.
      */
-    public Codigo findById(int id) {
+    public Codigo findById(long id) {
         return this.codigoApplication.findById(id);
     }
 
@@ -63,7 +63,7 @@ public class CodigoFacade {
      * @param codigo o objeto {@link Codigo} com os novos dados a serem atualizados.
      * @return o objeto {@link Codigo} atualizado ou {@code null} caso o identificador não seja encontrado.
      */
-    public Codigo update(int id, Codigo codigo) {
+    public Codigo update(long id, Codigo codigo) {
         return this.codigoApplication.update(id, codigo);
     }
 
@@ -72,7 +72,7 @@ public class CodigoFacade {
      *
      * @param id o identificador único do código a ser excluído.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.codigoApplication.deleteById(id);
     }
 }

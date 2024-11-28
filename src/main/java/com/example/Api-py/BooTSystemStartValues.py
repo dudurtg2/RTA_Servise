@@ -51,7 +51,7 @@ except requests.exceptions.RequestException as e:
     print("Erro ao enviar a requisição:", e)
 
 
-url = "http://localhost:30514/bases/save"
+url = "http://localhost:30514/api/bases/save"
 
 
 
@@ -78,7 +78,7 @@ except requests.exceptions.RequestException as e:
     print("Erro ao enviar a requisição:", e)
 
 
-url = "http://localhost:30514/motoristas/save"
+url = "http://localhost:30514/api/motoristas/save"
 
 
 headers = {
@@ -108,7 +108,7 @@ except requests.exceptions.RequestException as e:
 
 
 
-url = "http://localhost:30514/regioes/save"
+url = "http://localhost:30514/api/regioes/save"
 
 
 headers = {
@@ -136,7 +136,7 @@ except requests.exceptions.RequestException as e:
 
 
 
-url = "http://localhost:30514/cidades/save"
+url = "http://localhost:30514/api/cidades/save"
 
 
 headers = {
@@ -167,7 +167,7 @@ except requests.exceptions.RequestException as e:
 
 
 
-url = "http://localhost:30514/empresas/save"
+url = "http://localhost:30514/api/empresas/save"
 
 
 headers = {
@@ -195,7 +195,7 @@ except requests.exceptions.RequestException as e:
 
 
 
-url = "http://localhost:30514/motoristas/save"
+url = "http://localhost:30514/api/motoristas/save"
 
 
 headers = {
@@ -225,7 +225,7 @@ except requests.exceptions.RequestException as e:
     print("Erro ao enviar a requisição:", e)
 
 
-url = "http://localhost:30514/funcionarios/save"
+url = "http://localhost:30514/api/funcionarios/save"
 
 
 headers = {
@@ -254,7 +254,7 @@ except requests.exceptions.RequestException as e:
     print("Erro ao enviar a requisição:", e)
 
 
-url = "http://localhost:30514/motoristas/save"
+url = "http://localhost:30514/api/motoristas/save"
 
 
 headers = {
@@ -283,7 +283,7 @@ except requests.exceptions.RequestException as e:
     print("Erro ao enviar a requisição:", e)
 
 
-url = "http://localhost:30514/entregadores/save"
+url = "http://localhost:30514/api/entregadores/save"
 
 
 headers = {
@@ -313,7 +313,7 @@ except requests.exceptions.RequestException as e:
     print("Erro ao enviar a requisição:", e)
 
 
-url = "http://localhost:30514/romaneios/save"
+url = "http://localhost:30514/api/romaneios/save"
 
 
 headers = {

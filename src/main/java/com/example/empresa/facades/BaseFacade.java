@@ -42,7 +42,7 @@ public class BaseFacade {
      * @param id o identificador único do objeto {@link Base} a ser encontrado.
      * @return o objeto {@link Base} correspondente ao identificador fornecido ou {@code null} se não encontrado.
      */
-    public Base findById(int id) {
+    public Base findById(long id) {
         return this.baseApplication.findById(id);
     }
 
@@ -63,7 +63,7 @@ public class BaseFacade {
      * @param base o objeto {@link Base} com os novos dados a serem atualizados.
      * @return o objeto {@link Base} atualizado ou {@code null} caso o identificador não seja encontrado.
      */
-    public Base update(int id, Base base) {
+    public Base update(long id, Base base) {
         return this.baseApplication.update(id, base);
     }
 
@@ -72,7 +72,7 @@ public class BaseFacade {
      *
      * @param id o identificador único do objeto {@link Base} a ser excluído.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.baseApplication.deleteById(id);
     }
 }

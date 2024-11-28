@@ -26,7 +26,7 @@ public interface IEmpresaRepository {
      * @param id O identificador único da instância de {@link Empresa}.
      * @return A instância de {@link Empresa} correspondente ao id, ou null se não encontrado.
      */
-    Empresa findById(int id);
+    Empresa findById(long id);
 
     /**
      * Salva uma nova instância de {@link Empresa} no repositório.
@@ -43,12 +43,12 @@ public interface IEmpresaRepository {
      * @param empresa A nova instância de {@link Empresa} com as atualizações.
      * @return A instância de {@link Empresa} atualizada, ou null se não encontrada.
      */
-    Empresa update(int id, Empresa empresa);
+    Empresa update(long id, Empresa empresa);
 
     /**
      * Exclui a instância de {@link Empresa} com base no identificador único.
      * 
      * @param id O identificador único da instância a ser excluída.
      */
-    void deleteById(int id);
+    void deleteById(long id);
 }

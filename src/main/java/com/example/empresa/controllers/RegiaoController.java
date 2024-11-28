@@ -50,7 +50,7 @@ public class RegiaoController {
      * @return uma resposta HTTP contendo o objeto {@link Regiao} correspondente e o status HTTP 200 (OK).
      */
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Regiao> findById(@PathVariable int id) {
+    public ResponseEntity<Regiao> findById(@PathVariable long id) {
         Regiao regiao = this.regiaoFacade.findById(id);
         return new ResponseEntity<>(regiao, HttpStatus.OK);
     }
@@ -76,7 +76,7 @@ public class RegiaoController {
      * ou 404 (Not Found) caso o ID não seja encontrado.
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Regiao> update(@PathVariable int id, @RequestBody Regiao regiao) {
+    public ResponseEntity<Regiao> update(@PathVariable long id, @RequestBody Regiao regiao) {
         Regiao regiaoUpdated = regiaoFacade.update(id, regiao);
         if (regiaoUpdated == null) {
             return new ResponseEntity<>(regiaoUpdated, HttpStatus.NOT_FOUND);
@@ -91,7 +91,7 @@ public class RegiaoController {
      * @return uma resposta HTTP com o status 200 (OK).
      */
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable int id) {
+    public ResponseEntity<Void> deleteById(@PathVariable long id) {
         regiaoFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

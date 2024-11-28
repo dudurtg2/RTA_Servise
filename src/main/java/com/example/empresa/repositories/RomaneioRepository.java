@@ -26,7 +26,7 @@ public class RomaneioRepository implements IRomaneioRepository {
     }
 
     @Override
-    public Romaneio findById(int id) {
+    public Romaneio findById(long id) {
         return entityManager.find(Romaneio.class, id);
     }
 
@@ -40,7 +40,7 @@ public class RomaneioRepository implements IRomaneioRepository {
 
     @Override
     @Transactional
-    public Romaneio update(int id, Romaneio romaneio) {
+    public Romaneio update(long id, Romaneio romaneio) {
         Romaneio romaneioInDb = entityManager.find(Romaneio.class, id);
         
         romaneioInDb.setEmpresa(romaneio.getEmpresa());
@@ -61,7 +61,7 @@ public class RomaneioRepository implements IRomaneioRepository {
 
     @Override
     @Transactional
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         Romaneio romaneioInDb = entityManager.find(Romaneio.class, id);
         if (romaneioInDb != null) {
             entityManager.remove(romaneioInDb);

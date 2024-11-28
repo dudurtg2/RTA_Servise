@@ -26,7 +26,7 @@ public interface IEntregadorRepository {
      * @param id O identificador único da instância de {@link Entregador}.
      * @return A instância de {@link Entregador} correspondente ao id, ou null se não encontrado.
      */
-    Entregador findById(int id);
+    Entregador findById(long id);
 
     /**
      * Salva uma nova instância de {@link Entregador} no repositório.
@@ -43,13 +43,13 @@ public interface IEntregadorRepository {
      * @param entregador A nova instância de {@link Entregador} com as atualizações.
      * @return A instância de {@link Entregador} atualizada, ou null se não encontrada.
      */
-    Entregador update(int id, Entregador entregador);
+    Entregador update(long id, Entregador entregador);
 
     /**
      * Exclui a instância de {@link Entregador} com base no identificador único.
      * 
      * @param id O identificador único da instância a ser excluída.
      */
-    void deleteById(int id);
+    void deleteById(long id);
 }
 

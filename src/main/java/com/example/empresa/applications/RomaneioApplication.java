@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Codigo;
+import com.example.empresa.entities.Entregador;
 import com.example.empresa.entities.Romaneio;
+import com.example.empresa.interfaces.IEntregadorRepository;
 import com.example.empresa.interfaces.IRomaneioRepository;
 
 /**
@@ -16,14 +18,16 @@ import com.example.empresa.interfaces.IRomaneioRepository;
 @Component
 public class RomaneioApplication {
     private IRomaneioRepository romaneioRepository;
+    private IEntregadorRepository entregadorRepository;
 
     /**
      * Construtor da classe RomaneioApplication.
      * 
      * @param romaneioRepository O repositório para a entidade {@link Romaneio}.
      */
-    public RomaneioApplication(IRomaneioRepository romaneioRepository) {
+    public RomaneioApplication(IRomaneioRepository romaneioRepository, IEntregadorRepository entregadorRepository) {
         this.romaneioRepository = romaneioRepository;
+        this.entregadorRepository = entregadorRepository;
     }
     
     /**
@@ -39,37 +43,39 @@ public class RomaneioApplication {
      * Recupera uma instância da entidade {@link Romaneio} com base no seu identificador único.
      * 
      * @param id O identificador da instância de {@link Romaneio}.
-     * @return A instância de {@link Romaneio} correspondente ao id, ou null se não encontrado.
+     * @return A instância de {@link Romaneio} correspondente ao id, ou null se não encontrada.
      */
-    public Romaneio findById(int id) {
+    public Romaneio findById(long id) {
         return this.romaneioRepository.findById(id);
     }
 
     /**
      * Salva uma nova instância da entidade {@link Romaneio} no repositório.
-     * Associa os códigos à instância de {@link Romaneio} antes de salvá-la.
+     * Antes de salvar, associa os códigos à instância de {@link Romaneio}.
      * 
      * @param romaneio A instância da entidade {@link Romaneio} a ser salva.
      * @return A instância salva de {@link Romaneio}.
      */
-    
     public Romaneio save(Romaneio romaneio) {
-        // Associa cada código ao romaneio antes de salvar
+        
         for (Codigo codigo : romaneio.getCodigos()) {
             codigo.setRomaneio(romaneio);
         }
-          
+
+        if(entregadorRepository.findById(romaneio.getEntregador().getId()) != null) return null;
+
         return this.romaneioRepository.save(romaneio);
     }
 
     /**
      * Atualiza uma instância existente de {@link Romaneio}.
+     * Verifica se a instância com o identificador fornecido existe antes de atualizá-la.
      * 
      * @param id O identificador da instância a ser atualizada.
      * @param romaneio A nova instância de {@link Romaneio} contendo as atualizações.
-     * @return A instância atualizada de {@link Romaneio}, ou null se não encontrado.
+     * @return A instância atualizada de {@link Romaneio}, ou null se a instância não for encontrada.
      */
-    public Romaneio update(int id, Romaneio romaneio) {
+    public Romaneio update(long id, Romaneio romaneio) {
         Romaneio romaneioInDb = this.romaneioRepository.findById(id);
 
         if (romaneioInDb == null) {
@@ -83,10 +89,17 @@ public class RomaneioApplication {
      * 
      * @param id O identificador da instância a ser excluída.
      */
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         this.romaneioRepository.deleteById(id);
     }
 
+    /**
+     * Conta o número de instâncias da entidade {@link Romaneio} com um status específico.
+     * Realiza uma busca em todas as instâncias e verifica se o status corresponde ao informado.
+     * 
+     * @param status O status utilizado como critério de filtragem.
+     * @return O número de instâncias que possuem o status informado.
+     */
     public int getCount(String status) {
         List<Romaneio> romaneioAll = this.romaneioRepository.findAll();
         if (romaneioAll == null) return 0;

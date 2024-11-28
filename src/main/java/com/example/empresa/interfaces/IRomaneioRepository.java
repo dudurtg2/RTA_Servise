@@ -27,7 +27,7 @@ public interface IRomaneioRepository {
      * @param id O identificador único da instância de {@link Romaneio}.
      * @return A instância de {@link Romaneio} correspondente ao id, ou null se não encontrada.
      */
-    Romaneio findById(int id);
+    Romaneio findById(long id);
 
     /**
      * Salva uma nova instância de {@link Romaneio} no repositório.
@@ -44,12 +44,12 @@ public interface IRomaneioRepository {
      * @param romaneio A nova instância de {@link Romaneio} com as atualizações.
      * @return A instância de {@link Romaneio} atualizada, ou null se não encontrada.
      */
-    Romaneio update(int id, Romaneio romaneio);
+    Romaneio update(long id, Romaneio romaneio);
 
     /**
      * Exclui a instância de {@link Romaneio} com base no identificador único.
      * 
      * @param id O identificador único da instância a ser excluída.
      */
-    void deleteById(int id);
+    void deleteById(long id);
 }

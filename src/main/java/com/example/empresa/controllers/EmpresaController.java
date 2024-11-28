@@ -51,7 +51,7 @@ public class EmpresaController {
      * @return uma resposta HTTP contendo o objeto {@link Empresa} correspondente e o status HTTP 200 (OK).
      */
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Empresa> findById(@PathVariable int id) {
+    public ResponseEntity<Empresa> findById(@PathVariable long id) {
         Empresa empresa = this.empresaFacade.findById(id);
         return new ResponseEntity<>(empresa, HttpStatus.OK);
     }
@@ -82,7 +82,7 @@ public class EmpresaController {
      * ou 404 (Not Found) caso o ID não seja encontrado.
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Empresa> update(@PathVariable int id, @RequestBody Empresa empresa) {
+    public ResponseEntity<Empresa> update(@PathVariable long id, @RequestBody Empresa empresa) {
         Empresa empresaUpdated = empresaFacade.update(id, empresa);
         if (empresaUpdated == null) {
             return new ResponseEntity<>(empresaUpdated, HttpStatus.NOT_FOUND);
@@ -97,7 +97,7 @@ public class EmpresaController {
      * @return uma resposta HTTP com o status 200 (OK).
      */
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable int id) {
+    public ResponseEntity<Void> deleteById(@PathVariable long id) {
         empresaFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
