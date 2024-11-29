@@ -44,6 +44,15 @@ public class Entregador {
     @ManyToOne
     @JoinColumn(name = "base")
     private Base base;
+
+    public Entregador(String nome, String email, String cpf, String telefone, Base base, String endereco) {
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.base = base;
+    }
 }
 /* 
 {

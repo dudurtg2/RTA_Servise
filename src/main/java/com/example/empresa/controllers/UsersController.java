@@ -52,13 +52,17 @@ public class UsersController {
      * @return uma resposta HTTP com o token gerado para autenticação.
      */
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody AuthorizationDTO data) {
-        var usernamePass = new UsernamePasswordAuthenticationToken(data.login().toLowerCase(), data.senha());
-        var auth = this.authenticationManager.authenticate(usernamePass);
+    public ResponseEntity<?> login(@RequestBody AuthorizationDTO data) {
+        try {
+            var usernamePass = new UsernamePasswordAuthenticationToken(data.login().toLowerCase(), data.senha());
+            var auth = this.authenticationManager.authenticate(usernamePass);
 
-        var token = tokenService.generateToken((Users) auth.getPrincipal());
+            var token = tokenService.generateToken((Users) auth.getPrincipal());
 
-        return ResponseEntity.ok(new LoginResponseDTO(token));
+            return ResponseEntity.ok(new LoginResponseDTO(token));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed: " + e.getMessage());
+        }
     }
 
     /**
@@ -70,9 +74,12 @@ public class UsersController {
      */
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterDTO data) {
+        try {
+            Users userSave = usersFacade.save(data);
 
-        Users userSave = usersFacade.save(data);
-
-        return new ResponseEntity<Users>(userSave, HttpStatus.OK);
+            return new ResponseEntity<Users>(userSave, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao registrar usuário: " + e.getMessage());
+        }
     }
 }

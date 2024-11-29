@@ -4,16 +4,18 @@ import java.util.List;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import com.example.empresa.emuns.UserRole;
+import com.example.empresa.entities.Entregador;
 import com.example.empresa.entities.Funcionario;
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.entities.Users;
 import com.example.empresa.interfaces.IBaseRepository;
+import com.example.empresa.interfaces.IEntregadorRepository;
 import com.example.empresa.interfaces.IFuncionarioRepository;
 import com.example.empresa.interfaces.IMotoristaRepository;
 import com.example.empresa.interfaces.IUsersRepository;
 import com.example.empresa.security.DTO.RegisterDTO;
+
+import jakarta.persistence.EntityNotFoundException;
 
 /**
  * Classe responsável pela lógica de aplicação relacionada à entidade
@@ -29,6 +31,7 @@ public class UsersApplication {
     private IFuncionarioRepository funcionarioRepository;
     private IMotoristaRepository motoristaRepository;
     private IBaseRepository baseRepository;
+    private IEntregadorRepository entregadorRepositories;
 
     /**
      * Construtor da classe UsersApplication.
@@ -36,11 +39,13 @@ public class UsersApplication {
      * @param usersRepository O repositório para a entidade {@link Users}.
      */
     public UsersApplication(IUsersRepository usersRepositor, IFuncionarioRepository funcionarioRepository,
-            IMotoristaRepository motoristaRepository, IBaseRepository baseRepository) {
+            IMotoristaRepository motoristaRepository, IBaseRepository baseRepository,
+            IEntregadorRepository entregadorRepositories) {
         this.usersRepository = usersRepository;
         this.funcionarioRepository = funcionarioRepository;
         this.motoristaRepository = motoristaRepository;
         this.baseRepository = baseRepository;
+        this.entregadorRepositories = entregadorRepositories;
     }
 
     /**
@@ -65,26 +70,68 @@ public class UsersApplication {
     }
 
     /**
-     * Salva uma nova instância da entidade {@link Users} no repositório.
+     * Salva um novo objeto {@link Users} no sistema.
      * O login do usuário é convertido para minúsculas antes de ser salvo.
+     * Além disso, a senha é criptografada usando {@link BCryptPasswordEncoder}.
      * 
-     * @param users A instância da entidade {@link Users} a ser salva.
-     * @return A instância salva de {@link Users}.
+     * @param users o objeto {@link RegisterDTO} contendo as informações de registro
+     *              do usuário.
+     * @return o objeto {@link Users} salvo.
      */
-    
     public Users save(RegisterDTO users) {
         Users usersIndBD = new Users(users.email(), new BCryptPasswordEncoder().encode(users.senha()), users.role());
         switch (users.role()) {
-            case FUNCIONARIO:
-                return this.saveFuncionario(users, usersIndBD);
+
             case MOTORISTA:
-                return this.saveMotorista(users, usersIndBD);
+                Users usersSaveMotorista = this.saveMotorista(users, usersIndBD);
+                if (usersSaveMotorista != null) {
+                    return usersSaveMotorista;
+                }
+                throw new EntityNotFoundException("Não foi possivel salvar o motorista.");
+
+            case ENTREGADOR:
+                Users usersSaveEntregador = this.saveEntregador(users, usersIndBD);
+                if (usersSaveEntregador != null) {
+                    return usersSaveEntregador;
+                }
+                throw new EntityNotFoundException("Não foi possivel salvar o entregador.");
+
             default:
-                return null;
-           
+                Users usersSaveFuncionarios = this.saveFuncionario(users, usersIndBD);
+                if (usersSaveFuncionarios != null) {
+                    return usersSaveFuncionarios;
+                }
+                throw new EntityNotFoundException("Não foi possivel salvar o funcionario.");
+
         }
     };
 
+    /**
+     * Salva uma nova instância da entidade {@link Entregador} no repositório e
+     * persiste o usuário associado.
+     *
+     * @param users      O objeto {@link RegisterDTO} contendo as informações de
+     *                   registro do entregador.
+     * @param usersIndBD O objeto {@link Users} associado que será salvo no sistema.
+     * @return O objeto {@link Users} salvo no repositório.
+     */
+    private Users saveEntregador(RegisterDTO users, Users usersIndBD) {
+        Entregador entregador = new Entregador(users.nome(), users.email(), users.cpf(), users.telefone(),
+                baseRepository.findById(users.base()), users.endereco());
+
+        this.entregadorRepositories.save(entregador);
+        return this.usersRepository.save(usersIndBD);
+    }
+
+    /**
+     * Salva uma nova inst ncia da entidade {@link Funcionario} no reposit rio e
+     * persiste o usu rio associado.
+     *
+     * @param users      O objeto {@link RegisterDTO} contendo as informa es de
+     *                   registro do funcion rio.
+     * @param usersIndBD O objeto {@link Users} associado que ser salvo no sistema.
+     * @return O objeto {@link Users} salvo no reposit rio.
+     */
     private Users saveFuncionario(RegisterDTO users, Users usersIndBD) {
         Funcionario funcionario = new Funcionario(users.nome(), users.email(), users.cpf(), users.telefone(),
                 baseRepository.findById(users.base()));
@@ -93,6 +140,15 @@ public class UsersApplication {
         return this.usersRepository.save(usersIndBD);
     }
 
+    /**
+     * Salva uma nova instância da entidade {@link Motorista} no repositório e
+     * persiste o usuário associado.
+     *
+     * @param users      O objeto {@link RegisterDTO} contendo as informações de
+     *                   registro do motorista.
+     * @param usersIndBD O objeto {@link Users} associado que será salvo no sistema.
+     * @return O objeto {@link Users} salvo no repositório.
+     */
     private Users saveMotorista(RegisterDTO users, Users usersIndBD) {
         Motorista motorista = new Motorista(users.nome(), users.email(), users.cpf(), users.telefone(),
                 baseRepository.findById(users.base()));
