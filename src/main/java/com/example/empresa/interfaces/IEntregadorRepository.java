@@ -51,5 +51,13 @@ public interface IEntregadorRepository {
      * @param id O identificador único da instância a ser excluída.
      */
     void deleteById(long id);
+
+    /**
+     * Recupera uma instância de {@link Entregador} com base no email.
+     *
+     * @param email O email da instância de {@link Entregador}.
+     * @return A instância de {@link Entregador} correspondente ao email, ou null se não encontrado.
+     */
+    Entregador findByEmail(String email);
 }
 

@@ -254,4 +254,5 @@ public class RomaneioApplication {
     public List<Romaneio> findByStatus(String sts) {
         return this.romaneioRepository.findByStatus(sts);
     }
+    
 }

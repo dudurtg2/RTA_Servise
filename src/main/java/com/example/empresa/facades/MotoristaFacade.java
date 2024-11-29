@@ -74,4 +74,5 @@ public class MotoristaFacade {
     public void deleteById(long id) {
         this.motoristaApplication.deleteById(id);
     }
+    
 }

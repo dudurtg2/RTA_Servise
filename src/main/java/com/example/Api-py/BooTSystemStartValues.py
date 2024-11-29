@@ -7,9 +7,13 @@ headers = {
 
 
 bases = {
-    "login": "dudu",
-    "senha": "dudu",
-    "role": "ADMIN"
+  "nome": "João Silva",
+  "senha": "senhaSegura123",
+  "role": "ADMIN",
+  "email": "joao.silva@example.com",
+  "telefone": "+5511999999999",
+  "cpf": "123.456.789-00",
+  "base": 1
 }
 
 
@@ -33,8 +37,8 @@ headers = {
 
 
 bases = {
-    "login": "dudu",
-    "senha": "dudu"
+    "login": "senhaSegura123",
+    "senha": "senhaSegura123"
 }
 
 token : str

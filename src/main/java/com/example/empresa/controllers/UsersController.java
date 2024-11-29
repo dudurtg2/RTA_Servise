@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.empresa.entities.Users;
+import com.example.empresa.facades.FuncionarioFacade;
 import com.example.empresa.facades.UsersFacade;
 import com.example.empresa.security.DTO.AuthorizationDTO;
 import com.example.empresa.security.DTO.LoginResponseDTO;
@@ -59,7 +60,8 @@ public class UsersController {
 
             var token = tokenService.generateToken((Users) auth.getPrincipal());
 
-            return ResponseEntity.ok(new LoginResponseDTO(token));
+            LoginResponseDTO response = new LoginResponseDTO(usersFacade.findByEmail(data.login()), token);
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed: " + e.getMessage());
         }

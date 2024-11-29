@@ -81,4 +81,9 @@ public class UsersFacade {
     public void deleteById(long id) {
         this.usersApplication.deleteById(id);
     }
+
+    public <T> T findByEmail(String email) {
+        return this.usersApplication.findByEmail(email);
+    }
+
 }

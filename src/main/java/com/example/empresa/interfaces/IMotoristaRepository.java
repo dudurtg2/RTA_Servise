@@ -51,4 +51,12 @@ public interface IMotoristaRepository {
      * @param id O identificador único da instância a ser excluída.
      */
     void deleteById(long id);
+
+    /**
+     * Recupera uma instância de {@link Motorista} com base no email.
+     *
+     * @param email O email da instância de {@link Motorista}.
+     * @return A instância de {@link Motorista} correspondente ao email, ou null se não encontrado.
+     */
+    Motorista findByEmail(String email);
 }

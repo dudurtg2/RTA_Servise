@@ -60,4 +60,6 @@ public interface IFuncionarioRepository {
      * @param id O identificador único da instância a ser excluída.
      */
     void deleteById(long id);
+
+    
 }

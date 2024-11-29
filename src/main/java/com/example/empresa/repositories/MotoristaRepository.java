@@ -61,4 +61,17 @@ public class MotoristaRepository implements IMotoristaRepository {
         }
     }
 
+    
+    @Override
+    public Motorista findByEmail(String email) {
+        String jpql = "SELECT m FROM Motorista m WHERE m.email = :email";
+        TypedQuery<Motorista> query = entityManager.createQuery(jpql, Motorista.class);
+        query.setParameter("email", email);
+        try {
+            return query.getSingleResult();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
+    }
+
 }

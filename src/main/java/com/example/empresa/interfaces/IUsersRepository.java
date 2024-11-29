@@ -52,4 +52,14 @@ public interface IUsersRepository {
      * @param id O identificador único da instância a ser excluída.
      */
     void deleteById(long id);
+
+    /**
+     * Recupera uma instância de {@link Users} com base no email.
+     * 
+     * @param email O email da instância de {@link Users}.
+     * @return A instância de {@link Users} correspondente ao email, ou null se não encontrada.
+     * 
+     */
+    
+    Users findByEmail(String email);
 }

@@ -1,5 +1,6 @@
 package com.example.empresa.applications;
 
+import java.net.Authenticator;
 import java.util.List;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -8,11 +9,13 @@ import com.example.empresa.entities.Entregador;
 import com.example.empresa.entities.Funcionario;
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.entities.Users;
+import com.example.empresa.entities.records.DataRecord;
 import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.IEntregadorRepository;
 import com.example.empresa.interfaces.IFuncionarioRepository;
 import com.example.empresa.interfaces.IMotoristaRepository;
 import com.example.empresa.interfaces.IUsersRepository;
+import com.example.empresa.security.DTO.LoginResponseDTO;
 import com.example.empresa.security.DTO.RegisterDTO;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -31,21 +34,21 @@ public class UsersApplication {
     private IFuncionarioRepository funcionarioRepository;
     private IMotoristaRepository motoristaRepository;
     private IBaseRepository baseRepository;
-    private IEntregadorRepository entregadorRepositories;
+    private IEntregadorRepository entregadorRepository;
 
     /**
      * Construtor da classe UsersApplication.
      * 
      * @param usersRepository O repositório para a entidade {@link Users}.
      */
-    public UsersApplication(IUsersRepository usersRepositor, IFuncionarioRepository funcionarioRepository,
+    public UsersApplication(IUsersRepository usersRepository, IFuncionarioRepository funcionarioRepository,
             IMotoristaRepository motoristaRepository, IBaseRepository baseRepository,
-            IEntregadorRepository entregadorRepositories) {
+            IEntregadorRepository entregadorRepository) {
         this.usersRepository = usersRepository;
         this.funcionarioRepository = funcionarioRepository;
         this.motoristaRepository = motoristaRepository;
         this.baseRepository = baseRepository;
-        this.entregadorRepositories = entregadorRepositories;
+        this.entregadorRepository = entregadorRepository;
     }
 
     /**
@@ -79,27 +82,27 @@ public class UsersApplication {
      * @return o objeto {@link Users} salvo.
      */
     public Users save(RegisterDTO users) {
-        Users usersIndBD = new Users(users.email(), new BCryptPasswordEncoder().encode(users.senha()), users.role());
+
+        
+
         switch (users.role()) {
 
             case MOTORISTA:
-                Users usersSaveMotorista = this.saveMotorista(users, usersIndBD);
-                if (usersSaveMotorista != null) {
-                    return usersSaveMotorista;
+                if (this.saveMotorista(users) != null) {
+                    return this.usersRepository.save(new Users(users.email(), new BCryptPasswordEncoder().encode(users.senha()), users.role()));
                 }
                 throw new EntityNotFoundException("Não foi possivel salvar o motorista.");
 
             case ENTREGADOR:
-                Users usersSaveEntregador = this.saveEntregador(users, usersIndBD);
-                if (usersSaveEntregador != null) {
-                    return usersSaveEntregador;
+               
+                if (this.saveEntregador(users) != null) {
+                    return this.usersRepository.save(new Users(users.email(), new BCryptPasswordEncoder().encode(users.senha()), users.role()));
                 }
                 throw new EntityNotFoundException("Não foi possivel salvar o entregador.");
 
             default:
-                Users usersSaveFuncionarios = this.saveFuncionario(users, usersIndBD);
-                if (usersSaveFuncionarios != null) {
-                    return usersSaveFuncionarios;
+                if (this.saveFuncionario(users) != null) {
+                    return this.usersRepository.save(new Users(users.email(), new BCryptPasswordEncoder().encode(users.senha()), users.role()));
                 }
                 throw new EntityNotFoundException("Não foi possivel salvar o funcionario.");
 
@@ -115,12 +118,12 @@ public class UsersApplication {
      * @param usersIndBD O objeto {@link Users} associado que será salvo no sistema.
      * @return O objeto {@link Users} salvo no repositório.
      */
-    private Users saveEntregador(RegisterDTO users, Users usersIndBD) {
+    private Entregador saveEntregador(RegisterDTO users) {
         Entregador entregador = new Entregador(users.nome(), users.email(), users.cpf(), users.telefone(),
                 baseRepository.findById(users.base()), users.endereco());
 
-        this.entregadorRepositories.save(entregador);
-        return this.usersRepository.save(usersIndBD);
+                return this.entregadorRepository.save(entregador);
+         
     }
 
     /**
@@ -132,12 +135,12 @@ public class UsersApplication {
      * @param usersIndBD O objeto {@link Users} associado que ser salvo no sistema.
      * @return O objeto {@link Users} salvo no reposit rio.
      */
-    private Users saveFuncionario(RegisterDTO users, Users usersIndBD) {
+    private Funcionario saveFuncionario(RegisterDTO users) {
         Funcionario funcionario = new Funcionario(users.nome(), users.email(), users.cpf(), users.telefone(),
                 baseRepository.findById(users.base()));
 
-        this.funcionarioRepository.save(funcionario);
-        return this.usersRepository.save(usersIndBD);
+        return this.funcionarioRepository.save(funcionario);
+        
     }
 
     /**
@@ -149,13 +152,14 @@ public class UsersApplication {
      * @param usersIndBD O objeto {@link Users} associado que será salvo no sistema.
      * @return O objeto {@link Users} salvo no repositório.
      */
-    private Users saveMotorista(RegisterDTO users, Users usersIndBD) {
+    private Motorista saveMotorista(RegisterDTO users) {
         Motorista motorista = new Motorista(users.nome(), users.email(), users.cpf(), users.telefone(),
                 baseRepository.findById(users.base()));
 
-        this.motoristaRepository.save(motorista);
-        return this.usersRepository.save(usersIndBD);
+        return this.motoristaRepository.save(motorista);
+        
     }
+
 
     /**
      * Atualiza uma instância existente de {@link Users}.
@@ -189,4 +193,35 @@ public class UsersApplication {
     public void deleteById(long id) {
         this.usersRepository.deleteById(id);
     }
+
+    /**
+     * Recupera uma instância de {@link Funcionario}, {@link Motorista} ou
+     * {@link Entregador} com base no email.
+     * 
+     * @param email O email da instância a ser encontrada.
+     * @return A inst ncia de {@link Funcionario}, {@link Motorista} ou
+     *         {@link Entregador} correspondente ao email, ou null se n o
+     *         encontrado.
+     */
+    public <T> T findByEmail(String email) {
+
+        Funcionario funcionario = this.funcionarioRepository.findByEmail(email);
+        if (funcionario != null) {
+            return (T) new DataRecord(funcionario, "Funcionario");
+        }
+        
+        Motorista motorista = this.motoristaRepository.findByEmail(email);
+        if (motorista != null) {
+            return (T) new DataRecord(motorista, "Motorista");
+        }
+
+        Entregador entregador = this.entregadorRepository.findByEmail(email);
+        if (entregador != null) {
+            return (T) new DataRecord(entregador, "Entregador");
+        }
+        
+        return null;
+    }
+    
+    
 }

@@ -15,7 +15,7 @@ import jakarta.persistence.TypedQuery;
 @Repository
 public class UsersRepository implements IUsersRepository {
 
-   @PersistenceContext
+    @PersistenceContext
     private EntityManager entityManager;
 
     @Override
@@ -33,7 +33,7 @@ public class UsersRepository implements IUsersRepository {
     @Override
     @Transactional
     public Users save(Users users) {
-        
+
         entityManager.persist(users);
 
         return users;
@@ -43,7 +43,7 @@ public class UsersRepository implements IUsersRepository {
     @Transactional
     public Users update(long id, Users users) {
         Users UsersInDb = entityManager.find(Users.class, id);
-        
+
         UsersInDb.setLogin(users.getLogin());
         UsersInDb.setSenha(users.getSenha());
 
@@ -56,6 +56,18 @@ public class UsersRepository implements IUsersRepository {
         Users UsersInDb = entityManager.find(Users.class, id);
         if (UsersInDb != null) {
             entityManager.remove(UsersInDb);
+        }
+    }
+
+    @Override
+    public Users findByEmail(String email) {
+        String jpql = "SELECT u FROM Users u WHERE u.email = :email";
+        TypedQuery<Users> query = entityManager.createQuery(jpql, Users.class);
+        query.setParameter("email", email);
+        try {
+            return query.getSingleResult();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
         }
     }
 

@@ -15,7 +15,7 @@ import jakarta.persistence.TypedQuery;
 @Repository
 public class EntregadorRepository implements IEntregadorRepository {
 
-   @PersistenceContext
+    @PersistenceContext
     private EntityManager entityManager;
 
     @Override
@@ -42,7 +42,7 @@ public class EntregadorRepository implements IEntregadorRepository {
     @Transactional
     public Entregador update(long id, Entregador entregador) {
         Entregador entregadorInDb = entityManager.find(Entregador.class, id);
-        
+
         entregadorInDb.setNome(entregador.getNome());
         entregadorInDb.setEndereco(entregador.getEndereco());
         entregadorInDb.setEmail(entregador.getEmail());
@@ -59,6 +59,18 @@ public class EntregadorRepository implements IEntregadorRepository {
         Entregador entregadorInDb = entityManager.find(Entregador.class, id);
         if (entregadorInDb != null) {
             entityManager.remove(entregadorInDb);
+        }
+    }
+
+    @Override
+    public Entregador findByEmail(String email) {
+        String jpql = "SELECT e FROM Entregador e WHERE e.email = :email";
+        TypedQuery<Entregador> query = entityManager.createQuery(jpql, Entregador.class);
+        query.setParameter("email", email);
+        try {
+            return query.getSingleResult();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
         }
     }
 
