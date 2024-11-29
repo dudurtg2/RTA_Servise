@@ -1,6 +1,8 @@
 package com.example.empresa.controllers;
 
 import com.example.empresa.entities.Romaneio;
+import com.example.empresa.entities.records.ErrorRecord;
+import com.example.empresa.entities.records.RomaneioRecord;
 import com.example.empresa.facades.RomaneioFacade;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,9 +87,13 @@ public class RomaneioController {
      *         (Created).
      */
     @PostMapping("/save")
-    public ResponseEntity<Romaneio> save(@RequestBody Romaneio romaneio) {
+    public ResponseEntity<?> save(@RequestBody RomaneioRecord romaneio) {
 
         Romaneio romaneioSaved = romaneioFacade.save(romaneio);
+
+        if (romaneioSaved == null) {
+            return new ResponseEntity<ErrorRecord>(new ErrorRecord("Erro ao salvar o romaneio"), HttpStatus.BAD_REQUEST);
+        }
 
         return new ResponseEntity<Romaneio>(romaneioSaved, HttpStatus.CREATED);
     }

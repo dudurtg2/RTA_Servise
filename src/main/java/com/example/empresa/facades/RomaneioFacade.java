@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.empresa.applications.RomaneioApplication;
 import com.example.empresa.entities.Romaneio;
+import com.example.empresa.entities.records.RomaneioRecord;
 
 /**
  * Fachada responsável pela mediação das operações de persistência e lógica de negócios
@@ -51,7 +52,7 @@ public class RomaneioFacade {
      * @param romaneio o objeto {@link Romaneio} a ser salvo.
      * @return o objeto {@link Romaneio} que foi salvo.
      */
-    public Romaneio save(Romaneio romaneio) {
+    public Romaneio save(RomaneioRecord romaneio) {
         return this.romaneioApplication.save(romaneio);
     }
 

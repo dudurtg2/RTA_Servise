@@ -321,21 +321,14 @@ headers = {
     "Content-Type": "application/json"
 }
 
-
 romaneios = {
-    "empresa": { "id": 1 },
-    "motorista": { "id": 1},
-    "entregador": { "id": 1},
-    "funcionario": { "id": 1},
-    "base": { "id": 1 },
-    "cidade": { "id": 1 },
-    "sts": "sts",
-    "quantidade": 1,
+    "empresa": 1,
+    "entregador": 1,
+    "funcionario": 1,
+    "base": 1,
+    "cidade": 1,
     "codigoUid": "codigo_uid",
     "linkDownload": "link_download",
-    "data": "data",
-    "dataFinal": "data_final",
-    "ocorrencia": "ocorrencia",
     "codigos": [
         { "codigo": "codigo1" },
         { "codigo": "codigo2" },

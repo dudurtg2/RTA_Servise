@@ -3,7 +3,7 @@
         "id": 1,
         "codigo": "codigo1",
         "romaneio": {
-            "codigo": "codigo_uid",
+            "codigo": null,
             "romaneioId": 1
         }
     },
@@ -11,7 +11,7 @@
         "id": 2,
         "codigo": "codigo2",
         "romaneio": {
-            "codigo": "codigo_uid",
+            "codigo": null,
             "romaneioId": 1
         }
     },
@@ -19,7 +19,7 @@
         "id": 3,
         "codigo": "codigo3",
         "romaneio": {
-            "codigo": "codigo_uid",
+            "codigo": null,
             "romaneioId": 1
         }
     },
@@ -27,7 +27,7 @@
         "id": 4,
         "codigo": "codigo4",
         "romaneio": {
-            "codigo": "codigo_uid",
+            "codigo": null,
             "romaneioId": 1
         }
     }

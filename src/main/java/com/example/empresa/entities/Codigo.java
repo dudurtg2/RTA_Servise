@@ -1,6 +1,8 @@
 package com.example.empresa.entities;
 
 
+import com.example.empresa.entities.records.CodidoRecord;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,8 +35,8 @@ public class Codigo {
     @JoinColumn(name = "romaneio", referencedColumnName = "id", nullable = false) 
     private Romaneio romaneio;
     
-    public Data getRomaneio() {
-        return new Data(romaneio.getCodigoUid(), romaneio.getId());
+    public CodidoRecord getRomaneio() {
+        return new CodidoRecord(romaneio.getCodigoUid(), romaneio.getId());
     }
-    public record Data(String codigo, long romaneioId) { }
+    
 }

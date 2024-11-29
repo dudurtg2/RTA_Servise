@@ -6,18 +6,7 @@
             "nome": "Empresa 1",
             "cnpj": "123456789"
         },
-        "motorista": {
-            "id": 1,
-            "nome": "Motorista 1",
-            "email": "2M0ZI@example.com",
-            "cpf": "123.456.789-10",
-            "telefone": "123456789",
-            "base": {
-                "id": 1,
-                "nome": "Base 1",
-                "endereco": "Rua 1, 123"
-            }
-        },
+        "motorista": null,
         "entregador": {
             "id": 1,
             "nome": "Entregador 1",
@@ -62,19 +51,19 @@
                 }
             }
         },
-        "sts": "sts",
-        "quantidade": 1,
-        "codigoUid": "codigo_uid",
+        "sts": "aguardando",
+        "quantidade": 4,
+        "codigoUid": null,
         "linkDownload": "link_download",
-        "data": "data",
-        "dataFinal": "data_final",
-        "ocorrencia": "ocorrencia",
+        "data": "2024-11-28",
+        "dataFinal": null,
+        "ocorrencia": null,
         "codigos": [
             {
                 "id": 1,
                 "codigo": "codigo1",
                 "romaneio": {
-                    "codigo": "codigo_uid",
+                    "codigo": null,
                     "romaneioId": 1
                 }
             },
@@ -82,7 +71,7 @@
                 "id": 2,
                 "codigo": "codigo2",
                 "romaneio": {
-                    "codigo": "codigo_uid",
+                    "codigo": null,
                     "romaneioId": 1
                 }
             },
@@ -90,7 +79,7 @@
                 "id": 3,
                 "codigo": "codigo3",
                 "romaneio": {
-                    "codigo": "codigo_uid",
+                    "codigo": null,
                     "romaneioId": 1
                 }
             },
@@ -98,7 +87,7 @@
                 "id": 4,
                 "codigo": "codigo4",
                 "romaneio": {
-                    "codigo": "codigo_uid",
+                    "codigo": null,
                     "romaneioId": 1
                 }
             }
