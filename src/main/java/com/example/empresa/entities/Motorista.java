@@ -41,6 +41,14 @@ public class Motorista {
     @JoinColumn(name = "base")
     @ManyToOne
     private Base base; 
+
+    public Motorista(String nome, String email, String cpf, String telefone, Base base) {
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.base = base;
+    }
 }
 
 /* 

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.empresa.applications.UsersApplication;
 import com.example.empresa.entities.Users;
+import com.example.empresa.security.DTO.RegisterDTO;
 
 /**
  * Fachada responsável pela mediação das operações de persistência e lógica de negócios
@@ -51,7 +52,7 @@ public class UsersFacade {
      * @param users o objeto {@link Users} a ser salvo.
      * @return o objeto {@link Users} que foi salvo.
      */
-    public Users save(Users users) {
+    public Users save(RegisterDTO users) {
         return this.usersApplication.save(users);
     }
 

@@ -1,10 +1,11 @@
-package com.example.empresa.security;
+package com.example.empresa.emuns;
 
 public enum UserRole {
 
     ADMIN("admin"),
     MOTORISTA ("motorista"),
     FUNCIONARIO ("funcionario"),
+    ENTREGADOR("entregador"),
     SAC("sac"),
     USER("user");
 

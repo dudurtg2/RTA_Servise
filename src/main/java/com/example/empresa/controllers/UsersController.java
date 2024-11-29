@@ -27,7 +27,7 @@ import com.example.empresa.security.DTO.RegisterDTO;
 public class UsersController {
 
     private final AuthenticationManager authenticationManager;
-    private final UsersFacade usersFacade;
+    private UsersFacade usersFacade;
     private final TokenService tokenService;
 
     /**
@@ -69,12 +69,9 @@ public class UsersController {
      * @return uma resposta HTTP com o objeto {@link Users} salvo no sistema e status HTTP 200 (OK).
      */
     @PostMapping("/register")
-    public ResponseEntity<Users> register(@RequestBody RegisterDTO data) {
-       
-        String senha = new BCryptPasswordEncoder().encode(data.senha());
+    public ResponseEntity<?> register(@RequestBody RegisterDTO data) {
 
-        Users userSave = usersFacade.save(new Users(data.login().toLowerCase(), senha, data.role()));
-
+        Users userSave = usersFacade.save(data);
 
         return new ResponseEntity<Users>(userSave, HttpStatus.OK);
     }
