@@ -1,4 +1,4 @@
-package com.example.empresa.entities.records;
+package com.example.empresa.records;
 
 import java.util.List;
 

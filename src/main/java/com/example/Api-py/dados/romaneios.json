@@ -1,1 +1,190 @@
-[]
+[
+    {
+        "id": 1,
+        "empresa": {
+            "id": 1,
+            "nome": "Empresa 1",
+            "cnpj": "123456789"
+        },
+        "motorista": null,
+        "entregador": {
+            "id": 1,
+            "nome": "Entregador 1",
+            "email": "2m0zi@example.com",
+            "cpf": "123.456.789-00",
+            "telefone": "123456789",
+            "endereco": "Rua 1, 123",
+            "base": {
+                "id": 1,
+                "nome": "FSa",
+                "endereco": "sim"
+            }
+        },
+        "funcionario": {
+            "id": 1,
+            "nome": "João Silva",
+            "email": "joao.silva@example.com",
+            "cpf": "123.456.789-00",
+            "telefone": "+5511999999999",
+            "base": {
+                "id": 1,
+                "nome": "FSa",
+                "endereco": "sim"
+            }
+        },
+        "base": {
+            "id": 1,
+            "nome": "FSa",
+            "endereco": "sim"
+        },
+        "cidade": {
+            "id": 1,
+            "nome": "Cidade 1",
+            "cep": "12345-678",
+            "regiao": {
+                "id": 1,
+                "nome": "Sul",
+                "base": {
+                    "id": 1,
+                    "nome": "FSa",
+                    "endereco": "sim"
+                }
+            }
+        },
+        "sts": "aguardando",
+        "quantidade": 4,
+        "codigoUid": "codigo_uid",
+        "linkDownload": "link_download",
+        "data": "2024-11-29",
+        "dataFinal": null,
+        "ocorrencia": null,
+        "codigos": [
+            {
+                "id": 1,
+                "codigo": "codigo1",
+                "romaneio": {
+                    "codigo": "codigo_uid",
+                    "romaneioId": 1
+                }
+            },
+            {
+                "id": 2,
+                "codigo": "codigo2",
+                "romaneio": {
+                    "codigo": "codigo_uid",
+                    "romaneioId": 1
+                }
+            },
+            {
+                "id": 3,
+                "codigo": "codigo3",
+                "romaneio": {
+                    "codigo": "codigo_uid",
+                    "romaneioId": 1
+                }
+            },
+            {
+                "id": 4,
+                "codigo": "codigo4",
+                "romaneio": {
+                    "codigo": "codigo_uid",
+                    "romaneioId": 1
+                }
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "empresa": {
+            "id": 1,
+            "nome": "Empresa 1",
+            "cnpj": "123456789"
+        },
+        "motorista": null,
+        "entregador": {
+            "id": 1,
+            "nome": "Entregador 1",
+            "email": "2m0zi@example.com",
+            "cpf": "123.456.789-00",
+            "telefone": "123456789",
+            "endereco": "Rua 1, 123",
+            "base": {
+                "id": 1,
+                "nome": "FSa",
+                "endereco": "sim"
+            }
+        },
+        "funcionario": {
+            "id": 1,
+            "nome": "João Silva",
+            "email": "joao.silva@example.com",
+            "cpf": "123.456.789-00",
+            "telefone": "+5511999999999",
+            "base": {
+                "id": 1,
+                "nome": "FSa",
+                "endereco": "sim"
+            }
+        },
+        "base": {
+            "id": 1,
+            "nome": "FSa",
+            "endereco": "sim"
+        },
+        "cidade": {
+            "id": 1,
+            "nome": "Cidade 1",
+            "cep": "12345-678",
+            "regiao": {
+                "id": 1,
+                "nome": "Sul",
+                "base": {
+                    "id": 1,
+                    "nome": "FSa",
+                    "endereco": "sim"
+                }
+            }
+        },
+        "sts": "aguardando",
+        "quantidade": 4,
+        "codigoUid": "codigo_uid2",
+        "linkDownload": "link_download2",
+        "data": "2024-11-29",
+        "dataFinal": null,
+        "ocorrencia": null,
+        "codigos": [
+            {
+                "id": 5,
+                "codigo": "codigo12",
+                "romaneio": {
+                    "codigo": "codigo_uid2",
+                    "romaneioId": 2
+                }
+            },
+            {
+                "id": 6,
+                "codigo": "codigo22",
+                "romaneio": {
+                    "codigo": "codigo_uid2",
+                    "romaneioId": 2
+                }
+            },
+            {
+                "id": 7,
+                "codigo": "codigo23",
+                "romaneio": {
+                    "codigo": "codigo_uid2",
+                    "romaneioId": 2
+                }
+            },
+            {
+                "id": 8,
+                "codigo": "codigo24",
+                "romaneio": {
+                    "codigo": "codigo_uid2",
+                    "romaneioId": 2
+                }
+            }
+        ]
+    }
+]

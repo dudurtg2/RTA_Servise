@@ -13,12 +13,12 @@ import com.example.empresa.entities.Entregador;
 import com.example.empresa.entities.Funcionario;
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.entities.Romaneio;
-import com.example.empresa.entities.records.RomaneioRecord;
-import com.example.empresa.entities.records.RomaneioUpdateRecord;
 import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.ICidadeRepository;
 import com.example.empresa.interfaces.IEntregadorRepository;
 import com.example.empresa.interfaces.IRomaneioRepository;
+import com.example.empresa.records.RomaneioRecord;
+import com.example.empresa.records.RomaneioUpdateRecord;
 
 import jakarta.persistence.EntityNotFoundException;
 

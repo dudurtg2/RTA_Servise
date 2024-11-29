@@ -18,6 +18,7 @@ public class UsersRepository implements IUsersRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
+
     @Override
     public List<Users> findAll() {
         String jpql = "SELECT b FROM Users b";
@@ -61,9 +62,9 @@ public class UsersRepository implements IUsersRepository {
 
     @Override
     public Users findByEmail(String email) {
-        String jpql = "SELECT u FROM Users u WHERE u.email = :email";
+        String jpql = "SELECT u FROM Users u WHERE u.login = :login";
         TypedQuery<Users> query = entityManager.createQuery(jpql, Users.class);
-        query.setParameter("email", email);
+        query.setParameter("login", email);
         try {
             return query.getSingleResult();
         } catch (jakarta.persistence.NoResultException e) {

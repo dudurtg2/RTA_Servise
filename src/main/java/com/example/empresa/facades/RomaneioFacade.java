@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 
 import com.example.empresa.applications.RomaneioApplication;
 import com.example.empresa.entities.Romaneio;
-import com.example.empresa.entities.records.RomaneioRecord;
-import com.example.empresa.entities.records.RomaneioUpdateRecord;
+import com.example.empresa.records.RomaneioRecord;
+import com.example.empresa.records.RomaneioUpdateRecord;
 
 /**
  * Fachada responsável pela mediação das operações de persistência e lógica de negócios

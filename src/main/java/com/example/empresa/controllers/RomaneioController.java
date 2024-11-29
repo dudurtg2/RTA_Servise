@@ -1,10 +1,10 @@
 package com.example.empresa.controllers;
 
 import com.example.empresa.entities.Romaneio;
-import com.example.empresa.entities.records.ErrorRecord;
-import com.example.empresa.entities.records.RomaneioRecord;
-import com.example.empresa.entities.records.RomaneioUpdateRecord;
 import com.example.empresa.facades.RomaneioFacade;
+import com.example.empresa.records.ErrorRecord;
+import com.example.empresa.records.RomaneioRecord;
+import com.example.empresa.records.RomaneioUpdateRecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

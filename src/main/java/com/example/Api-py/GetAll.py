@@ -12,8 +12,8 @@ headers = {
 
 # Dados de autenticação
 bases = {
-    "login": "dudu",
-    "senha": "dudu"
+    "login": "joao.silva@example.com",
+    "senha": "senhaSegura123"
 }
 
 # Variável para o token

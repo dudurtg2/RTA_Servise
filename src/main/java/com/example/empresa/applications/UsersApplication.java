@@ -9,12 +9,12 @@ import com.example.empresa.entities.Entregador;
 import com.example.empresa.entities.Funcionario;
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.entities.Users;
-import com.example.empresa.entities.records.DataRecord;
 import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.IEntregadorRepository;
 import com.example.empresa.interfaces.IFuncionarioRepository;
 import com.example.empresa.interfaces.IMotoristaRepository;
 import com.example.empresa.interfaces.IUsersRepository;
+import com.example.empresa.records.DataRecord;
 import com.example.empresa.security.DTO.LoginResponseDTO;
 import com.example.empresa.security.DTO.RegisterDTO;
 
@@ -207,7 +207,7 @@ public class UsersApplication {
 
         Funcionario funcionario = this.funcionarioRepository.findByEmail(email);
         if (funcionario != null) {
-            return (T) new DataRecord(funcionario, "Funcionario");
+            return (T) new DataRecord(funcionario, usersRepository.findByEmail(email).getRole().toString());
         }
         
         Motorista motorista = this.motoristaRepository.findByEmail(email);
@@ -217,6 +217,7 @@ public class UsersApplication {
 
         Entregador entregador = this.entregadorRepository.findByEmail(email);
         if (entregador != null) {
+            
             return (T) new DataRecord(entregador, "Entregador");
         }
         
