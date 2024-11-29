@@ -6,7 +6,6 @@ import com.example.empresa.entities.Codigo;
 
 public record RomaneioRecord(
     List<Codigo> codigos,
-    String status,
     String linkDownload,
     String codigoUid,
     int base,

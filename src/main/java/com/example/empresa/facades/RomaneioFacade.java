@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.example.empresa.applications.RomaneioApplication;
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.entities.records.RomaneioRecord;
+import com.example.empresa.entities.records.RomaneioUpdateRecord;
 
 /**
  * Fachada responsável pela mediação das operações de persistência e lógica de negócios
@@ -63,7 +64,7 @@ public class RomaneioFacade {
      * @param romaneio o objeto {@link Romaneio} com os novos dados a serem atualizados.
      * @return o objeto {@link Romaneio} atualizado ou {@code null} caso o identificador não seja encontrado.
      */
-    public Romaneio update(long id, Romaneio romaneio) {
+    public Romaneio update(long id, RomaneioUpdateRecord romaneio) {
         return this.romaneioApplication.update(id, romaneio);
     }
 

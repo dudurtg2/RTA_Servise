@@ -3,6 +3,7 @@ package com.example.empresa.controllers;
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.entities.records.ErrorRecord;
 import com.example.empresa.entities.records.RomaneioRecord;
+import com.example.empresa.entities.records.RomaneioUpdateRecord;
 import com.example.empresa.facades.RomaneioFacade;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,14 +109,14 @@ public class RomaneioController {
      *         ou 404 (Not Found) caso o ID não seja encontrado.
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Romaneio> update(
+    public ResponseEntity<?> update(
             @PathVariable long id,
-            @RequestBody Romaneio romaneio) {
+            @RequestBody RomaneioUpdateRecord romaneio) {
 
         Romaneio romaneioUpdated = romaneioFacade.update(id, romaneio);
 
         if (romaneioUpdated == null) {
-            return new ResponseEntity<Romaneio>(romaneioUpdated, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<ErrorRecord>(new ErrorRecord("Erro ao atualizar o romaneio"), HttpStatus.BAD_REQUEST);
         }
 
         return new ResponseEntity<Romaneio>(romaneioUpdated, HttpStatus.OK);

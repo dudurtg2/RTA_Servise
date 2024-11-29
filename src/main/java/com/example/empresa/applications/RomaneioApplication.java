@@ -11,14 +11,17 @@ import com.example.empresa.entities.Codigo;
 import com.example.empresa.entities.Empresa;
 import com.example.empresa.entities.Entregador;
 import com.example.empresa.entities.Funcionario;
+import com.example.empresa.entities.Motorista;
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.entities.records.RomaneioRecord;
+import com.example.empresa.entities.records.RomaneioUpdateRecord;
 import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.ICidadeRepository;
 import com.example.empresa.interfaces.IEntregadorRepository;
 import com.example.empresa.interfaces.IRomaneioRepository;
 import com.example.empresa.interfaces.IEmpresaRepository;
 import com.example.empresa.interfaces.IFuncionarioRepository;
+import com.example.empresa.interfaces.IMotoristaRepository;
 
 /**
  * Classe responsável pela lógica de aplicação relacionada à entidade {@link Romaneio}.
@@ -33,19 +36,21 @@ public class RomaneioApplication {
     private IFuncionarioRepository funcionarioRepository;
     private IBaseRepository baseRepository;
     private ICidadeRepository cidadeRepository;
+    private IMotoristaRepository motoristaRepository;
 
     /**
      * Construtor da classe RomaneioApplication.
      * 
      * @param romaneioRepository O repositório para a entidade {@link Romaneio}.
      */
-    public RomaneioApplication(IRomaneioRepository romaneioRepository, IEntregadorRepository entregadorRepository, IEmpresaRepository empresaRepository, IFuncionarioRepository funcionarioRepository, IBaseRepository baseRepository, ICidadeRepository cidadeRepository) {
+    public RomaneioApplication(IRomaneioRepository romaneioRepository, IEntregadorRepository entregadorRepository, IEmpresaRepository empresaRepository, IFuncionarioRepository funcionarioRepository, IBaseRepository baseRepository, ICidadeRepository cidadeRepository, IMotoristaRepository motoristaRepository) {
         this.romaneioRepository = romaneioRepository;
         this.entregadorRepository = entregadorRepository;
         this.empresaRepository = empresaRepository;
         this.funcionarioRepository = funcionarioRepository;
         this.baseRepository = baseRepository;
         this.cidadeRepository = cidadeRepository;
+        this.motoristaRepository = motoristaRepository;
     }
     
     /**
@@ -76,6 +81,8 @@ public class RomaneioApplication {
      */
     public Romaneio save(RomaneioRecord romaneio) {
         
+        if (romaneio == null || romaneio.codigos() == null) return null;
+
         Romaneio romaneioSave = new Romaneio();
 
         Entregador entregador = entregadorRepository.findById(romaneio.entregador());
@@ -84,12 +91,7 @@ public class RomaneioApplication {
         Base base = baseRepository.findById(romaneio.base());
         Cidade cidade = cidadeRepository.findById(romaneio.cidade());
         
-        if(base == null) return null;
-        if(empresa == null) return null;
-        if(funcionario == null) return null;
-        if(entregador == null) return null;
-        if(cidade == null) return null;
-        if(romaneio.codigos() == null) return null;
+        if (entregador == null || funcionario == null || empresa == null || base == null || cidade == null) return null;
 
         romaneioSave.setData(LocalDate.now().toString());
         romaneioSave.setLinkDownload(romaneio.linkDownload());
@@ -108,9 +110,7 @@ public class RomaneioApplication {
         romaneioSave.setDataFinal(null);
         romaneioSave.setOcorrencia(null);
 
-        for (Codigo codigo : romaneioSave.getCodigos()) {
-            codigo.setRomaneio(romaneioSave);
-        }
+        romaneioSave.getCodigos().forEach(codigo -> codigo.setRomaneio(romaneioSave));
 
         return this.romaneioRepository.save(romaneioSave);
     }
@@ -123,13 +123,38 @@ public class RomaneioApplication {
      * @param romaneio A nova instância de {@link Romaneio} contendo as atualizações.
      * @return A instância atualizada de {@link Romaneio}, ou null se a instância não for encontrada.
      */
-    public Romaneio update(long id, Romaneio romaneio) {
+    public Romaneio update(long id, RomaneioUpdateRecord romaneio) {
+        if (romaneio == null) return null;
+        
         Romaneio romaneioInDb = this.romaneioRepository.findById(id);
+        if (romaneioInDb == null) return null;
 
-        if (romaneioInDb == null) {
-            return null;
-        }
-        return this.romaneioRepository.update(id, romaneio);
+        Entregador entregador = entregadorRepository.findById(romaneio.entregador());
+        Funcionario funcionario = funcionarioRepository.findById(romaneio.funcionario());
+        Empresa empresa = empresaRepository.findById(romaneio.empresa());
+        Cidade cidade = cidadeRepository.findById(romaneio.cidade());
+        Motorista motorista = motoristaRepository.findById(romaneio.motorista());
+
+        if (empresa == null || funcionario == null || entregador == null || cidade == null) return null;
+       
+        romaneioInDb.setEmpresa(empresa != null ? empresa : romaneioInDb.getEmpresa());
+        romaneioInDb.setMotorista(motorista != null ? motorista : romaneioInDb.getMotorista());
+        romaneioInDb.setEntregador(entregador != null ? entregador : romaneioInDb.getEntregador());
+        romaneioInDb.setFuncionario(funcionario != null ? funcionario : romaneioInDb.getFuncionario());
+        romaneioInDb.setCidade(cidade != null ? cidade : romaneioInDb.getCidade());
+
+        romaneioInDb.setSts(romaneio.status() != null ? romaneio.status() : romaneioInDb.getSts());
+        romaneioInDb.setOcorrencia(romaneio.ocorrencia() != null ? romaneio.ocorrencia() : romaneioInDb.getOcorrencia());
+        romaneioInDb.setDataFinal(romaneio.dataFinal() != null ? romaneio.dataFinal() : romaneioInDb.getDataFinal());
+
+        romaneioInDb.setData(romaneioInDb.getData());
+        romaneioInDb.setBase(romaneioInDb.getBase());
+        romaneioInDb.setCodigos(romaneioInDb.getCodigos());
+        romaneioInDb.setCodigoUid(romaneioInDb.getCodigoUid());
+        romaneioInDb.setLinkDownload(romaneioInDb.getLinkDownload());
+        romaneioInDb.setQuantidade(romaneioInDb.getQuantidade());
+
+        return this.romaneioRepository.update(id, romaneioInDb);
     }
 
     /**
