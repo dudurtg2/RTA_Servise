@@ -16,7 +16,7 @@ import com.example.empresa.entities.Entregador;
 @Component
 public class EntregadorFacade {
 
-    private final EntregadorApplication entregadorApplication;
+    private EntregadorApplication entregadorApplication;
 
     /**
      * Construtor para injeção de dependência da {@link EntregadorApplication}.

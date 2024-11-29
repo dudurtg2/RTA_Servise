@@ -52,4 +52,13 @@ public interface IRomaneioRepository {
      * @param id O identificador único da instância a ser excluída.
      */
     void deleteById(long id);
+
+    /**
+     * Recupera uma instância de {@link Romaneio} com base no identificador único.
+     * 
+     * @param id O identificador único da instância de {@link Romaneio}.
+     * @return Uma lista contendo todas as instâncias de {@link Romaneio} correspondente ao status, ou null se não encontrada.
+     */
+
+    public List<Romaneio> findByStatus(String status);
 }

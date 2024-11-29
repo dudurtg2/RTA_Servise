@@ -16,7 +16,7 @@ import com.example.empresa.entities.Codigo;
 @Component
 public class CodigoFacade {
 
-    private final CodigoApplication codigoApplication;
+    private CodigoApplication codigoApplication;
 
     /**
      * Construtor para injeção de dependência da {@link CodigoApplication}.

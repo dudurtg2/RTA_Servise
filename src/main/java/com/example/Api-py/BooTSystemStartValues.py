@@ -348,4 +348,39 @@ try:
 except requests.exceptions.RequestException as e:
     print("Erro ao enviar a requisição:", e)
 
+url = "http://localhost:30514/api/romaneios/save"
+
+
+headers = {
+    "Authorization": f"Bearer {token}",
+    "Content-Type": "application/json"
+}
+
+romaneios = {
+    "empresa": 1,
+    "entregador": 1,
+    "funcionario": 1,
+    "base": 1,
+    "cidade": 1,
+    "codigoUid": "codigo_uid2",
+    "linkDownload": "link_download2",
+    "codigos": [
+        { "codigo": "codigo12" },
+        { "codigo": "codigo22" },
+        { "codigo": "codigo23" },
+        { "codigo": "codigo24" }
+    ]
+}
+
+
+try:
+    response = requests.post(url, json=romaneios, headers=headers)
+    if response.status_code == 200:
+        print("Resposta:", response.json())
+    else:
+        print(f"Erro: {response.status_code} - {response.text}")
+
+except requests.exceptions.RequestException as e:
+    print("Erro ao enviar a requisição:", e)
+
 

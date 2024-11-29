@@ -70,6 +70,14 @@ public class RomaneioRepository implements IRomaneioRepository {
         }
     }
 
+    @Override
+    public List<Romaneio> findByStatus(String status) {
+        String jpql = "SELECT r FROM Romaneio r WHERE r.sts = :status";
+        TypedQuery<Romaneio> query = entityManager.createQuery(jpql, Romaneio.class);
+        query.setParameter("status", status);
+        return query.getResultList();
+    }
+
 }
 
 

@@ -8,9 +8,9 @@ public record RomaneioRecord(
     List<Codigo> codigos,
     String linkDownload,
     String codigoUid,
-    int base,
-    int entregador,
-    int funcionario,
-    int empresa,
-    int cidade
+    Long base,
+    Long entregador,
+    Long funcionario,
+    Long empresa,
+    Long cidade
 ) {}

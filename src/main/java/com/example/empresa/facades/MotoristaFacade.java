@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MotoristaFacade {
 
-    private final MotoristaApplication motoristaApplication;
+    private MotoristaApplication motoristaApplication;
 
     /**
      * Construtor para injeção de dependência da {@link MotoristaApplication}.

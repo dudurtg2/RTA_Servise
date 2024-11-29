@@ -16,7 +16,7 @@ import com.example.empresa.entities.Cidade;
 @Component
 public class CidadeFacade {
 
-    private final CidadeApplication cidadeApplication;
+    private CidadeApplication cidadeApplication;
 
     /**
      * Construtor para injeção de dependência da {@link CidadeApplication}.

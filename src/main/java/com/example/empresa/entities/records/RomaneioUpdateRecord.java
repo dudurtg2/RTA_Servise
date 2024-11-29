@@ -4,9 +4,9 @@ public record RomaneioUpdateRecord(
     String ocorrencia,
     String dataFinal,
     String status,
-    int entregador,
-    int funcionario,
-    int cidade,
-    int empresa,
-    int motorista
+    Integer entregador,
+    Integer funcionario,
+    Integer cidade,
+    Integer empresa,
+    Integer motorista
 ) {}

@@ -17,7 +17,7 @@ import com.example.empresa.entities.records.RomaneioUpdateRecord;
 @Component
 public class RomaneioFacade {
 
-    private final RomaneioApplication romaneioApplication;
+    private RomaneioApplication romaneioApplication;
 
     /**
      * Construtor para injeção de dependência da {@link RomaneioApplication}.
@@ -77,7 +77,23 @@ public class RomaneioFacade {
         this.romaneioApplication.deleteById(id);
     }
 
+    /**
+     * Obtém o número de registros de romaneios com base em um status específico.
+     *
+     * @param status o status utilizado como critério de filtragem (ex.: "retirado", "aguardando", "finalizado").
+     * @return o número de registros que correspondem ao status fornecido.
+     */
     public int getCount(String status) {
         return this.romaneioApplication.getCount(status);
+    }
+
+    /**
+     * Retorna uma lista de objetos {@link Romaneio} com base no status fornecido.
+     *
+     * @param sts o status utilizado como critério de filtragem.
+     * @return uma lista de objetos {@link Romaneio} que correspondem ao status especificado.
+     */
+    public List<Romaneio> findByStatus(String sts) {
+        return this.romaneioApplication.findByStatus(sts);
     }
 }

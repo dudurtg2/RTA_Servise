@@ -15,7 +15,7 @@ import com.example.empresa.entities.Users;
 @Component
 public class UsersFacade {
 
-    private final UsersApplication usersApplication;
+    private UsersApplication usersApplication;
 
     /**
      * Construtor para injeção de dependência da {@link UsersApplication}.

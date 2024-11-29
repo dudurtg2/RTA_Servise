@@ -16,7 +16,7 @@ import com.example.empresa.entities.Funcionario;
 @Component
 public class FuncionarioFacade {
 
-    private final FuncionarioApplication funcionarioApplication;
+    private FuncionarioApplication funcionarioApplication;
 
     /**
      * Construtor para injeção de dependência da {@link FuncionarioApplication}.

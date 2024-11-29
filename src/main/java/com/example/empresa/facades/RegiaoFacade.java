@@ -15,7 +15,7 @@ import com.example.empresa.entities.Regiao;
 @Component
 public class RegiaoFacade {
 
-    private final RegiaoApplication regiaoApplication;
+    private RegiaoApplication regiaoApplication;
 
     /**
      * Construtor para injeção de dependência da {@link RegiaoApplication}.

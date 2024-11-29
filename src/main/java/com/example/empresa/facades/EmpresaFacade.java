@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmpresaFacade {
 
-    private final EmpresaApplication empresaApplication;
+    private EmpresaApplication empresaApplication;
 
     /**
      * Construtor para injeção de dependência da {@link EmpresaApplication}.
