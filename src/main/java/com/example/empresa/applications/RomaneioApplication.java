@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Base;
 import com.example.empresa.entities.Cidade;
-import com.example.empresa.entities.Codigo;
 import com.example.empresa.entities.Empresa;
 import com.example.empresa.entities.Entregador;
 import com.example.empresa.entities.Funcionario;
@@ -19,8 +18,7 @@ import com.example.empresa.interfaces.IEntregadorRepository;
 import com.example.empresa.interfaces.IRomaneioRepository;
 import com.example.empresa.records.RomaneioRecord;
 import com.example.empresa.records.RomaneioUpdateRecord;
-
-import jakarta.persistence.EntityNotFoundException;
+import com.example.empresa.services.CustomExceptionService;
 
 import com.example.empresa.interfaces.IEmpresaRepository;
 import com.example.empresa.interfaces.IFuncionarioRepository;
@@ -103,8 +101,7 @@ public class RomaneioApplication {
         Base base = baseRepository.findById(romaneio.base());
         Cidade cidade = cidadeRepository.findById(romaneio.cidade());
 
-        if (entregador == null || funcionario == null || empresa == null || base == null || cidade == null)
-            return null;
+        this.validaRelacionamentos(romaneioSave, romaneio);
 
         romaneioSave.setData(LocalDate.now().toString());
         romaneioSave.setLinkDownload(romaneio.linkDownload());
@@ -129,19 +126,61 @@ public class RomaneioApplication {
     }
 
     /**
+     * Valida as rela es de um {@link RomaneioRecord} verificando se as entidades
+     * associadas
+     * existem no banco de dados. Lan a um {@link CustomExceptionService} se alguma
+     * das entidades n o for encontrada.
+     *
+     * @param romaneioInDb o objeto {@link Romaneio} existente no banco de dados.
+     * @param romaneio     o objeto {@link RomaneioRecord} contendo os dados a serem
+     *                     validados.
+     * @throws CustomExceptionService se alguma entidade associada (Entregador,
+     *                                Funcion rio, Empresa, Base, Cidade)
+     *                                n o for encontrada no banco de dados.
+     */
+    private void validaRelacionamentos(Romaneio romaneioInDb, RomaneioRecord romaneio) {
+        Entregador entregador = entregadorRepository.findById(romaneio.entregador());
+        Funcionario funcionario = funcionarioRepository.findById(romaneio.funcionario());
+        Empresa empresa = empresaRepository.findById(romaneio.empresa());
+        Base base = baseRepository.findById(romaneio.base());
+        Cidade cidade = cidadeRepository.findById(romaneio.cidade());
+
+        if (entregador == null) {
+            throw new CustomExceptionService("Entregador com id " + romaneio.entregador() + " não encontrado.", 404);
+        }
+
+        if (funcionario == null) {
+            throw new CustomExceptionService("Funcionário com id " + romaneio.funcionario() + " não encontrado.", 404);
+        }
+
+        if (empresa == null) {
+            throw new CustomExceptionService("Empresa com id " + romaneio.empresa() + " não encontrada.", 404);
+        }
+
+        if (base == null) {
+            throw new CustomExceptionService("Base com id " + romaneio.base() + " não encontrada.", 404);
+        }
+
+        if (cidade == null) {
+            throw new CustomExceptionService("Cidade com id " + romaneio.cidade() + " não encontrada.", 404);
+        }
+    }
+
+    /**
      * Atualiza um objeto {@link Romaneio} existente no sistema.
      * 
-     * @param id     o identificador único do romaneio a ser atualizado.
+     * @param id       o identificador único do romaneio a ser atualizado.
      * @param romaneio o objeto {@link RomaneioUpdateRecord} com as atualizações.
      * @return o objeto {@link Romaneio} atualizado.
-     * @throws EntityNotFoundException caso o identificador não seja encontrado.
-     * @throws IllegalArgumentException caso o objeto {@link RomaneioUpdateRecord} seja nulo.
+     * @throws CustomExceptionService   caso o identificador não seja encontrado.
+     * @throws IllegalArgumentException caso o objeto {@link RomaneioUpdateRecord}
+     *                                  seja nulo.
      */
     public Romaneio update(long id, RomaneioUpdateRecord romaneio) {
         Romaneio romaneioInDb = romaneioRepository.findById(id);
 
         if (romaneio == null) {
-            throw new IllegalArgumentException("Objeto RomaneioUpdateRecord não pode ser nulo.");
+            throw new CustomExceptionService("Objeto RomaneioUpdateRecord não pode ser nulo.", 400);
         }
 
         updateData(romaneioInDb, romaneio);
@@ -154,21 +193,36 @@ public class RomaneioApplication {
      * objeto {@link RomaneioUpdateRecord}.
      * 
      * @param romaneioInDb o objeto {@link Romaneio} existente no sistema.
-     * @param romaneio     o objeto {@link RomaneioUpdateRecord} com as atualizações.
+     * @param romaneio     o objeto {@link RomaneioUpdateRecord} com as
+     *                     atualizações.
      */
     private void updateData(Romaneio romaneioInDb, RomaneioUpdateRecord romaneio) {
-        Validar(romaneioInDb, romaneio);
+        validaCampos(romaneioInDb, romaneio);
 
         romaneioInDb.setSts(romaneio.status() != null ? romaneio.status() : romaneioInDb.getSts());
-        romaneioInDb.setOcorrencia(romaneio.ocorrencia() != null ? romaneio.ocorrencia() : romaneioInDb.getOcorrencia());
+        romaneioInDb
+                .setOcorrencia(romaneio.ocorrencia() != null ? romaneio.ocorrencia() : romaneioInDb.getOcorrencia());
         romaneioInDb.setDataFinal(romaneio.dataFinal() != null ? romaneio.dataFinal() : romaneioInDb.getDataFinal());
     }
 
-    private void Validar(Romaneio romaneioInDb, RomaneioUpdateRecord romaneio) {
+    /**
+     * Valida os campos do objeto {@link RomaneioUpdateRecord} antes de realizar
+     * a atualização do objeto {@link Romaneio} existente no sistema.
+     * 
+     * @param romaneioInDb o objeto {@link Romaneio} existente no sistema.
+     * @param romaneio     o objeto {@link RomaneioUpdateRecord} com as
+     *                     atualizações.
+     * @throws CustomExceptionService caso o identificador de alguma entidade
+     *                                associada (Entregador, Funcion rio,
+     *                                Empresa, Cidade, Motorista) n o seja
+     *                                encontrado.
+     */
+    private void validaCampos(Romaneio romaneioInDb, RomaneioUpdateRecord romaneio) {
         if (romaneio.entregador() != null) {
             Entregador entregador = entregadorRepository.findById(romaneio.entregador());
             if (entregador == null) {
-                throw new EntityNotFoundException("Entregador com id " + romaneio.entregador() + " não encontrado.");
+                throw new CustomExceptionService("Entregador com id " + romaneio.entregador() + " não encontrado.",
+                        404);
             }
             romaneioInDb.setEntregador(entregador);
         }
@@ -176,7 +230,8 @@ public class RomaneioApplication {
         if (romaneio.funcionario() != null) {
             Funcionario funcionario = funcionarioRepository.findById(romaneio.funcionario());
             if (funcionario == null) {
-                throw new EntityNotFoundException("Funcionário com id " + romaneio.funcionario() + " não encontrado.");
+                throw new CustomExceptionService("Funcionário com id " + romaneio.funcionario() + " não encontrado.",
+                        404);
             }
             romaneioInDb.setFuncionario(funcionario);
         }
@@ -184,7 +239,7 @@ public class RomaneioApplication {
         if (romaneio.empresa() != null) {
             Empresa empresa = empresaRepository.findById(romaneio.empresa());
             if (empresa == null) {
-                throw new EntityNotFoundException("Empresa com id " + romaneio.empresa() + " não encontrada.");
+                throw new CustomExceptionService("Empresa com id " + romaneio.empresa() + " não encontrada.", 404);
             }
             romaneioInDb.setEmpresa(empresa);
         }
@@ -192,7 +247,7 @@ public class RomaneioApplication {
         if (romaneio.cidade() != null) {
             Cidade cidade = cidadeRepository.findById(romaneio.cidade());
             if (cidade == null) {
-                throw new EntityNotFoundException("Cidade com id " + romaneio.cidade() + " não encontrada.");
+                throw new CustomExceptionService("Cidade com id " + romaneio.cidade() + " não encontrada.", 404);
             }
             romaneioInDb.setCidade(cidade);
         }
@@ -203,10 +258,11 @@ public class RomaneioApplication {
             } else {
                 Motorista motorista = motoristaRepository.findById(romaneio.motorista());
                 if (motorista == null) {
-                    throw new EntityNotFoundException("Motorista com id " + romaneio.motorista() + " não encontrado.");
+                    throw new CustomExceptionService("Motorista com id " + romaneio.motorista() + " não encontrado.",
+                            404);
                 }
                 romaneioInDb.setMotorista(motorista);
-            } 
+            }
         }
     }
 
@@ -255,5 +311,5 @@ public class RomaneioApplication {
     public List<Romaneio> findByStatus(String sts) {
         return this.romaneioRepository.findByStatus(sts);
     }
-    
+
 }

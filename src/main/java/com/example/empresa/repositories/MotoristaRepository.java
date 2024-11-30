@@ -73,5 +73,17 @@ public class MotoristaRepository implements IMotoristaRepository {
             return null;
         }
     }
+    
+    @Override
+    public Motorista findByCpf(String cpf) {
+        String jpql = "SELECT m FROM Motorista m WHERE m.cpf = :cpf";
+        TypedQuery<Motorista> query = entityManager.createQuery(jpql, Motorista.class);
+        query.setParameter("cpf", cpf);
+        try {
+            return query.getSingleResult();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
+    }
 
 }

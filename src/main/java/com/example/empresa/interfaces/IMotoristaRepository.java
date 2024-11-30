@@ -59,4 +59,12 @@ public interface IMotoristaRepository {
      * @return A instância de {@link Motorista} correspondente ao email, ou null se não encontrado.
      */
     Motorista findByEmail(String email);
+
+    /**
+     * Recupera uma instância de {@link Motorista} com base no CPF.
+     *
+     * @param cpf O CPF da instância de {@link Motorista}.
+     * @return A instância de {@link Motorista} correspondente ao CPF, ou null se não encontrado.
+     */
+    Motorista findByCpf(String cpf);
 }

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Empresa;
 import com.example.empresa.interfaces.IEmpresaRepository;
+import com.example.empresa.services.CustomExceptionService;
+import com.example.empresa.services.ValidacaoService;
 
 /**
  * Classe responsável pela lógica de aplicação relacionada à entidade {@link Empresa}.
@@ -52,6 +54,10 @@ public class EmpresaApplication {
      * @return A instância salva de {@link Empresa}.
      */
     public Empresa save(Empresa empresa) {
+        empresa.setCnpj(new ValidacaoService().Cnpj(empresa.getCnpj()));
+
+        if(empresa.getCnpj() == null) throw new CustomExceptionService("Cnpj invalido", 400);
+
         return this.empresaRepository.save(empresa);
     }
 
@@ -63,12 +69,9 @@ public class EmpresaApplication {
      * @return A instância atualizada de {@link Empresa}, ou null se não encontrado.
      */
     public Empresa update(long id, Empresa empresa) {
-        Empresa empresaInDb = this.empresaRepository.findById(id);
+        empresa.setCnpj(new ValidacaoService().Cnpj(empresa.getCnpj()));
 
-        if (empresaInDb == null) {
-            return null;
-        }
-
+        if(empresa.getCnpj() == null) throw new CustomExceptionService("Cnpj invalido", 400);
         return this.empresaRepository.update(id, empresa);
     }
 

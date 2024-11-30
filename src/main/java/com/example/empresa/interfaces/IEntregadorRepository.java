@@ -59,5 +59,13 @@ public interface IEntregadorRepository {
      * @return A instância de {@link Entregador} correspondente ao email, ou null se não encontrado.
      */
     Entregador findByEmail(String email);
+
+    /**
+     * Recupera uma instância de {@link Entregador} com base no CPF.
+     *
+     * @param cpf O CPF da instância de {@link Entregador}.
+     * @return A instância de {@link Entregador} correspondente ao CPF, ou null se não encontrado.
+     */
+    Entregador findByCpf(String cpf);
 }
 

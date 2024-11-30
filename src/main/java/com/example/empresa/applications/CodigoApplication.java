@@ -63,11 +63,6 @@ public class CodigoApplication {
      * @return A instância atualizada de {@link Codigo}, ou null se não encontrado.
      */
     public Codigo update(long id, Codigo codigo) {
-        Codigo codigoInDb = this.codigoRepository.findById(id);
-
-        if (codigoInDb == null) {
-            return null;
-        }
         return this.codigoRepository.update(id, codigo);
     }
 

@@ -61,5 +61,12 @@ public interface IFuncionarioRepository {
      */
     void deleteById(long id);
 
+    /**
+     * Recupera uma instância de {@link Funcionario} com base no CPF.
+     * 
+     * @param cpf O CPF do funcionário.
+     * @return A instância de {@link Funcionario} correspondente ao CPF, ou null se não encontrado.
+     */
+    Funcionario findByCpf(String cpf);
     
 }

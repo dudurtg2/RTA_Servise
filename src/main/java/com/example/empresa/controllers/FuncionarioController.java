@@ -64,13 +64,10 @@ public class FuncionarioController {
      * ou o status HTTP 409 (Conflict) caso ocorra um problema de integridade de dados.
      */
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody Funcionario funcionario) {
-        try {
-            Funcionario funcionarioSaved = funcionarioFacade.save(funcionario);
-            return new ResponseEntity<>(funcionarioSaved, HttpStatus.CREATED);
-        } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<>(false, HttpStatus.CONFLICT);
-        }
+    public ResponseEntity<Funcionario> save(@RequestBody Funcionario funcionario) {
+        Funcionario funcionarioSaved = funcionarioFacade.save(funcionario);
+        return new ResponseEntity<>(funcionarioSaved, HttpStatus.CREATED);
+        
     }
 
     /**

@@ -13,8 +13,10 @@ import org.springframework.web.context.annotation.RequestScope;
 import java.util.List;
 
 /**
- * Controlador REST para gerenciar operações relacionadas à entidade {@link Empresa}.
- * Permite realizar operações de CRUD (Create, Read, Update, Delete) sobre as empresas.
+ * Controlador REST para gerenciar operações relacionadas à entidade
+ * {@link Empresa}.
+ * Permite realizar operações de CRUD (Create, Read, Update, Delete) sobre as
+ * empresas.
  */
 @RestController
 @RequestScope
@@ -26,7 +28,8 @@ public class EmpresaController {
     /**
      * Construtor para injeção de dependência do {@link EmpresaFacade}.
      *
-     * @param empresaFacade a fachada que gerencia a lógica de negócios para a entidade {@link Empresa}.
+     * @param empresaFacade a fachada que gerencia a lógica de negócios para a
+     *                      entidade {@link Empresa}.
      */
     @Autowired
     public EmpresaController(EmpresaFacade empresaFacade) {
@@ -36,7 +39,8 @@ public class EmpresaController {
     /**
      * Retorna a lista de todas as empresas.
      *
-     * @return uma resposta HTTP contendo a lista de objetos {@link Empresa} e o status HTTP 200 (OK).
+     * @return uma resposta HTTP contendo a lista de objetos {@link Empresa} e o
+     *         status HTTP 200 (OK).
      */
     @GetMapping("/findAll")
     public ResponseEntity<List<Empresa>> findAll() {
@@ -48,7 +52,8 @@ public class EmpresaController {
      * Retorna uma empresa com base no seu identificador único.
      *
      * @param id o identificador único da empresa a ser encontrada.
-     * @return uma resposta HTTP contendo o objeto {@link Empresa} correspondente e o status HTTP 200 (OK).
+     * @return uma resposta HTTP contendo o objeto {@link Empresa} correspondente e
+     *         o status HTTP 200 (OK).
      */
     @GetMapping("/findById/{id}")
     public ResponseEntity<Empresa> findById(@PathVariable long id) {
@@ -60,17 +65,16 @@ public class EmpresaController {
      * Salva uma nova empresa no sistema.
      *
      * @param empresa o objeto {@link Empresa} a ser salvo.
-     * @return uma resposta HTTP contendo o objeto salvo e o status HTTP 201 (Created),
-     * ou o status HTTP 409 (Conflict) caso ocorra um problema de integridade de dados.
+     * @return uma resposta HTTP contendo o objeto salvo e o status HTTP 201
+     *         (Created),
+     *         ou o status HTTP 409 (Conflict) caso ocorra um problema de
+     *         integridade de dados.
      */
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody Empresa empresa) {
-        try {
-            Empresa empresaSaved = empresaFacade.save(empresa);
-            return new ResponseEntity<>(empresaSaved, HttpStatus.CREATED);
-        } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<>(false, HttpStatus.CONFLICT);
-        }
+    public ResponseEntity<Empresa> save(@RequestBody Empresa empresa) {
+        Empresa empresaSaved = empresaFacade.save(empresa);
+        return new ResponseEntity<>(empresaSaved, HttpStatus.CREATED);
+
     }
 
     /**
@@ -78,8 +82,9 @@ public class EmpresaController {
      *
      * @param id      o identificador único da empresa a ser atualizada.
      * @param empresa os novos dados da empresa.
-     * @return uma resposta HTTP contendo o objeto atualizado e o status HTTP 200 (OK),
-     * ou 404 (Not Found) caso o ID não seja encontrado.
+     * @return uma resposta HTTP contendo o objeto atualizado e o status HTTP 200
+     *         (OK),
+     *         ou 404 (Not Found) caso o ID não seja encontrado.
      */
     @PutMapping("/update/{id}")
     public ResponseEntity<Empresa> update(@PathVariable long id, @RequestBody Empresa empresa) {

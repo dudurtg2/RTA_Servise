@@ -42,6 +42,7 @@ public class CidadeController {
     public ResponseEntity<List<Cidade>> findAll() {
         List<Cidade> cidades = this.cidadeFacade.findAll();
         return new ResponseEntity<>(cidades, HttpStatus.OK);
+        
     }
 
     /**
@@ -52,8 +53,10 @@ public class CidadeController {
      */
     @GetMapping("/findById/{id}")
     public ResponseEntity<Cidade> findById(@PathVariable long id) {
+        
         Cidade cidade = this.cidadeFacade.findById(id);
         return new ResponseEntity<>(cidade, HttpStatus.OK);
+        
     }
 
     /**
@@ -66,6 +69,7 @@ public class CidadeController {
     public ResponseEntity<Cidade> save(@RequestBody Cidade cidade) {
         Cidade cidadeSaved = cidadeFacade.save(cidade);
         return new ResponseEntity<>(cidadeSaved, HttpStatus.CREATED);
+        
     }
 
     /**
@@ -79,10 +83,8 @@ public class CidadeController {
     @PutMapping("/update/{id}")
     public ResponseEntity<Cidade> update(@PathVariable long id, @RequestBody Cidade cidade) {
         Cidade cidadeUpdated = cidadeFacade.update(id, cidade);
-        if (cidadeUpdated == null) {
-            return new ResponseEntity<>(cidadeUpdated, HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity<>(cidadeUpdated, HttpStatus.OK);
+    
     }
 
     /**
@@ -93,7 +95,8 @@ public class CidadeController {
      */
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
-        cidadeFacade.deleteById(id);
+        this.cidadeFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
+        
     }
 }

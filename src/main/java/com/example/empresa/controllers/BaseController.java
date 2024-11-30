@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,7 +41,9 @@ public class BaseController {
     @GetMapping("/findAll")
     public ResponseEntity<List<Base>> findAll() {
         List<Base> bases = this.baseFacade.findAll();
+
         return new ResponseEntity<>(bases, HttpStatus.OK);
+        
     }
 
     /**
@@ -51,8 +54,10 @@ public class BaseController {
      */
     @GetMapping("/findById/{id}")
     public ResponseEntity<Base> findById(@PathVariable long id) {
+
         Base base = this.baseFacade.findById(id);
         return new ResponseEntity<>(base, HttpStatus.OK);
+        
     }
 
     /**
@@ -64,7 +69,7 @@ public class BaseController {
     @PostMapping("/save")
     public ResponseEntity<Base> save(@RequestBody Base base) {
         Base baseSaved = baseFacade.save(base);
-        return new ResponseEntity<>(baseSaved, HttpStatus.CREATED);
+        return new ResponseEntity<>(baseSaved, HttpStatus.CREATED); 
     }
 
     /**
@@ -77,13 +82,11 @@ public class BaseController {
      */
     @PutMapping("/update/{id}")
     public ResponseEntity<Base> update(@PathVariable long id, @RequestBody Base base) {
+        
         Base baseUpdated = baseFacade.update(id, base);
-        if (baseUpdated == null) {
-            return new ResponseEntity<>(baseUpdated, HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity<>(baseUpdated, HttpStatus.OK);
+        
     }
-
     /**
      * Exclui uma base com base no seu identificador único.
      *
@@ -92,7 +95,9 @@ public class BaseController {
      */
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
+        
         baseFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
+        
     }
 }

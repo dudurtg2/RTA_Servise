@@ -29,10 +29,10 @@ public class Motorista {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "email", unique = true)
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "cpf", unique = true)
+    @Column(name = "cpf")
     private String cpf;
 
     @Column(name = "telefone")

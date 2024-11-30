@@ -74,4 +74,17 @@ public class EntregadorRepository implements IEntregadorRepository {
         }
     }
 
+    
+    @Override
+    public Entregador findByCpf(String cpf) {
+        String jpql = "SELECT e FROM Entregador e WHERE e.cpf = :cpf";
+        TypedQuery<Entregador> query = entityManager.createQuery(jpql, Entregador.class);
+        query.setParameter("cpf", cpf);
+        try {
+            return query.getSingleResult();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
+    }
+
 }

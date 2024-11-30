@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Cidade;
 import com.example.empresa.interfaces.ICidadeRepository;
+import com.example.empresa.services.CustomExceptionService;
 import com.example.empresa.services.ValidacaoService;
 
 /**
@@ -56,9 +57,7 @@ public class CidadeApplication {
     public Cidade save(Cidade cidade) {
         cidade.setCep(new ValidacaoService().Cep(cidade.getCep()));
 
-        if (cidade.getCep().equals("invalido")) {
-            return null;
-        }
+        if (cidade.getCep() == null) throw new CustomExceptionService("Cep invalido", 400);
 
         return this.cidadeRepository.save(cidade);
     }
@@ -73,17 +72,9 @@ public class CidadeApplication {
      * @return A instância atualizada de {@link Cidade}, ou null se não encontrado ou o CEP for inválido.
      */
     public Cidade update(long id, Cidade cidade) {
-        Cidade cidadeInDb = this.cidadeRepository.findById(id);
-
-        if (cidadeInDb == null) {
-            return null;
-        }
-
         cidade.setCep(new ValidacaoService().Cep(cidade.getCep()));
 
-        if (cidade.getCep().equals("invalido")) {
-            return null;
-        }
+        if (cidade.getCep() == null) throw new CustomExceptionService("Cep invalido", 400);
 
         return this.cidadeRepository.update(id, cidade);
     }

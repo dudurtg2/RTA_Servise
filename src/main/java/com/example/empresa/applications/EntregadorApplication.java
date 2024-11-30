@@ -5,7 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Entregador;
+import com.example.empresa.entities.Motorista;
 import com.example.empresa.interfaces.IEntregadorRepository;
+import com.example.empresa.services.CustomExceptionService;
+import com.example.empresa.services.ValidacaoService;
+
 
 /**
  * Classe responsável pela lógica de aplicação relacionada à entidade {@link Entregador}.
@@ -44,15 +48,48 @@ public class EntregadorApplication {
         return this.entregadorRepository.findById(id);
     }
 
+   
     /**
-     * Salva uma nova instância da entidade {@link Entregador} no repositório, garantindo que o email seja salvo em letras minúsculas.
+     * Salva uma instância da entidade {@link Entregador}.
      * 
-     * @param entregador A instância da entidade {@link Entregador} a ser salva.
-     * @return A instância salva de {@link Entregador}.
+     * @param entregador A instância de {@link Entregador} a ser salva.
+     * @return A instância de {@link Entregador} salva, ou lança uma exceção caso:
+     *         <ul>
+     *         <li>O CPF seja inválido;</li>
+     *         <li>O CPF já esteja cadastrado.</li>
+     *         </ul>
      */
     public Entregador save(Entregador entregador) {
         entregador.setEmail(entregador.getEmail().toLowerCase());
+
+        entregador = getCpfExistente(entregador);
+    
         return this.entregadorRepository.save(entregador);
+    }
+
+    /**
+     * Verifica se o CPF do objeto {@link Entregador} existe no repositório,
+     * e lança uma exceção caso:
+     * <ul>
+     * <li>O CPF seja inválido;</li>
+     * <li>O CPF já esteja cadastrado.</li>
+     * </ul>
+     * 
+     * @param entregador A instância de {@link Entregador} a ser verificada.
+     */
+    private Entregador getCpfExistente(Entregador entregador) {
+        String cpfFormatado = new ValidacaoService().Cpf(entregador.getCpf());
+        if ("invalido".equals(cpfFormatado)) {
+            throw new CustomExceptionService("CPF inválido", 400);
+        }
+        entregador.setCpf(cpfFormatado);
+    
+        Entregador cpfExistente = this.entregadorRepository.findByCpf(entregador.getCpf());
+        if (cpfExistente != null && cpfExistente.getCpf().equals(entregador.getCpf())) {
+            throw new CustomExceptionService("CPF já cadastrado", 400);
+        }
+    
+        return entregador;
     }
 
     /**
@@ -63,13 +100,9 @@ public class EntregadorApplication {
      * @return A instância atualizada de {@link Entregador}, ou null se não encontrado.
      */
     public Entregador update(long id, Entregador entregador) {
-        Entregador entregadorInDb = this.entregadorRepository.findById(id);
-        
-        if (entregadorInDb == null) {
-            return null;
-        }
-        
         entregador.setEmail(entregador.getEmail().toLowerCase());
+
+        entregador = getCpfExistente(entregador);
 
         return this.entregadorRepository.update(id, entregador);
     }
@@ -81,5 +114,15 @@ public class EntregadorApplication {
      */
     public void deleteById(long id) {
         this.entregadorRepository.deleteById(id);
+    }
+    
+    /**
+     * Recupera uma instância de {@link Entregador} com base no seu email.
+     * 
+     * @param email O email da instância de {@link Entregador}.
+     * @return A instância de {@link Entregador} correspondente ao email, ou null se não encontrado.
+     */
+    public Entregador findByEmail(String email) {
+        return this.entregadorRepository.findByEmail(email);
     }
 }

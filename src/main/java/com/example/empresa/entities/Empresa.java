@@ -27,7 +27,7 @@ public class Empresa {
     @Column(name = "nome") 
     private String nome;
 
-    @Column(name = "cnpj", unique = true) 
+    @Column(name = "cnpj") 
     private String cnpj;
 
     

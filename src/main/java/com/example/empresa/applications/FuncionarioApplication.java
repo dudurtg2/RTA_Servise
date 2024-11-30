@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Funcionario;
 import com.example.empresa.interfaces.IFuncionarioRepository;
+import com.example.empresa.services.CustomExceptionService;
+import com.example.empresa.services.ValidacaoService;
 
 /**
  * Classe responsável pela lógica de aplicação relacionada à entidade {@link Funcionario}.
@@ -53,8 +55,36 @@ public class FuncionarioApplication {
     public Funcionario save(Funcionario funcionario) {
         funcionario.setEmail(funcionario.getEmail().toLowerCase());
 
+        funcionario = getCpfExistente(funcionario);
+    
         return this.funcionarioRepository.save(funcionario);
     }
+
+    /**
+     * Verifica se o CPF do objeto {@link Funcionario} existe no repositório,
+     * e lança uma exceção caso:
+     * <ul>
+     * <li>O CPF seja inválido;</li>
+     * <li>O CPF já esteja cadastrado.</li>
+     * </ul>
+     * 
+     * @param funcionario A inst ncia de {@link Funcionario} a ser verificada.
+     * @return A inst ncia de {@link Funcionario} verificada.
+     */
+    private Funcionario getCpfExistente(Funcionario funcionario) {
+        String cpfFormatado = new ValidacaoService().Cpf(funcionario.getCpf());
+        if ("invalido".equals(cpfFormatado)) {
+            throw new CustomExceptionService("CPF inválido", 400);
+        }
+        funcionario.setCpf(cpfFormatado);
+    
+        Funcionario cpfExistente = this.funcionarioRepository.findByCpf(funcionario.getCpf());
+        if (cpfExistente != null && cpfExistente.getCpf().equals(funcionario.getCpf())) {
+            throw new CustomExceptionService("CPF já cadastrado", 400);
+        }
+        return funcionario;
+    }
+    
 
     /**
      * Atualiza uma instância existente de {@link Funcionario}, garantindo que o email seja salvo em letras minúsculas.
@@ -64,13 +94,9 @@ public class FuncionarioApplication {
      * @return A instância atualizada de {@link Funcionario}, ou null se não encontrado.
      */
     public Funcionario update(long id, Funcionario funcionario) {
-        Funcionario funcionarioInDb = this.funcionarioRepository.findById(id);
-
-        if (funcionarioInDb == null) {
-            return null;
-        }
-
         funcionario.setEmail(funcionario.getEmail().toLowerCase());
+
+        funcionario = getCpfExistente(funcionario);
 
         return this.funcionarioRepository.update(id, funcionario);
     }
@@ -82,5 +108,17 @@ public class FuncionarioApplication {
      */
     public void deleteById(long id) {
         this.funcionarioRepository.deleteById(id);
+    }
+
+    /**
+     * Retorna uma inst ncia de {@link Funcionario} com base no email,
+     * garantindo que o email seja salvo em letras min ssculas.
+     * 
+     * @param email O email da inst ncia de {@link Funcionario} a ser encontrado.
+     * @return A inst ncia de {@link Funcionario} correspondente ao email, ou
+     *         null se n o encontrado.
+     */
+    public Funcionario findByEmail(String email) {
+        return this.funcionarioRepository.findByEmail(email);
     }
 }

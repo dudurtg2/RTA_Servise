@@ -9,14 +9,10 @@ import com.example.empresa.entities.Funcionario;
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.entities.Users;
 import com.example.empresa.interfaces.IBaseRepository;
-import com.example.empresa.interfaces.IEntregadorRepository;
-import com.example.empresa.interfaces.IFuncionarioRepository;
-import com.example.empresa.interfaces.IMotoristaRepository;
 import com.example.empresa.interfaces.IUsersRepository;
 import com.example.empresa.records.DataRecord;
 import com.example.empresa.security.DTO.RegisterDTO;
-
-import jakarta.persistence.EntityNotFoundException;
+import com.example.empresa.services.CustomExceptionService;
 
 /**
  * Classe responsável pela lógica de aplicação relacionada à entidade
@@ -29,24 +25,25 @@ import jakarta.persistence.EntityNotFoundException;
 @Component
 public class UsersApplication {
     private IUsersRepository usersRepository;
-    private IFuncionarioRepository funcionarioRepository;
-    private IMotoristaRepository motoristaRepository;
     private IBaseRepository baseRepository;
-    private IEntregadorRepository entregadorRepository;
+
+    private FuncionarioApplication funcionarioApplication;
+    private MotoristaApplication motoristaApplication;
+    private EntregadorApplication entregadorApplication;
 
     /**
      * Construtor da classe UsersApplication.
      * 
      * @param usersRepository O repositório para a entidade {@link Users}.
      */
-    public UsersApplication(IUsersRepository usersRepository, IFuncionarioRepository funcionarioRepository,
-            IMotoristaRepository motoristaRepository, IBaseRepository baseRepository,
-            IEntregadorRepository entregadorRepository) {
+    public UsersApplication(IUsersRepository usersRepository, FuncionarioApplication funcionarioApplication,
+    MotoristaApplication motoristaApplication, IBaseRepository baseRepository,
+    EntregadorApplication entregadorApplication) {
         this.usersRepository = usersRepository;
-        this.funcionarioRepository = funcionarioRepository;
-        this.motoristaRepository = motoristaRepository;
+        this.funcionarioApplication = funcionarioApplication;
+        this.motoristaApplication = motoristaApplication;
         this.baseRepository = baseRepository;
-        this.entregadorRepository = entregadorRepository;
+        this.entregadorApplication = entregadorApplication;
     }
 
     /**
@@ -81,26 +78,28 @@ public class UsersApplication {
      */
     public Users save(RegisterDTO users) {
 
+        if (findByEmail(users.email()) != null) throw new CustomExceptionService("Email ja cadastrado.", 400);
+
         switch (users.role()) {
 
             case MOTORISTA:
                 if (this.saveMotorista(users) != null) {
                     return this.usersRepository.save(new Users(users.email(), new BCryptPasswordEncoder().encode(users.senha()), users.role()));
                 }
-                throw new EntityNotFoundException("Não foi possivel salvar o motorista.");
+                throw new CustomExceptionService("Não foi possivel salvar o motorista.", 400);
 
             case ENTREGADOR:
                
                 if (this.saveEntregador(users) != null) {
                     return this.usersRepository.save(new Users(users.email(), new BCryptPasswordEncoder().encode(users.senha()), users.role()));
                 }
-                throw new EntityNotFoundException("Não foi possivel salvar o entregador.");
+                throw new CustomExceptionService("Não foi possivel salvar o entregador.",400);
 
             default:
                 if (this.saveFuncionario(users) != null) {
                     return this.usersRepository.save(new Users(users.email(), new BCryptPasswordEncoder().encode(users.senha()), users.role()));
                 }
-                throw new EntityNotFoundException("Não foi possivel salvar o funcionario.");
+                throw new CustomExceptionService("Não foi possivel salvar o funcionario.", 400);
 
         }
     };
@@ -118,7 +117,7 @@ public class UsersApplication {
         Entregador entregador = new Entregador(users.nome(), users.email(), users.cpf(), users.telefone(),
                 baseRepository.findById(users.base()), users.endereco());
 
-        return this.entregadorRepository.save(entregador);
+        return this.entregadorApplication.save(entregador);
          
     }
 
@@ -135,7 +134,7 @@ public class UsersApplication {
         Funcionario funcionario = new Funcionario(users.nome(), users.email(), users.cpf(), users.telefone(),
                 baseRepository.findById(users.base()));
 
-        return this.funcionarioRepository.save(funcionario);
+        return this.funcionarioApplication.save(funcionario);
         
     }
 
@@ -152,7 +151,7 @@ public class UsersApplication {
         Motorista motorista = new Motorista(users.nome(), users.email(), users.cpf(), users.telefone(),
                 baseRepository.findById(users.base()));
 
-        return this.motoristaRepository.save(motorista);
+        return this.motoristaApplication.save(motorista);
         
     }
 
@@ -201,17 +200,19 @@ public class UsersApplication {
      */
     public <T> T findByEmail(String email) {
 
-        Funcionario funcionario = this.funcionarioRepository.findByEmail(email);
+        if (usersRepository.findByEmail(email) == null) return null;
+        
+        Funcionario funcionario = this.funcionarioApplication.findByEmail(email);
         if (funcionario != null) {
             return (T) new DataRecord(funcionario, usersRepository.findByEmail(email).getRole().toString());
         }
         
-        Motorista motorista = this.motoristaRepository.findByEmail(email);
+        Motorista motorista = this.motoristaApplication.findByEmail(email);
         if (motorista != null) {
             return (T) new DataRecord(motorista, "Motorista");
         }
 
-        Entregador entregador = this.entregadorRepository.findByEmail(email);
+        Entregador entregador = this.entregadorApplication.findByEmail(email);
         if (entregador != null) {
             
             return (T) new DataRecord(entregador, "Entregador");

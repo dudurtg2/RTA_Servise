@@ -70,6 +70,17 @@ public class FuncionarioRepository implements IFuncionarioRepository {
     }
 
     
+    @Override
+    public Funcionario findByCpf(String cpf) {
+        String jpql = "SELECT f FROM Funcionario f WHERE f.cpf = :cpf";
+        TypedQuery<Funcionario> query = entityManager.createQuery(jpql, Funcionario.class);
+        query.setParameter("cpf", cpf);
+        try {
+            return query.getSingleResult();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
+    }
 }
    
 

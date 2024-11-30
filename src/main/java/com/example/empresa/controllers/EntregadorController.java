@@ -13,8 +13,10 @@ import org.springframework.web.context.annotation.RequestScope;
 import java.util.List;
 
 /**
- * Controlador REST para gerenciar operações relacionadas à entidade {@link Entregador}.
- * Permite realizar operações de CRUD (Create, Read, Update, Delete) sobre os entregadores.
+ * Controlador REST para gerenciar operações relacionadas à entidade
+ * {@link Entregador}.
+ * Permite realizar operações de CRUD (Create, Read, Update, Delete) sobre os
+ * entregadores.
  */
 @RestController
 @RequestScope
@@ -26,7 +28,8 @@ public class EntregadorController {
     /**
      * Construtor para injeção de dependência do {@link EntregadorFacade}.
      *
-     * @param entregadorFacade a fachada que gerencia a lógica de negócios para a entidade {@link Entregador}.
+     * @param entregadorFacade a fachada que gerencia a lógica de negócios para a
+     *                         entidade {@link Entregador}.
      */
     @Autowired
     public EntregadorController(EntregadorFacade entregadorFacade) {
@@ -36,7 +39,8 @@ public class EntregadorController {
     /**
      * Retorna a lista de todos os entregadores.
      *
-     * @return uma resposta HTTP contendo a lista de objetos {@link Entregador} e o status HTTP 200 (OK).
+     * @return uma resposta HTTP contendo a lista de objetos {@link Entregador} e o
+     *         status HTTP 200 (OK).
      */
     @GetMapping("/findAll")
     public ResponseEntity<List<Entregador>> findAll() {
@@ -48,7 +52,8 @@ public class EntregadorController {
      * Retorna um entregador com base no seu identificador único.
      *
      * @param id o identificador único do entregador a ser encontrado.
-     * @return uma resposta HTTP contendo o objeto {@link Entregador} correspondente e o status HTTP 200 (OK).
+     * @return uma resposta HTTP contendo o objeto {@link Entregador} correspondente
+     *         e o status HTTP 200 (OK).
      */
     @GetMapping("/findById/{id}")
     public ResponseEntity<Entregador> findById(@PathVariable long id) {
@@ -60,17 +65,17 @@ public class EntregadorController {
      * Salva um novo entregador no sistema.
      *
      * @param entregador o objeto {@link Entregador} a ser salvo.
-     * @return uma resposta HTTP contendo o objeto salvo e o status HTTP 201 (Created),
-     * ou o status HTTP 409 (Conflict) caso ocorra um problema de integridade de dados.
+     * @return uma resposta HTTP contendo o objeto salvo e o status HTTP 201
+     *         (Created),
+     *         ou o status HTTP 409 (Conflict) caso ocorra um problema de
+     *         integridade de dados.
      */
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody Entregador entregador) {
-        try {
-            Entregador entregadorSaved = entregadorFacade.save(entregador);
-            return new ResponseEntity<>(entregadorSaved, HttpStatus.CREATED);
-        } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<>(false, HttpStatus.CONFLICT);
-        }
+    public ResponseEntity<Entregador> save(@RequestBody Entregador entregador) {
+
+        Entregador entregadorSaved = entregadorFacade.save(entregador);
+        return new ResponseEntity<>(entregadorSaved, HttpStatus.CREATED);
+
     }
 
     /**
@@ -78,8 +83,9 @@ public class EntregadorController {
      *
      * @param id         o identificador único do entregador a ser atualizado.
      * @param entregador os novos dados do entregador.
-     * @return uma resposta HTTP contendo o objeto atualizado e o status HTTP 200 (OK),
-     * ou 404 (Not Found) caso o ID não seja encontrado.
+     * @return uma resposta HTTP contendo o objeto atualizado e o status HTTP 200
+     *         (OK),
+     *         ou 404 (Not Found) caso o ID não seja encontrado.
      */
     @PutMapping("/update/{id}")
     public ResponseEntity<Entregador> update(@PathVariable long id, @RequestBody Entregador entregador) {

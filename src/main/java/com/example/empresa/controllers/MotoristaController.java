@@ -64,13 +64,11 @@ public class MotoristaController {
      * ou o status HTTP 409 (Conflict) caso ocorra um problema de integridade de dados.
      */
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody Motorista motorista) {
-        try {
-            Motorista motoristaSaved = motoristaFacade.save(motorista);
-            return new ResponseEntity<>(motoristaSaved, HttpStatus.CREATED);
-        } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity<>(false, HttpStatus.CONFLICT);
-        }
+    public ResponseEntity<Motorista> save(@RequestBody Motorista motorista) {
+        
+        Motorista motoristaSaved = motoristaFacade.save(motorista);
+        return new ResponseEntity<>(motoristaSaved, HttpStatus.CREATED);
+        
     }
 
     /**
