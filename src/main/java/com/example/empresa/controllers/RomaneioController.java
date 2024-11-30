@@ -2,9 +2,9 @@ package com.example.empresa.controllers;
 
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.facades.RomaneioFacade;
-import com.example.empresa.records.ErrorRecord;
 import com.example.empresa.records.RomaneioRecord;
 import com.example.empresa.records.RomaneioUpdateRecord;
+import com.example.empresa.services.CustomExceptionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,13 +46,11 @@ public class RomaneioController {
      */
     @GetMapping("/findAll")
     public ResponseEntity<List<Romaneio>> findAll() {
-        try {
-            List<Romaneio> romaneio = this.romaneioFacade.findAll();
 
-            return new ResponseEntity<List<Romaneio>>(romaneio, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<List<Romaneio>>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        List<Romaneio> romaneio = this.romaneioFacade.findAll();
+
+        return new ResponseEntity<List<Romaneio>>(romaneio, HttpStatus.OK);
+
     }
 
     /**
@@ -64,14 +61,11 @@ public class RomaneioController {
      *         o status HTTP 200 (OK).
      */
     @GetMapping("/findById/{id}")
-    public ResponseEntity<?> findById(@PathVariable long id) {
-        try {
-            Romaneio romaneio = this.romaneioFacade.findById(id);
+    public ResponseEntity<Romaneio> findById(@PathVariable long id) {
+        Romaneio romaneio = this.romaneioFacade.findById(id);
 
-            return new ResponseEntity<Romaneio>(romaneio, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<ErrorRecord>(new ErrorRecord("Erro inesperado: " + e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return new ResponseEntity<Romaneio>(romaneio, HttpStatus.OK);
+
     }
 
     /**
@@ -85,14 +79,10 @@ public class RomaneioController {
      */
     @GetMapping("/count/{status}")
     public ResponseEntity<Integer> getCount(@PathVariable String status) {
-        try {
-            int count = this.romaneioFacade.getCount(status);
-            return new ResponseEntity<>(count, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+        int count = this.romaneioFacade.getCount(status);
+        return new ResponseEntity<>(count, HttpStatus.OK);
 
+    }
 
     /**
      * Salva um novo romaneio no sistema.
@@ -102,18 +92,12 @@ public class RomaneioController {
      *         (Created).
      */
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody RomaneioRecord romaneio) {
-        try {
-            Romaneio romaneioSaved = romaneioFacade.save(romaneio);
-            if (romaneioSaved == null) {
-                return new ResponseEntity<ErrorRecord>(new ErrorRecord("Erro ao salvar o romaneio"),
-                        HttpStatus.BAD_REQUEST);
-            }
-            return new ResponseEntity<Romaneio>(romaneioSaved, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<ErrorRecord>(new ErrorRecord("Erro inesperado: " + e.getMessage()),
-                    HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<Romaneio> save(@RequestBody RomaneioRecord romaneio) {
+
+        Romaneio romaneioSaved = romaneioFacade.save(romaneio);
+
+        return new ResponseEntity<Romaneio>(romaneioSaved, HttpStatus.CREATED);
+
     }
 
     /**
@@ -126,20 +110,18 @@ public class RomaneioController {
      *         ou 404 (Not Found) caso o ID não seja encontrado.
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(
+    public ResponseEntity<Romaneio> update(
             @PathVariable long id,
             @RequestBody RomaneioUpdateRecord romaneio) {
-        try {
-            Romaneio romaneioUpdated = romaneioFacade.update(id, romaneio);
-            if (romaneioUpdated == null) {
-                return new ResponseEntity<ErrorRecord>(new ErrorRecord("Erro ao atualizar o romaneio"),
-                        HttpStatus.BAD_REQUEST);
-            }
-            return new ResponseEntity<Romaneio>(romaneioUpdated, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<ErrorRecord>(new ErrorRecord("Erro inesperado: " + e.getMessage()),
-                    HttpStatus.INTERNAL_SERVER_ERROR);
+        Romaneio romaneioUpdated = this.romaneioFacade.findById(id);
+
+        if (romaneioUpdated == null) {
+            throw new CustomExceptionService("Romaneio com id " + id + " não encontrado.", 404);
         }
+
+        Romaneio romaneioInb = romaneioFacade.update(id, romaneio);
+        return new ResponseEntity<Romaneio>(romaneioInb, HttpStatus.OK);
+
     }
 
     /**
@@ -150,12 +132,14 @@ public class RomaneioController {
      */
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
-        try {
-            romaneioFacade.deleteById(id);
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        Romaneio romaneioUpdated = this.romaneioFacade.findById(id);
 
+        if (romaneioUpdated == null) {
+            throw new CustomExceptionService("Romaneio com id " + id + " não encontrado.", 404);
+        }
+        
+        romaneioFacade.deleteById(id);
+        
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
@@ -169,16 +153,14 @@ public class RomaneioController {
 
     @GetMapping("/findByStatus/{sts}")
     public ResponseEntity<?> findByStatus(@PathVariable String sts) {
-        try {
-            List<Romaneio> romaneio = this.romaneioFacade.findByStatus(sts);
+        
+        List<Romaneio> romaneio = this.romaneioFacade.findByStatus(sts);
 
-            if (romaneio == null || romaneio.isEmpty()) {
-                return new ResponseEntity<ErrorRecord>(new ErrorRecord("Nenhum romaneio encontrado"), HttpStatus.NOT_FOUND);
-            }
-
-            return new ResponseEntity<List<Romaneio>>(romaneio, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<ErrorRecord>(new ErrorRecord("Erro inesperado: " + e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+        if (romaneio == null || romaneio.isEmpty()) {
+            throw new CustomExceptionService("Romaneios com status " + sts + " nao encontrado.", 404);
         }
+
+        return new ResponseEntity<List<Romaneio>>(romaneio, HttpStatus.OK);
+        
     }
 }
