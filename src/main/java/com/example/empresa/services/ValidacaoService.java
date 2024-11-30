@@ -99,16 +99,20 @@ public class ValidacaoService {
      * @return O CNPJ formatado corretamente, ou null se o CNPJ for inv lido.
      */
     public String Cnpj(String cnpj) {
+        // Remove caracteres não numéricos
         String cnpjInValidate = cnpj.replaceAll("[^\\d]", "");
     
+        // Verifica o tamanho do CNPJ
         if (cnpjInValidate.length() != 14) {
             return null;
         }
     
+        // Valida o CNPJ
         if (!isValidCNPJ(cnpjInValidate)) {
             return null;
         }
     
+        // Formata o CNPJ
         return cnpjInValidate.substring(0, 2) + "." + 
                cnpjInValidate.substring(2, 5) + "." + 
                cnpjInValidate.substring(5, 8) + "/" + 
@@ -116,53 +120,43 @@ public class ValidacaoService {
                cnpjInValidate.substring(12);
     }
     
-    
     /**
      * Valida um CNPJ de acordo com a regra de validação do Brasil.
-     * 
-     * O método verifica os dígitos verificadores do CNPJ para determinar sua validade.
      * 
      * @param cnpj O CNPJ a ser validado.
      * @return true se o CNPJ for válido, false caso contrário.
      */
     public boolean isValidCNPJ(String cnpj) {
+        // Verifica se todos os números são iguais
+        if (cnpj.matches("(\\d)\\1{13}")) {
+            return false;
+        }
+    
+        int[] pesos1 = {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+        int[] pesos2 = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+    
+        // Calcula o primeiro dígito verificador
         int soma = 0;
-        int peso = 5;
-        int dv1, dv2;
-        
         for (int i = 0; i < 12; i++) {
-            soma += Integer.parseInt(String.valueOf(cnpj.charAt(i))) * peso;
-            peso--;
+            soma += Character.getNumericValue(cnpj.charAt(i)) * pesos1[i];
         }
-        
-        dv1 = soma % 11;
-        if (dv1 < 2) {
-            dv1 = 0;
-        } else {
-            dv1 = 11 - dv1;
+        int dv1 = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+    
+        // Verifica o primeiro dígito
+        if (dv1 != Character.getNumericValue(cnpj.charAt(12))) {
+            return false;
         }
-        
-        if (String.valueOf(dv1).equals(String.valueOf(cnpj.charAt(12)))) {
-            soma = 0;
-            peso = 6;
-            for (int i = 0; i < 13; i++) {
-                soma += Integer.parseInt(String.valueOf(cnpj.charAt(i))) * peso;
-                peso--;
-            }
-            
-            dv2 = soma % 11;
-            if (dv2 < 2) {
-                dv2 = 0;
-            } else {
-                dv2 = 11 - dv2;
-            }
-            
-            if (String.valueOf(dv2).equals(String.valueOf(cnpj.charAt(13)))) {
-                return true;
-            }
+    
+        // Calcula o segundo dígito verificador
+        soma = 0;
+        for (int i = 0; i < 13; i++) {
+            soma += Character.getNumericValue(cnpj.charAt(i)) * pesos2[i];
         }
-        
-        return false;
+        int dv2 = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+    
+        // Verifica o segundo dígito
+        return dv2 == Character.getNumericValue(cnpj.charAt(13));
     }
+    
 }
 

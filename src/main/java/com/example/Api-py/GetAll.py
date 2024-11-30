@@ -3,7 +3,7 @@ import os
 import requests
 
 # URL para login
-url = "http://localhost:30514/auth/login"
+url = "http://localhost:8080/auth/login"
 
 # Cabeçalhos para a requisição
 headers = {
@@ -33,15 +33,15 @@ except requests.exceptions.RequestException as e:
 
 # Lista de endpoints
 getall = [
-    "http://localhost:30514/api/empresas/findAll",
-    "http://localhost:30514/api/funcionarios/findAll",
-    "http://localhost:30514/api/motoristas/findAll",
-    "http://localhost:30514/api/entregadores/findAll",
-    "http://localhost:30514/api/romaneios/findAll",
-    "http://localhost:30514/api/bases/findAll",
-    "http://localhost:30514/api/cidades/findAll",
-    "http://localhost:30514/api/regioes/findAll",
-    "http://localhost:30514/api/codigos/findAll"
+    "http://localhost:8080/api/empresas/findAll",
+    "http://localhost:8080/api/funcionarios/findAll",
+    "http://localhost:8080/api/motoristas/findAll",
+    "http://localhost:8080/api/entregadores/findAll",
+    "http://localhost:8080/api/romaneios/findAll",
+    "http://localhost:8080/api/bases/findAll",
+    "http://localhost:8080/api/cidades/findAll",
+    "http://localhost:8080/api/regioes/findAll",
+    "http://localhost:8080/api/codigos/findAll"
 ]
 
 # Atualiza cabeçalhos com o token

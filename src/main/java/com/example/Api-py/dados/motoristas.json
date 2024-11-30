@@ -2,13 +2,13 @@
     {
         "id": 1,
         "nome": "Motorista 1",
-        "email": "2M0ZI@example.com",
-        "cpf": "123.456.789-10",
+        "email": "2m0zi@example.com",
+        "cpf": "090.272.685-41",
         "telefone": "123456789",
         "base": {
             "id": 1,
-            "nome": "FSa",
-            "endereco": "sim"
+            "nome": "Base 1",
+            "endereco": "Rua 1, 123"
         }
     }
 ]

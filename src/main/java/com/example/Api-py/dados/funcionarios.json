@@ -3,12 +3,8 @@
         "id": 1,
         "nome": "João Silva",
         "email": "joao.silva@example.com",
-        "cpf": "123.456.789-00",
+        "cpf": "090.272.685-41",
         "telefone": "+5511999999999",
-        "base": {
-            "id": 1,
-            "nome": "FSa",
-            "endereco": "sim"
-        }
+        "base": null
     }
 ]

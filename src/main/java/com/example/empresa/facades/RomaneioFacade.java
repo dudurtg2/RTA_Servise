@@ -96,4 +96,29 @@ public class RomaneioFacade {
     public List<Romaneio> findByStatus(String sts) {
         return this.romaneioApplication.findByStatus(sts);
     }
+    /**
+     * Retorna uma lista de objetos {@link Romaneio} que cont m um motorista com o
+     * identificador nico especificado.
+     *
+     * @param motorista o identificador do motorista utilizado como crit rio de
+     *                   filtragem.
+     * @return uma lista de objetos {@link Romaneio} que correspondem ao motorista
+     *         especificado.
+     */
+    public List<Romaneio> findByMotorista(Long motorista) {
+        return this.romaneioApplication.findByMotorista(motorista);
+    }
+    /**
+     * Retorna uma lista de objetos {@link Romaneio} que cont m um entregador com o
+     * identificador único especificado.
+     *
+     * @param entregador o identificador do entregador utilizado como crit rio de
+     *                   filtragem.
+     * @return uma lista contendo todas as inst ncia de {@link Romaneio} que
+     *         cont m o entregador especificado.
+     */
+
+    public List<Romaneio> findByEntregador(Long entregador) {
+        return this.romaneioApplication.findByEntregador(entregador);
+    }
 }

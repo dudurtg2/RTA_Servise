@@ -4,8 +4,26 @@
         "nome": "Sul",
         "base": {
             "id": 1,
-            "nome": "FSa",
-            "endereco": "sim"
+            "nome": "Base 1",
+            "endereco": "Rua 1, 123"
+        }
+    },
+    {
+        "id": 2,
+        "nome": "Sul",
+        "base": {
+            "id": 1,
+            "nome": "Base 1",
+            "endereco": "Rua 1, 123"
+        }
+    },
+    {
+        "id": 3,
+        "nome": "Sul",
+        "base": {
+            "id": 1,
+            "nome": "Base 1",
+            "endereco": "Rua 1, 123"
         }
     }
 ]

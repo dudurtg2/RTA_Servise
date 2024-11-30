@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.example.empresa.entities.Entregador;
+import com.example.empresa.entities.Motorista;
 import com.example.empresa.entities.Romaneio;
 
 /**
@@ -60,5 +62,22 @@ public interface IRomaneioRepository {
      * @return Uma lista contendo todas as instâncias de {@link Romaneio} correspondente ao status, ou null se não encontrada.
      */
 
-    public List<Romaneio> findByStatus(String status);
+    List<Romaneio> findByStatus(String status);
+
+    /**
+     * Recupera uma instância de {@link Romaneio} com base no identificador único.
+     * 
+     * @param motorista O identificador único da instância de {@link Romaneio}.
+     * @return Uma lista contendo todas as instâncias de {@link Romaneio} correspondente ao motorista, ou null se não encontrada.
+     */
+    List<Romaneio> findByMotorista(Motorista motorista);
+
+    /**
+     * Recupera uma instância de {@link Romaneio} com base no identificador único.
+     * 
+     * @param entregador O identificador único da instância de {@link Romaneio}.
+     * @return Uma lista contendo todas as instâncias de {@link Romaneio} correspondente ao entregador, ou null se não encontrada.
+     * */
+    
+    List<Romaneio> findByEntregador(Entregador entregador);
 }

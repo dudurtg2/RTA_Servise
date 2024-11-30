@@ -80,13 +80,37 @@ public class RomaneioController {
      */
     @GetMapping("/count/sts/{status}")
     public ResponseEntity<ResponceRecord> getCountStsAll(@PathVariable String status) {
-        return new ResponseEntity<ResponceRecord>(new ResponceRecord(this.romaneioFacade.getCountForStatus(status), status), HttpStatus.OK);
+        return new ResponseEntity<ResponceRecord>(
+                new ResponceRecord(this.romaneioFacade.getCountForStatus(status), status), HttpStatus.OK);
     }
 
-  /*  @GetMapping("/count/driver/{uid}")
-   public ResponseEntity<List<Romaneio>> getCountDriver(@PathVariable String driver) {
-       return new ResponseEntity<List<Romaneio>>(new ResponceRecord(this.romaneioFacade.getCountForStatus(status), status), HttpStatus.OK);
-   } */
+    /**
+     * Endpoint para obter a lista de romaneios associados a um motorista
+     * específico.
+     *
+     * @param uid o identificador único do motorista.
+     * @return um {@link ResponseEntity} contendo a lista de objetos
+     *         {@link Romaneio}
+     *         associados ao motorista especificado e o status HTTP 200 (OK).
+     */
+    @GetMapping("/count/driver/{uid}")
+    public ResponseEntity<List<Romaneio>> getCountDriver(@PathVariable long driver) {
+        return new ResponseEntity<List<Romaneio>>(this.romaneioFacade.findByMotorista(driver), HttpStatus.OK);
+    }
+
+    /**
+     * Endpoint para obter a lista de romaneios associados a um entregador
+     * específico.
+     *
+     * @param delivery o identificador único do entregador.
+     * @return um {@link ResponseEntity} contendo a lista de objetos
+     *         {@link Romaneio}
+     *         associados ao entregador especificado e o status HTTP 200 (OK).
+     */
+    @GetMapping("/count/delivery/{uid}")
+    public ResponseEntity<List<Romaneio>> getCountDelivery(@PathVariable long delivery) {
+        return new ResponseEntity<List<Romaneio>>(this.romaneioFacade.findByEntregador(delivery), HttpStatus.OK);
+    }
 
     /**
      * Salva um novo romaneio no sistema.
@@ -118,7 +142,8 @@ public class RomaneioController {
             @PathVariable long id,
             @RequestBody RomaneioUpdateRecord romaneio) {
 
-        if (this.romaneioFacade.findById(id) == null) throw new CustomExceptionService("Romaneio com id " + id + " não encontrado.", 404);
+        if (this.romaneioFacade.findById(id) == null)
+            throw new CustomExceptionService("Romaneio com id " + id + " não encontrado.", 404);
 
         Romaneio romaneioInb = romaneioFacade.update(id, romaneio);
         return new ResponseEntity<Romaneio>(romaneioInb, HttpStatus.OK);
@@ -134,10 +159,11 @@ public class RomaneioController {
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
 
-        if (this.romaneioFacade.findById(id) == null)  throw new CustomExceptionService("Romaneio com id " + id + " não encontrado.", 404);
-       
+        if (this.romaneioFacade.findById(id) == null)
+            throw new CustomExceptionService("Romaneio com id " + id + " não encontrado.", 404);
+
         romaneioFacade.deleteById(id);
-        
+
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
@@ -151,7 +177,7 @@ public class RomaneioController {
 
     @GetMapping("/findByStatus/{sts}")
     public ResponseEntity<?> findByStatus(@PathVariable String sts) {
-        
+
         List<Romaneio> romaneio = this.romaneioFacade.findByStatus(sts);
 
         if (romaneio == null || romaneio.isEmpty()) {
@@ -160,6 +186,5 @@ public class RomaneioController {
 
         return new ResponseEntity<List<Romaneio>>(romaneio, HttpStatus.OK);
     }
-
 
 }

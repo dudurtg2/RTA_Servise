@@ -20,6 +20,8 @@ import com.example.empresa.records.RomaneioRecord;
 import com.example.empresa.records.RomaneioUpdateRecord;
 import com.example.empresa.services.CustomExceptionService;
 
+import lombok.extern.java.Log;
+
 import com.example.empresa.interfaces.IEmpresaRepository;
 import com.example.empresa.interfaces.IFuncionarioRepository;
 import com.example.empresa.interfaces.IMotoristaRepository;
@@ -299,6 +301,32 @@ public class RomaneioApplication {
      */
     public List<Romaneio> findByStatus(String sts) {
         return this.romaneioRepository.findByStatus(sts);
+    }
+
+    /**
+     * Retorna uma lista de instâncias da entidade {@link Romaneio} que cont m um
+     * motorista com o identificador único especificado.
+     * 
+     * @param motorista O identificador do motorista utilizado como critério de
+     *                   filtragem.
+     * @return Uma lista contendo todas as instâncias de {@link Romaneio} que
+     *         cont m o motorista especificado.
+     */
+    public List<Romaneio> findByMotorista(Long motorista) {
+        return this.romaneioRepository.findByMotorista(this.motoristaRepository.findById(motorista));
+    }
+
+    /**
+     * Retorna uma lista de instâncias da entidade {@link Romaneio} que cont m
+     * um entregador com o identificador único especificado.
+     * 
+     * @param entregador O identificador do entregador utilizado como critério de
+     *                   filtragem.
+     * @return Uma lista contendo todas as instâncias de {@link Romaneio} que
+     *         cont m o entregador especificado.
+     */
+    public List<Romaneio> findByEntregador(Long entregador) {
+        return this.romaneioRepository.findByEntregador(this.entregadorRepository.findById(entregador));
     }
 
 }

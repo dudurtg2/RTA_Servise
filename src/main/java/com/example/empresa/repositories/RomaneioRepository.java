@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.empresa.entities.Entregador;
+import com.example.empresa.entities.Motorista;
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.interfaces.IRomaneioRepository;
 
@@ -79,6 +81,22 @@ public class RomaneioRepository implements IRomaneioRepository {
     }
 
     
+    @Override
+    public List<Romaneio> findByMotorista(Motorista motorista) {
+        String jpql = "SELECT r FROM Romaneio r WHERE r.motorista = :motorista";
+        TypedQuery<Romaneio> query = entityManager.createQuery(jpql, Romaneio.class);
+        query.setParameter("motorista", motorista);
+        return query.getResultList();
+    }
+
+    
+    @Override
+    public List<Romaneio> findByEntregador(Entregador entregador) {
+        String jpql = "SELECT r FROM Romaneio r WHERE r.entregador = :entregador";
+        TypedQuery<Romaneio> query = entityManager.createQuery(jpql, Romaneio.class);
+        query.setParameter("entregador", entregador);
+        return query.getResultList();
+    }
 
 }
 

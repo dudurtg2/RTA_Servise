@@ -12,7 +12,7 @@ bases = {
   "role": "ADMIN",
   "email": "joao.silva@example.com",
   "telefone": "+5511999999999",
-  "cpf": "123.456.789-00",
+  "cpf": "090.272.685-41",
   "base": 1
 }
 
@@ -94,7 +94,7 @@ headers = {
 motoristas = {
     "nome": "Motorista 1",
     "email": "2M0ZI@example.com",
-    "cpf": "123.456.789-10",
+    "cpf": "090.272.685-41",
     "telefone": "123456789",
     "base": {"id": 1}
 }
@@ -182,7 +182,7 @@ headers = {
 
 empresas = {
     "nome": "Empresa 1",
-    "cnpj": "123456789"
+    "cnpj": "07.603.527/0001-50"
 }
 
 
@@ -211,7 +211,7 @@ headers = {
 motoristas = {
     "nome": "Entregador 1",
     "email": "2M0ZI@example.com",
-    "cpf": "123.456.789-00",
+    "cpf": "090.272.685-41",
     "telefone": "123456789",
     "endereco": "Rua 1, 123",
     "base": {"id": 1}
@@ -229,33 +229,6 @@ except requests.exceptions.RequestException as e:
     print("Erro ao enviar a requisição:", e)
 
 
-url = "http://localhost:8080/api/funcionarios/save"
-
-
-headers = {
-    "Authorization": f"Bearer {token}",
-    "Content-Type": "application/json"
-}
-
-
-funcionarios = {
-    "nome": "Funcionario 1",
-    "email": "2M0ZI@example.com",
-    "cpf": "123.456.789-00",
-    "telefone": "123456789",
-    "base": {"id": 1}
-}
-
-
-try:
-    response = requests.post(url, json=funcionarios, headers=headers)
-    if response.status_code == 200:
-        print("Resposta:", response.json())
-    else:
-        print(f"Erro: {response.status_code} - {response.text}")
-
-except requests.exceptions.RequestException as e:
-    print("Erro ao enviar a requisição:", e)
 
 
 url = "http://localhost:8080/api/motoristas/save"
@@ -270,7 +243,7 @@ headers = {
 motoristas = {
     "nome": "Motorista 1",
     "email": "2M0ZI@example.com",
-    "cpf": "123.456.789-00",
+    "cpf": "090.272.685-41",
     "telefone": "123456789",
     "base": {"id": 1}
 }
@@ -299,7 +272,7 @@ headers = {
 entregadores = {
     "nome": "Entregador 1",
     "email": "2M0ZI@example.com",
-    "cpf": "123.456.789-00",
+    "cpf": "090.272.685-41",
     "telefone": "123456789",
     "endereco": "Rua 1, 123",
     "base": {"id": 1}

@@ -3,13 +3,13 @@
         "id": 1,
         "nome": "Entregador 1",
         "email": "2m0zi@example.com",
-        "cpf": "123.456.789-00",
+        "cpf": "090.272.685-41",
         "telefone": "123456789",
         "endereco": "Rua 1, 123",
         "base": {
             "id": 1,
-            "nome": "FSa",
-            "endereco": "sim"
+            "nome": "Base 1",
+            "endereco": "Rua 1, 123"
         }
     }
 ]
