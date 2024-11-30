@@ -2,6 +2,7 @@ package com.example.empresa.controllers;
 
 import com.example.empresa.entities.Regiao;
 import com.example.empresa.facades.RegiaoFacade;
+import com.example.empresa.services.CustomExceptionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -77,10 +78,8 @@ public class RegiaoController {
      */
     @PutMapping("/update/{id}")
     public ResponseEntity<Regiao> update(@PathVariable long id, @RequestBody Regiao regiao) {
+        if (this.regiaoFacade.findById(id) == null) throw new CustomExceptionService("Regiao com id " + id + " nao encontrada.", 404);
         Regiao regiaoUpdated = regiaoFacade.update(id, regiao);
-        if (regiaoUpdated == null) {
-            return new ResponseEntity<>(regiaoUpdated, HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity<>(regiaoUpdated, HttpStatus.OK);
     }
 
@@ -92,6 +91,7 @@ public class RegiaoController {
      */
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
+        if (this.regiaoFacade.findById(id) == null) throw new CustomExceptionService("Regiao com id " + id + " nao encontrada.", 404);
         regiaoFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

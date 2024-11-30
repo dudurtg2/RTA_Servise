@@ -2,6 +2,7 @@ package com.example.empresa.controllers;
 
 import com.example.empresa.entities.Cidade;
 import com.example.empresa.facades.CidadeFacade;
+import com.example.empresa.services.CustomExceptionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -82,6 +83,9 @@ public class CidadeController {
      */
     @PutMapping("/update/{id}")
     public ResponseEntity<Cidade> update(@PathVariable long id, @RequestBody Cidade cidade) {
+
+        if(this.cidadeFacade.findById(id) == null) throw new CustomExceptionService("Cidade com id " + id + " nao encontrada.", 404);
+
         Cidade cidadeUpdated = cidadeFacade.update(id, cidade);
         return new ResponseEntity<>(cidadeUpdated, HttpStatus.OK);
     
@@ -95,6 +99,9 @@ public class CidadeController {
      */
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
+        
+        if(this.cidadeFacade.findById(id) == null) throw new CustomExceptionService("Cidade com id " + id + " nao encontrada.", 404);
+
         this.cidadeFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
         

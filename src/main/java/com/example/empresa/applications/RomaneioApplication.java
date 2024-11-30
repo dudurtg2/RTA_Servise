@@ -285,19 +285,8 @@ public class RomaneioApplication {
      * @param status O status utilizado como critério de filtragem.
      * @return O número de instâncias que possuem o status informado.
      */
-    public int getCount(String status) {
-        List<Romaneio> romaneioAll = this.romaneioRepository.findAll();
-        if (romaneioAll == null)
-            return 0;
-
-        int count = 0;
-
-        for (Romaneio romaneio : romaneioAll) {
-            if (romaneio.getSts().equals(status.toLowerCase())) {
-                count++;
-            }
-        }
-        return count;
+    public int getCountForStatus(String status) {
+        return this.romaneioRepository.findByStatus(status).size() > 0 ? this.romaneioRepository.findByStatus(status).size() : 0;
     }
 
     /**

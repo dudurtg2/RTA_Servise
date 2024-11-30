@@ -2,6 +2,7 @@ package com.example.empresa.controllers;
 
 import com.example.empresa.entities.Base;
 import com.example.empresa.facades.BaseFacade;
+import com.example.empresa.services.CustomExceptionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -82,6 +82,7 @@ public class BaseController {
      */
     @PutMapping("/update/{id}")
     public ResponseEntity<Base> update(@PathVariable long id, @RequestBody Base base) {
+        if(this.baseFacade.findById(id) == null) throw new CustomExceptionService("Base com id " + id + " nao encontrada.", 404);
         
         Base baseUpdated = baseFacade.update(id, base);
         return new ResponseEntity<>(baseUpdated, HttpStatus.OK);
@@ -95,6 +96,7 @@ public class BaseController {
      */
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
+        if(this.baseFacade.findById(id) == null) throw new CustomExceptionService("Base com id " + id + " nao encontrada.", 404);
         
         baseFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);

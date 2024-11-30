@@ -83,8 +83,8 @@ public class RomaneioFacade {
      * @param status o status utilizado como critério de filtragem (ex.: "retirado", "aguardando", "finalizado").
      * @return o número de registros que correspondem ao status fornecido.
      */
-    public int getCount(String status) {
-        return this.romaneioApplication.getCount(status);
+    public int getCountForStatus(String status) {
+        return this.romaneioApplication.getCountForStatus(status);
     }
 
     /**

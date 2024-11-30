@@ -2,6 +2,7 @@ package com.example.empresa.controllers;
 
 import com.example.empresa.entities.Entregador;
 import com.example.empresa.facades.EntregadorFacade;
+import com.example.empresa.services.CustomExceptionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -88,10 +89,8 @@ public class EntregadorController {
      */
     @PutMapping("/update/{id}")
     public ResponseEntity<Entregador> update(@PathVariable long id, @RequestBody Entregador entregador) {
+        if (this.entregadorFacade.findById(id) == null) throw new CustomExceptionService("Entregador com id " + id + " nao encontrada.", 404);
         Entregador entregadorUpdated = entregadorFacade.update(id, entregador);
-        if (entregadorUpdated == null) {
-            return new ResponseEntity<>(entregadorUpdated, HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity<>(entregadorUpdated, HttpStatus.OK);
     }
 
@@ -103,6 +102,7 @@ public class EntregadorController {
      */
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
+        if (this.entregadorFacade.findById(id) == null) throw new CustomExceptionService("Entregador com id " + id + " nao encontrada.", 404);
         entregadorFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

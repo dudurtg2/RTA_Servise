@@ -2,6 +2,7 @@ package com.example.empresa.controllers;
 
 import com.example.empresa.entities.Empresa;
 import com.example.empresa.facades.EmpresaFacade;
+import com.example.empresa.services.CustomExceptionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -87,10 +88,8 @@ public class EmpresaController {
      */
     @PutMapping("/update/{id}")
     public ResponseEntity<Empresa> update(@PathVariable long id, @RequestBody Empresa empresa) {
+        if (this.empresaFacade.findById(id) == null) throw new CustomExceptionService("Empresa com id " + id + " nao encontrada.", 404);    
         Empresa empresaUpdated = empresaFacade.update(id, empresa);
-        if (empresaUpdated == null) {
-            return new ResponseEntity<>(empresaUpdated, HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity<>(empresaUpdated, HttpStatus.OK);
     }
 
@@ -102,6 +101,7 @@ public class EmpresaController {
      */
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
+        if (this.empresaFacade.findById(id) == null) throw new CustomExceptionService("Empresa com id " + id + " nao encontrada.", 404);   
         empresaFacade.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

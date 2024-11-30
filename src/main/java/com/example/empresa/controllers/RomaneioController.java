@@ -2,6 +2,7 @@ package com.example.empresa.controllers;
 
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.facades.RomaneioFacade;
+import com.example.empresa.records.ResponceRecord;
 import com.example.empresa.records.RomaneioRecord;
 import com.example.empresa.records.RomaneioUpdateRecord;
 import com.example.empresa.services.CustomExceptionService;
@@ -77,12 +78,15 @@ public class RomaneioController {
      *         correspondem ao status fornecido
      *         no corpo da resposta, junto com o status HTTP 200 (OK).
      */
-    @GetMapping("/count/{status}")
-    public ResponseEntity<Integer> getCount(@PathVariable String status) {
-        int count = this.romaneioFacade.getCount(status);
-        return new ResponseEntity<>(count, HttpStatus.OK);
-
+    @GetMapping("/count/sts/{status}")
+    public ResponseEntity<ResponceRecord> getCountStsAll(@PathVariable String status) {
+        return new ResponseEntity<ResponceRecord>(new ResponceRecord(this.romaneioFacade.getCountForStatus(status), status), HttpStatus.OK);
     }
+
+  /*  @GetMapping("/count/driver/{uid}")
+   public ResponseEntity<List<Romaneio>> getCountDriver(@PathVariable String driver) {
+       return new ResponseEntity<List<Romaneio>>(new ResponceRecord(this.romaneioFacade.getCountForStatus(status), status), HttpStatus.OK);
+   } */
 
     /**
      * Salva um novo romaneio no sistema.
@@ -113,11 +117,8 @@ public class RomaneioController {
     public ResponseEntity<Romaneio> update(
             @PathVariable long id,
             @RequestBody RomaneioUpdateRecord romaneio) {
-        Romaneio romaneioUpdated = this.romaneioFacade.findById(id);
 
-        if (romaneioUpdated == null) {
-            throw new CustomExceptionService("Romaneio com id " + id + " não encontrado.", 404);
-        }
+        if (this.romaneioFacade.findById(id) == null) throw new CustomExceptionService("Romaneio com id " + id + " não encontrado.", 404);
 
         Romaneio romaneioInb = romaneioFacade.update(id, romaneio);
         return new ResponseEntity<Romaneio>(romaneioInb, HttpStatus.OK);
@@ -132,12 +133,9 @@ public class RomaneioController {
      */
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
-        Romaneio romaneioUpdated = this.romaneioFacade.findById(id);
 
-        if (romaneioUpdated == null) {
-            throw new CustomExceptionService("Romaneio com id " + id + " não encontrado.", 404);
-        }
-        
+        if (this.romaneioFacade.findById(id) == null)  throw new CustomExceptionService("Romaneio com id " + id + " não encontrado.", 404);
+       
         romaneioFacade.deleteById(id);
         
         return new ResponseEntity<Void>(HttpStatus.OK);
@@ -161,6 +159,7 @@ public class RomaneioController {
         }
 
         return new ResponseEntity<List<Romaneio>>(romaneio, HttpStatus.OK);
-        
     }
+
+
 }

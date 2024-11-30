@@ -78,6 +78,8 @@ public class RomaneioRepository implements IRomaneioRepository {
         return query.getResultList();
     }
 
+    
+
 }
 
 
