@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Entregador;
-import com.example.empresa.entities.Motorista;
 import com.example.empresa.interfaces.IEntregadorRepository;
 import com.example.empresa.services.CustomExceptionService;
 import com.example.empresa.services.ValidacaoService;
