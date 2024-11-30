@@ -139,9 +139,6 @@ public class RomaneioApplication {
      */
     public Romaneio update(long id, RomaneioUpdateRecord romaneio) {
         Romaneio romaneioInDb = romaneioRepository.findById(id);
-        if (romaneioInDb == null) {
-            throw new EntityNotFoundException("Romaneio com id " + id + " não encontrado.");
-        }
 
         if (romaneio == null) {
             throw new IllegalArgumentException("Objeto RomaneioUpdateRecord não pode ser nulo.");
@@ -160,6 +157,14 @@ public class RomaneioApplication {
      * @param romaneio     o objeto {@link RomaneioUpdateRecord} com as atualizações.
      */
     private void updateData(Romaneio romaneioInDb, RomaneioUpdateRecord romaneio) {
+        Validar(romaneioInDb, romaneio);
+
+        romaneioInDb.setSts(romaneio.status() != null ? romaneio.status() : romaneioInDb.getSts());
+        romaneioInDb.setOcorrencia(romaneio.ocorrencia() != null ? romaneio.ocorrencia() : romaneioInDb.getOcorrencia());
+        romaneioInDb.setDataFinal(romaneio.dataFinal() != null ? romaneio.dataFinal() : romaneioInDb.getDataFinal());
+    }
+
+    private void Validar(Romaneio romaneioInDb, RomaneioUpdateRecord romaneio) {
         if (romaneio.entregador() != null) {
             Entregador entregador = entregadorRepository.findById(romaneio.entregador());
             if (entregador == null) {
@@ -203,10 +208,6 @@ public class RomaneioApplication {
                 romaneioInDb.setMotorista(motorista);
             } 
         }
-
-        romaneioInDb.setSts(romaneio.status() != null ? romaneio.status() : romaneioInDb.getSts());
-        romaneioInDb.setOcorrencia(romaneio.ocorrencia() != null ? romaneio.ocorrencia() : romaneioInDb.getOcorrencia());
-        romaneioInDb.setDataFinal(romaneio.dataFinal() != null ? romaneio.dataFinal() : romaneioInDb.getDataFinal());
     }
 
     /**

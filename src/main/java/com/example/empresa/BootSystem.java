@@ -1,6 +1,7 @@
 package com.example.empresa;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 @SpringBootApplication
 public class BootSystem{
 
@@ -8,5 +9,5 @@ public class BootSystem{
 		SpringApplication.run(BootSystem.class, args);
 	}
 
-
+ 	
 }

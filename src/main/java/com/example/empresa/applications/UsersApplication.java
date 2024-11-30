@@ -1,6 +1,5 @@
 package com.example.empresa.applications;
 
-import java.net.Authenticator;
 import java.util.List;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,7 +14,6 @@ import com.example.empresa.interfaces.IFuncionarioRepository;
 import com.example.empresa.interfaces.IMotoristaRepository;
 import com.example.empresa.interfaces.IUsersRepository;
 import com.example.empresa.records.DataRecord;
-import com.example.empresa.security.DTO.LoginResponseDTO;
 import com.example.empresa.security.DTO.RegisterDTO;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -83,8 +81,6 @@ public class UsersApplication {
      */
     public Users save(RegisterDTO users) {
 
-        
-
         switch (users.role()) {
 
             case MOTORISTA:
@@ -122,7 +118,7 @@ public class UsersApplication {
         Entregador entregador = new Entregador(users.nome(), users.email(), users.cpf(), users.telefone(),
                 baseRepository.findById(users.base()), users.endereco());
 
-                return this.entregadorRepository.save(entregador);
+        return this.entregadorRepository.save(entregador);
          
     }
 
