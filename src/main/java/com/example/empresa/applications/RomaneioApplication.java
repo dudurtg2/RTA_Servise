@@ -14,17 +14,14 @@ import com.example.empresa.entities.Motorista;
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.ICidadeRepository;
+import com.example.empresa.interfaces.IEmpresaRepository;
 import com.example.empresa.interfaces.IEntregadorRepository;
+import com.example.empresa.interfaces.IFuncionarioRepository;
+import com.example.empresa.interfaces.IMotoristaRepository;
 import com.example.empresa.interfaces.IRomaneioRepository;
 import com.example.empresa.records.RomaneioRecord;
 import com.example.empresa.records.RomaneioUpdateRecord;
 import com.example.empresa.services.CustomExceptionService;
-
-import lombok.extern.java.Log;
-
-import com.example.empresa.interfaces.IEmpresaRepository;
-import com.example.empresa.interfaces.IFuncionarioRepository;
-import com.example.empresa.interfaces.IMotoristaRepository;
 
 /**
  * Classe responsável pela lógica de aplicação relacionada à entidade
@@ -92,8 +89,7 @@ public class RomaneioApplication {
      */
     public Romaneio save(RomaneioRecord romaneio) {
 
-        if (romaneio == null || romaneio.codigos() == null)
-            return null;
+        if (romaneio == null || romaneio.codigos() == null) throw new CustomExceptionService("Romaneio nullo ou sem códigos.", 400);
 
         Romaneio romaneioSave = new Romaneio();
 
