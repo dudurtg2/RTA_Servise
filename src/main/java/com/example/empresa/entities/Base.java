@@ -32,9 +32,3 @@ public class Base {
     private String endereco;
     
 }
-/* 
-{
-    "nome": "Base 1",
-    "endereco": "Rua 1, 123
-}
-*/

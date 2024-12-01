@@ -1,5 +1,8 @@
 package com.example.empresa.services;
 
+/**
+ * Classe para representar exce es personalizadas.
+ */
 public class CustomExceptionService extends RuntimeException {
 
     private final int statusCode;
@@ -9,6 +12,11 @@ public class CustomExceptionService extends RuntimeException {
         this.statusCode = statusCode;
     }
 
+    /**
+     * Retorna o status code HTTP associado a esta exce o.
+     * 
+     * @return status code HTTP
+     */
     public int getStatusCode() {
         return statusCode;
     }

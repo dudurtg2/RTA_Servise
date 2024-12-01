@@ -72,4 +72,16 @@ public class UsersRepository implements IUsersRepository {
         }
     }
     
+    
+    @Override
+    public Users findByLogin(String login) {
+        String jpql = "SELECT u FROM Users u WHERE u.login = :login";
+        TypedQuery<Users> query = entityManager.createQuery(jpql, Users.class);
+        query.setParameter("login", login);
+        try {
+            return query.getSingleResult();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
+    }
 }

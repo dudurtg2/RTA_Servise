@@ -221,6 +221,10 @@ public class UsersApplication {
         return null;
     }
 
+    public Users findByLogin(String login) {
+        return this.usersRepository.findByLogin(login);
+    }
+
     
     
     

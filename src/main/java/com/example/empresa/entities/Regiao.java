@@ -34,10 +34,3 @@ public class Regiao {
     private Base base;   
 }
 
-/* 
-{
-    "id": 1,
-    "nome": "Sul",
-    "base": {"id": 1}
-}
-*/

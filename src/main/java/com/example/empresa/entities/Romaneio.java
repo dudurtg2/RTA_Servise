@@ -1,9 +1,7 @@
 package com.example.empresa.entities;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -73,27 +71,3 @@ public class Romaneio {
 
 }
 
-/* 
-{
-    "id": 1,
-    "empresa": { "id": 1 },
-    "motorista": { "id": 1},
-    "entregador": { "id": 1},
-    "funcionario": { "id": 1},
-    "base": { "id": 1 },
-    "cidade": { "id": 1 },
-    "sts": "sts",
-    "quantidade": 1,
-    "codigouid": "codigo_uid",
-    "linkDownload": "link_download",
-    "data": "data",
-    "datafinal": "data_final",
-    "ocorrencia": "ocorrencia",
-    "codigos": [
-        { "codigo": "codigo1" },
-        { "codigo": "codigo2" },
-        { "codigo": "codigo3" },
-        { "codigo": "codigo4" }
-    ]
-}
-*/

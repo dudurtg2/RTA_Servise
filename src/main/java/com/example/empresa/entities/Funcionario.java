@@ -50,13 +50,3 @@ public class Funcionario{
         this.base = base;
     }
 }
-
-/* 
-{
-    "nome": "Funcionario 1",
-    "email": "2M0ZI@example.com",
-    "cpf": "123.456.789-00",
-    "telefone": "123456789",
-    "base": {"id": 1}
-}
-*/

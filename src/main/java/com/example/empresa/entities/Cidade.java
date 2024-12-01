@@ -38,12 +38,3 @@ public class Cidade {
 
 }
 
-/* 
-{ 
-    "nome": "Cidade 1",
-    "cep": "12345678",
-    "regiao": {
-        "id": 1
-    }
-}
-*/

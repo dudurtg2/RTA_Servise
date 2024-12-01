@@ -47,7 +47,7 @@ try:
     response = requests.post(url, json=bases, headers=headers)
     if response.status_code == 200:
         print("Resposta:", response.json())
-        token = response.json()['token']
+        token = response.json()['accessToken']
     else:
         print(f"Erro: {response.status_code} - {response.text}")
 

@@ -54,14 +54,4 @@ public class Entregador {
         this.base = base;
     }
 }
-/* 
-{
-    "nome": "Entregador 1",
-    "email": "2M0ZI@example.com",
-    "cpf": "123.456.789-00",
-    "telefone": "123456789",
-    "endereco": "Rua 1, 123",
-    "base": {"id": 1}
-}
 
-*/

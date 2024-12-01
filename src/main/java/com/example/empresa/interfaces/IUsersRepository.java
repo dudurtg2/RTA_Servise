@@ -62,4 +62,12 @@ public interface IUsersRepository {
      */
     
     Users findByEmail(String email);
+
+    /**
+     * Recupera uma instância de {@link Users} com base no login.
+     * 
+     * @param login O login da instância de {@link Users}.
+     * @return A instância de {@link Users} correspondente ao login, ou null se não encontrada.
+     */
+    Users findByLogin(String login);
 }

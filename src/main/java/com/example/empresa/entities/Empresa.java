@@ -32,9 +32,3 @@ public class Empresa {
 
     
 }
-/* 
-{
-    "nome": "Empresa 1",
-    "cnpj": "123456789"
-}
-*/

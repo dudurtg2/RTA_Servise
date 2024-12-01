@@ -9,9 +9,12 @@ import com.example.empresa.entities.Users;
 import com.example.empresa.security.DTO.RegisterDTO;
 
 /**
- * Fachada responsável pela mediação das operações de persistência e lógica de negócios
- * entre a camada de controle e a camada de aplicação para a entidade {@link Users}.
- * Fornece métodos para realizar operações de CRUD (Create, Read, Update, Delete) para a entidade {@link Users}.
+ * Fachada responsável pela mediação das operações de persistência e lógica de
+ * negócios
+ * entre a camada de controle e a camada de aplicação para a entidade
+ * {@link Users}.
+ * Fornece métodos para realizar operações de CRUD (Create, Read, Update,
+ * Delete) para a entidade {@link Users}.
  */
 @Component
 public class UsersFacade {
@@ -21,7 +24,8 @@ public class UsersFacade {
     /**
      * Construtor para injeção de dependência da {@link UsersApplication}.
      *
-     * @param usersApplication a aplicação que gerencia a lógica de negócios para a entidade {@link Users}.
+     * @param usersApplication a aplicação que gerencia a lógica de negócios para a
+     *                         entidade {@link Users}.
      */
     public UsersFacade(UsersApplication usersApplication) {
         this.usersApplication = usersApplication;
@@ -40,7 +44,8 @@ public class UsersFacade {
      * Retorna um objeto {@link Users} com base no seu identificador único.
      *
      * @param id o identificador único do usuário a ser encontrado.
-     * @return o objeto {@link Users} correspondente ao identificador fornecido ou {@code null} se não encontrado.
+     * @return o objeto {@link Users} correspondente ao identificador fornecido ou
+     *         {@code null} se não encontrado.
      */
     public Users findById(long id) {
         return this.usersApplication.findById(id);
@@ -59,12 +64,13 @@ public class UsersFacade {
     /**
      * Atualiza um objeto {@link Users} existente no sistema.
      *
-     * @param id o identificador único do usuário a ser atualizado.
+     * @param id    o identificador único do usuário a ser atualizado.
      * @param users o objeto {@link Users} com os novos dados a serem atualizados.
-     * @return o objeto {@link Users} atualizado ou {@code null} caso o identificador não seja encontrado.
+     * @return o objeto {@link Users} atualizado ou {@code null} caso o
+     *         identificador não seja encontrado.
      */
     public Users update(long id, Users users) {
-        
+
         Users usersInDb = this.usersApplication.findById(id);
         if (usersInDb == null) {
             return null;
@@ -82,8 +88,26 @@ public class UsersFacade {
         this.usersApplication.deleteById(id);
     }
 
+    /**
+     * Retorna um objeto {@link Users} com base no email fornecido.
+     * 
+     * @param email o email do usuário a ser encontrado.
+     * @return o objeto {@link Users} correspondente ao email fornecido ou
+     *         {@code null} se n o encontrado.
+     */
     public <T> T findByEmail(String email) {
         return this.usersApplication.findByEmail(email);
+    }
+
+    /**
+     * Retorna um objeto {@link Users} com base no login fornecido.
+     *
+     * @param login o login do usuário a ser encontrado.
+     * @return o objeto {@link Users} correspondente ao login fornecido ou
+     *         {@code null} se não encontrado.
+     */
+    public Users findByLogin(String login) {
+        return this.usersApplication.findByLogin(login);
     }
 
 }
