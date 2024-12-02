@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import com.example.empresa.applications.records.DataRecord;
 import com.example.empresa.entities.Entregador;
 import com.example.empresa.entities.Funcionario;
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.entities.Users;
 import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.IUsersRepository;
-import com.example.empresa.records.DataRecord;
 import com.example.empresa.security.DTO.RegisterDTO;
 import com.example.empresa.services.CustomExceptionService;
 

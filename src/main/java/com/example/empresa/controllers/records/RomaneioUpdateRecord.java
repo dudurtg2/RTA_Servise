@@ -1,4 +1,4 @@
-package com.example.empresa.records;
+package com.example.empresa.controllers.records;
 
 public record RomaneioUpdateRecord(
     String ocorrencia,

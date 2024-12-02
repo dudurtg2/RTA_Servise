@@ -1,4 +1,4 @@
-package com.example.empresa.records;
+package com.example.empresa.controllers.records;
 
 import java.util.List;
 

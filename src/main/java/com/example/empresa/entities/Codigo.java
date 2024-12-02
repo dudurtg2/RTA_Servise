@@ -1,7 +1,7 @@
 package com.example.empresa.entities;
 
 
-import com.example.empresa.records.CodidoRecord;
+import com.example.empresa.entities.records.CodidoRecord;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

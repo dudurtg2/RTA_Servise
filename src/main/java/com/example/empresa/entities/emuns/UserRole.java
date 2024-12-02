@@ -1,4 +1,4 @@
-package com.example.empresa.emuns;
+package com.example.empresa.entities.emuns;
 
 /**
  * Enumeração que representa os diferentes papéis de usuário no sistema.

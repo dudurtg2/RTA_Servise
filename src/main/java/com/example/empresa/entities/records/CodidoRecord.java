@@ -1,4 +1,4 @@
-package com.example.empresa.records;
+package com.example.empresa.entities.records;
 
 public record CodidoRecord(
     String codigo,

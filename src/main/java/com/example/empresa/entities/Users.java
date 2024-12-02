@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.empresa.emuns.UserRole;
+import com.example.empresa.entities.emuns.UserRole;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

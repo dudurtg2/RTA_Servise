@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.example.empresa.controllers.records.RomaneioRecord;
+import com.example.empresa.controllers.records.RomaneioUpdateRecord;
 import com.example.empresa.entities.Base;
 import com.example.empresa.entities.Cidade;
 import com.example.empresa.entities.Empresa;
@@ -19,8 +21,6 @@ import com.example.empresa.interfaces.IEntregadorRepository;
 import com.example.empresa.interfaces.IFuncionarioRepository;
 import com.example.empresa.interfaces.IMotoristaRepository;
 import com.example.empresa.interfaces.IRomaneioRepository;
-import com.example.empresa.records.RomaneioRecord;
-import com.example.empresa.records.RomaneioUpdateRecord;
 import com.example.empresa.services.CustomExceptionService;
 
 /**

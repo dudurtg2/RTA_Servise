@@ -1,6 +1,6 @@
 package com.example.empresa.security.DTO;
 
-import com.example.empresa.emuns.UserRole;
+import com.example.empresa.entities.emuns.UserRole;
 
 public record RegisterDTO(
     String nome,
