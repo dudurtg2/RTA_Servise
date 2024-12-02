@@ -19,7 +19,6 @@ import com.example.empresa.services.ValidacaoService;
 public class MotoristaApplication {
     private IMotoristaRepository motoristaRepository;
     private IBaseRepository baseRepository;
-    
     /**
      * Construtor da classe MotoristaApplication.
      * 
@@ -60,7 +59,7 @@ public class MotoristaApplication {
         motorista.setEmail(motorista.getEmail().toLowerCase());
 
         if(motoristaRepository.findByEmail(motorista.getEmail()) != null) {
-            throw new CustomExceptionService("Email j  cadastrado", 400);
+            throw new CustomExceptionService("Email já cadastrado", 400);
         }
 
         motorista = getCpfExistente(motorista);

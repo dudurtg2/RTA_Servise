@@ -58,8 +58,7 @@ public class RegiaoApplication {
      * @return A instância salva de {@link Regiao}.
      */
     public Regiao save(Regiao regiao) {
-        if (baseRepository.findById(regiao.getBase().getId()) == null)
-            throw new IllegalArgumentException("Base nao encontrada");
+        if (baseRepository.findById(regiao.getBase().getId()) == null) throw new IllegalArgumentException("Base nao encontrada");
         return this.regiaoRepository.save(regiao);
 
     }

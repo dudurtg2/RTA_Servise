@@ -67,9 +67,9 @@ public class EntregadorApplication {
     public Entregador save(Entregador entregador) {
         entregador.setEmail(entregador.getEmail().toLowerCase());
 
-        if (baseRepository.findById(entregador.getBase().getId()) == null) {
+        if (baseRepository.findById(entregador.getBase().getId()) == null) 
             throw new CustomExceptionService("Base nao cadastrada", 400);
-        }
+        
 
         entregador = getCpfExistente(entregador);
 

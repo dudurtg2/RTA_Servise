@@ -63,7 +63,6 @@ public class CidadeApplication {
         cidade.setCep(new ValidacaoService().Cep(cidade.getCep()));
 
         if (cidade.getCep() == null) throw new CustomExceptionService("Cep invalido", 400);
-
         if (regiaoRepository.findById(cidade.getRegiao().getId()) == null) throw new CustomExceptionService("Região nao encontrada", 400);
 
         return this.cidadeRepository.save(cidade);

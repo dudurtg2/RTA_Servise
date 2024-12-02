@@ -59,7 +59,6 @@ public class FuncionarioApplication {
         funcionario.setEmail(funcionario.getEmail().toLowerCase());
 
         if(baseRepository.findById(funcionario.getBase().getId()) == null) throw new CustomExceptionService("Base nao cadastrada", 400);
-
         funcionario = getCpfExistente(funcionario);
     
         return this.funcionarioRepository.save(funcionario);
