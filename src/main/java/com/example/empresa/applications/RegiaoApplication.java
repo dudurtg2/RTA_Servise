@@ -5,16 +5,21 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Regiao;
+import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.IRegiaoRepository;
 
 /**
- * Classe responsável pela lógica de aplicação relacionada à entidade {@link Regiao}.
- * Fornece métodos para consultar, salvar, atualizar e excluir dados da entidade {@link Regiao}.
- * Utiliza o repositório {@link IRegiaoRepository} para interagir com a base de dados.
+ * Classe responsável pela lógica de aplicação relacionada à entidade
+ * {@link Regiao}.
+ * Fornece métodos para consultar, salvar, atualizar e excluir dados da entidade
+ * {@link Regiao}.
+ * Utiliza o repositório {@link IRegiaoRepository} para interagir com a base de
+ * dados.
  */
 @Component
 public class RegiaoApplication {
     private IRegiaoRepository regiaoRepository;
+    private IBaseRepository baseRepository;
 
     /**
      * Construtor da classe RegiaoApplication.
@@ -24,7 +29,6 @@ public class RegiaoApplication {
     public RegiaoApplication(IRegiaoRepository regiaoRepository) {
         this.regiaoRepository = regiaoRepository;
     }
-    
 
     /**
      * Recupera todas as instâncias da entidade {@link Regiao}.
@@ -36,10 +40,12 @@ public class RegiaoApplication {
     }
 
     /**
-     * Recupera uma instância da entidade {@link Regiao} com base no seu identificador único.
+     * Recupera uma instância da entidade {@link Regiao} com base no seu
+     * identificador único.
      * 
      * @param id O identificador da instância de {@link Regiao}.
-     * @return A instância de {@link Regiao} correspondente ao id, ou null se não encontrado.
+     * @return A instância de {@link Regiao} correspondente ao id, ou null se não
+     *         encontrado.
      */
     public Regiao findById(long id) {
         return this.regiaoRepository.findById(id);
@@ -52,13 +58,16 @@ public class RegiaoApplication {
      * @return A instância salva de {@link Regiao}.
      */
     public Regiao save(Regiao regiao) {
+        if (baseRepository.findById(regiao.getBase().getId()) == null)
+            throw new IllegalArgumentException("Base nao encontrada");
         return this.regiaoRepository.save(regiao);
+
     }
 
     /**
      * Atualiza uma instância existente de {@link Regiao}.
      * 
-     * @param id O identificador da instância a ser atualizada.
+     * @param id     O identificador da instância a ser atualizada.
      * @param regiao A nova instância de {@link Regiao} contendo as atualizações.
      * @return A instância atualizada de {@link Regiao}, ou null se não encontrado.
      */
@@ -72,7 +81,8 @@ public class RegiaoApplication {
     }
 
     /**
-     * Exclui a instância da entidade {@link Regiao} com base no seu identificador único.
+     * Exclui a instância da entidade {@link Regiao} com base no seu identificador
+     * único.
      * 
      * @param id O identificador da instância a ser excluída.
      */

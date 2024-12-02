@@ -2,10 +2,13 @@ package com.example.empresa.applications;
 
 import java.util.List;
 
+import org.aspectj.asm.IRelationship;
 import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Cidade;
+import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.ICidadeRepository;
+import com.example.empresa.interfaces.IRegiaoRepository;
 import com.example.empresa.services.CustomExceptionService;
 import com.example.empresa.services.ValidacaoService;
 
@@ -17,14 +20,16 @@ import com.example.empresa.services.ValidacaoService;
 @Component
 public class CidadeApplication {
     private ICidadeRepository cidadeRepository;
+    private IRegiaoRepository regiaoRepository;
 
     /**
      * Construtor da classe CidadeApplication.
      * 
      * @param cidadeRepository O repositório para a entidade {@link Cidade}.
      */
-    public CidadeApplication(ICidadeRepository cidadeRepository) {
+    public CidadeApplication(ICidadeRepository cidadeRepository, IRegiaoRepository regiaoRepository) {
         this.cidadeRepository = cidadeRepository;
+        this.regiaoRepository = regiaoRepository;
     }
 
     /**
@@ -58,6 +63,8 @@ public class CidadeApplication {
         cidade.setCep(new ValidacaoService().Cep(cidade.getCep()));
 
         if (cidade.getCep() == null) throw new CustomExceptionService("Cep invalido", 400);
+
+        if (regiaoRepository.findById(cidade.getRegiao().getId()) == null) throw new CustomExceptionService("Região nao encontrada", 400);
 
         return this.cidadeRepository.save(cidade);
     }

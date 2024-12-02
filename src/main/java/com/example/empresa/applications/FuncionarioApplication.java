@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Funcionario;
+import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.IFuncionarioRepository;
 import com.example.empresa.services.CustomExceptionService;
 import com.example.empresa.services.ValidacaoService;
@@ -17,6 +18,7 @@ import com.example.empresa.services.ValidacaoService;
 @Component
 public class FuncionarioApplication {
     private IFuncionarioRepository funcionarioRepository;
+    private IBaseRepository baseRepository;
 
     /**
      * Construtor da classe FuncionarioApplication.
@@ -25,6 +27,7 @@ public class FuncionarioApplication {
      */
     public FuncionarioApplication(IFuncionarioRepository funcionarioRepository){
         this.funcionarioRepository = funcionarioRepository;
+        this.baseRepository = baseRepository;
     }
 
     /**
@@ -54,6 +57,8 @@ public class FuncionarioApplication {
      */
     public Funcionario save(Funcionario funcionario) {
         funcionario.setEmail(funcionario.getEmail().toLowerCase());
+
+        if(baseRepository.findById(funcionario.getBase().getId()) == null) throw new CustomExceptionService("Base nao cadastrada", 400);
 
         funcionario = getCpfExistente(funcionario);
     
