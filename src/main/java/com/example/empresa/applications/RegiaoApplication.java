@@ -50,7 +50,6 @@ public class RegiaoApplication {
     public Regiao findById(long id) {
         return this.regiaoRepository.findById(id);
     }
-
     /**
      * Salva uma nova instância da entidade {@link Regiao} no repositório.
      * 
