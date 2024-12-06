@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.example.empresa.applications.UserRegistrationApplication;
 import com.example.empresa.applications.UsersApplication;
 import com.example.empresa.entities.Users;
 import com.example.empresa.security.DTO.RegisterDTO;
@@ -20,6 +21,7 @@ import com.example.empresa.security.DTO.RegisterDTO;
 public class UsersFacade {
 
     private UsersApplication usersApplication;
+    private UserRegistrationApplication userRegistrationApplication;
 
     /**
      * Construtor para injeção de dependência da {@link UsersApplication}.
@@ -27,8 +29,9 @@ public class UsersFacade {
      * @param usersApplication a aplicação que gerencia a lógica de negócios para a
      *                         entidade {@link Users}.
      */
-    public UsersFacade(UsersApplication usersApplication) {
+    public UsersFacade(UsersApplication usersApplication,UserRegistrationApplication userRegistrationApplication) {
         this.usersApplication = usersApplication;
+        this.userRegistrationApplication = userRegistrationApplication;
     }
 
     /**
@@ -58,7 +61,7 @@ public class UsersFacade {
      * @return o objeto {@link Users} que foi salvo.
      */
     public Users save(RegisterDTO users) {
-        return this.usersApplication.save(users);
+        return this.userRegistrationApplication.save(users);
     }
 
     /**
