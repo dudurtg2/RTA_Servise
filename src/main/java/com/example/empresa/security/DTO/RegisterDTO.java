@@ -9,6 +9,6 @@ public record RegisterDTO(
     String email,
     String telefone,
     String cpf,
-    int base,
+    long base,
     String endereco
 ) {}
