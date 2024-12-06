@@ -108,24 +108,24 @@ public class UsersApplication {
      *         {@link Entregador} correspondente ao email, ou null se n o
      *         encontrado.
      */
-    public <T> T findByEmail(String email) {
+    public DataRecord findByEmail(String email) {
 
         if (usersRepository.findByEmail(email) == null) return null;
         
         Funcionario funcionario = this.funcionarioRepository.findByEmail(email);
         if (funcionario != null) {
-            return (T) new DataRecord(funcionario, usersRepository.findByEmail(email).getRole().toString());
+            return new DataRecord(funcionario, usersRepository.findByEmail(email).getRole().toString());
         }
         
         Motorista motorista = this.motoristaRepository.findByEmail(email);
         if (motorista != null) {
-            return (T) new DataRecord(motorista, "Motorista");
+            return new DataRecord(motorista, "Motorista");
         }
 
         Entregador entregador = this.entregadorRepository.findByEmail(email);
         if (entregador != null) {
             
-            return (T) new DataRecord(entregador, "Entregador");
+            return new DataRecord(entregador, "Entregador");
         }
         
         return null;

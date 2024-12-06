@@ -1,11 +1,13 @@
 package com.example.empresa.security.DTO;
 
-public class LoginResponseDTO<T>{
-    private final T data;
+import com.example.empresa.applications.records.DataRecord;
+
+public class LoginResponseDTO{
+    private final DataRecord data;
     private final String accessToken;
     private final String refreshToken;
 
-    public LoginResponseDTO(T data, TokensDTO tokens) {
+    public LoginResponseDTO(DataRecord data, TokensDTO tokens) {
         this.data = data;
         this.accessToken = tokens.getAccessToken();
         this.refreshToken = tokens.getRefreshToken();

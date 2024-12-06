@@ -1,6 +1,7 @@
 package com.example.empresa.applications;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Entregador;
 import com.example.empresa.entities.Funcionario;
@@ -14,7 +15,7 @@ import com.example.empresa.interfaces.IUsersRepository;
 import com.example.empresa.security.DTO.RegisterDTO;
 import com.example.empresa.services.CustomExceptionService;
 import com.example.empresa.services.ValidacaoService;
-
+@Component
 public class UserRegistrationApplication {
 
     private IUsersRepository usersRepository;

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.empresa.applications.UserRegistrationApplication;
 import com.example.empresa.applications.UsersApplication;
+import com.example.empresa.applications.records.DataRecord;
 import com.example.empresa.entities.Users;
 import com.example.empresa.security.DTO.RegisterDTO;
 
@@ -98,7 +99,7 @@ public class UsersFacade {
      * @return o objeto {@link Users} correspondente ao email fornecido ou
      *         {@code null} se n o encontrado.
      */
-    public <T> T findByEmail(String email) {
+    public DataRecord findByEmail(String email) {
         return this.usersApplication.findByEmail(email);
     }
 
