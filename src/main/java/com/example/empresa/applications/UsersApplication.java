@@ -110,25 +110,22 @@ public class UsersApplication {
      */
     public DataRecord findByEmail(String email) {
 
-        if (usersRepository.findByEmail(email) == null) return null;
-        
-        Funcionario funcionario = this.funcionarioRepository.findByEmail(email);
-        if (funcionario != null) {
-            return new DataRecord(funcionario, usersRepository.findByEmail(email).getRole().toString());
-        }
-        
-        Motorista motorista = this.motoristaRepository.findByEmail(email);
-        if (motorista != null) {
-            return new DataRecord(motorista, "Motorista");
-        }
+        Users user = usersRepository.findByEmail(email);
+        if (user == null) return null;
 
-        Entregador entregador = this.entregadorRepository.findByEmail(email);
-        if (entregador != null) {
-            
-            return new DataRecord(entregador, "Entregador");
+        switch (user.getRole()) {
+            case MOTORISTA:
+                Motorista motorista = motoristaRepository.findByEmail(email);
+                return motorista != null ? new DataRecord(motorista, "MOTORISTA") : null;
+    
+            case ENTREGADOR:
+                Entregador entregador = entregadorRepository.findByEmail(email);
+                return entregador != null ? new DataRecord(entregador, "ENTREGADOR") : null;
+            default:
+                Funcionario funcionario = funcionarioRepository.findByEmail(email);
+                return funcionario != null ? new DataRecord(funcionario, usersRepository.findByEmail(email).getRole().toString()) : null;
         }
         
-        return null;
     }
 
     /**

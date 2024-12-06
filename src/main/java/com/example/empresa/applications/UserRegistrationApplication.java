@@ -119,17 +119,17 @@ public class UserRegistrationApplication {
      */
     private void validateCpfUniqueness(String cpf, Object repository) {
         if (repository instanceof IFuncionarioRepository) {
-            Funcionario funcionario = ((IFuncionarioRepository) repository).findByCpf(cpf);
+            Funcionario funcionario = funcionarioRepository.findByCpf(cpf);
             if (funcionario != null) {
                 throw new CustomExceptionService("CPF já cadastrado", 400);
             }
         } else if (repository instanceof IMotoristaRepository) {
-            Motorista motorista = ((IMotoristaRepository) repository).findByCpf(cpf);
+            Motorista motorista = motoristaRepository.findByCpf(cpf);
             if (motorista != null) {
                 throw new CustomExceptionService("CPF já cadastrado", 400);
             }
         } else if (repository instanceof IEntregadorRepository) {
-            Entregador entregador = ((IEntregadorRepository) repository).findByCpf(cpf);
+            Entregador entregador = entregadorRepository.findByCpf(cpf);
             if (entregador != null) {
                 throw new CustomExceptionService("CPF já cadastrado", 400);
             }
