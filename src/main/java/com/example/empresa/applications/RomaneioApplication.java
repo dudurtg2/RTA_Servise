@@ -186,6 +186,18 @@ public class RomaneioApplication {
         return this.romaneioRepository.update(id, romaneioInDb);
     }
 
+    public Romaneio update(String codigo, RomaneioUpdateRecord romaneio) {
+        Romaneio romaneioInDb = romaneioRepository.findByCodigoUid(codigo);
+
+        if (romaneio == null) {
+            throw new CustomExceptionService("Objeto RomaneioUpdateRecord não pode ser nulo.", 400);
+        }
+
+        updateData(romaneioInDb, romaneio);
+
+        return this.romaneioRepository.update(romaneioInDb.getId(), romaneioInDb);
+    }
+
     /**
      * Atualiza o objeto {@link Romaneio} existente com os dados fornecidos no
      * objeto {@link RomaneioUpdateRecord}.
@@ -323,6 +335,18 @@ public class RomaneioApplication {
      */
     public List<Romaneio> findByEntregador(Long entregador) {
         return this.romaneioRepository.findByEntregador(this.entregadorRepository.findById(entregador));
+    }
+
+    /**
+     * Recupera uma inst ncia da entidade {@link Romaneio} com base no seu c digo
+     *  nico.
+     * 
+     * @param codigoUid O c digo  nico da inst ncia da entidade {@link Romaneio}.
+     * @return A inst ncia de {@link Romaneio} correspondente ao c digo  nico
+     *         informado, ou null se n o encontrada.
+     */
+    public Romaneio findByCodigoUid(String codigoUid) {
+        return this.romaneioRepository.findByCodigoUid(codigoUid);
     }
 
 }

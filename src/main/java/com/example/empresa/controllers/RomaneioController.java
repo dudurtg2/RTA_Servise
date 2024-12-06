@@ -137,7 +137,7 @@ public class RomaneioController {
      *         (OK),
      *         ou 404 (Not Found) caso o ID não seja encontrado.
      */
-    @PutMapping("/update/{id}")
+    @PutMapping("/update/id/{id}")
     public ResponseEntity<Romaneio> update(
             @PathVariable long id,
             @RequestBody RomaneioUpdateRecord romaneio) {
@@ -147,7 +147,28 @@ public class RomaneioController {
 
         Romaneio romaneioInb = romaneioFacade.update(id, romaneio);
         return new ResponseEntity<Romaneio>(romaneioInb, HttpStatus.OK);
+    }
 
+    /**
+     * Atualiza um romaneio existente com base no seu código único.
+     *
+     * @param codigo   o código único do romaneio a ser atualizado.
+     * @param romaneio o objeto {@link RomaneioUpdateRecord} contendo os novos dados
+     *                 do romaneio.
+     * @return uma resposta HTTP contendo o objeto atualizado e o status HTTP 200
+     *         (OK),
+     *         ou 404 (Not Found) caso o código não seja encontrado.
+     */
+    @PutMapping("/update/codigo/{codigo}")
+    public ResponseEntity<Romaneio> update(
+            @PathVariable String codigo,
+            @RequestBody RomaneioUpdateRecord romaneio) {
+
+        if (this.romaneioFacade.findByCodigoUid(codigo) == null)
+            throw new CustomExceptionService("Romaneio com codigo " + codigo + " não encontrado.", 404);
+
+        Romaneio romaneioInb = romaneioFacade.update(codigo, romaneio);
+        return new ResponseEntity<Romaneio>(romaneioInb, HttpStatus.OK);
     }
 
     /**

@@ -69,6 +69,17 @@ public class RomaneioFacade {
     }
 
     /**
+     * Atualiza um objeto {@link Romaneio} existente no sistema.
+     *
+     * @param codigo o identificador único do romaneio a ser atualizado.
+     * @param romaneio o objeto {@link Romaneio} com os novos dados a serem atualizados.
+     * @return o objeto {@link Romaneio} atualizado ou {@code null} caso o identificador não seja encontrado.
+     */
+    public Romaneio update(String codigo, RomaneioUpdateRecord romaneio) {
+        return this.romaneioApplication.update(codigo, romaneio);
+    }
+
+    /**
      * Exclui um objeto {@link Romaneio} com base no seu identificador único.
      *
      * @param id o identificador único do romaneio a ser excluído.
@@ -120,5 +131,9 @@ public class RomaneioFacade {
 
     public List<Romaneio> findByEntregador(Long entregador) {
         return this.romaneioApplication.findByEntregador(entregador);
+    }
+
+    public Romaneio findByCodigoUid(String codigoUid) {
+        return this.romaneioApplication.findByCodigoUid(codigoUid);
     }
 }

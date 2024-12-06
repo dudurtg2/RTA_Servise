@@ -44,15 +44,21 @@ public class SecurityFilter extends OncePerRequestFilter {
         this.tokenService = tokenService;
     }
 
+    
     /**
-     * Método responsável por filtrar a requisição HTTP, recuperando e validando o token JWT.
-     * Caso o token seja válido, autentica o usuário no contexto de segurança do Spring.
+     * Executa o filtro de seguran a, verificando se o token JWT est  presente na
+     * requisi o e, caso esteja, autenticando o usu rio no contexto de
+     * seguran a do Spring.
      * 
-     * @param request a requisição HTTP.
-     * @param response a resposta HTTP.
-     * @param filterChain a cadeia de filtros a ser executada após o filtro atual.
-     * @throws ServletException caso ocorra algum erro ao processar o filtro.
-     * @throws IOException caso ocorra algum erro de entrada/saída ao processar o filtro.
+     * Este m todo intercepta a requisi o e verifica a validade do token, caso
+     * esteja v lido, preenche o contexto de seguran a com as informa es do
+     * usu rio.
+     * 
+     * @param request   a requisi o HTTP que est  sendo processada.
+     * @param response  a resposta HTTP que ser  enviada.
+     * @param filterChain o filtro de requisi o que est  sendo executado.
+     * @throws ServletException caso haja um erro ao executar o filtro.
+     * @throws IOException     caso haja um erro ao processar a requisi o.
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

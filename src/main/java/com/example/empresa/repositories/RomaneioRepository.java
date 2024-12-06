@@ -98,6 +98,16 @@ public class RomaneioRepository implements IRomaneioRepository {
         return query.getResultList();
     }
 
+    
+    @Override
+    public Romaneio findByCodigoUid(String codigoUid) {
+        String jpql = "SELECT r FROM Romaneio r WHERE r.codigoUid = :codigoUid";
+        TypedQuery<Romaneio> query = entityManager.createQuery(jpql, Romaneio.class);
+        query.setParameter("codigoUid", codigoUid);
+        
+         return query.getSingleResult();
+        
+    }
 }
 
 

@@ -80,4 +80,12 @@ public interface IRomaneioRepository {
      * */
     
     List<Romaneio> findByEntregador(Entregador entregador);
+
+    /**
+     * Recupera uma instância de {@link Romaneio} com base no identificador único.
+     * 
+     * @param codigoUid O identificador único da instância de {@link Romaneio}.
+     * @return Uma lista contendo todas as instâncias de {@link Romaneio} correspondente ao entregador, ou null se não encontrada.
+     * */
+    Romaneio findByCodigoUid(String codigoUid);
 }

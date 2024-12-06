@@ -2,11 +2,8 @@ package com.example.empresa.applications;
 
 import java.util.List;
 
-import org.aspectj.asm.IRelationship;
 import org.springframework.stereotype.Component;
-
 import com.example.empresa.entities.Cidade;
-import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.ICidadeRepository;
 import com.example.empresa.interfaces.IRegiaoRepository;
 import com.example.empresa.services.CustomExceptionService;
