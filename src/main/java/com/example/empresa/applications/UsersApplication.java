@@ -117,7 +117,6 @@ public class UsersApplication {
             case MOTORISTA:
                 Motorista motorista = motoristaRepository.findByEmail(email);
                 return motorista != null ? new DataRecord(motorista, "MOTORISTA") : null;
-    
             case ENTREGADOR:
                 Entregador entregador = entregadorRepository.findByEmail(email);
                 return entregador != null ? new DataRecord(entregador, "ENTREGADOR") : null;

@@ -59,7 +59,8 @@ public class FuncionarioApplication {
         funcionario.setEmail(funcionario.getEmail().toLowerCase());
 
         if(baseRepository.findById(funcionario.getBase().getId()) == null) throw new CustomExceptionService("Base nao cadastrada", 400);
-        funcionario = getCpfExistente(funcionario);
+        
+        funcionario.setCpf(getCpfExistente(funcionario.getCpf()));
     
         return this.funcionarioRepository.save(funcionario);
     }
@@ -72,21 +73,16 @@ public class FuncionarioApplication {
      * <li>O CPF já esteja cadastrado.</li>
      * </ul>
      * 
-     * @param funcionario A inst ncia de {@link Funcionario} a ser verificada.
+     * @param cpf A inst ncia de {@link Funcionario} a ser verificada.
      * @return A inst ncia de {@link Funcionario} verificada.
      */
-    private Funcionario getCpfExistente(Funcionario funcionario) {
-        String cpfFormatado = new ValidacaoService().Cpf(funcionario.getCpf());
-        if ("invalido".equals(cpfFormatado)) {
-            throw new CustomExceptionService("CPF inválido", 400);
-        }
-        funcionario.setCpf(cpfFormatado);
-    
-        Funcionario cpfExistente = this.funcionarioRepository.findByCpf(funcionario.getCpf());
-        if (cpfExistente != null && cpfExistente.getCpf().equals(funcionario.getCpf())) {
-            throw new CustomExceptionService("CPF já cadastrado", 400);
-        }
-        return funcionario;
+    private String getCpfExistente(String cpf) {
+        String cpfFormatado = new ValidacaoService().Cpf(cpf);
+
+        if ("invalido".equals(cpfFormatado)) throw new CustomExceptionService("CPF inválido", 400);
+        if (this.funcionarioRepository.findByCpf(cpf) != null) throw new CustomExceptionService("CPF já cadastrado", 400);
+        
+        return cpfFormatado;
     }
     
 
@@ -100,7 +96,7 @@ public class FuncionarioApplication {
     public Funcionario update(long id, Funcionario funcionario) {
         funcionario.setEmail(funcionario.getEmail().toLowerCase());
 
-        funcionario = getCpfExistente(funcionario);
+        funcionario.setCpf(getCpfExistente(funcionario.getCpf()));
 
         return this.funcionarioRepository.update(id, funcionario);
     }

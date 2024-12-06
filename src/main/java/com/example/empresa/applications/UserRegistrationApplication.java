@@ -46,10 +46,18 @@ public class UserRegistrationApplication {
      * cadastrado.
      */
     public Users save(RegisterDTO registerDTO) {
-        if (usersRepository.findByEmail(registerDTO.email()) != null) {
-            throw new CustomExceptionService("Email já cadastrado.", 400);
-        }
+        if (usersRepository.findByEmail(registerDTO.email()) != null) throw new CustomExceptionService("Email já cadastrado.", 400);
+        
+        registerUser(registerDTO);
 
+        return usersRepository.save(new Users(
+                registerDTO.email().toLowerCase(),
+                new BCryptPasswordEncoder().encode(registerDTO.senha()),
+                registerDTO.role()
+        ));
+    }
+
+    private void registerUser(RegisterDTO registerDTO) {
         validateBase(registerDTO.base());
 
         switch (registerDTO.role()) {
@@ -84,12 +92,6 @@ public class UserRegistrationApplication {
                 ));
                 break;
         }
-
-        return usersRepository.save(new Users(
-                registerDTO.email().toLowerCase(),
-                new BCryptPasswordEncoder().encode(registerDTO.senha()),
-                registerDTO.role()
-        ));
     }
 
     private void validateBase(Long baseId) {

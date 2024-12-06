@@ -58,11 +58,9 @@ public class MotoristaApplication {
     public Motorista save(Motorista motorista) {
         motorista.setEmail(motorista.getEmail().toLowerCase());
 
-        if(motoristaRepository.findByEmail(motorista.getEmail()) != null) {
-            throw new CustomExceptionService("Email já cadastrado", 400);
-        }
-
-        motorista = getCpfExistente(motorista);
+        if(motoristaRepository.findByEmail(motorista.getEmail()) != null) throw new CustomExceptionService("Email já cadastrado", 400);
+        
+        motorista.setCpf(getCpfExistente(motorista.getCpf()));
     
         return this.motoristaRepository.save(motorista);
     }
@@ -79,18 +77,13 @@ public class MotoristaApplication {
      * @return A inst ncia de {@link Motorista} verificada.
      * @throws CustomExceptionService Caso o CPF seja inv lido ou j  cadastrado.
      */
-    private Motorista getCpfExistente(Motorista motorista) {
-        String cpfFormatado = new ValidacaoService().Cpf(motorista.getCpf());
-        if ("invalido".equals(cpfFormatado)) {
-            throw new CustomExceptionService("CPF inválido", 400);
-        }
-        motorista.setCpf(cpfFormatado);
-    
-        Motorista cpfExistente = this.motoristaRepository.findByCpf(motorista.getCpf());
-        if (cpfExistente != null && cpfExistente.getCpf().equals(motorista.getCpf())) {
-            throw new CustomExceptionService("CPF já cadastrado", 400);
-        }
-        return motorista;
+    private String getCpfExistente(String motorista) {
+        String cpfFormatado = new ValidacaoService().Cpf(motorista);
+        
+        if ("invalido".equals(cpfFormatado)) throw new CustomExceptionService("CPF inválido", 400);
+        if (this.motoristaRepository.findByCpf(motorista) != null)  throw new CustomExceptionService("CPF já cadastrado", 400);
+        
+        return cpfFormatado;
     }
 
     /**
@@ -103,7 +96,7 @@ public class MotoristaApplication {
     public Motorista update(long id, Motorista motorista) {
         motorista.setEmail(motorista.getEmail().toLowerCase());
 
-        motorista = getCpfExistente(motorista);
+        motorista.setCpf(getCpfExistente(motorista.getCpf()));
 
         return this.motoristaRepository.update(id, motorista);
     }

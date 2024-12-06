@@ -67,11 +67,9 @@ public class EntregadorApplication {
     public Entregador save(Entregador entregador) {
         entregador.setEmail(entregador.getEmail().toLowerCase());
 
-        if (baseRepository.findById(entregador.getBase().getId()) == null) 
-            throw new CustomExceptionService("Base nao cadastrada", 400);
+        if (baseRepository.findById(entregador.getBase().getId()) == null) throw new CustomExceptionService("Base nao cadastrada", 400);
         
-
-        entregador = getCpfExistente(entregador);
+        entregador.setCpf(getCpfExistente(entregador.getCpf()));
 
         return this.entregadorRepository.save(entregador);
     }
@@ -84,21 +82,15 @@ public class EntregadorApplication {
      * <li>O CPF já esteja cadastrado.</li>
      * </ul>
      * 
-     * @param entregador A instância de {@link Entregador} a ser verificada.
+     * @param cpf A instância de {@link Entregador} a ser verificada.
      */
-    private Entregador getCpfExistente(Entregador entregador) {
-        String cpfFormatado = new ValidacaoService().Cpf(entregador.getCpf());
-        if ("invalido".equals(cpfFormatado)) {
-            throw new CustomExceptionService("CPF inválido", 400);
-        }
-        entregador.setCpf(cpfFormatado);
+    private String getCpfExistente(String cpf) {
+        String cpfFormatado = new ValidacaoService().Cpf(cpf);
 
-        Entregador cpfExistente = this.entregadorRepository.findByCpf(entregador.getCpf());
-        if (cpfExistente != null && cpfExistente.getCpf().equals(entregador.getCpf())) {
-            throw new CustomExceptionService("CPF já cadastrado", 400);
-        }
-
-        return entregador;
+        if ("invalido".equals(cpfFormatado)) throw new CustomExceptionService("CPF inválido", 400);
+        if (this.entregadorRepository.findByCpf(cpf) != null) throw new CustomExceptionService("CPF já cadastrado", 400);
+        
+        return cpfFormatado;
     }
 
     /**
@@ -114,7 +106,7 @@ public class EntregadorApplication {
     public Entregador update(long id, Entregador entregador) {
         entregador.setEmail(entregador.getEmail().toLowerCase());
 
-        entregador = getCpfExistente(entregador);
+        entregador.setCpf(getCpfExistente(entregador.getCpf()));
 
         return this.entregadorRepository.update(id, entregador);
     }
