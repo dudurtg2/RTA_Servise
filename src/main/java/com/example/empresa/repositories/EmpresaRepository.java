@@ -42,10 +42,10 @@ public class EmpresaRepository implements IEmpresaRepository {
     @Transactional
     public Empresa update(long id, Empresa empresa) {
         Empresa empresaInDb = entityManager.find(Empresa.class, id);
-        
+
         empresaInDb.setNome(empresa.getNome());
         empresaInDb.setCnpj(empresa.getCnpj());
-        
+
         return entityManager.merge(empresaInDb);
     }
 
@@ -55,6 +55,18 @@ public class EmpresaRepository implements IEmpresaRepository {
         Empresa empresaInDb = entityManager.find(Empresa.class, id);
         if (empresaInDb != null) {
             entityManager.remove(empresaInDb);
+        }
+    }
+
+    @Override
+    public Empresa findByCnpj(String cnpj) {
+        String jpql = "SELECT e FROM Empresa e WHERE e.cnpj = :cnpj";
+        TypedQuery<Empresa> query = entityManager.createQuery(jpql, Empresa.class);
+        query.setParameter("cnpj", cnpj);
+        try {
+            return query.getSingleResult();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
         }
     }
 }

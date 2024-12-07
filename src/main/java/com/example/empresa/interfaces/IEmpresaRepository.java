@@ -12,5 +12,6 @@ public interface IEmpresaRepository {
     Empresa save(Empresa empresa);
     Empresa update(long id, Empresa empresa);
     void deleteById(long id);
+    Empresa findByCnpj(String cnpj);
 }
 

@@ -5,14 +5,17 @@ import org.springframework.stereotype.Component;
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.interfaces.IMotoristaRepository;
 import com.example.empresa.services.ErrorException;
+import com.example.empresa.services.ValidateServise;
 
 
 @Component
 public class MotoristaApplication {
     private IMotoristaRepository motoristaRepository;
+    private ValidateServise validateServise;
 
-    public MotoristaApplication(IMotoristaRepository motoristaRepository) {
+    public MotoristaApplication(IMotoristaRepository motoristaRepository, ValidateServise validateServise) {
         this.motoristaRepository = motoristaRepository;
+        this.validateServise = validateServise;
     }
     
     public List<Motorista> findAll() {
@@ -34,7 +37,7 @@ public class MotoristaApplication {
     }
 
     private String getCpfExistente(String motorista) {
-        String cpfFormatado = formatCpf(motorista);
+        String cpfFormatado = validateServise.cpf(motorista);
         
         if ("invalido".equals(cpfFormatado)) throw new ErrorException("CPF inválido", 400);
         if (this.motoristaRepository.findByCpf(motorista) != null)  throw new ErrorException("CPF já cadastrado", 400);
@@ -42,15 +45,6 @@ public class MotoristaApplication {
         return cpfFormatado;
     }
 
-    private String formatCpf(String cpf) {
-        String cpfInValidate = cpf.replaceAll("[^\\d]", "");
-        
-        if (cpfInValidate.length() != 11) {
-            return null;
-        }
-        
-        return cpfInValidate.substring(0, 3) + "." + cpfInValidate.substring(3, 6) + "." + cpfInValidate.substring(6, 9) + "-" + cpfInValidate.substring(9);
-    }
 
     public Motorista update(long id, Motorista motorista) {
         motorista.setEmail(motorista.getEmail().toLowerCase());

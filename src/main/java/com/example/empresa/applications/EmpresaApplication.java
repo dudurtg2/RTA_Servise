@@ -7,15 +7,19 @@ import org.springframework.stereotype.Component;
 import com.example.empresa.entities.Empresa;
 import com.example.empresa.interfaces.IEmpresaRepository;
 import com.example.empresa.services.ErrorException;
+import com.example.empresa.services.ValidateServise;
 
 @Component
 public class EmpresaApplication {
     
     private IEmpresaRepository empresaRepository;
+    private ValidateServise validateServise;
 
-    public EmpresaApplication(IEmpresaRepository empresaRepository) {
+    public EmpresaApplication(IEmpresaRepository empresaRepository, ValidateServise validateServise) {
         this.empresaRepository = empresaRepository;
+        this.validateServise = validateServise;
     }
+    
     
     public List<Empresa> findAll() {
         return this.empresaRepository.findAll();
@@ -27,16 +31,13 @@ public class EmpresaApplication {
     }
 
     public Empresa save(Empresa empresa) {
-        empresa.setCnpj(formatCnpj(empresa.getCnpj()));
-
-        if(empresa.getCnpj() == null) throw new ErrorException("Cnpj invalido", 400);
+        empresa.setCnpj(getCnpjExistente(empresa.getCnpj()));
 
         return this.empresaRepository.save(empresa);
     }
     public Empresa update(long id, Empresa empresa) {
-        empresa.setCnpj(formatCnpj(empresa.getCnpj()));
-
-        if(empresa.getCnpj() == null) throw new ErrorException("Cnpj invalido", 400);
+        empresa.setCnpj(getCnpjExistente(empresa.getCnpj()));
+        
         return this.empresaRepository.update(id, empresa);
     }
 
@@ -44,17 +45,13 @@ public class EmpresaApplication {
         this.empresaRepository.deleteById(id);
     }
 
-    private String formatCnpj(String cnpj) {
-        String cnpjInValidate = cnpj.replaceAll("[^\\d]", "");
-    
-        if (cnpjInValidate.length() != 14) {
-            return null;
-        }
-        return cnpjInValidate.substring(0, 2) + "." + 
-               cnpjInValidate.substring(2, 5) + "." + 
-               cnpjInValidate.substring(5, 8) + "/" + 
-               cnpjInValidate.substring(8, 12) + "-" + 
-               cnpjInValidate.substring(12);
+    private String getCnpjExistente(String cnpj) {
+        String CnpjFormatado = validateServise.cpf(cnpj);
+
+        if ("invalido".equals(CnpjFormatado)) throw new ErrorException("CNPJ inválido", 400);
+        if (this.empresaRepository.findByCnpj(cnpj) != null) throw new ErrorException("CNPJ já cadastrado", 400);
+        
+        return CnpjFormatado;
     }
 
     

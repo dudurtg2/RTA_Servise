@@ -6,15 +6,18 @@ import com.example.empresa.entities.Entregador;
 import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.IEntregadorRepository;
 import com.example.empresa.services.ErrorException;
+import com.example.empresa.services.ValidateServise;
 
 @Component
 public class EntregadorApplication {
     private IEntregadorRepository entregadorRepository;
     private IBaseRepository baseRepository;
+    private ValidateServise validateServise;
 
-    public EntregadorApplication(IEntregadorRepository entregadorRepository, IBaseRepository baseRepository) {
+    public EntregadorApplication(IEntregadorRepository entregadorRepository, IBaseRepository baseRepository, ValidateServise validateServise) {
         this.entregadorRepository = entregadorRepository;
         this.baseRepository = baseRepository;
+        this.validateServise = validateServise;
     }
 
     public List<Entregador> findAll() {
@@ -36,7 +39,7 @@ public class EntregadorApplication {
     }
 
     private String getCpfExistente(String cpf) {
-        String cpfFormatado = formatCpf(cpf);
+        String cpfFormatado = validateServise.cpf(cpf);
 
         if ("invalido".equals(cpfFormatado)) throw new ErrorException("CPF inválido", 400);
         if (this.entregadorRepository.findByCpf(cpf) != null) throw new ErrorException("CPF já cadastrado", 400);
@@ -44,15 +47,6 @@ public class EntregadorApplication {
         return cpfFormatado;
     }
 
-    private String formatCpf(String cpf) {
-        String cpfInValidate = cpf.replaceAll("[^\\d]", "");
-        
-        if (cpfInValidate.length() != 11) {
-            return null;
-        }
-        
-        return cpfInValidate.substring(0, 3) + "." + cpfInValidate.substring(3, 6) + "." + cpfInValidate.substring(6, 9) + "-" + cpfInValidate.substring(9);
-    }
 
     public Entregador update(long id, Entregador entregador) {
         entregador.setEmail(entregador.getEmail().toLowerCase());
