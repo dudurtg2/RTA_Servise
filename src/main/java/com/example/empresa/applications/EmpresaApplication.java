@@ -6,81 +6,56 @@ import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Empresa;
 import com.example.empresa.interfaces.IEmpresaRepository;
-import com.example.empresa.services.CustomExceptionService;
-import com.example.empresa.services.ValidacaoService;
+import com.example.empresa.services.ErrorException;
 
-/**
- * Classe responsável pela lógica de aplicação relacionada à entidade {@link Empresa}.
- * Fornece métodos para consultar, salvar, atualizar e excluir dados da entidade {@link Empresa}.
- * Utiliza o repositório {@link IEmpresaRepository} para interagir com a base de dados.
- */
 @Component
 public class EmpresaApplication {
     
     private IEmpresaRepository empresaRepository;
 
-    /**
-     * Construtor da classe EmpresaApplication.
-     * 
-     * @param empresaRepository O repositório para a entidade {@link Empresa}.
-     */
     public EmpresaApplication(IEmpresaRepository empresaRepository) {
         this.empresaRepository = empresaRepository;
     }
     
-    /**
-     * Recupera todas as instâncias da entidade {@link Empresa}.
-     * 
-     * @return Uma lista com todas as instâncias de {@link Empresa}.
-     */
     public List<Empresa> findAll() {
         return this.empresaRepository.findAll();
     }
 
-    /**
-     * Recupera uma instância da entidade {@link Empresa} com base no seu identificador único.
-     * 
-     * @param id O identificador da instância de {@link Empresa}.
-     * @return A instância de {@link Empresa} correspondente ao id, ou null se não encontrado.
-     */
+
     public Empresa findById(long id) {
         return this.empresaRepository.findById(id);
     }
 
-    /**
-     * Salva uma nova instância da entidade {@link Empresa} no repositório.
-     * 
-     * @param empresa A instância da entidade {@link Empresa} a ser salva.
-     * @return A instância salva de {@link Empresa}.
-     */
     public Empresa save(Empresa empresa) {
-        empresa.setCnpj(new ValidacaoService().Cnpj(empresa.getCnpj()));
+        empresa.setCnpj(formatCnpj(empresa.getCnpj()));
 
-        if(empresa.getCnpj() == null) throw new CustomExceptionService("Cnpj invalido", 400);
+        if(empresa.getCnpj() == null) throw new ErrorException("Cnpj invalido", 400);
 
         return this.empresaRepository.save(empresa);
     }
-
-    /**
-     * Atualiza uma instância existente de {@link Empresa}.
-     * 
-     * @param id O identificador da instância a ser atualizada.
-     * @param empresa A nova instância de {@link Empresa} contendo as atualizações.
-     * @return A instância atualizada de {@link Empresa}, ou null se não encontrado.
-     */
     public Empresa update(long id, Empresa empresa) {
-        empresa.setCnpj(new ValidacaoService().Cnpj(empresa.getCnpj()));
+        empresa.setCnpj(formatCnpj(empresa.getCnpj()));
 
-        if(empresa.getCnpj() == null) throw new CustomExceptionService("Cnpj invalido", 400);
+        if(empresa.getCnpj() == null) throw new ErrorException("Cnpj invalido", 400);
         return this.empresaRepository.update(id, empresa);
     }
 
-    /**
-     * Exclui a instância da entidade {@link Empresa} com base no seu identificador único.
-     * 
-     * @param id O identificador da instância a ser excluída.
-     */
     public void deleteById(long id) {
         this.empresaRepository.deleteById(id);
     }
+
+    private String formatCnpj(String cnpj) {
+        String cnpjInValidate = cnpj.replaceAll("[^\\d]", "");
+    
+        if (cnpjInValidate.length() != 14) {
+            return null;
+        }
+        return cnpjInValidate.substring(0, 2) + "." + 
+               cnpjInValidate.substring(2, 5) + "." + 
+               cnpjInValidate.substring(5, 8) + "/" + 
+               cnpjInValidate.substring(8, 12) + "-" + 
+               cnpjInValidate.substring(12);
+    }
+
+    
 }

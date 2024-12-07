@@ -51,11 +51,6 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.11.1</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -113,29 +108,6 @@
                         </exclude>
                     </excludes>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.4.0</version>
-                <configuration>
-                    <!-- Diretório de saída dos Javadocs -->
-                    <outputDirectory>${project.build.directory}/javadoc</outputDirectory>
-                    <!-- Configura encoding e versionamento -->
-                    <source>${java.version}</source>
-                    <encoding>UTF-8</encoding>
-                    <charSet>UTF-8</charSet>
-                    <doclint>none</doclint> <!-- Para evitar erros de verificação rígida -->
-                    <failOnError>false</failOnError>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal> <!-- Gera um JAR contendo o Javadoc -->
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
         </plugins>

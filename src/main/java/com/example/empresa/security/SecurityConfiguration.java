@@ -25,25 +25,10 @@ public class SecurityConfiguration {
 
     private SecurityFilter securityFilter;
 
-    /**
-     * Construtor para injeção de dependência do {@link SecurityFilter}.
-     * 
-     * @param securityFilter filtro de segurança personalizado.
-     */
-
     @Autowired
     public  SecurityConfiguration(SecurityFilter securityFilter){
         this.securityFilter = securityFilter;
     }
-
-    /**
-     * Configura o filtro de segurança, desabilita o CSRF, define a política de sessão como sem estado
-     * e configura as permissões de acesso para os endpoints.
-     * 
-     * @param http o objeto {@link HttpSecurity} para configurar as regras de segurança.
-     * @return uma instância de {@link SecurityFilterChain} configurada.
-     * @throws Exception se houver falha ao configurar o filtro de segurança.
-     */
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -101,24 +86,10 @@ public class SecurityConfiguration {
             .build();
     }
 
-    /**
-     * Configura o {@link AuthenticationManager} para a aplicação.
-     * 
-     * @param authenticationConfiguration a configuração de autenticação do Spring Security.
-     * @return o {@link AuthenticationManager} configurado.
-     * @throws Exception se houver falha ao configurar o manager de autenticação.
-     */
-
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
         return authenticationConfiguration.getAuthenticationManager();
     }
-
-    /**
-     * Configura o codificador de senhas a ser utilizado, no caso o {@link BCryptPasswordEncoder}.
-     * 
-     * @return uma instância de {@link PasswordEncoder} configurada.
-     */
 
     @Bean
     public PasswordEncoder passwordEncoder(){

@@ -13,8 +13,7 @@ import com.example.empresa.interfaces.IFuncionarioRepository;
 import com.example.empresa.interfaces.IMotoristaRepository;
 import com.example.empresa.interfaces.IUsersRepository;
 import com.example.empresa.security.DTO.RegisterDTO;
-import com.example.empresa.services.CustomExceptionService;
-import com.example.empresa.services.ValidacaoService;
+import com.example.empresa.services.ErrorException;
 
 @Component
 public class UserRegistrationApplication {
@@ -37,16 +36,8 @@ public class UserRegistrationApplication {
         this.baseRepository = baseRepository;
     }
 
-    /**
-     * Realiza o cadastro de um novo usuário na base de dados.
-     *
-     * @param registerDTO Os dados do usuário a ser cadastrado.
-     * @return A instância do usuário cadastrado.
-     * @throws CustomExceptionService Se o email do usuário já estiver
-     * cadastrado.
-     */
     public Users save(RegisterDTO registerDTO) {
-        if (usersRepository.findByEmail(registerDTO.email()) != null) throw new CustomExceptionService("Email já cadastrado.", 400);
+        if (usersRepository.findByEmail(registerDTO.email()) != null) throw new ErrorException("Email já cadastrado.", 400);
         
         registerUser(registerDTO);
 
@@ -96,53 +87,39 @@ public class UserRegistrationApplication {
 
     private void validateBase(Long baseId) {
         if (baseRepository.findById(baseId) == null) {
-            throw new CustomExceptionService("Base não cadastrada", 400);
+            throw new ErrorException("Base não cadastrada", 400);
         }
     }
 
     private String formatCpf(String cpf) {
-        String cpfFormatado = new ValidacaoService().Cpf(cpf);
-        if ("invalido".equals(cpfFormatado)) {
-            throw new CustomExceptionService("CPF inválido", 400);
+        String cpfInValidate = cpf.replaceAll("[^\\d]", "");
+        
+        if (cpfInValidate.length() != 11) {
+            return null;
         }
-        return cpfFormatado;
+        
+        return cpfInValidate.substring(0, 3) + "." + cpfInValidate.substring(3, 6) + "." + cpfInValidate.substring(6, 9) + "-" + cpfInValidate.substring(9);
     }
 
-    /**
-     * Valida a unicidade de um CPF em m ltiplas implementa es de reposit rio.
-     * Lan a uma exce o se o CPF j estiver cadastrado no reposit rio
-     * especificado.
-     *
-     * @param cpf O CPF a ser verificado.
-     * @param repository A inst ncia do reposit rio onde o CPF ser verificado.
-     * Espera-se que seja uma das seguintes implementa es:
-     * IFuncionarioRepository, IMotoristaRepository, ou IEntregadorRepository.
-     * @throws CustomExceptionService se o CPF j estiver cadastrado.
-     */
     private void validateCpfUniqueness(String cpf, Object repository) {
         if (repository instanceof IFuncionarioRepository) {
             Funcionario funcionario = funcionarioRepository.findByCpf(cpf);
             if (funcionario != null) {
-                throw new CustomExceptionService("CPF já cadastrado", 400);
+                throw new ErrorException("CPF já cadastrado", 400);
             }
         } else if (repository instanceof IMotoristaRepository) {
             Motorista motorista = motoristaRepository.findByCpf(cpf);
             if (motorista != null) {
-                throw new CustomExceptionService("CPF já cadastrado", 400);
+                throw new ErrorException("CPF já cadastrado", 400);
             }
         } else if (repository instanceof IEntregadorRepository) {
             Entregador entregador = entregadorRepository.findByCpf(cpf);
             if (entregador != null) {
-                throw new CustomExceptionService("CPF já cadastrado", 400);
+                throw new ErrorException("CPF já cadastrado", 400);
             }
         }
     }
 
-    /**
-     * Salva uma nova inst ncia da entidade {@link Motorista}.
-     *
-     * @param motorista A inst ncia de {@link Motorista} a ser salva.
-     */
     private void motoristaSave(Motorista motorista) {
         motorista.setEmail(motorista.getEmail().toLowerCase());
         motorista.setCpf(formatCpf(motorista.getCpf()));
@@ -150,13 +127,6 @@ public class UserRegistrationApplication {
         motoristaRepository.save(motorista);
     }
 
-    /**
-     * Salva uma nova instância de {@link Entregador} no repositório. Garante
-     * que o email seja armazenado em letras minúsculas e o CPF seja formatado.
-     * Valida a unicidade do CPF antes de salvar.
-     *
-     * @param entregador A instância de {@link Entregador} a ser salva.
-     */
     private void entregadorSave(Entregador entregador) {
         entregador.setEmail(entregador.getEmail().toLowerCase());
         entregador.setCpf(formatCpf(entregador.getCpf()));
@@ -164,13 +134,6 @@ public class UserRegistrationApplication {
         entregadorRepository.save(entregador);
     }
 
-    /**
-     * Salva uma nova instância de {@link Funcionario} no repositório. Garante
-     * que o email seja armazenado em letras minúsculas e o CPF seja formatado.
-     * Valida a unicidade do CPF antes de salvar.
-     *
-     * @param funcionario A instância de {@link Funcionario} a ser salva.
-     */
     private void funcionarioSave(Funcionario funcionario) {
         funcionario.setEmail(funcionario.getEmail().toLowerCase());
         funcionario.setCpf(formatCpf(funcionario.getCpf()));
@@ -179,3 +142,4 @@ public class UserRegistrationApplication {
     }
 
 }
+
