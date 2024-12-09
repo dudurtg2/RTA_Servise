@@ -14,8 +14,9 @@ public class RegiaoApplication {
     private IRegiaoRepository regiaoRepository;
     private IBaseRepository baseRepository;
 
-    public RegiaoApplication(IRegiaoRepository regiaoRepository) {
+    public RegiaoApplication(IRegiaoRepository regiaoRepository, IBaseRepository baseRepository) {
         this.regiaoRepository = regiaoRepository;
+        this.baseRepository = baseRepository;
     }
 
     public List<Regiao> findAll() {

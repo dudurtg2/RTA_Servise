@@ -44,7 +44,7 @@ public class BootSystem{
 			if (usersFacade.findById(1) != null) {
 				return;
 			}
-			RegisterDTO user = new RegisterDTO("Teste", "123", UserRole.ADMIN, "Teste@gmail.com", "999999999", "999999999", 1, null);
+			RegisterDTO user = new RegisterDTO("Teste", "123", UserRole.ADMIN, "Teste@gmail.com", "999999999", "09027268541", 1, null);
 			usersFacade.save(user);
 		} catch (Exception e) {
 			e.printStackTrace();

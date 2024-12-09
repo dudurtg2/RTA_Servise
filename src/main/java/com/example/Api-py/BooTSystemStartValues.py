@@ -1,33 +1,6 @@
+import json
+import os
 import requests
-url = "http://localhost:8080/auth/register"
-
-headers = {
-    "Content-Type": "application/json"
-}
-
-
-bases = {
-  "nome": "João Silva",
-  "senha": "senhaSegura123",
-  "role": "ADMIN",
-  "email": "joao.silva@example.com",
-  "telefone": "+5511999999999",
-  "cpf": "090.272.685-41",
-  "base": 1
-}
-
-
-try:
-    response = requests.post(url, json=bases, headers=headers)
-    if response.status_code == 200:
-        print("Resposta:", response.json())
-
-    else:
-        print(f"Erro: {response.status_code} - {response.text}")
-
-except requests.exceptions.RequestException as e:
-    print("Erro ao enviar a requisição:", e)
-
 
 url = "http://localhost:8080/auth/login"
 
@@ -35,10 +8,9 @@ headers = {
     "Content-Type": "application/json"
 }
 
-
 bases = {
-    "login": "joao.silva@example.com",
-    "senha": "senhaSegura123"
+    "login": "Teste@gmail.com",
+    "senha": "123"
 }
 
 token : str
@@ -48,33 +20,6 @@ try:
     if response.status_code == 200:
         print("Resposta:", response.json())
         token = response.json()['accessToken']
-    else:
-        print(f"Erro: {response.status_code} - {response.text}")
-
-except requests.exceptions.RequestException as e:
-    print("Erro ao enviar a requisição:", e)
-
-
-url = "http://localhost:8080/api/bases/save"
-
-
-
-headers = {
-    "Authorization": f"Bearer {token}",
-    "Content-Type": "application/json"
-}
-
-
-bases = {
-    "nome": "Base 1",
-    "endereco": "Rua 1, 123"
-}
-
-
-try:
-    response = requests.post(url, json=bases, headers=headers)
-    if response.status_code == 200:
-        print("Resposta:", response.json())
     else:
         print(f"Erro: {response.status_code} - {response.text}")
 
@@ -94,7 +39,7 @@ headers = {
 motoristas = {
     "nome": "Motorista 1",
     "email": "2M0ZI@example.com",
-    "cpf": "090.272.685-41",
+    "cpf": "215.691.440-01",
     "telefone": "123456789",
     "base": {"id": 1}
 }
@@ -210,8 +155,8 @@ headers = {
 
 motoristas = {
     "nome": "Entregador 1",
-    "email": "2M0ZI@example.com",
-    "cpf": "090.272.685-41",
+    "email": "2M0ZIsd@example.com",
+    "cpf": "209.605.600-41",
     "telefone": "123456789",
     "endereco": "Rua 1, 123",
     "base": {"id": 1}
@@ -242,8 +187,8 @@ headers = {
 
 motoristas = {
     "nome": "Motorista 1",
-    "email": "2M0ZI@example.com",
-    "cpf": "090.272.685-41",
+    "email": "2M0ZI2@example.com",
+    "cpf": "393.960.940-48",
     "telefone": "123456789",
     "base": {"id": 1}
 }
@@ -271,8 +216,8 @@ headers = {
 
 entregadores = {
     "nome": "Entregador 1",
-    "email": "2M0ZI@example.com",
-    "cpf": "090.272.685-41",
+    "email": "2M0ZI33@example.com",
+    "cpf": "769.069.880-85",
     "telefone": "123456789",
     "endereco": "Rua 1, 123",
     "base": {"id": 1}

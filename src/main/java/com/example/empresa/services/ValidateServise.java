@@ -1,5 +1,8 @@
 package com.example.empresa.services;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ValidateServise {
     public String cpf(String cpf) {
         String cpfInValidate = cpf.replaceAll("[^\\d]", "");
