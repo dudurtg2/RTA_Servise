@@ -12,5 +12,6 @@ public interface ICodigoRepository {
     Codigo save(Codigo codigo);
     Codigo update(long id, Codigo codigo);
     void deleteById(long id);
+    Codigo findByCodigo(String codigo);
 }
 

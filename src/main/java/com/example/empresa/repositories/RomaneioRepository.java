@@ -105,7 +105,7 @@ public class RomaneioRepository implements IRomaneioRepository {
         TypedQuery<Romaneio> query = entityManager.createQuery(jpql, Romaneio.class);
         query.setParameter("codigoUid", codigoUid);
         
-         return query.getSingleResult();
+        return query.getSingleResult();
         
     }
 }

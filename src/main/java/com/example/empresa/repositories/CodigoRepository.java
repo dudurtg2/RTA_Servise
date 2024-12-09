@@ -57,5 +57,17 @@ public class CodigoRepository implements ICodigoRepository {
             entityManager.remove(codigoInDb);
         }
     }
-
+    
+    @Override
+    public Codigo findByCodigo(String codigo) {
+        String jpql = "SELECT c FROM Codigo c WHERE c.codigo = :codigo";
+        TypedQuery<Codigo> query = entityManager.createQuery(jpql, Codigo.class);
+        query.setParameter("codigo", codigo);
+        
+        try {
+            return query.getSingleResult();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
+    }
 }

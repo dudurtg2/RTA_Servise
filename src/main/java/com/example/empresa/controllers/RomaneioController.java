@@ -39,6 +39,12 @@ public class RomaneioController {
         return new ResponseEntity<Romaneio>(romaneio, HttpStatus.OK);
     }
 
+    @GetMapping("/findBySearch/{search}")
+    public ResponseEntity<Romaneio> findBySearch(@PathVariable String seach) {
+        Romaneio romaneio = this.romaneioFacade.findBySearch(seach);
+        return new ResponseEntity<Romaneio>(romaneio, HttpStatus.OK);
+    }
+
     @GetMapping("/count/sts/{status}")
     public ResponseEntity<ResponceRecord> getCountStsAll(@PathVariable String status) {
         return new ResponseEntity<ResponceRecord>(

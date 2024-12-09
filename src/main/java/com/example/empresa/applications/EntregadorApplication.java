@@ -41,7 +41,7 @@ public class EntregadorApplication {
     private String getCpfExistente(String cpf) {
         String cpfFormatado = validateServise.cpf(cpf);
 
-        if ("invalido".equals(cpfFormatado)) throw new ErrorException("CPF inválido", 400);
+        if (cpfFormatado.isEmpty()) throw new ErrorException("CPF inválido", 400);
         if (this.entregadorRepository.findByCpf(cpf) != null) throw new ErrorException("CPF já cadastrado", 400);
         
         return cpfFormatado;

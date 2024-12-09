@@ -14,6 +14,8 @@ import com.example.empresa.interfaces.IMotoristaRepository;
 import com.example.empresa.interfaces.IUsersRepository;
 import com.example.empresa.security.DTO.RegisterDTO;
 import com.example.empresa.services.ErrorException;
+import com.example.empresa.services.ValidateServise;
+
 
 @Component
 public class UserRegistrationApplication {
@@ -23,12 +25,15 @@ public class UserRegistrationApplication {
     private IMotoristaRepository motoristaRepository;
     private IEntregadorRepository entregadorRepository;
     private IBaseRepository baseRepository;
+    private ValidateServise validateServise;
 
     public UserRegistrationApplication(IUsersRepository usersRepository,
             IFuncionarioRepository funcionarioRepository,
             IMotoristaRepository motoristaRepository,
             IEntregadorRepository entregadorRepository,
-            IBaseRepository baseRepository) {
+            IBaseRepository baseRepository,
+            ValidateServise validateServise) {
+        this.validateServise = validateServise;
         this.usersRepository = usersRepository;
         this.funcionarioRepository = funcionarioRepository;
         this.motoristaRepository = motoristaRepository;
@@ -91,15 +96,6 @@ public class UserRegistrationApplication {
         }
     }
 
-    private String formatCpf(String cpf) {
-        String cpfInValidate = cpf.replaceAll("[^\\d]", "");
-        
-        if (cpfInValidate.length() != 11) {
-            return null;
-        }
-        
-        return cpfInValidate.substring(0, 3) + "." + cpfInValidate.substring(3, 6) + "." + cpfInValidate.substring(6, 9) + "-" + cpfInValidate.substring(9);
-    }
 
     private void validateCpfUniqueness(String cpf, Object repository) {
         if (repository instanceof IFuncionarioRepository) {
@@ -122,21 +118,21 @@ public class UserRegistrationApplication {
 
     private void motoristaSave(Motorista motorista) {
         motorista.setEmail(motorista.getEmail().toLowerCase());
-        motorista.setCpf(formatCpf(motorista.getCpf()));
+        motorista.setCpf(validateServise.cpf(motorista.getCpf()));
         validateCpfUniqueness(motorista.getCpf(), motoristaRepository);
         motoristaRepository.save(motorista);
     }
 
     private void entregadorSave(Entregador entregador) {
         entregador.setEmail(entregador.getEmail().toLowerCase());
-        entregador.setCpf(formatCpf(entregador.getCpf()));
+        entregador.setCpf(validateServise.cpf(entregador.getCpf()));
         validateCpfUniqueness(entregador.getCpf(), entregadorRepository);
         entregadorRepository.save(entregador);
     }
 
     private void funcionarioSave(Funcionario funcionario) {
         funcionario.setEmail(funcionario.getEmail().toLowerCase());
-        funcionario.setCpf(formatCpf(funcionario.getCpf()));
+        funcionario.setCpf(validateServise.cpf(funcionario.getCpf()));
         validateCpfUniqueness(funcionario.getCpf(), funcionarioRepository);
         funcionarioRepository.save(funcionario);
     }

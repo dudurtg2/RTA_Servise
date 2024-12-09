@@ -14,6 +14,7 @@ import com.example.empresa.entities.Motorista;
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.ICidadeRepository;
+import com.example.empresa.interfaces.ICodigoRepository;
 import com.example.empresa.interfaces.IEmpresaRepository;
 import com.example.empresa.interfaces.IEntregadorRepository;
 import com.example.empresa.interfaces.IFuncionarioRepository;
@@ -30,11 +31,12 @@ public class RomaneioApplication {
     private IBaseRepository baseRepository;
     private ICidadeRepository cidadeRepository;
     private IMotoristaRepository motoristaRepository;
+    private ICodigoRepository codigoRepository;
 
     public RomaneioApplication(IRomaneioRepository romaneioRepository, IEntregadorRepository entregadorRepository,
             IEmpresaRepository empresaRepository, IFuncionarioRepository funcionarioRepository,
             IBaseRepository baseRepository, ICidadeRepository cidadeRepository,
-            IMotoristaRepository motoristaRepository) {
+            IMotoristaRepository motoristaRepository, ICodigoRepository codigoRepository) {
         this.romaneioRepository = romaneioRepository;
         this.entregadorRepository = entregadorRepository;
         this.empresaRepository = empresaRepository;
@@ -42,6 +44,7 @@ public class RomaneioApplication {
         this.baseRepository = baseRepository;
         this.cidadeRepository = cidadeRepository;
         this.motoristaRepository = motoristaRepository;
+        this.codigoRepository = codigoRepository;
     }
 
     public List<Romaneio> findAll() {
@@ -219,6 +222,11 @@ public class RomaneioApplication {
 
     public Romaneio findByCodigoUid(String codigoUid) {
         return this.romaneioRepository.findByCodigoUid(codigoUid);
+    }
+    public Romaneio findBySearch(String seach) {
+        return this.romaneioRepository.findByCodigoUid(seach) != null ? 
+                    this.romaneioRepository.findByCodigoUid(seach) : 
+                    this.codigoRepository.findByCodigo(seach).getRomaneioEntity(); 
     }
 }
 

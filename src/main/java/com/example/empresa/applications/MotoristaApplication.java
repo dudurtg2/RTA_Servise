@@ -39,7 +39,7 @@ public class MotoristaApplication {
     private String getCpfExistente(String motorista) {
         String cpfFormatado = validateServise.cpf(motorista);
         
-        if ("invalido".equals(cpfFormatado)) throw new ErrorException("CPF inválido", 400);
+        if (cpfFormatado.isEmpty()) throw new ErrorException("CPF inválido", 400);
         if (this.motoristaRepository.findByCpf(motorista) != null)  throw new ErrorException("CPF já cadastrado", 400);
         
         return cpfFormatado;

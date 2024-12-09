@@ -61,5 +61,9 @@ public class RomaneioFacade {
     public Romaneio findByCodigoUid(String codigoUid) {
         return this.romaneioApplication.findByCodigoUid(codigoUid);
     }
+
+    public Romaneio findBySearch(String seach) {
+        return this.romaneioApplication.findBySearch(seach);
+    }
 }
 
