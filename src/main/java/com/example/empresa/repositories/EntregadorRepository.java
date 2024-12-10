@@ -22,7 +22,11 @@ public class EntregadorRepository implements IEntregadorRepository {
     public List<Entregador> findAll() {
         String jpql = "SELECT e FROM Entregador e";
         TypedQuery<Entregador> query = entityManager.createQuery(jpql, Entregador.class);
-        return query.getResultList();
+        try {
+            return query.getResultList();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
     }
 
     @Override

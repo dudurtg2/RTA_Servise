@@ -22,7 +22,11 @@ public class FuncionarioRepository implements IFuncionarioRepository {
     public List<Funcionario> findAll() {
         String jpql = "SELECT f FROM Funcionario f";
         TypedQuery<Funcionario> query = entityManager.createQuery(jpql, Funcionario.class);
-        return query.getResultList();
+        try {
+            return query.getResultList();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
     }
 
     @Override

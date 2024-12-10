@@ -40,8 +40,9 @@ public class RomaneioController {
     }
 
     @GetMapping("/findBySearch/{search}")
-    public ResponseEntity<Romaneio> findBySearch(@PathVariable String seach) {
-        Romaneio romaneio = this.romaneioFacade.findBySearch(seach);
+    public ResponseEntity<Romaneio> findBySearch(@PathVariable String search) {
+        Romaneio romaneio = this.romaneioFacade.findBySearch(search);
+        if (romaneio == null) throw new ErrorException("Romaneio não encontrado.", 404);
         return new ResponseEntity<Romaneio>(romaneio, HttpStatus.OK);
     }
 

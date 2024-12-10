@@ -77,7 +77,11 @@ public class RomaneioRepository implements IRomaneioRepository {
         String jpql = "SELECT r FROM Romaneio r WHERE r.sts = :status";
         TypedQuery<Romaneio> query = entityManager.createQuery(jpql, Romaneio.class);
         query.setParameter("status", status);
-        return query.getResultList();
+        try {
+            return query.getResultList();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
     }
 
     
@@ -86,7 +90,11 @@ public class RomaneioRepository implements IRomaneioRepository {
         String jpql = "SELECT r FROM Romaneio r WHERE r.motorista = :motorista";
         TypedQuery<Romaneio> query = entityManager.createQuery(jpql, Romaneio.class);
         query.setParameter("motorista", motorista);
-        return query.getResultList();
+        try {
+            return query.getResultList();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
     }
 
     
@@ -95,7 +103,11 @@ public class RomaneioRepository implements IRomaneioRepository {
         String jpql = "SELECT r FROM Romaneio r WHERE r.entregador = :entregador";
         TypedQuery<Romaneio> query = entityManager.createQuery(jpql, Romaneio.class);
         query.setParameter("entregador", entregador);
-        return query.getResultList();
+        try {
+            return query.getResultList();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
     }
 
     
@@ -105,7 +117,11 @@ public class RomaneioRepository implements IRomaneioRepository {
         TypedQuery<Romaneio> query = entityManager.createQuery(jpql, Romaneio.class);
         query.setParameter("codigoUid", codigoUid);
         
-        return query.getSingleResult();
+        try {
+            return query.getSingleResult();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
         
     }
 }

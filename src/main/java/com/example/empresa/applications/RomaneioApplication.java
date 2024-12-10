@@ -2,7 +2,9 @@ package com.example.empresa.applications;
 
 import java.time.LocalDate;
 import java.util.List;
+
 import org.springframework.stereotype.Component;
+
 import com.example.empresa.controllers.records.RomaneioRecord;
 import com.example.empresa.controllers.records.RomaneioUpdateRecord;
 import com.example.empresa.entities.Base;
@@ -224,9 +226,9 @@ public class RomaneioApplication {
         return this.romaneioRepository.findByCodigoUid(codigoUid);
     }
     public Romaneio findBySearch(String seach) {
-        return this.romaneioRepository.findByCodigoUid(seach) != null ? 
-                    this.romaneioRepository.findByCodigoUid(seach) : 
-                    this.codigoRepository.findByCodigo(seach).getRomaneioEntity(); 
+        Romaneio romaneio = this.romaneioRepository.findByCodigoUid(seach);
+        if (romaneio != null) return romaneio;
+        return this.romaneioRepository.findByCodigoUid(this.codigoRepository.findByCodigo(seach).getRomaneio().codigo());   
     }
 }
 

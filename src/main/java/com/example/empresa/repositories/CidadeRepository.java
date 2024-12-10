@@ -1,16 +1,16 @@
 package com.example.empresa.repositories;
 
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.empresa.entities.Cidade;
 import com.example.empresa.interfaces.ICidadeRepository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Repository
 public class CidadeRepository implements ICidadeRepository {
@@ -22,7 +22,11 @@ public class CidadeRepository implements ICidadeRepository {
     public List<Cidade> findAll() {
         String jpql = "SELECT c FROM Cidade c";
         TypedQuery<Cidade> query = entityManager.createQuery(jpql, Cidade.class);
-        return query.getResultList();
+        try {
+            return query.getResultList();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
     }
 
     @Override

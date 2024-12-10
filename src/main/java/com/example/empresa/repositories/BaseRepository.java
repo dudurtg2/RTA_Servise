@@ -1,16 +1,16 @@
 package com.example.empresa.repositories;
 
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.empresa.entities.Base;
 import com.example.empresa.interfaces.IBaseRepository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Repository
 public class BaseRepository implements IBaseRepository {
@@ -22,7 +22,11 @@ public class BaseRepository implements IBaseRepository {
     public List<Base> findAll() {
         String jpql = "SELECT b FROM Base b";
         TypedQuery<Base> query = entityManager.createQuery(jpql, Base.class);
-        return query.getResultList();
+        try {
+            return query.getResultList();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
     }
 
     @Override

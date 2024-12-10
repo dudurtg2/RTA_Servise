@@ -38,8 +38,5 @@ public class Codigo {
     public CodidoRecord getRomaneio() {
         return new CodidoRecord(romaneio.getCodigoUid(), romaneio.getId());
     }
-    public Romaneio getRomaneioEntity() {
-        return romaneio;
-    }
     
 }

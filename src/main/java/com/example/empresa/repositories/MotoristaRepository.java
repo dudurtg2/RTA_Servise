@@ -22,7 +22,11 @@ public class MotoristaRepository implements IMotoristaRepository {
     public List<Motorista> findAll() {
         String jpql = "SELECT m FROM Motorista m";
         TypedQuery<Motorista> query = entityManager.createQuery(jpql, Motorista.class);
-        return query.getResultList();
+        try {
+            return query.getResultList();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
     }
 
     @Override

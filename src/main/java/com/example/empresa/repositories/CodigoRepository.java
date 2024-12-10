@@ -22,7 +22,11 @@ public class CodigoRepository implements ICodigoRepository {
     public List<Codigo> findAll() {
         String jpql = "SELECT c FROM Codigo c";
         TypedQuery<Codigo> query = entityManager.createQuery(jpql, Codigo.class);
-        return query.getResultList();
+        try {
+            return query.getResultList();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
     }
 
     @Override

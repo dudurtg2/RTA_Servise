@@ -22,7 +22,11 @@ public class RegiaoRepository implements IRegiaoRepository {
     public List<Regiao> findAll() {
         String jpql = "SELECT r FROM Regiao r";
         TypedQuery<Regiao> query = entityManager.createQuery(jpql, Regiao.class);
-        return query.getResultList();
+        try {
+            return query.getResultList();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
     }
 
     @Override

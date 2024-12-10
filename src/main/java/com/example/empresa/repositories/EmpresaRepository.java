@@ -22,7 +22,11 @@ public class EmpresaRepository implements IEmpresaRepository {
     public List<Empresa> findAll() {
         String jpql = "SELECT e FROM Empresa e";
         TypedQuery<Empresa> query = entityManager.createQuery(jpql, Empresa.class);
-        return query.getResultList();
+        try {
+            return query.getResultList();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
     }
 
     @Override
