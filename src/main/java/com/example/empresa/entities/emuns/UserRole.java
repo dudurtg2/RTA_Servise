@@ -4,10 +4,12 @@ public enum UserRole {
 
     MOTORISTA("motorista"),
     FUNCIONARIO("funcionario"),
-    ADMIN("admin"),
     ENTREGADOR("entregador"),
+    ADMIN("admin"),
+    GERENTE("gerente"),
     SAC("sac"),
-    USER("user");
+    USER("user"),
+    RH("rh");
 
     private final String role;
 

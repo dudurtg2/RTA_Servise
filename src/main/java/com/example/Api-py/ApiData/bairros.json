@@ -1,0 +1,1024 @@
+[
+    {
+        "nome": "ALAGOINHAS VELHA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "BARREIRO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "CATU",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "CENTRO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "DOIS DE JULHO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "JARDIM PEDRO BRAGA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "JARDIM PETROLAR",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "JURACY MAGALHÃES",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "KENNEDY",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "MANGALÔ",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "PARQUE VITÓRIA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "SANTA ISABEL",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "SANTA TEREZINHA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "SILVA JARDIM",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "TERESÓPOLIS",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "BOA UNIÃO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "BORGES",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "BURI",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "CALU",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "CAMBOATÁ DE FORA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "CANGULA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "CONCEIÇÃO DE BAIXO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "CONCEIÇÃO DE CIMA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "ENCANTADO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "ESTEVÃO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "FAZENDA GAMELEIRA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "LIMOEIRO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "MACAQUINHO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "MANGUEIRAS",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "MILAGRES",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "NARANDIBA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "OUTEIRO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "PAPAGAIO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "PEDRA DE BAIXO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "PEDRA DE CIMA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "PONTO DO BEIJU",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "PORTAO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "QUINZAMBU",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "RIACHO DA GUIA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "RIACHO DO MEL",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "RIO BRANCO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "SAUIPE",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "SUCUPIRA I",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "SUCUPIRA II",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "TOMBADOR",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "TUCUM",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 5
+        }
+    },
+    {
+        "nome": "35º BI",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "ALTO DO CRUZEIRO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "ALTO DO PAPAGAIO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "ASA BRANCA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "AVIÁRIO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "BARAÚNAS",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "BRASÍLIA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "MARIA QUITÉRIA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "CALUMBI",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "CAMPO DO GADO NOVO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "CAMPO LIMPO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "CASEB",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "CONCEIÇÃO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "CENTRO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "CIDADE NOVA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "FEIRA IX",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "FEIRA IX",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "FEIRA VI",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "FEIRA VII",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "FEIRA VIII",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "FEIRA X",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "GABRIELA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "GEORGE AMÉRICO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "JARDIM ACÁCIA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "JARDIM CRUZEIRO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "LAGOA SALGADA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "LIMOEIRO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "MANGABEIRA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "MUCHILA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "NOVA BRASÍLIA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "NOVA ESPERANÇA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "NOVO HORIZONTE",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "PAPAGAIO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "PARQUE GETÚLIO VARGAS",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "PARQUE IPÊ",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "PARQUE IPÊ",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "PARQUE LAGOA SUBAÉ",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "PARQUE VIVER",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "PONTO CENTRAL",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "QUEIMADINHA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "RUA NOVA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "SANTA MÔNICA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "SANTO ANTÔNIO DOS PRAZERES",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "SÃO JOÃO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "SIM",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "SÍTIO MATIAS",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "SOBRADINHO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "SUBAÉ",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "TOMBA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 3
+        }
+    },
+    {
+        "nome": "CENTRO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "FÉLIX TOMAZ",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "PERU",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "MUNDO NOVO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "LEADER",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "MISSÃO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "JACOBINA II",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "JACOBINA III",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "JACOBINA IV",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "JACOBINA V",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "CATUABA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "LAGOA DOURADA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "GROTINHA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "CAEIRA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "BANANEIRA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "NAZARÉ",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "INOCOOP",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "ESTAÇÃO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "MUTIRÃO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "LADEIRA VERMELHA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "LAGOINHA NOVA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "LAGOINHA VELHA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "BAIRRO DOS ÍNDIOS",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "MATRIZ",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "MORRO DO CRUZEIRO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "VILA FELIZ",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "JACOBINA I",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 7
+        }
+    },
+    {
+        "nome": "AMPARO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "ANDAIÁ",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "ALTO SANTO ANTÔNIO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "ALTO SOBRADINHO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "BAIRRO DO SÃO BENEDITO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "CAJUEIRO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "CENTRO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "CIDADE NOVA II",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "COCÃO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "LOTEAMENTO SANTA CECÍLIA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "LOTEAMENTO SALES",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "MARIA PRETA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "MIRANTE DO ANDAIÁ",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "MUTUM",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "PROVIDÊNCIA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "RÁDIO CLUBE",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "SALGADEIRA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "SANTA MADALENA",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "SÃO FRANCISCO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "SÃO PAULO",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "URBIS I",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "URBIS II",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "URBIS III",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    },
+    {
+        "nome": "ZILDA ARNS",
+        "cep": "00000-000",
+        "idRegiao": {
+            "id": 9
+        }
+    }
+]

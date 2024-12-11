@@ -1,0 +1,44 @@
+[
+    {
+        "regiao": {
+            "id": 5
+        },
+        "cep": "00000-000",
+        "nome": "CAÉM"
+    },
+    {
+        "regiao": {
+            "id": 5
+        },
+        "cep": "00000-000",
+        "nome": "MIGUEL CALMON"
+    },
+    {
+        "regiao": {
+            "id": 5
+        },
+        "cep": "00000-000",
+        "nome": "SERROLÂNDIA"
+    },
+    {
+        "regiao": {
+            "id": 5
+        },
+        "cep": "00000-000",
+        "nome": "VÁRZEA DO POÇO"
+    },
+    {
+        "regiao": {
+            "id": 5
+        },
+        "cep": "00000-000",
+        "nome": "VÁRZEA NOVA"
+    },
+    {
+        "regiao": {
+            "id": 5
+        },
+        "cep": "00000-000",
+        "nome": "JACOBINA"
+    }
+]

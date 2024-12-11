@@ -1,0 +1,627 @@
+[
+    {"regiao":{"id": 1},"cep": "00000-000","nome": "IPIRA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "BAIXA GRANDE"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "MAIRI"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "VARZEA DA ROÇA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "ITABERABA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "IAÇU"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "ITATIM"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CASTRO ALVES"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SANTA TEREZINHA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "MORRO DO CHAPEU"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "IRECE"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "MILAGRES"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "JADLOG-LUIZ"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "AMELIA RODRIGUES"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CONCEIÇÃO DO JACUIPE"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CORAÇÃO DE MARIA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "TEODORO SAMPAIO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "IRARA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SANTANOPOLIS"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SANTA BARBARA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "LAMARÃO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "AGUA FRIA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "MURITIBA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SAPEAÇU"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CRUZ DAS ALMAS"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "GOVERNADOR MANGABEIRA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CABACEIRA DO PARAGUAÇU"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SÃO FELIPE"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "MARAGOGIPE"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CACHOEIRA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SÃO FELIX"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CONCEIÇÃO DA FEIRA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "GAVIÃO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SERRINHA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "BIRITINGA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "BARROCAS"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "ARACI"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "TEOFILANDIA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "TANQUINHO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CANDEAL"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "ICHU"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CONCEIÇÃO DO COITÉ"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "RIACHÃO DO JACUIPE"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "PE DE SERRA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "VALENTE"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "RETIROLANDIA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SANTA LUZ"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CANSANÇÃO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "QUEIMADAS"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SÃO DOMINGOS"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "NOVA FATIMA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CIPÓ"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "BANZAÊ"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "FATIMA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CICERO DANTAS"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "NOVA SOURE"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "TUCANO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "RIBEIRA DO AMPARO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SITIO DO QUINTO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CORONEL JOÃO SÁ"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "HELIOPOLIS"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "RIBEIRA DO POMBAL"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "ADUSTINA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "ANTAS"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "ITIÚBA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "JEREMOABO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "MONTE SANTO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "NORDESTINA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "NOVO TRIUNFO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "PARIPIRANGA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "PEDRO ALEXANDRE"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "QUIJINGUE"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SANTA BRÍGIDA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "EUCLIDES DA CUNHA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "ABARE"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "CHORROCHO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "GLORIA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "ITAPICURU"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "MACURURE"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "PAULO AFONSO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "RODELAS"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "OLINDINA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SANTO ESTEVÃO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "ANTONIO CARDOSO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "IPECAETA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SÃO GONÇALO DOS CAMPOS"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "ANGUERA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "SERRA PRETA"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "RAFAEL JAMBEIRO"
+    },
+    {
+        "regiao": {
+            "id": 1
+        },
+        "cep": "00000-000",
+        "nome": "HUMILDES"
+    }
+]

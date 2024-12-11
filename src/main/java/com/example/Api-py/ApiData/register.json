@@ -1,0 +1,62 @@
+[
+    {
+        "nome": "FUNCIONARIO",
+        "senha": "123456",
+        "role": "FUNCIONARIO",
+        "email": "FUNCIONARIO@gmail.com",
+        "telefone": "75981099613",
+        "cpf": "29897080066",
+        "base": 1,
+        "endereco": null
+    },
+    {
+        "nome": "ADMIN",
+        "senha": "123456",
+        "role": "ADMIN",
+        "email": "ADMIN@gmail.com",
+        "telefone": "75981099613",
+        "cpf": "14727714000",
+        "base": 1,
+        "endereco": null
+    },
+    {
+        "nome": "USER",
+        "senha": "123456",
+        "role": "USER",
+        "email": "USER@gmail.com",
+        "telefone": "75981099613",
+        "cpf": "10577806009",
+        "base": 1,
+        "endereco": null
+    },
+    {
+        "nome": "SAC",
+        "senha": "123456",
+        "role": "SAC",
+        "email": "SAC@gmail.com",
+        "telefone": "75981099613",
+        "cpf": "61643555081",
+        "base": 1,
+        "endereco": null
+    },
+    {
+        "nome": "MOTORISTA",
+        "senha": "123456",
+        "role": "MOTORISTA",
+        "email": "MOTORISTA@gmail.com",
+        "telefone": "75981099613",
+        "cpf": "07222440020",
+        "base": 1,
+        "endereco": null
+    },
+    {
+        "nome": "ENTREGADOR",
+        "senha": "123456",
+        "role": "ENTREGADOR",
+        "email": "ENTREGADOR@gmail.com",
+        "telefone": "75981099613",
+        "cpf": "97655771090",
+        "base": 1,
+        "endereco": "ENTREGADOR, Casa 1, 123, Rua 1, Florianópolis, 40000-000"
+    }
+]

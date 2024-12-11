@@ -1,0 +1,50 @@
+[
+{
+    "nome": "Cidades de Feira de Santana",
+    "base": {
+        "id": 1
+    }
+},
+{
+    "nome": "Bairros de Feira de Santana",
+    "base": {
+        "id": 1
+    }
+},
+{
+    "nome": "Cidades de Alagoinhas",
+    "base": {
+        "id": 2
+    }
+},
+{
+    "nome": "Bairros de Alagoinhas",
+    "base": {
+        "id": 2
+    }
+},
+{
+    "nome": "Cidades de Jacobina",
+    "base": {
+        "id": 4
+    }
+},
+{
+    "nome": "Bairros de Jacobina",
+    "base": {
+        "id": 4
+    }
+},
+{
+    "nome": "Cidades de Santo Antonio de Jesus",
+    "base": {
+        "id": 3
+    }
+},
+{
+    "nome": "Bairros de Santo Antonio de Jesus",
+    "base": {
+        "id": 3
+    }
+}
+]

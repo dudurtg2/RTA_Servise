@@ -43,6 +43,8 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll() 
         
                 .requestMatchers("/api/**").hasRole("ADMIN")
+                .requestMatchers("/api/**").hasRole("GERENTE")
+
 
                 .requestMatchers(HttpMethod.GET, "/api/romaneios/findAll").hasRole("MOTORISTA")
                 .requestMatchers(HttpMethod.GET, "/api/romaneios/count/**").hasRole("MOTORISTA")

@@ -1,0 +1,324 @@
+[
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "ALAGOINHAS VELHA"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "BARREIRO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "CATU"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "CENTRO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "DOIS DE JULHO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "JARDIM PEDRO BRAGA"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "JARDIM PETROLAR"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "JURACY MAGALHÃES"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "KENNEDY"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "MANGALÔ"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "PARQUE VITÓRIA"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "SANTA ISABEL"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "SANTA TEREZINHA"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "SILVA JARDIM"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "TERESÓPOLIS"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "BOA UNIÃO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "BORGES"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "BURI"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "CALU"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "CAMBOATÁ DE FORA"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "CANGULA"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "CONCEIÇÃO DE BAIXO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "CONCEIÇÃO DE CIMA"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "ENCANTADO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "ESTEVÃO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "FAZENDA GAMELEIRA"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "LIMOEIRO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "MACAQUINHO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "MANGUEIRAS"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "MILAGRES"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "NARANDIBA"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "OUTEIRO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "PAPAGAIO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "PEDRA DE BAIXO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "PEDRA DE CIMA"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "PONTO DO BEIJU"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "PORTAO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "QUINZAMBU"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "RIACHO DA GUIA"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "RIACHO DO MEL"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "RIO BRANCO"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "SAUIPE"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "SUCUPIRA I"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "SUCUPIRA II"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "TOMBADOR"
+    },
+    {
+        "regiao": {
+            "id": 4
+        },
+        "cep": "00000-000",
+        "nome": "TUCUM"
+    }
+]

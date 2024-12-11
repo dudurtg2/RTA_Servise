@@ -1,0 +1,149 @@
+[
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "ALAGOINHAS"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "ACAJUTIBA"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "CONDE"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "CRISÓPOLIS"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "ENTRE RIOS"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "ESPLANADA"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "INHAMBUPE"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "ITANAGRA"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "JANDAÍRA"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "MATA DE SÃO JOÃO"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "OURIÇANGAS"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "RIO REAL"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "SÁTIRO DIAS"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "ARATUÍPE"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "APORÁ"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "ARAMARI"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "ARAÇÁS"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "CARDEAL DA SILVA"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "CATU"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "ITAPICURU"
+    },
+    {
+        "regiao": {
+            "id": 3
+        },
+        "cep": "00000-000",
+        "nome": "OLINDINA"
+    }
+]

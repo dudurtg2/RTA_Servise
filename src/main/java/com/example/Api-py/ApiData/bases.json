@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "nome": "Lc Transportes - HUB01",
+        "endereco": "R. Rosendo Firmino Ferreira, 53 - Sim, Feira de Santana - BA, 44076-696"
+    },
+    {
+        "id": 2,
+        "nome": "Lc Transportes - HUB02",
+        "endereco": "Av. Joseph Wagner, 9990 - Juracy Magalhaes, Alagoinhas - BA, 48005-612"
+    },
+    {
+        "id": 3,
+        "nome": "Lc Transportes - HUB03",
+        "endereco": "Centro, Santo Antônio de Jesus - BA, 44440-000"
+    },
+    {
+        "id": 4,
+        "nome": "Lc Transportes - HUB04",
+        "endereco": "Centro, Jacobina - BA, 44700-000"
+    }
+]
