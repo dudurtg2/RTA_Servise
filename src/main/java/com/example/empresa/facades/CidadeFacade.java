@@ -35,5 +35,9 @@ public class CidadeFacade {
     public void deleteById(long id) {
         this.cidadeApplication.deleteById(id);
     }
+
+    public List<Cidade> findByRegiao(long id) {
+        return this.cidadeApplication.findByRegiao(id);
+    }
 }
 

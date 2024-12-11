@@ -42,14 +42,14 @@ public class SecurityConfiguration {
                 
                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll() 
         
-                .requestMatchers(HttpMethod.POST, "/api/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.PUT, "/api/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/api/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.GET, "/api/**").hasRole("ADMIN")
+                .requestMatchers("/api/**").hasRole("ADMIN")
 
                 .requestMatchers(HttpMethod.GET, "/api/romaneios/findAll").hasRole("MOTORISTA")
                 .requestMatchers(HttpMethod.GET, "/api/romaneios/count/**").hasRole("MOTORISTA")
+                .requestMatchers(HttpMethod.GET, "/api/romaneios/findBySearch/**").hasRole("MOTORISTA")
                 .requestMatchers(HttpMethod.PUT, "/api/romaneios/update/**").hasRole("MOTORISTA")
+                .requestMatchers(HttpMethod.PUT, "/api/motoristas/update/**").hasRole("MOTORISTA")
+
 
                 .requestMatchers(HttpMethod.GET,"/api/romaneios/findAll").hasRole("ENTREGADOR")
                 .requestMatchers(HttpMethod.GET,"/api/romaneios/count/**").hasRole("ENTREGADOR")

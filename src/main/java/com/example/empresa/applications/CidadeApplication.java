@@ -1,7 +1,9 @@
 package com.example.empresa.applications;
 
 import java.util.List;
+
 import org.springframework.stereotype.Component;
+
 import com.example.empresa.entities.Cidade;
 import com.example.empresa.interfaces.ICidadeRepository;
 import com.example.empresa.interfaces.IRegiaoRepository;
@@ -48,6 +50,15 @@ public class CidadeApplication {
             return null;
         }
         return cepInValidate.substring(0, 5) + "-" + cepInValidate.substring(5);
+    }
+
+    public List<Cidade> findByRegiao(long id) {
+        if (regiaoRepository.findById(id) == null) throw new ErrorException("Regiao nao encontrada", 400);
+
+        List<Cidade> cidades = this.cidadeRepository.findByRegiao(id);
+
+        if (cidades == null) throw new ErrorException("Cidades da região não encontrada", 404);
+        return cidades;
     }
 }
 

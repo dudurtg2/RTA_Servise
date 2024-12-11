@@ -63,6 +63,17 @@ public class CidadeRepository implements ICidadeRepository {
         }
     }
 
-
+    
+    @Override
+    public List<Cidade> findByRegiao(long id) {
+        String jpql = "SELECT c FROM Cidade c WHERE c.regiao.id = :id";
+        TypedQuery<Cidade> query = entityManager.createQuery(jpql, Cidade.class);
+        query.setParameter("id", id);
+        try {
+            return query.getResultList();
+        } catch (jakarta.persistence.NoResultException e) {
+            return null;
+        }
+    }
    
 }
