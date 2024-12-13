@@ -1,182 +1,118 @@
-[
-    {
+{
+    "id": 1,
+    "empresa": {
         "id": 1,
-        "empresa": {
-            "id": 1,
-            "nome": "Empresa 1",
-            "cnpj": "07.603.527/0001-50"
-        },
-        "motorista": null,
-        "entregador": {
-            "id": 1,
-            "nome": "Entregador 1",
-            "email": "2m0zi@example.com",
-            "cpf": "090.272.685-41",
-            "telefone": "123456789",
-            "endereco": "Rua 1, 123",
-            "base": {
-                "id": 1,
-                "nome": "Base 1",
-                "endereco": "Rua 1, 123"
-            }
-        },
-        "funcionario": {
-            "id": 1,
-            "nome": "João Silva",
-            "email": "joao.silva@example.com",
-            "cpf": "090.272.685-41",
-            "telefone": "+5511999999999",
-            "base": null
-        },
-        "base": {
-            "id": 1,
-            "nome": "Base 1",
-            "endereco": "Rua 1, 123"
-        },
-        "cidade": {
-            "id": 1,
-            "nome": "Cidade 1",
-            "cep": "12345-678",
-            "regiao": {
-                "id": 1,
-                "nome": "Sul",
-                "base": {
-                    "id": 1,
-                    "nome": "Base 1",
-                    "endereco": "Rua 1, 123"
-                }
-            }
-        },
-        "sts": "aguardando",
-        "quantidade": 4,
-        "codigoUid": "codigo_uid",
-        "linkDownload": "link_download",
-        "data": "2024-11-30",
-        "dataFinal": null,
-        "ocorrencia": null,
-        "codigos": [
-            {
-                "id": 1,
-                "codigo": "codigo1",
-                "romaneio": {
-                    "codigo": "codigo_uid",
-                    "romaneioId": 1
-                }
-            },
-            {
-                "id": 2,
-                "codigo": "codigo2",
-                "romaneio": {
-                    "codigo": "codigo_uid",
-                    "romaneioId": 1
-                }
-            },
-            {
-                "id": 3,
-                "codigo": "codigo3",
-                "romaneio": {
-                    "codigo": "codigo_uid",
-                    "romaneioId": 1
-                }
-            },
-            {
-                "id": 4,
-                "codigo": "codigo4",
-                "romaneio": {
-                    "codigo": "codigo_uid",
-                    "romaneioId": 1
-                }
-            }
-        ]
+        "nome": "LOGGI",
+        "cnpj": "24.217.653/0001-95"
     },
-    {
-        "id": 2,
-        "empresa": {
-            "id": 1,
-            "nome": "Empresa 1",
-            "cnpj": "07.603.527/0001-50"
-        },
-        "motorista": null,
-        "entregador": {
-            "id": 1,
-            "nome": "Entregador 1",
-            "email": "2m0zi@example.com",
-            "cpf": "090.272.685-41",
-            "telefone": "123456789",
-            "endereco": "Rua 1, 123",
-            "base": {
-                "id": 1,
-                "nome": "Base 1",
-                "endereco": "Rua 1, 123"
-            }
-        },
-        "funcionario": {
-            "id": 1,
-            "nome": "João Silva",
-            "email": "joao.silva@example.com",
-            "cpf": "090.272.685-41",
-            "telefone": "+5511999999999",
-            "base": null
-        },
+    "motorista": null,
+    "entregador": {
+        "id": 3,
+        "nome": "ENTREGADOR",
+        "email": "entregador@gmail.com",
+        "cpf": "976.557.710-90",
+        "telefone": "75981099613",
+        "endereco": "ENTREGADOR, Casa 1, 123, Rua 1, Florianópolis, 40000-000",
         "base": {
             "id": 1,
-            "nome": "Base 1",
-            "endereco": "Rua 1, 123"
-        },
-        "cidade": {
+            "nome": "Lc Transportes - HUB01",
+            "endereco": "R. Rosendo Firmino Ferreira, 53 - Sim, Feira de Santana - BA, 44076-696"
+        }
+    },
+    "funcionario": {
+        "id": 1,
+        "nome": "Carlos Eduardo Oliveira Savegnago",
+        "email": "carlos.e.o.savegnago@gmail.com",
+        "cpf": "090.272.685-41",
+        "telefone": "75981099613",
+        "base": {
             "id": 1,
-            "nome": "Cidade 1",
-            "cep": "12345-678",
-            "regiao": {
+            "nome": "Lc Transportes - HUB01",
+            "endereco": "R. Rosendo Firmino Ferreira, 53 - Sim, Feira de Santana - BA, 44076-696"
+        }
+    },
+    "base": {
+        "id": 1,
+        "nome": "Lc Transportes - HUB01",
+        "endereco": "R. Rosendo Firmino Ferreira, 53 - Sim, Feira de Santana - BA, 44076-696"
+    },
+    "cidade": {
+        "id": 2,
+        "nome": "BAIXA GRANDE",
+        "cep": "00000-000",
+        "regiao": {
+            "id": 1,
+            "nome": "Cidades de Feira de Santana",
+            "base": {
                 "id": 1,
-                "nome": "Sul",
-                "base": {
-                    "id": 1,
-                    "nome": "Base 1",
-                    "endereco": "Rua 1, 123"
-                }
+                "nome": "Lc Transportes - HUB01",
+                "endereco": "R. Rosendo Firmino Ferreira, 53 - Sim, Feira de Santana - BA, 44076-696"
+            }
+        }
+    },
+    "sts": "aguardando",
+    "quantidade": 7,
+    "codigoUid": "RTA20241115115835708LC",
+    "linkDownload": "https://drive.google.com/uc?id=1ZRsXrsxta7Twx9xVG8oqwBwBfe9hvgo1&export=download",
+    "data": "2024-12-12",
+    "dataFinal": null,
+    "ocorrencia": null,
+    "codigos": [
+        {
+            "id": 1,
+            "codigo": "6120124669122",
+            "romaneio": {
+                "codigo": "RTA20241115115835708LC",
+                "romaneioId": 1
             }
         },
-        "sts": "aguardando",
-        "quantidade": 4,
-        "codigoUid": "codigo_uid2",
-        "linkDownload": "link_download2",
-        "data": "2024-11-30",
-        "dataFinal": null,
-        "ocorrencia": null,
-        "codigos": [
-            {
-                "id": 5,
-                "codigo": "codigo12",
-                "romaneio": {
-                    "codigo": "codigo_uid2",
-                    "romaneioId": 2
-                }
-            },
-            {
-                "id": 6,
-                "codigo": "codigo22",
-                "romaneio": {
-                    "codigo": "codigo_uid2",
-                    "romaneioId": 2
-                }
-            },
-            {
-                "id": 7,
-                "codigo": "codigo23",
-                "romaneio": {
-                    "codigo": "codigo_uid2",
-                    "romaneioId": 2
-                }
-            },
-            {
-                "id": 8,
-                "codigo": "codigo24",
-                "romaneio": {
-                    "codigo": "codigo_uid2",
-                    "romaneioId": 2
-                }
+        {
+            "id": 2,
+            "codigo": "6120124797452",
+            "romaneio": {
+                "codigo": "RTA20241115115835708LC",
+                "romaneioId": 1
             }
-        ]
-    }
-]
+        },
+        {
+            "id": 3,
+            "codigo": "6120124389512",
+            "romaneio": {
+                "codigo": "RTA20241115115835708LC",
+                "romaneioId": 1
+            }
+        },
+        {
+            "id": 4,
+            "codigo": "6120324212750",
+            "romaneio": {
+                "codigo": "RTA20241115115835708LC",
+                "romaneioId": 1
+            }
+        },
+        {
+            "id": 5,
+            "codigo": "6112824819609",
+            "romaneio": {
+                "codigo": "RTA20241115115835708LC",
+                "romaneioId": 1
+            }
+        },
+        {
+            "id": 6,
+            "codigo": "6113024225525",
+            "romaneio": {
+                "codigo": "RTA20241115115835708LC",
+                "romaneioId": 1
+            }
+        },
+        {
+            "id": 7,
+            "codigo": "6112924741290",
+            "romaneio": {
+                "codigo": "RTA20241115115835708LC",
+                "romaneioId": 1
+            }
+        }
+    ]
+}
