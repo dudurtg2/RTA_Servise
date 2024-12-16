@@ -209,6 +209,14 @@ public class RomaneioApplication {
     public int getCountForStatus(String status) {
         return this.romaneioRepository.findByStatus(status).size() > 0 ? this.romaneioRepository.findByStatus(status).size() : 0;
     }
+    public int getCountCodigosStsAll(String status) {
+        List<Romaneio> romaneios = this.romaneioRepository.findByStatus(status);
+        int count = 0;
+        for (Romaneio romaneio : romaneios) {
+            count += romaneio.getCodigos().size();
+        }
+        return count;
+    }
 
     public List<Romaneio> findByStatus(String sts) {
         return this.romaneioRepository.findByStatus(sts);

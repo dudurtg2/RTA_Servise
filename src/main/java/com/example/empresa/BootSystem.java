@@ -44,7 +44,7 @@ public class BootSystem{
 			if (usersFacade.findById(1) != null) {
 				return;
 			}
-			RegisterDTO user = new RegisterDTO("Carlos Eduardo Oliveira Savegnago", "DUdu@147", UserRole.ADMIN, "Carlos.E.O.Savegnago@gmail.com", "75981099613", "09027268541", 1, null);
+			RegisterDTO user = new RegisterDTO("Carlos Eduardo Oliveira Savegnago", "DUdu@147", UserRole.ADMIN, "carlos.e.o.savegnago@gmail.com", "75981099613", "09027268541", 1, null);
 			usersFacade.save(user);
 		} catch (Exception e) {
 			e.printStackTrace();

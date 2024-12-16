@@ -45,6 +45,9 @@ public class RomaneioFacade {
     public int getCountForStatus(String status) {
         return this.romaneioApplication.getCountForStatus(status);
     }
+    public int getCountCodigosStsAll(String status) {
+        return this.romaneioApplication.getCountCodigosStsAll(status);
+    }
 
     public List<Romaneio> findByStatus(String sts) {
         return this.romaneioApplication.findByStatus(sts);

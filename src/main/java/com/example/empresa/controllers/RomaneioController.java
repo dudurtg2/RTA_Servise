@@ -51,13 +51,18 @@ public class RomaneioController {
         return new ResponseEntity<ResponceRecord>(
                 new ResponceRecord(this.romaneioFacade.getCountForStatus(status), status), HttpStatus.OK);
     }
+    @GetMapping("/count/codigos/sts/{status}")
+    public ResponseEntity<ResponceRecord> getCountCodigosStsAll(@PathVariable String status) {
+        return new ResponseEntity<ResponceRecord>(
+                new ResponceRecord(this.romaneioFacade.getCountCodigosStsAll(status), status), HttpStatus.OK);
+    }
 
-    @GetMapping("/count/driver/{uid}")
+    @GetMapping("/count/driver/{driver}")
     public ResponseEntity<List<Romaneio>> getCountDriver(@PathVariable long driver) {
         return new ResponseEntity<List<Romaneio>>(this.romaneioFacade.findByMotorista(driver), HttpStatus.OK);
     }
 
-    @GetMapping("/count/delivery/{uid}")
+    @GetMapping("/count/delivery/{delivery}")
     public ResponseEntity<List<Romaneio>> getCountDelivery(@PathVariable long delivery) {
         return new ResponseEntity<List<Romaneio>>(this.romaneioFacade.findByEntregador(delivery), HttpStatus.OK);
     }
