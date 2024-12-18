@@ -37,7 +37,7 @@ public class RomaneioFacade {
     public Romaneio update(String codigo, RomaneioUpdateRecord romaneio) {
         return this.romaneioApplication.update(codigo, romaneio);
     }
-
+    
     public void deleteById(long id) {
         this.romaneioApplication.deleteById(id);
     }

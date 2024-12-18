@@ -144,6 +144,18 @@ public class RomaneioApplication {
         return this.romaneioRepository.update(romaneioInDb.getId(), romaneioInDb);
     }
 
+    public Romaneio updateBase(String codigo, RomaneioUpdateRecord romaneio) {
+        Romaneio romaneioInDb = romaneioRepository.findByCodigoUid(codigo);
+
+        if (romaneio == null) {
+            throw new ErrorException("Objeto RomaneioUpdateRecord não pode ser nulo.", 400);
+        }
+
+        updateData(romaneioInDb, romaneio);
+
+        return this.romaneioRepository.update(romaneioInDb.getId(), romaneioInDb);
+    }
+
     private void updateData(Romaneio romaneioInDb, RomaneioUpdateRecord romaneio) {
         validaCampos(romaneioInDb, romaneio);
 
@@ -154,13 +166,16 @@ public class RomaneioApplication {
     }
 
     private void validaCampos(Romaneio romaneioInDb, RomaneioUpdateRecord romaneio) {
-        if (romaneio.entregador() != null) {
+        if (romaneio.entregador() != null || romaneio.entregador() != 0) {
             Entregador entregador = entregadorRepository.findById(romaneio.entregador());
             if (entregador == null) {
                 throw new ErrorException("Entregador com id " + romaneio.entregador() + " não encontrado.",
                         404);
             }
             romaneioInDb.setEntregador(entregador);
+        }
+        if (romaneio.entregador() == 0) {
+            romaneioInDb.setEntregador(null);
         }
 
         if (romaneio.funcionario() != null) {

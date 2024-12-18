@@ -95,6 +95,7 @@ public class RomaneioController {
         return new ResponseEntity<Romaneio>(romaneioInb, HttpStatus.OK);
     }
 
+
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
         if (this.romaneioFacade.findById(id) == null)
