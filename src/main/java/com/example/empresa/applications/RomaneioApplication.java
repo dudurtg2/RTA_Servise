@@ -58,7 +58,8 @@ public class RomaneioApplication {
     }
 
     public Romaneio save(RomaneioRecord romaneio) {
-        if (romaneio == null || romaneio.codigos() == null) throw new ErrorException("Romaneio nullo ou sem códigos.", 400);
+        if (romaneio == null || romaneio.codigos() == null)
+            throw new ErrorException("Romaneio nullo ou sem códigos.", 400);
 
         Romaneio romaneioSave = new Romaneio();
 
@@ -144,18 +145,6 @@ public class RomaneioApplication {
         return this.romaneioRepository.update(romaneioInDb.getId(), romaneioInDb);
     }
 
-    public Romaneio updateBase(String codigo, RomaneioUpdateRecord romaneio) {
-        Romaneio romaneioInDb = romaneioRepository.findByCodigoUid(codigo);
-
-        if (romaneio == null) {
-            throw new ErrorException("Objeto RomaneioUpdateRecord não pode ser nulo.", 400);
-        }
-
-        updateData(romaneioInDb, romaneio);
-
-        return this.romaneioRepository.update(romaneioInDb.getId(), romaneioInDb);
-    }
-
     private void updateData(Romaneio romaneioInDb, RomaneioUpdateRecord romaneio) {
         validaCampos(romaneioInDb, romaneio);
 
@@ -166,16 +155,14 @@ public class RomaneioApplication {
     }
 
     private void validaCampos(Romaneio romaneioInDb, RomaneioUpdateRecord romaneio) {
-        if (romaneio.entregador() != null || romaneio.entregador() != 0) {
+        if (romaneio.entregador() != null) {
             Entregador entregador = entregadorRepository.findById(romaneio.entregador());
             if (entregador == null) {
                 throw new ErrorException("Entregador com id " + romaneio.entregador() + " não encontrado.",
                         404);
             }
             romaneioInDb.setEntregador(entregador);
-        }
-        if (romaneio.entregador() == 0) {
-            romaneioInDb.setEntregador(null);
+            
         }
 
         if (romaneio.funcionario() != null) {
@@ -222,8 +209,11 @@ public class RomaneioApplication {
     }
 
     public int getCountForStatus(String status) {
-        return this.romaneioRepository.findByStatus(status).size() > 0 ? this.romaneioRepository.findByStatus(status).size() : 0;
+        return this.romaneioRepository.findByStatus(status).size() > 0
+                ? this.romaneioRepository.findByStatus(status).size()
+                : 0;
     }
+
     public int getCountCodigosStsAll(String status) {
         List<Romaneio> romaneios = this.romaneioRepository.findByStatus(status);
         int count = 0;
@@ -248,10 +238,12 @@ public class RomaneioApplication {
     public Romaneio findByCodigoUid(String codigoUid) {
         return this.romaneioRepository.findByCodigoUid(codigoUid);
     }
+
     public Romaneio findBySearch(String seach) {
         Romaneio romaneio = this.romaneioRepository.findByCodigoUid(seach);
-        if (romaneio != null) return romaneio;
-        return this.romaneioRepository.findByCodigoUid(this.codigoRepository.findByCodigo(seach).getRomaneio().codigo());   
+        if (romaneio != null)
+            return romaneio;
+        return this.romaneioRepository
+                .findByCodigoUid(this.codigoRepository.findByCodigo(seach).getRomaneio().codigo());
     }
 }
-
