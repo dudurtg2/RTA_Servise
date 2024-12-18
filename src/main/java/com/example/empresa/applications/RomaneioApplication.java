@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.empresa.controllers.records.RomaneioRecord;
 import com.example.empresa.controllers.records.RomaneioUpdateRecord;
+import com.example.empresa.controllers.records.RomaneioVencimentosRecord;
 import com.example.empresa.entities.Base;
 import com.example.empresa.entities.Cidade;
 import com.example.empresa.entities.Empresa;
@@ -26,6 +27,7 @@ import com.example.empresa.services.ErrorException;
 
 @Component
 public class RomaneioApplication {
+
     private IRomaneioRepository romaneioRepository;
     private IEntregadorRepository entregadorRepository;
     private IEmpresaRepository empresaRepository;
@@ -53,13 +55,43 @@ public class RomaneioApplication {
         return this.romaneioRepository.findAll();
     }
 
+    public RomaneioVencimentosRecord getVencimentos() {
+        int vencidos = 0;
+        int vencendoHoje = 0;
+        int vencendoAmanha = 0;
+        int vencendoDepois = 0;
+
+        LocalDate hoje = LocalDate.now();
+        LocalDate amanha = hoje.plusDays(1);
+        LocalDate depoisDeAmanha = hoje.plusDays(2);
+
+        for (Romaneio romaneio : this.romaneioRepository.findAll()) {
+            if (romaneio.getSts().equals("aguardando")) {
+                LocalDate dataRomaneio = LocalDate.parse(romaneio.getData()).plusDays(3);
+
+                if (dataRomaneio.isEqual(hoje)) {
+                    vencendoHoje++;
+                } else if (dataRomaneio.isEqual(amanha)) {
+                    vencendoAmanha++;
+                } else if (dataRomaneio.isAfter(depoisDeAmanha) || dataRomaneio.isEqual(depoisDeAmanha)) {
+                    vencendoDepois++;
+                } else if (dataRomaneio.isBefore(hoje)) {
+                    vencidos++;
+                }
+            }
+        }
+
+        return new RomaneioVencimentosRecord(vencidos, vencendoHoje, vencendoAmanha, vencendoDepois);
+    }
+
     public Romaneio findById(long id) {
         return this.romaneioRepository.findById(id);
     }
 
     public Romaneio save(RomaneioRecord romaneio) {
-        if (romaneio == null || romaneio.codigos() == null)
+        if (romaneio == null || romaneio.codigos() == null) {
             throw new ErrorException("Romaneio nullo ou sem códigos.", 400);
+        }
 
         Romaneio romaneioSave = new Romaneio();
 
@@ -162,7 +194,7 @@ public class RomaneioApplication {
                         404);
             }
             romaneioInDb.setEntregador(entregador);
-            
+
         }
 
         if (romaneio.funcionario() != null) {
@@ -241,8 +273,9 @@ public class RomaneioApplication {
 
     public Romaneio findBySearch(String seach) {
         Romaneio romaneio = this.romaneioRepository.findByCodigoUid(seach);
-        if (romaneio != null)
+        if (romaneio != null) {
             return romaneio;
+        }
         return this.romaneioRepository
                 .findByCodigoUid(this.codigoRepository.findByCodigo(seach).getRomaneio().codigo());
     }

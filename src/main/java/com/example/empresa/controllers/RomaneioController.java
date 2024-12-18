@@ -15,6 +15,8 @@ import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.List;
 
+import com.example.empresa.controllers.records.RomaneioVencimentosRecord;
+
 @RestController
 @RequestScope
 @RequestMapping("/api/romaneios")
@@ -50,6 +52,10 @@ public class RomaneioController {
     public ResponseEntity<ResponceRecord> getCountStsAll(@PathVariable String status) {
         return new ResponseEntity<ResponceRecord>(
                 new ResponceRecord(this.romaneioFacade.getCountForStatus(status), status), HttpStatus.OK);
+    }
+    @GetMapping("/count/vencidos")
+    public ResponseEntity<RomaneioVencimentosRecord> getCountVencidosAll() {
+        return new ResponseEntity<RomaneioVencimentosRecord>(this.romaneioFacade.getVencimentos(), HttpStatus.OK);
     }
     @GetMapping("/count/codigos/sts/{status}")
     public ResponseEntity<ResponceRecord> getCountCodigosStsAll(@PathVariable String status) {

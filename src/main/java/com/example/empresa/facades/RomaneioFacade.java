@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.example.empresa.applications.RomaneioApplication;
 import com.example.empresa.controllers.records.RomaneioRecord;
 import com.example.empresa.controllers.records.RomaneioUpdateRecord;
+import com.example.empresa.controllers.records.RomaneioVencimentosRecord;
 import com.example.empresa.entities.Romaneio;
 
 @Component
@@ -36,6 +37,9 @@ public class RomaneioFacade {
 
     public Romaneio update(String codigo, RomaneioUpdateRecord romaneio) {
         return this.romaneioApplication.update(codigo, romaneio);
+    }
+    public RomaneioVencimentosRecord getVencimentos() {
+        return this.romaneioApplication.getVencimentos();
     }
     
     public void deleteById(long id) {
