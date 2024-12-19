@@ -49,11 +49,17 @@ public class MotoristaApplication {
 
 
     public Motorista update(long id, Motorista motorista) {
-        motorista.setEmail(motorista.getEmail().toLowerCase());
+        Motorista motoristaInDb = this.motoristaRepository.findById(id);
 
-        motorista.setCpf(getCpfExistente(motorista.getCpf()));
+        if (motoristaInDb == null) throw new ErrorException("Motorista com id " + id + " nao encontrada.", 404);
 
-        return this.motoristaRepository.update(id, motorista);
+        if (motorista.getEmail() != null) motoristaInDb.setEmail(motorista.getEmail().toLowerCase());
+        if (motorista.getNome() != null) motoristaInDb.setNome(motorista.getNome());
+        if (motorista.getCpf() != null) motoristaInDb.setCpf(getCpfExistente(motorista.getCpf()));
+        if (motorista.getTelefone() != null) motoristaInDb.setTelefone(motorista.getTelefone());
+        if (motorista.getBase() != null) motoristaInDb.setBase(motorista.getBase());
+
+        return this.motoristaRepository.update(id, motoristaInDb);
     }
 
     public void deleteById(long id) {
