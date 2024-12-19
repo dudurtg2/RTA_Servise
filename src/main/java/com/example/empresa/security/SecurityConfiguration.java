@@ -42,15 +42,11 @@ public class SecurityConfiguration {
                 
                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll() 
         
-                .requestMatchers("/api/**").hasRole("ADMIN")
-                .requestMatchers("/api/**").hasRole("GERENTE")
-
-
                 .requestMatchers(HttpMethod.GET, "/api/romaneios/findAll").hasRole("MOTORISTA")
                 .requestMatchers(HttpMethod.GET, "/api/romaneios/count/**").hasRole("MOTORISTA")
                 .requestMatchers(HttpMethod.GET, "/api/romaneios/findBySearch/**").hasRole("MOTORISTA")
                 .requestMatchers(HttpMethod.PUT, "/api/romaneios/update/**").hasRole("MOTORISTA")
-                .requestMatchers(HttpMethod.PUT, "/api/motoristas/update/**").hasRole("MOTORISTA")
+                .requestMatchers(HttpMethod.PUT, "/api/motoristas/**").hasRole("MOTORISTA")
 
 
                 .requestMatchers(HttpMethod.GET,"/api/romaneios/findAll").hasRole("ENTREGADOR")
@@ -81,6 +77,8 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.PUT,"/api/funcionario/update/**").hasRole("SAC")
                 .requestMatchers(HttpMethod.DELETE,"/api/funcionario/deleteById/**").hasRole("SAC")
 
+                .requestMatchers("/api/**").hasRole("ADMIN")
+                .requestMatchers("/api/**").hasRole("GERENTE")
 
                 
             )
