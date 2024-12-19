@@ -67,6 +67,10 @@ public class RomaneioController {
     public ResponseEntity<List<Romaneio>> getCountDriver(@PathVariable long driver) {
         return new ResponseEntity<List<Romaneio>>(this.romaneioFacade.findByMotorista(driver), HttpStatus.OK);
     }
+    @GetMapping("/count/driver/{driver}/{sts}")
+    public ResponseEntity<List<Romaneio>> getCountDriver(@PathVariable long driver, @PathVariable String sts) {
+        return new ResponseEntity<List<Romaneio>>(this.romaneioFacade.findByMotoristaSts(driver, sts), HttpStatus.OK);
+    }
 
     @GetMapping("/count/delivery/{delivery}")
     public ResponseEntity<List<Romaneio>> getCountDelivery(@PathVariable long delivery) {

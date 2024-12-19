@@ -1,6 +1,7 @@
 package com.example.empresa.applications;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -261,6 +262,16 @@ public class RomaneioApplication {
 
     public List<Romaneio> findByMotorista(Long motorista) {
         return this.romaneioRepository.findByMotorista(this.motoristaRepository.findById(motorista));
+    }
+
+    public List<Romaneio> findByMotoristaSts(Long motorista, String sts) {
+        List<Romaneio> romaneios = new ArrayList<>();
+        for (Romaneio romaneio : this.romaneioRepository.findByMotorista(this.motoristaRepository.findById(motorista))) {
+            if (romaneio.getSts().equals(sts)) {
+                romaneios.add(romaneio);
+            }
+        }
+        return romaneios;
     }
 
     public List<Romaneio> findByEntregador(Long entregador) {

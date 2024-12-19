@@ -60,7 +60,9 @@ public class RomaneioFacade {
     public List<Romaneio> findByMotorista(Long motorista) {
         return this.romaneioApplication.findByMotorista(motorista);
     }
-
+    public List<Romaneio> findByMotoristaSts(Long motorista, String sts)  {
+        return this.romaneioApplication.findByMotoristaSts(motorista, sts);
+    }
     public List<Romaneio> findByEntregador(Long entregador) {
         return this.romaneioApplication.findByEntregador(entregador);
     }
