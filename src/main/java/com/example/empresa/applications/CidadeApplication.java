@@ -29,14 +29,14 @@ public class CidadeApplication {
 
     public Cidade save(Cidade cidade) {
         cidade.setCep(formatCep(cidade.getCep()));
-        if (cidade.getCep() == null) throw new ErrorException("Cep invalido", 400);
-        if (regiaoRepository.findById(cidade.getRegiao().getId()) == null) throw new ErrorException("Região nao encontrada", 400);
+        if (cidade.getCep() == null) throw new ErrorException("Cep invalido", 409);
+        if (regiaoRepository.findById(cidade.getRegiao().getId()) == null) throw new ErrorException("Região nao encontrada", 409);
         return this.cidadeRepository.save(cidade);
     }
 
     public Cidade update(long id, Cidade cidade) {
         cidade.setCep(formatCep(cidade.getCep()));
-        if (cidade.getCep() == null) throw new ErrorException("Cep invalido", 400);
+        if (cidade.getCep() == null) throw new ErrorException("Cep invalido", 409);
         return this.cidadeRepository.update(id, cidade);
     }
 
@@ -53,7 +53,7 @@ public class CidadeApplication {
     }
 
     public List<Cidade> findByRegiao(long id) {
-        if (regiaoRepository.findById(id) == null) throw new ErrorException("Regiao nao encontrada", 400);
+        if (regiaoRepository.findById(id) == null) throw new ErrorException("Regiao nao encontrada", 409);
 
         List<Cidade> cidades = this.cidadeRepository.findByRegiao(id);
 

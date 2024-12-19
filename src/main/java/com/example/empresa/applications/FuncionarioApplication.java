@@ -33,7 +33,7 @@ public class FuncionarioApplication {
     public Funcionario save(Funcionario funcionario) {
         funcionario.setEmail(funcionario.getEmail().toLowerCase());
 
-        if(baseRepository.findById(funcionario.getBase().getId()) == null) throw new ErrorException("Base nao cadastrada", 400);
+        if(baseRepository.findById(funcionario.getBase().getId()) == null) throw new ErrorException("Base nao cadastrada", 409);
         
         funcionario.setCpf(getCpfExistente(funcionario.getCpf()));
     
@@ -43,8 +43,8 @@ public class FuncionarioApplication {
     private String getCpfExistente(String cpf) {
         String cpfFormatado = validateServise.cpf(cpf);
 
-        if (cpfFormatado.isEmpty()) throw new ErrorException("CPF inválido", 400);
-        if (this.funcionarioRepository.findByCpf(cpf) != null) throw new ErrorException("CPF já cadastrado", 400);
+        if (cpfFormatado.isEmpty()) throw new ErrorException("CPF inválido", 409);
+        if (this.funcionarioRepository.findByCpf(cpf) != null) throw new ErrorException("CPF já cadastrado", 409);
         
         return cpfFormatado;
     }

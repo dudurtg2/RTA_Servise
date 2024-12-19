@@ -1,7 +1,9 @@
 package com.example.empresa.applications;
 
 import java.util.List;
+
 import org.springframework.stereotype.Component;
+
 import com.example.empresa.entities.Entregador;
 import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.IEntregadorRepository;
@@ -31,7 +33,7 @@ public class EntregadorApplication {
     public Entregador save(Entregador entregador) {
         entregador.setEmail(entregador.getEmail().toLowerCase());
 
-        if (baseRepository.findById(entregador.getBase().getId()) == null) throw new ErrorException("Base nao cadastrada", 400);
+        if (baseRepository.findById(entregador.getBase().getId()) == null) throw new ErrorException("Base nao cadastrada", 409);
         
         entregador.setCpf(getCpfExistente(entregador.getCpf()));
 
@@ -41,8 +43,8 @@ public class EntregadorApplication {
     private String getCpfExistente(String cpf) {
         String cpfFormatado = validateServise.cpf(cpf);
 
-        if (cpfFormatado.isEmpty()) throw new ErrorException("CPF inválido", 400);
-        if (this.entregadorRepository.findByCpf(cpf) != null) throw new ErrorException("CPF já cadastrado", 400);
+        if (cpfFormatado.isEmpty()) throw new ErrorException("CPF inválido", 409);
+        if (this.entregadorRepository.findByCpf(cpf) != null) throw new ErrorException("CPF já cadastrado", 409);
         
         return cpfFormatado;
     }

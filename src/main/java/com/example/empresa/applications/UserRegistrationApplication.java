@@ -42,7 +42,7 @@ public class UserRegistrationApplication {
     }
 
     public Users save(RegisterDTO registerDTO) {
-        if (usersRepository.findByEmail(registerDTO.email()) != null) throw new ErrorException("Email já cadastrado.", 400);
+        if (usersRepository.findByEmail(registerDTO.email()) != null) throw new ErrorException("Email já cadastrado.", 409);
         
         registerUser(registerDTO);
 
@@ -52,9 +52,21 @@ public class UserRegistrationApplication {
                 registerDTO.role()
         ));
     }
+    private void validateCampos(RegisterDTO registerDTO) {
+        if (registerDTO.email() == null ||
+    registerDTO.senha() == null ||
+    registerDTO.role() == null ||
+    registerDTO.cpf() == null ||
+    registerDTO.telefone() == null ||
+    registerDTO.nome() == null) {
+    throw new ErrorException("Campos obrigatórios", 400);
+}
+
+    }
 
     private void registerUser(RegisterDTO registerDTO) {
         validateBase(registerDTO.base());
+        validateCampos(registerDTO);
 
         switch (registerDTO.role()) {
             case MOTORISTA:
@@ -84,7 +96,8 @@ public class UserRegistrationApplication {
                         registerDTO.email(),
                         registerDTO.cpf(),
                         registerDTO.telefone(),
-                        baseRepository.findById(registerDTO.base())
+                        baseRepository.findById(registerDTO.base()),
+                        registerDTO.role().toString()
                 ));
                 break;
         }
@@ -92,7 +105,7 @@ public class UserRegistrationApplication {
 
     private void validateBase(Long baseId) {
         if (baseRepository.findById(baseId) == null) {
-            throw new ErrorException("Base não cadastrada", 400);
+            throw new ErrorException("Base não cadastrada", 409);
         }
     }
 
@@ -101,17 +114,17 @@ public class UserRegistrationApplication {
         if (repository instanceof IFuncionarioRepository) {
             Funcionario funcionario = funcionarioRepository.findByCpf(cpf);
             if (funcionario != null) {
-                throw new ErrorException("CPF já cadastrado", 400);
+                throw new ErrorException("CPF já cadastrado", 409);
             }
         } else if (repository instanceof IMotoristaRepository) {
             Motorista motorista = motoristaRepository.findByCpf(cpf);
             if (motorista != null) {
-                throw new ErrorException("CPF já cadastrado", 400);
+                throw new ErrorException("CPF já cadastrado", 409);
             }
         } else if (repository instanceof IEntregadorRepository) {
             Entregador entregador = entregadorRepository.findByCpf(cpf);
             if (entregador != null) {
-                throw new ErrorException("CPF já cadastrado", 400);
+                throw new ErrorException("CPF já cadastrado", 409);
             }
         }
     }

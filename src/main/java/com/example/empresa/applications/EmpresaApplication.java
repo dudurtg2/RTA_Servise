@@ -48,8 +48,8 @@ public class EmpresaApplication {
     private String getCnpjExistente(String cnpj) {
         String cnpjFormatado = validateServise.cnpj(cnpj);
 
-        if (cnpjFormatado.isEmpty()) throw new ErrorException("CNPJ inválido", 400);
-        if (this.empresaRepository.findByCnpj(cnpj) != null) throw new ErrorException("CNPJ já cadastrado", 400);
+        if (cnpjFormatado.isEmpty()) throw new ErrorException("CNPJ inválido", 409);
+        if (this.empresaRepository.findByCnpj(cnpj) != null) throw new ErrorException("CNPJ já cadastrado", 409);
         
         return cnpjFormatado;
     }

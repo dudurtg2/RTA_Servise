@@ -60,6 +60,7 @@ public class FuncionarioRepository implements IFuncionarioRepository {
         funcionarioInDb.setCpf(funcionario.getCpf());
         funcionarioInDb.setTelefone(funcionario.getTelefone());
         funcionarioInDb.setBase(funcionario.getBase());
+        funcionarioInDb.setRole(funcionario.getRole());
 
         return entityManager.merge(funcionarioInDb);
     }

@@ -1,7 +1,9 @@
 package com.example.empresa.applications;
 
 import java.util.List;
+
 import org.springframework.stereotype.Component;
+
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.interfaces.IMotoristaRepository;
 import com.example.empresa.services.ErrorException;
@@ -29,7 +31,7 @@ public class MotoristaApplication {
     public Motorista save(Motorista motorista) {
         motorista.setEmail(motorista.getEmail().toLowerCase());
 
-        if(motoristaRepository.findByEmail(motorista.getEmail()) != null) throw new ErrorException("Email já cadastrado", 400);
+        if(motoristaRepository.findByEmail(motorista.getEmail()) != null) throw new ErrorException("Email já cadastrado", 409);
         
         motorista.setCpf(getCpfExistente(motorista.getCpf()));
     
@@ -39,8 +41,8 @@ public class MotoristaApplication {
     private String getCpfExistente(String motorista) {
         String cpfFormatado = validateServise.cpf(motorista);
         
-        if (cpfFormatado.isEmpty()) throw new ErrorException("CPF inválido", 400);
-        if (this.motoristaRepository.findByCpf(motorista) != null)  throw new ErrorException("CPF já cadastrado", 400);
+        if (cpfFormatado.isEmpty()) throw new ErrorException("CPF inválido", 409);
+        if (this.motoristaRepository.findByCpf(motorista) != null)  throw new ErrorException("CPF já cadastrado", 409);
         
         return cpfFormatado;
     }

@@ -38,15 +38,19 @@ public class Funcionario{
     @Column(name = "telefone")
     private String telefone;
 
+    @Column(name = "role")
+    private String role;
+
     @ManyToOne
     @JoinColumn(name = "base")
     private Base base;
 
-    public Funcionario(String nome, String email, String cpf, String telefone, Base base) {
+    public Funcionario(String nome, String email, String cpf, String telefone, Base base, String role) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.telefone = telefone;
         this.base = base;
+        this.role = role;
     }
 }
