@@ -179,11 +179,10 @@ public class RomaneioApplication {
     }
 
     private void updateData(Romaneio romaneioInDb, RomaneioUpdateRecord romaneio) {
+        if (romaneioInDb.getSts().equals("finalizado")) throw new ErrorException("Romaneio finalizado.", 400);
         validaCampos(romaneioInDb, romaneio);
         
         romaneioInDb.setSts(romaneio.status() != null ? romaneio.status() : romaneioInDb.getSts());
-
-        if (romaneioInDb.getSts().equals("finalizado")) throw new ErrorException("Romaneio finalizado.", 400);
         
         romaneioInDb.setOcorrencia(romaneio.ocorrencia() != null ? romaneio.ocorrencia() : romaneioInDb.getOcorrencia());
         romaneioInDb.setDataFinal(romaneio.dataFinal() != null ? romaneio.dataFinal() : romaneioInDb.getDataFinal());
