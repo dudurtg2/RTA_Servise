@@ -29,6 +29,9 @@ public class Regiao {
     @Column(name = "nome")
     private String nome;
 
+    @Column(name = "prefixo")
+    private String prefixo;
+
     @JoinColumn(name = "base")
     @ManyToOne
     private Base base;   

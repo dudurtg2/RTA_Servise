@@ -49,6 +49,7 @@ public class BaseRepository implements IBaseRepository {
         
         baseInDb.setNome(Base.getNome());
         baseInDb.setEndereco(Base.getEndereco());
+        baseInDb.setGoogledriver(Base.getGoogledriver());
 
         return entityManager.merge(baseInDb);
     }

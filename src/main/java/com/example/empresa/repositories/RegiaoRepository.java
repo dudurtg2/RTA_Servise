@@ -49,6 +49,7 @@ public class RegiaoRepository implements IRegiaoRepository {
         
         regiaoInDb.setNome(regiao.getNome());
         regiaoInDb.setBase(regiao.getBase());
+        regiaoInDb.setPrefixo(regiao.getPrefixo());
 
         return entityManager.merge(regiaoInDb);
     }

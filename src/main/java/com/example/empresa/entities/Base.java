@@ -31,4 +31,6 @@ public class Base {
     @Column(name= "endereco")
     private String endereco;
     
+    @Column(name= "googledriver")
+    private String googledriver;
 }
