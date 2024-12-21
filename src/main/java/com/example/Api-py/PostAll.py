@@ -2,15 +2,15 @@ import json
 import os
 import requests
 
-url = "http://localhost:8080/auth/login"
+url = "http://carlo4664.c44.integrator.host:10500/auth/login"
 
 headers = {
     "Content-Type": "application/json"
 }
 
 bases = {
-    "login": "ADMIN@gmail.com",
-    "senha": "123456"
+    "login":"carlos.e.o.savegnago@gmail.com",
+    "senha":"DUdu@147"
 }
 
 token = ""
@@ -25,14 +25,14 @@ try:
 except requests.exceptions.RequestException as e:
     print("Erro ao enviar a requisição:", e)
 
-url_cidades = "http://localhost:8080/api/cidades/save"
+url_cidades = "http://carlo4664.c44.integrator.host:10500/auth/register"
 
 headers_cidades = {
     "Authorization": f"Bearer {token}",
     "Content-Type": "application/json"
 }
 
-with open('src/main/java/com/example/Api-py/ApiData/cidades/FSA.json', 'r', encoding='utf-8') as f:
+with open('src/main/java/com/example/Api-py/ApiData/register.json', 'r', encoding='utf-8') as f:
     cidades_data = json.load(f)
 
 for cidade in cidades_data:

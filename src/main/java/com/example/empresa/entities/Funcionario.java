@@ -1,12 +1,16 @@
 package com.example.empresa.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,7 +21,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Funcionario")
+@Table(name = "funcionario")
 @Entity
 public class Funcionario{
 
@@ -41,11 +45,16 @@ public class Funcionario{
     @Column(name = "role")
     private String role;
 
-    @ManyToOne
-    @JoinColumn(name = "base")
-    private Base base;
+    @ManyToMany
+    @JoinTable(
+            name = "funcionario_base", 
+            joinColumns = @JoinColumn(name = "funcionario_id"), 
+            inverseJoinColumns = @JoinColumn(name = "base_id") 
+    )
+    private List<Base> base = new ArrayList<>();
 
-    public Funcionario(String nome, String email, String cpf, String telefone, Base base, String role) {
+
+    public Funcionario(String nome, String email, String cpf, String telefone, List<Base> base, String role) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;

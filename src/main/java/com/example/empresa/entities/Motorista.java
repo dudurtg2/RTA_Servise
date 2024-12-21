@@ -1,12 +1,16 @@
 package com.example.empresa.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,7 +21,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Motorista")
+@Table(name = "motorista")
 @Entity
 public class Motorista {
 
@@ -38,11 +42,15 @@ public class Motorista {
     @Column(name = "telefone")
     private String telefone;
 
-    @JoinColumn(name = "base")
-    @ManyToOne
-    private Base base; 
+    @ManyToMany
+    @JoinTable(
+            name = "motorista_base", 
+            joinColumns = @JoinColumn(name = "motorista_id"), 
+            inverseJoinColumns = @JoinColumn(name = "base_id") 
+    )
+    private List<Base> base = new ArrayList<>();
 
-    public Motorista(String nome, String email, String cpf, String telefone, Base base) {
+    public Motorista(String nome, String email, String cpf, String telefone, List<Base> base) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;

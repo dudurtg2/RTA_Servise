@@ -1,9 +1,11 @@
 package com.example.empresa.applications;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.example.empresa.entities.Base;
 import com.example.empresa.entities.Funcionario;
 import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.IFuncionarioRepository;
@@ -29,11 +31,11 @@ public class FuncionarioApplication {
     public Funcionario findById(long id) {
         return this.funcionarioRepository.findById(id);
     }
+
+ 
     
     public Funcionario save(Funcionario funcionario) {
         funcionario.setEmail(funcionario.getEmail().toLowerCase());
-
-        if(baseRepository.findById(funcionario.getBase().getId()) == null) throw new ErrorException("Base nao cadastrada", 409);
         
         funcionario.setCpf(getCpfExistente(funcionario.getCpf()));
     

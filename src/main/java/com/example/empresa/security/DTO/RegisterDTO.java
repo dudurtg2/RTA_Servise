@@ -1,5 +1,7 @@
 package com.example.empresa.security.DTO;
 
+import java.util.List;
+
 import com.example.empresa.entities.emuns.UserRole;
 
 public record RegisterDTO(
@@ -9,6 +11,6 @@ public record RegisterDTO(
     String email,
     String telefone,
     String cpf,
-    long base,
+    List<Long> base,
     String endereco
 ) {}

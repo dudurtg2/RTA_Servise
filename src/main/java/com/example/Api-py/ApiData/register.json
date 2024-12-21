@@ -6,7 +6,7 @@
         "email": "FUNCIONARIO@gmail.com",
         "telefone": "75981099613",
         "cpf": "29897080066",
-        "base": 1,
+        "base": [1],
         "endereco": null
     },
     {
@@ -16,7 +16,7 @@
         "email": "ADMIN@gmail.com",
         "telefone": "75981099613",
         "cpf": "14727714000",
-        "base": 1,
+        "base": [1],
         "endereco": null
     },
     {
@@ -26,7 +26,7 @@
         "email": "USER@gmail.com",
         "telefone": "75981099613",
         "cpf": "10577806009",
-        "base": 1,
+        "base": [1],
         "endereco": null
     },
     {
@@ -36,7 +36,7 @@
         "email": "SAC@gmail.com",
         "telefone": "75981099613",
         "cpf": "61643555081",
-        "base": 1,
+        "base": [1],
         "endereco": null
     },
     {
@@ -46,7 +46,7 @@
         "email": "MOTORISTA@gmail.com",
         "telefone": "75981099613",
         "cpf": "35769691018",
-        "base": 1,
+        "base": [1],
         "endereco": null
     },
     {
@@ -56,7 +56,7 @@
         "email": "ENTREGADOR@gmail.com",
         "telefone": "75981099613",
         "cpf": "66743341037",
-        "base": 1,
+        "base": [1],
         "endereco": "ENTREGADOR, Casa 1, 123, Rua 1, Florianópolis, 40000-000"
     }
 ]

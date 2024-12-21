@@ -1,8 +1,12 @@
 package com.example.empresa.applications;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import com.example.empresa.entities.Base;
 import com.example.empresa.entities.Entregador;
 import com.example.empresa.entities.Funcionario;
 import com.example.empresa.entities.Motorista;
@@ -65,7 +69,8 @@ public class UserRegistrationApplication {
     }
 
     private void registerUser(RegisterDTO registerDTO) {
-        validateBase(registerDTO.base());
+        List<Base> bases = validateBase(registerDTO.base());
+
         validateCampos(registerDTO);
 
         switch (registerDTO.role()) {
@@ -75,7 +80,7 @@ public class UserRegistrationApplication {
                         registerDTO.email(),
                         registerDTO.cpf(),
                         registerDTO.telefone(),
-                        baseRepository.findById(registerDTO.base())
+                        bases
                 ));
                 break;
 
@@ -85,7 +90,7 @@ public class UserRegistrationApplication {
                         registerDTO.email(),
                         registerDTO.cpf(),
                         registerDTO.telefone(),
-                        baseRepository.findById(registerDTO.base()),
+                        bases,
                         registerDTO.endereco()
                 ));
                 break;
@@ -96,17 +101,24 @@ public class UserRegistrationApplication {
                         registerDTO.email(),
                         registerDTO.cpf(),
                         registerDTO.telefone(),
-                        baseRepository.findById(registerDTO.base()),
+                        bases,
                         registerDTO.role().toString()
                 ));
                 break;
         }
     }
 
-    private void validateBase(Long baseId) {
-        if (baseRepository.findById(baseId) == null) {
-            throw new ErrorException("Base não cadastrada", 409);
-        }
+    private List<Base> validateBase(List<Long> baseId) {
+        List<Base> bases = new ArrayList<>();
+
+        baseId.forEach(v -> {
+            if (baseRepository.findById(v) == null) {
+                throw new ErrorException("Base não cadastrada", 409);
+            }
+            bases.add(baseRepository.findById(v));
+        });
+        
+        return bases;
     }
 
 

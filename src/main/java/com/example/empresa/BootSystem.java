@@ -1,4 +1,6 @@
 package com.example.empresa;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -44,7 +46,8 @@ public class BootSystem{
 			if (usersFacade.findById(1) != null) {
 				return;
 			}
-			RegisterDTO user = new RegisterDTO("Carlos Eduardo Oliveira Savegnago", "DUdu@147", UserRole.ADMIN, "carlos.e.o.savegnago@gmail.com", "75981099613", "09027268541", 1, null);
+			List<Long> bases = List.of(1L, 2L, 3L, 4L);
+			RegisterDTO user = new RegisterDTO("Carlos Eduardo Oliveira Savegnago", "DUdu@147", UserRole.ADMIN, "carlos.e.o.savegnago@gmail.com", "75981099613", "09027268541", bases, null);
 			usersFacade.save(user);
 		} catch (Exception e) {
 			e.printStackTrace();
