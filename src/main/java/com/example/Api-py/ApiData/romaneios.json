@@ -1,34 +1,12 @@
 {
     "codigoUid": "RTA20241115124051782LC",
     "linkDownload": "https://drive.google.com/uc?id=12-j2q-Wu9_evduGAc7p2ER9ISRMakVe7&export=download",
-    "base": 1,
+    "base": 1, 
     "entregador": 3,
     "funcionario": 1,
     "empresa": 1,
     "cidade": 4,
     "codigos": [
-        {"codigo": "6120124845678"},
-        {"codigo": "6120324298765"},
-        {"codigo": "6113024345678"},
-        {"codigo": "6120224571234"},
-        {"codigo": "6112824987654"},
-        {"codigo": "6120324432109"},
-        {"codigo": "6112924765432"},
-        {"codigo": "6113024123987"},
-        {"codigo": "6120124012345"},
-        {"codigo": "6112824654321"},
-        {"codigo": "6112924789123"},
-        {"codigo": "6120324123456"},
-        {"codigo": "6113024876543"},
-        {"codigo": "6120124890123"},
-        {"codigo": "6112824012789"},
-        {"codigo": "6120224005678"},
-        {"codigo": "6112924767801"},
-        {"codigo": "6120324017892"},
-        {"codigo": "6113024734567"},
-        {"codigo": "6112824123987"},
-        {"codigo": "6120124789234"},
-        {"codigo": "6112924001123"},
-        {"codigo": "6120224789000"}
+        {"codigo": "6120124845678"}
     ]
 }
