@@ -12,5 +12,5 @@ public record RomaneioRecord(
     Long entregador,
     Long funcionario,
     Long empresa,
-    Long cidade
+    List<Long> cidade
 ) {}

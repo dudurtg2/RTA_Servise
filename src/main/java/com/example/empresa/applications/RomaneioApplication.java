@@ -96,13 +96,20 @@ public class RomaneioApplication {
 
         Romaneio romaneioSave = new Romaneio();
 
+        this.validaRelacionamentos(romaneioSave, romaneio);
+
         Entregador entregador = entregadorRepository.findById(romaneio.entregador());
         Funcionario funcionario = funcionarioRepository.findById(romaneio.funcionario());
         Empresa empresa = empresaRepository.findById(romaneio.empresa());
         Base base = baseRepository.findById(romaneio.base());
-        Cidade cidade = cidadeRepository.findById(romaneio.cidade());
 
-        this.validaRelacionamentos(romaneioSave, romaneio);
+        List<Cidade> cidade = new ArrayList<>();
+
+        if (romaneio.cidade() != null) {
+            for (long idCidade : romaneio.cidade()) {
+                cidade.add(cidadeRepository.findById(idCidade));
+            }
+        }
 
         romaneioSave.setData(LocalDate.now().toString());
         romaneioSave.setLinkDownload(romaneio.linkDownload());
@@ -131,7 +138,13 @@ public class RomaneioApplication {
         Funcionario funcionario = funcionarioRepository.findById(romaneio.funcionario());
         Empresa empresa = empresaRepository.findById(romaneio.empresa());
         Base base = baseRepository.findById(romaneio.base());
-        Cidade cidade = cidadeRepository.findById(romaneio.cidade());
+        List<Cidade> cidade = new ArrayList<>();
+
+        if (romaneio.cidade() != null) {
+            for (long idCidade : romaneio.cidade()) {
+                cidade.add(cidadeRepository.findById(idCidade));
+            }
+        }
 
         if (entregador == null) {
             throw new ErrorException("Entregador com id " + romaneio.entregador() + " não encontrado.", 404);
@@ -149,9 +162,12 @@ public class RomaneioApplication {
             throw new ErrorException("Base com id " + romaneio.base() + " não encontrada.", 404);
         }
 
-        if (cidade == null) {
-            throw new ErrorException("Cidade com id " + romaneio.cidade() + " não encontrada.", 404);
+        for (Cidade c : cidade) {
+            if (c == null) {
+                throw new ErrorException("Cidade com id " + romaneio.cidade() + " não encontrada.", 404);
+            }
         }
+
     }
 
     public Romaneio update(long id, RomaneioUpdateRecord romaneio) {
@@ -179,12 +195,14 @@ public class RomaneioApplication {
     }
 
     private void updateData(Romaneio romaneioInDb, RomaneioUpdateRecord romaneio) {
-        if (romaneioInDb.getSts().equals("finalizado")) throw new ErrorException("Romaneio finalizado.", 400);
+        if (romaneioInDb.getSts().equals("finalizado"))
+            throw new ErrorException("Romaneio finalizado.", 400);
         validaCampos(romaneioInDb, romaneio);
-        
+
         romaneioInDb.setSts(romaneio.status() != null ? romaneio.status() : romaneioInDb.getSts());
-        
-        romaneioInDb.setOcorrencia(romaneio.ocorrencia() != null ? romaneio.ocorrencia() : romaneioInDb.getOcorrencia());
+
+        romaneioInDb
+                .setOcorrencia(romaneio.ocorrencia() != null ? romaneio.ocorrencia() : romaneioInDb.getOcorrencia());
         romaneioInDb.setDataFinal(romaneio.dataFinal() != null ? romaneio.dataFinal() : romaneioInDb.getDataFinal());
     }
 
@@ -217,11 +235,16 @@ public class RomaneioApplication {
         }
 
         if (romaneio.cidade() != null) {
-            Cidade cidade = cidadeRepository.findById(romaneio.cidade());
-            if (cidade == null) {
-                throw new ErrorException("Cidade com id " + romaneio.cidade() + " não encontrada.", 404);
+            List<Cidade> cidades = new ArrayList<>();
+
+            for (long idCidade : romaneio.cidade()) {
+                Cidade cidade = cidadeRepository.findById(idCidade);
+                if (cidade == null) {
+                    throw new ErrorException("Cidade com id " + idCidade + " não encontrada.", 404);
+                }
+                cidades.add(cidade);
             }
-            romaneioInDb.setCidade(cidade);
+            romaneioInDb.setCidade(cidades);
         }
 
         if (romaneio.motorista() != null) {
@@ -267,7 +290,8 @@ public class RomaneioApplication {
 
     public List<Romaneio> findByMotoristaSts(Long motorista, String sts) {
         List<Romaneio> romaneios = new ArrayList<>();
-        for (Romaneio romaneio : this.romaneioRepository.findByMotorista(this.motoristaRepository.findById(motorista))) {
+        for (Romaneio romaneio : this.romaneioRepository
+                .findByMotorista(this.motoristaRepository.findById(motorista))) {
             if (romaneio.getSts().equals(sts)) {
                 romaneios.add(romaneio);
             }

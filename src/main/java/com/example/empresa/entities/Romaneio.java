@@ -41,9 +41,14 @@ public class Romaneio {
     @JoinColumn(name = "base")
     private Base base;
 
-    @ManyToOne
-    @JoinColumn(name = "cidade")
-    private Cidade cidade;
+    @ManyToMany
+@JoinTable(
+    name = "romaneio_cidade", // Nome da tabela intermediária
+    joinColumns = @JoinColumn(name = "romaneio_id"), // Coluna que referencia o Romaneio
+    inverseJoinColumns = @JoinColumn(name = "cidade_id") // Coluna que referencia a Cidade
+)
+private List<Cidade> cidade = new ArrayList<>();
+
 
     @Column(name = "sts")
     private String sts;
