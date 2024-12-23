@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.example.empresa.controllers.records.RomaneioRecord;
+import com.example.empresa.controllers.records.RomaneioResponceFinalizadoRecord;
 import com.example.empresa.controllers.records.RomaneioUpdateRecord;
 import com.example.empresa.controllers.records.RomaneioVencimentosRecord;
 import com.example.empresa.entities.Base;
@@ -195,11 +196,15 @@ public class RomaneioApplication {
     }
 
     private void updateData(Romaneio romaneioInDb, RomaneioUpdateRecord romaneio) {
-        if (romaneioInDb.getSts().equals("finalizado"))
+        if (romaneioInDb.getSts().equals("finalizado") && romaneio.linkImg() == null)
             throw new ErrorException("Romaneio finalizado.", 400);
         validaCampos(romaneioInDb, romaneio);
 
         romaneioInDb.setSts(romaneio.status() != null ? romaneio.status() : romaneioInDb.getSts());
+        romaneioInDb.setDataFinal(romaneio.dataFinal() != null ? romaneio.dataFinal() : romaneioInDb.getDataFinal());
+
+        romaneioInDb.setLinkDownloadImg(
+                romaneio.linkImg() != null ? romaneio.linkImg() : romaneioInDb.getLinkDownloadImg());
 
         romaneioInDb
                 .setOcorrencia(romaneio.ocorrencia() != null ? romaneio.ocorrencia() : romaneioInDb.getOcorrencia());
@@ -278,6 +283,31 @@ public class RomaneioApplication {
             count += romaneio.getCodigos().size();
         }
         return count;
+    }
+
+    public List<RomaneioResponceFinalizadoRecord> getFinishedAll() {
+        List<RomaneioResponceFinalizadoRecord> romaneios = new ArrayList<>();
+        for (Romaneio romaneio : this.romaneioRepository.findByStatus("finalizado")) {
+            String local = "";
+            int count = 0;
+            for (Cidade cidade : romaneio.getCidade()) {
+                if (count > 0) {
+                    local +=  ", ";
+                }
+                local += cidade.getNome();
+                count++;
+            }
+            romaneios.add(
+                    new RomaneioResponceFinalizadoRecord(
+                            romaneio.getCodigoUid(),
+                            romaneio.getMotorista().getNome(),
+                            romaneio.getDataFinal(),
+                            local
+                            )
+                        );
+
+        }
+        return romaneios;
     }
 
     public List<Romaneio> findByStatus(String sts) {

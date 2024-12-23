@@ -60,6 +60,9 @@ public class Romaneio {
 
     @Column(name = "link_download")
     private String linkDownload;
+    
+    @Column(name = "link_download_img")
+    private String linkDownloadImg;
 
     @Column(name = "data")
     private String data;
