@@ -1,5 +1,6 @@
 package com.example.empresa.facades;
 
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -77,6 +78,10 @@ public class RomaneioFacade {
 
     public Romaneio findBySearch(String seach) {
         return this.romaneioApplication.findBySearch(seach);
+    }
+
+    public Romaneio uploadImage(String codigo, BufferedImage image) {
+        return this.romaneioApplication.uploadImage(codigo, image);
     }
 }
 

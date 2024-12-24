@@ -1,5 +1,6 @@
 package com.example.empresa.applications;
 
+import java.awt.image.BufferedImage;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ import com.example.empresa.interfaces.IFuncionarioRepository;
 import com.example.empresa.interfaces.IMotoristaRepository;
 import com.example.empresa.interfaces.IRomaneioRepository;
 import com.example.empresa.services.ErrorException;
+import com.example.empresa.services.GoogleDriveService;
 
 @Component
 public class RomaneioApplication {
@@ -38,11 +40,13 @@ public class RomaneioApplication {
     private ICidadeRepository cidadeRepository;
     private IMotoristaRepository motoristaRepository;
     private ICodigoRepository codigoRepository;
+    private GoogleDriveService googleDriveService;
 
     public RomaneioApplication(IRomaneioRepository romaneioRepository, IEntregadorRepository entregadorRepository,
             IEmpresaRepository empresaRepository, IFuncionarioRepository funcionarioRepository,
             IBaseRepository baseRepository, ICidadeRepository cidadeRepository,
-            IMotoristaRepository motoristaRepository, ICodigoRepository codigoRepository) {
+            IMotoristaRepository motoristaRepository, ICodigoRepository codigoRepository,
+            GoogleDriveService googleDriveService) {
         this.romaneioRepository = romaneioRepository;
         this.entregadorRepository = entregadorRepository;
         this.empresaRepository = empresaRepository;
@@ -51,6 +55,7 @@ public class RomaneioApplication {
         this.cidadeRepository = cidadeRepository;
         this.motoristaRepository = motoristaRepository;
         this.codigoRepository = codigoRepository;
+        this.googleDriveService = googleDriveService;
     }
 
     public List<Romaneio> findAll() {
@@ -85,6 +90,8 @@ public class RomaneioApplication {
 
         return new RomaneioVencimentosRecord(vencidos, vencendoHoje, vencendoAmanha, vencendoDepois);
     }
+
+    
 
     public Romaneio findById(long id) {
         return this.romaneioRepository.findById(id);
@@ -206,8 +213,7 @@ public class RomaneioApplication {
         romaneioInDb.setLinkDownloadImg(
                 romaneio.linkImg() != null ? romaneio.linkImg() : romaneioInDb.getLinkDownloadImg());
 
-        romaneioInDb
-                .setOcorrencia(romaneio.ocorrencia() != null ? romaneio.ocorrencia() : romaneioInDb.getOcorrencia());
+        romaneioInDb.setOcorrencia(romaneio.ocorrencia() != null ? romaneio.ocorrencia() : romaneioInDb.getOcorrencia());
         romaneioInDb.setDataFinal(romaneio.dataFinal() != null ? romaneio.dataFinal() : romaneioInDb.getDataFinal());
     }
 
@@ -344,5 +350,33 @@ public class RomaneioApplication {
         }
         return this.romaneioRepository
                 .findByCodigoUid(this.codigoRepository.findByCodigo(seach).getRomaneio().codigo());
+    }
+
+    public Romaneio uploadImage(String codigo, BufferedImage image) {
+        Romaneio romaneio = this.romaneioRepository.findByCodigoUid(codigo);
+
+        if (romaneio == null) throw new ErrorException("Romaneio nao encontrado.", 404);
+        
+        String publicLink = "";
+        String local = "";
+
+        int count = 0;
+        for (Cidade cidade : romaneio.getCidade()) {
+            if (count > 0) {
+                local +=  ", ";
+            }
+            local += cidade.getNome();
+            count++;
+        }
+
+        try {
+            publicLink = googleDriveService.uploadImageToDrive(image, romaneio.getCodigoUid(), local);
+        } catch (Exception e) {
+            throw new ErrorException("ESSE E UM ERRO: " + e.getMessage(), 500);
+        }
+        
+        romaneio.setLinkDownloadImg(publicLink);
+
+        return this.romaneioRepository.save(romaneio);
     }
 }

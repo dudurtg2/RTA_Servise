@@ -13,9 +13,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+
+import com.example.empresa.controllers.records.ImageUploadRecord;
 import com.example.empresa.controllers.records.RomaneioVencimentosRecord;
 
 @RestController
@@ -30,11 +39,25 @@ public class RomaneioController {
         this.romaneioFacade = romaneioFacade;
     }
 
+    @PostMapping("/imageUpload/{codigo}")
+    public ResponseEntity<Romaneio> uploadImage(@RequestBody ImageUploadRecord request,
+            @PathVariable String codigo) throws IOException {
+
+        byte[] imageBytes = Base64.getDecoder().decode(request.base64Image());
+        InputStream inputStream = new ByteArrayInputStream(imageBytes);
+        BufferedImage image = ImageIO.read(inputStream);
+
+        Romaneio romaneio = this.romaneioFacade.uploadImage(codigo, image);
+
+        return new ResponseEntity<>(romaneio, HttpStatus.OK);
+    }
+
     @GetMapping("/findAll")
     public ResponseEntity<List<Romaneio>> findAll() {
         List<Romaneio> romaneio = this.romaneioFacade.findAll();
         return new ResponseEntity<List<Romaneio>>(romaneio, HttpStatus.OK);
     }
+
     @GetMapping("/getFinishedAll")
     public ResponseEntity<List<RomaneioResponceFinalizadoRecord>> getFinishedAll() {
         List<RomaneioResponceFinalizadoRecord> romaneio = this.romaneioFacade.getFinishedAll();
@@ -50,7 +73,9 @@ public class RomaneioController {
     @GetMapping("/findBySearch/{search}")
     public ResponseEntity<Romaneio> findBySearch(@PathVariable String search) {
         Romaneio romaneio = this.romaneioFacade.findBySearch(search);
-        if (romaneio == null) throw new ErrorException("Romaneio não encontrado.", 404);
+        if (romaneio == null) {
+            throw new ErrorException("Romaneio não encontrado.", 404);
+        }
         return new ResponseEntity<Romaneio>(romaneio, HttpStatus.OK);
     }
 
@@ -59,10 +84,12 @@ public class RomaneioController {
         return new ResponseEntity<ResponceRecord>(
                 new ResponceRecord(this.romaneioFacade.getCountForStatus(status), status), HttpStatus.OK);
     }
+
     @GetMapping("/count/vencidos")
     public ResponseEntity<RomaneioVencimentosRecord> getCountVencidosAll() {
         return new ResponseEntity<RomaneioVencimentosRecord>(this.romaneioFacade.getVencimentos(), HttpStatus.OK);
     }
+
     @GetMapping("/count/codigos/sts/{status}")
     public ResponseEntity<ResponceRecord> getCountCodigosStsAll(@PathVariable String status) {
         return new ResponseEntity<ResponceRecord>(
@@ -73,6 +100,7 @@ public class RomaneioController {
     public ResponseEntity<List<Romaneio>> getCountDriver(@PathVariable long driver) {
         return new ResponseEntity<List<Romaneio>>(this.romaneioFacade.findByMotorista(driver), HttpStatus.OK);
     }
+
     @GetMapping("/count/driver/{driver}/{sts}")
     public ResponseEntity<List<Romaneio>> getCountDriver(@PathVariable long driver, @PathVariable String sts) {
         return new ResponseEntity<List<Romaneio>>(this.romaneioFacade.findByMotoristaSts(driver, sts), HttpStatus.OK);
@@ -93,8 +121,9 @@ public class RomaneioController {
     public ResponseEntity<Romaneio> update(
             @PathVariable long id,
             @RequestBody RomaneioUpdateRecord romaneio) {
-        if (this.romaneioFacade.findById(id) == null)
+        if (this.romaneioFacade.findById(id) == null) {
             throw new ErrorException("Romaneio com id " + id + " nao encontrado.", 404);
+        }
 
         Romaneio romaneioInb = romaneioFacade.update(id, romaneio);
         return new ResponseEntity<Romaneio>(romaneioInb, HttpStatus.OK);
@@ -104,18 +133,19 @@ public class RomaneioController {
     public ResponseEntity<Romaneio> update(
             @PathVariable String codigo,
             @RequestBody RomaneioUpdateRecord romaneio) {
-        if (this.romaneioFacade.findByCodigoUid(codigo) == null)
+        if (this.romaneioFacade.findByCodigoUid(codigo) == null) {
             throw new ErrorException("Romaneio com codigo " + codigo + " nao encontrado.", 404);
+        }
 
         Romaneio romaneioInb = romaneioFacade.update(codigo, romaneio);
         return new ResponseEntity<Romaneio>(romaneioInb, HttpStatus.OK);
     }
 
-
     @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
-        if (this.romaneioFacade.findById(id) == null)
+        if (this.romaneioFacade.findById(id) == null) {
             throw new ErrorException("Romaneio com id " + id + " nao encontrado.", 404);
+        }
 
         romaneioFacade.deleteById(id);
 
@@ -134,4 +164,3 @@ public class RomaneioController {
     }
 
 }
-
