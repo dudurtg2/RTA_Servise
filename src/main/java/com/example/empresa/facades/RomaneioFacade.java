@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import com.example.empresa.applications.RomaneioApplication;
 import com.example.empresa.controllers.records.RomaneioRecord;
 import com.example.empresa.controllers.records.RomaneioResponceFinalizadoRecord;
+import com.example.empresa.controllers.records.RomaneioResponceRetiradoRecord;
 import com.example.empresa.controllers.records.RomaneioUpdateRecord;
 import com.example.empresa.controllers.records.RomaneioVencimentosRecord;
 import com.example.empresa.entities.Romaneio;
@@ -26,6 +27,10 @@ public class RomaneioFacade {
     }
     public List<RomaneioResponceFinalizadoRecord> getFinishedAll() {
         return this.romaneioApplication.getFinishedAll();
+    }
+    
+    public List<RomaneioResponceRetiradoRecord> getRetiradoAll(long id) {
+        return this.romaneioApplication.getRetiradoAll(id);
     }
 
     public Romaneio findById(long id) {

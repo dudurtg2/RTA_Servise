@@ -3,6 +3,7 @@ package com.example.empresa.controllers;
 import com.example.empresa.controllers.records.ResponceRecord;
 import com.example.empresa.controllers.records.RomaneioRecord;
 import com.example.empresa.controllers.records.RomaneioResponceFinalizadoRecord;
+import com.example.empresa.controllers.records.RomaneioResponceRetiradoRecord;
 import com.example.empresa.controllers.records.RomaneioUpdateRecord;
 import com.example.empresa.entities.Romaneio;
 import com.example.empresa.facades.RomaneioFacade;
@@ -62,6 +63,11 @@ public class RomaneioController {
     public ResponseEntity<List<RomaneioResponceFinalizadoRecord>> getFinishedAll() {
         List<RomaneioResponceFinalizadoRecord> romaneio = this.romaneioFacade.getFinishedAll();
         return new ResponseEntity<List<RomaneioResponceFinalizadoRecord>>(romaneio, HttpStatus.OK);
+    }
+    @GetMapping("/getRetiradoAll/{id}")
+    public ResponseEntity<List<RomaneioResponceRetiradoRecord>> getRetiradoAll(@PathVariable long id) {
+        List<RomaneioResponceRetiradoRecord> romaneio = this.romaneioFacade.getRetiradoAll(id);
+        return new ResponseEntity<List<RomaneioResponceRetiradoRecord>>(romaneio, HttpStatus.OK);
     }
 
     @GetMapping("/findById/{id}")

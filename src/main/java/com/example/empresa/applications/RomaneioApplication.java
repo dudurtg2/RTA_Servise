@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.empresa.controllers.records.RomaneioRecord;
 import com.example.empresa.controllers.records.RomaneioResponceFinalizadoRecord;
+import com.example.empresa.controllers.records.RomaneioResponceRetiradoRecord;
 import com.example.empresa.controllers.records.RomaneioUpdateRecord;
 import com.example.empresa.controllers.records.RomaneioVencimentosRecord;
 import com.example.empresa.entities.Base;
@@ -315,6 +316,24 @@ public class RomaneioApplication {
         }
         return romaneios;
     }
+    public List<RomaneioResponceRetiradoRecord> getRetiradoAll(Long id) {
+        List<RomaneioResponceRetiradoRecord> romaneios = new ArrayList<>();
+        for (Romaneio romaneio : findByMotorista(id)) {
+            if (romaneio.getSts().equals("retirado") || romaneio.getSts().equals("alocado")) {
+                romaneios.add(
+                    new RomaneioResponceRetiradoRecord(
+                            romaneio.getCodigoUid(),
+                            romaneio.getEntregador().getNome(),
+                            romaneio.getSts(),
+                            romaneio.getData()
+                          )
+                        );
+            }
+        }
+
+        return romaneios;
+    }
+
 
     public List<Romaneio> findByStatus(String sts) {
         return this.romaneioRepository.findByStatus(sts);
