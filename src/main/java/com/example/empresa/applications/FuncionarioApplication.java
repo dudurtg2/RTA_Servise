@@ -1,14 +1,13 @@
 package com.example.empresa.applications;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.example.empresa.entities.Base;
 import com.example.empresa.entities.Funcionario;
 import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.IFuncionarioRepository;
+import com.example.empresa.interfaces.IUsersRepository;
 import com.example.empresa.services.ErrorException;
 import com.example.empresa.services.ValidateServise;
 
@@ -16,16 +15,18 @@ import com.example.empresa.services.ValidateServise;
 public class FuncionarioApplication {
     private IFuncionarioRepository funcionarioRepository;
     private IBaseRepository baseRepository;
+    private IUsersRepository usersRepository;
     private ValidateServise validateServise;
 
-    public FuncionarioApplication(IFuncionarioRepository funcionarioRepository, IBaseRepository baseRepository, ValidateServise validateServise) {
+    public FuncionarioApplication(IFuncionarioRepository funcionarioRepository, IBaseRepository baseRepository, ValidateServise validateServise, IUsersRepository usersRepository) {
         this.funcionarioRepository = funcionarioRepository;
         this.baseRepository = baseRepository;
         this.validateServise = validateServise;
+        this.usersRepository = usersRepository;
     }
 
     public List<Funcionario> findAll() {
-        return this.funcionarioRepository.findAll();
+        return this.funcionarioRepository.findAll().stream().filter(Funcionario::isAtivo).toList();
     }
 
     public Funcionario findById(long id) {
@@ -36,6 +37,7 @@ public class FuncionarioApplication {
     
     public Funcionario save(Funcionario funcionario) {
         funcionario.setEmail(funcionario.getEmail().toLowerCase());
+        funcionario.setAtivo(true);
         
         funcionario.setCpf(getCpfExistente(funcionario.getCpf()));
     
@@ -60,7 +62,13 @@ public class FuncionarioApplication {
     }
 
     public void deleteById(long id) {
-        this.funcionarioRepository.deleteById(id);
+        Funcionario funcionario = this.funcionarioRepository.findById(id);
+        if (funcionario == null) throw new ErrorException("Funcionario com id " + id + " nao encontrada.", 404);
+        this.usersRepository.deleteById(this.usersRepository.findByLogin(funcionario.getEmail()).getId());
+        funcionario.setAtivo(false);
+        funcionario.setEmail("DELETEUSER"+funcionario.getId()+"@DELETEUSER");
+        funcionario.setCpf("00000000000");
+        this.funcionarioRepository.update(funcionario.getId(), funcionario);
     }
 
     public Funcionario findByEmail(String email) {

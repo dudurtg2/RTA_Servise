@@ -45,6 +45,9 @@ public class Entregador {
     @Column(name = "endereco")
     private String endereco;
 
+    @Column(name = "ativo")
+    private boolean ativo = true;
+
     @ManyToMany
     @JoinTable(
             name = "entregador_base", 

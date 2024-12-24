@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.empresa.entities.Motorista;
 import com.example.empresa.interfaces.IMotoristaRepository;
+import com.example.empresa.interfaces.IUsersRepository;
 import com.example.empresa.services.ErrorException;
 import com.example.empresa.services.ValidateServise;
 
@@ -14,14 +15,16 @@ import com.example.empresa.services.ValidateServise;
 public class MotoristaApplication {
     private IMotoristaRepository motoristaRepository;
     private ValidateServise validateServise;
+    private IUsersRepository usersRepository;
 
-    public MotoristaApplication(IMotoristaRepository motoristaRepository, ValidateServise validateServise) {
+    public MotoristaApplication(IMotoristaRepository motoristaRepository, ValidateServise validateServise, IUsersRepository usersRepository) {
         this.motoristaRepository = motoristaRepository;
         this.validateServise = validateServise;
+        this.usersRepository = usersRepository;
     }
     
     public List<Motorista> findAll() {
-        return this.motoristaRepository.findAll();
+        return this.motoristaRepository.findAll().stream().filter(Motorista::isAtivo).toList();
     }
 
     public Motorista findById(long id) {
@@ -30,6 +33,7 @@ public class MotoristaApplication {
 
     public Motorista save(Motorista motorista) {
         motorista.setEmail(motorista.getEmail().toLowerCase());
+        motorista.setAtivo(true);
 
         if(motoristaRepository.findByEmail(motorista.getEmail()) != null) throw new ErrorException("Email já cadastrado", 409);
         
@@ -63,7 +67,13 @@ public class MotoristaApplication {
     }
 
     public void deleteById(long id) {
-        this.motoristaRepository.deleteById(id);
+        Motorista motorista = this.motoristaRepository.findById(id);
+        if (motorista == null) throw new ErrorException("Funcionario com id " + id + " nao encontrada.", 404);
+        this.usersRepository.deleteById(this.usersRepository.findByLogin(motorista.getEmail()).getId());
+        motorista.setAtivo(false);
+        motorista.setEmail("DELETEUSER"+motorista.getId()+"@DELETEUSER");
+        motorista.setCpf("00000000000");
+        this.motoristaRepository.update(motorista.getId(), motorista);
     }
 
     public Motorista findByEmail(String email) {

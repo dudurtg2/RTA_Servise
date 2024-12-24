@@ -42,6 +42,9 @@ public class Motorista {
     @Column(name = "telefone")
     private String telefone;
 
+    @Column(name = "ativo")
+    private boolean ativo = true;
+
     @ManyToMany
     @JoinTable(
             name = "motorista_base", 

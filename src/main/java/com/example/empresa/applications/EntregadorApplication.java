@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.example.empresa.entities.Entregador;
 import com.example.empresa.interfaces.IBaseRepository;
 import com.example.empresa.interfaces.IEntregadorRepository;
+import com.example.empresa.interfaces.IUsersRepository;
 import com.example.empresa.services.ErrorException;
 import com.example.empresa.services.ValidateServise;
 
@@ -15,15 +16,18 @@ public class EntregadorApplication {
     private IEntregadorRepository entregadorRepository;
     private IBaseRepository baseRepository;
     private ValidateServise validateServise;
+    private IUsersRepository usersRepository;
 
-    public EntregadorApplication(IEntregadorRepository entregadorRepository, IBaseRepository baseRepository, ValidateServise validateServise) {
+    public EntregadorApplication(IEntregadorRepository entregadorRepository,IUsersRepository usersRepository, IBaseRepository baseRepository, ValidateServise validateServise) {
         this.entregadorRepository = entregadorRepository;
         this.baseRepository = baseRepository;
         this.validateServise = validateServise;
+        this.usersRepository = usersRepository;
     }
 
     public List<Entregador> findAll() {
-        return this.entregadorRepository.findAll();
+        
+        return this.entregadorRepository.findAll().stream().filter(Entregador::isAtivo).toList();
     }
 
     public Entregador findById(long id) {
@@ -32,6 +36,7 @@ public class EntregadorApplication {
 
     public Entregador save(Entregador entregador) {
         entregador.setEmail(entregador.getEmail().toLowerCase());   
+        entregador.setAtivo(true);   
         entregador.setCpf(getCpfExistente(entregador.getCpf()));
 
         return this.entregadorRepository.save(entregador);
@@ -56,7 +61,13 @@ public class EntregadorApplication {
     }
 
     public void deleteById(long id) {
-        this.entregadorRepository.deleteById(id);
+        Entregador entregador = this.entregadorRepository.findById(id);
+        if (entregador == null) throw new ErrorException("Funcionario com id " + id + " nao encontrada.", 404);
+        this.usersRepository.deleteById(this.usersRepository.findByLogin(entregador.getEmail()).getId());
+        entregador.setAtivo(false);
+        entregador.setEmail("DELETEUSER"+entregador.getId()+"@DELETEUSER");
+        entregador.setCpf("00000000000");
+        this.entregadorRepository.update(entregador.getId(), entregador);
     }
 
     public Entregador findByEmail(String email) {

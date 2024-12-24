@@ -45,6 +45,9 @@ public class Funcionario{
     @Column(name = "role")
     private String role;
 
+    @Column(name = "ativo")
+    private boolean ativo = true;
+
     @ManyToMany
     @JoinTable(
             name = "funcionario_base", 
